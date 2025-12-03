@@ -1,4 +1,4 @@
-<section class="w-full py-16 sm:py-20 lg:py-24 bg-cream">
+<section class="w-full py-16 sm:py-20 lg:py-24  ">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center space-y-8 items-center justify-center max-w-4xl mx-auto">
 			<!-- Badge -->
