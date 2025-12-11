@@ -1,3 +1,7 @@
+<script>
+	import { paymentLinks } from '$lib/payment-links';
+</script>
+
 <section id="get-involved" class="w-full border-t border-slate-300/40">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16 space-y-8">
 		<div class="max-w-3xl space-y-3">
@@ -122,11 +126,14 @@
 						support where it matters most.
 					</p>
 				</div>
-				<button
+				<a
+					href={paymentLinks.donation}
+					target="_blank"
+					rel="noopener noreferrer"
 					class="mt-auto inline-flex items-center justify-center rounded-full bg-[#2A6268] px-3 py-1.5 text-xs font-medium text-[#EFE5D0] hover:bg-[#234f53] transition-colors"
 				>
 					Sponsor a kit
-				</button>
+				</a>
 			</div>
 		</div>
 

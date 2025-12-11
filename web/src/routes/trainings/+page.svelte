@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Check, Award } from '@lucide/svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { paymentLinks } from '$lib/payment-links';
  
 
 	const tiers = [
@@ -30,7 +31,8 @@
 				'Create safe, judgment-free spaces',
 				'Support 30-50 people per session'
 			],
-			cta: 'Become a Champion'
+			cta: 'Become a Champion',
+			paymentLink: paymentLinks.certifications.foundationLevelCommunityChampionCertification
 		},
 		{
 			id: 'tier2',
@@ -60,7 +62,8 @@
 				'Customize for your population',
 				'Integrate with existing services'
 			],
-			cta: 'Scale Your Impact'
+			cta: 'Scale Your Impact',
+			paymentLink: paymentLinks.certifications.advancedLevelInstitutionalChampionCertification
 		},
 		{
 			id: 'tier3',
@@ -93,7 +96,8 @@
 				'Build regional Champion networks',
 				'Expand DCI across districts'
 			],
-			cta: 'Become a Master'
+			cta: 'Become a Master',
+			paymentLink: paymentLinks.certifications.masterTrainerCertification
 		}
 	];
 
@@ -106,7 +110,7 @@
 	];
 </script>
 
- <div class="min-h-screen bg-[#EFE5D0]">
+<div class="min-h-screen bg-[#EFE5D0]">
 	<!-- Hero Section -->
 	<section class="bg-[#2A6268] text-white py-20 px-6">
 		<div class="max-w-7xl mx-auto">
@@ -225,15 +229,17 @@
 								</ul>
 							</div>
 
-							<Button
-								class="w-full {index === 0
-									? 'bg-[#2A6268] hover:bg-[#2A6268]/90'
-									: index === 1
-										? 'bg-[#6F231E] hover:bg-[#6F231E]/90'
-										: 'bg-[#2A6268] hover:bg-[#2A6268]/90'} text-white py-6 rounded-full font-bold transition shadow-lg"
-							>
-								{tier.cta}
-							</Button>
+							<a href={tier.paymentLink} target="_blank" rel="noopener noreferrer" class="w-full">
+								<Button
+									class="w-full {index === 0
+										? 'bg-[#2A6268] hover:bg-[#2A6268]/90'
+										: index === 1
+											? 'bg-[#6F231E] hover:bg-[#6F231E]/90'
+											: 'bg-[#2A6268] hover:bg-[#2A6268]/90'} text-white py-6 rounded-full font-bold transition shadow-lg"
+								>
+									{tier.cta}
+								</Button>
+							</a>
 						</div>
 					</div>
 				{/each}
@@ -272,11 +278,17 @@
 				Join 500+ trained Champions healing Uganda one conversation at a time
 			</p>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<Button
-					class="bg-[#6F231E] text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-[#6F231E]/90 transition shadow-lg"
+				<a
+					href={paymentLinks.certifications.foundationLevelCommunityChampionCertification}
+					target="_blank"
+					rel="noopener noreferrer"
 				>
-					Apply for T.O.T Now
-				</Button>
+					<Button
+						class="bg-[#6F231E] text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-[#6F231E]/90 transition shadow-lg"
+					>
+						Apply for T.O.T Now
+					</Button>
+				</a>
 				<Button
 					class="bg-white text-[#2A6268] px-12 py-6 rounded-full text-xl font-bold hover:bg-white/90 transition"
 				>
@@ -286,4 +298,3 @@
 		</div>
 	</section>
 </div>
- 

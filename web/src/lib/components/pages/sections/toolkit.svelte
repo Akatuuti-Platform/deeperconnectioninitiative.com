@@ -1,5 +1,6 @@
 <script>
 	import { Button } from '$lib/components/ui/button';
+	import { paymentLinks } from '$lib/payment-links';
 
 	const products = [
 		{
@@ -7,21 +8,24 @@
             image: 'https://res.cloudinary.com/dywd7jbbl/image/upload/v1716585371/Other/it_othe9w.jpg',
 			description:
 				'Conversation cards that gently open discussions around emotions, relationships, stress, identity, and personal experiences.',
-			price: '69,000 UGX'
+			price: '69,000 UGX',
+			paymentLink: paymentLinks.cardGame
 		},
 		{
 			name: 'DCI Reflection Journal',
             image: 'https://res.cloudinary.com/dywd7jbbl/image/upload/v1716584375/Other/csps_dgkayq.png',
 			description:
 				'A guided journal that supports self-reflection, emotional processing, and personal growth without requiring advanced literacy.',
-			price: '120,000 UGX'
+			price: '120,000 UGX',
+			paymentLink: paymentLinks.journal
 		},
 		{
 			name: 'DCI Mood Tracker',
             image: 'https://res.cloudinary.com/dywd7jbbl/image/upload/v1716585253/Other/awf_ne3sdj.jpg',
 			description:
 				'A simple tool that helps users recognise emotional patterns over time — especially useful where mental health language is limited.',
-			price: '31,000 UGX'
+			price: '31,000 UGX',
+			paymentLink: paymentLinks.moodTracker
 		}
 	];
 </script>
@@ -83,10 +87,20 @@
 							</div> -->
 						</div>
 					</div>
-					<div>
-						<h3 class="text-xl font-semibold text-foreground mb-2">{product.name}</h3>
-						<p class="text-sm leading-relaxed text-foreground/70 mb-3">{product.description}</p>
-						<p class="text-lg font-semibold text-primary">{product.price}</p>
+					<div class="flex flex-col gap-3">
+						<div>
+							<h3 class="text-xl font-semibold text-foreground mb-2">{product.name}</h3>
+							<p class="text-sm leading-relaxed text-foreground/70 mb-3">{product.description}</p>
+							<p class="text-lg font-semibold text-primary mb-3">{product.price}</p>
+						</div>
+						<a
+							href={product.paymentLink}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 text-sm font-medium transition-colors"
+						>
+							Buy Now
+						</a>
 					</div>
 				</figure>
 			{/each}
@@ -119,19 +133,23 @@
 			<div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
 				<div class="text-3xl font-bold text-foreground">200,000 UGX</div>
 				<div class="flex flex-col sm:flex-row gap-3">
-					<Button
-						size="lg"
-						class="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6"
-					>
-						Buy Complete Kit
-					</Button>
-					<Button
-						size="lg"
-						variant="outline"
-						class="border-accent text-accent hover:bg-accent/10 rounded-full px-6 bg-transparent"
-					>
-						Sponsor a Kit
-					</Button>
+					<a href={paymentLinks.toolkit} target="_blank" rel="noopener noreferrer">
+						<Button
+							size="lg"
+							class="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6"
+						>
+							Buy Complete Kit
+						</Button>
+					</a>
+					<a href={paymentLinks.donation} target="_blank" rel="noopener noreferrer">
+						<Button
+							size="lg"
+							variant="outline"
+							class="border-accent text-accent hover:bg-accent/10 rounded-full px-6 bg-transparent"
+						>
+							Sponsor a Kit
+						</Button>
+					</a>
 				</div>
 			</div>
 		</div>
