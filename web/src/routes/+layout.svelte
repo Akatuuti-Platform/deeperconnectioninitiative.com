@@ -4,28 +4,28 @@
 	import favicon from '$lib/assets/favicon/favicon.ico';
 	import Navigation from '@/lib/components/layout/navigation.svelte';
 	import Footer from '@/lib/components/layout/footer.svelte';
-	import gsap from 'gsap';
-	import { ScrollSmoother } from 'gsap/ScrollSmoother';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	// import gsap from 'gsap';
+	// import { ScrollSmoother } from 'gsap/ScrollSmoother';
+	// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-	if (typeof window !== 'undefined') {
-		gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
-	}
+	// if (typeof window !== 'undefined') {
+	// 	gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+	// }
 
 	let { children } = $props();
-	let smoother = $state<ScrollSmoother | null>(null);
+	// let smoother = $state<ScrollSmoother | null>(null);
 
-	onMount(() => {
-		const ctx = gsap.context(() => {
-			smoother = ScrollSmoother.create({
-				smooth: 1.5,
-				effects: true
-			});
-		});
-		return () => ctx.revert();
-	});
+	// onMount(() => {
+	// 	const ctx = gsap.context(() => {
+	// 		smoother = ScrollSmoother.create({
+	// 			smooth: 1.5,
+	// 			effects: true
+	// 		});
+	// 	});
+	// 	return () => ctx.revert();
+	// });
 
-	setContext('smootherCtx', () => smoother);
+	// setContext('smootherCtx', () => smoother);
 </script>
 
 <svelte:head>
