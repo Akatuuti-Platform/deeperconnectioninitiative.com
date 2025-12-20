@@ -7,7 +7,7 @@
 	// import gsap from 'gsap';
 	// import { ScrollSmoother } from 'gsap/ScrollSmoother';
 	// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+//  import { ModeWatcher } from "mode-watcher";
 	// if (typeof window !== 'undefined') {
 	// 	gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 	// }
@@ -41,6 +41,8 @@
 <link rel="manifest" href="/site.webmanifest"> -->
 </svelte:head>
 
+<!-- <ModeWatcher /> -->
+<Navigation />
 <div id="smooth-wrapper">
 	<div id="smooth-content">
 		<div class="min-h-screen flex flex-col">
@@ -54,7 +56,6 @@
 				></div>
 			</div>
 
-			<Navigation />
 			<main class="flex-1">
 				{@render children()}
 			</main>

@@ -87,7 +87,7 @@
 							</div> -->
 						</div>
 					</div>
-					<div class="flex flex-col gap-3">
+					<div class="flex flex-col  gap-3">
 						<div>
 							<h3 class="text-xl font-semibold text-foreground mb-2">{product.name}</h3>
 							<p class="text-sm leading-relaxed text-foreground/70 mb-3">{product.description}</p>
@@ -107,7 +107,73 @@
 		</div>
 
 		<!-- Complete kit -->
-		<div class="bg-primary/5 rounded-2xl p-8 md:p-10 border border-primary/20">
+		 <div class="lg:sticky lg:top-24 gsap-reveal">
+            <div class="bg-white rounded-3xl p-8 shadow-xl border border-slate-100 relative overflow-hidden transform hover:scale-[1.02] transition-transform duration-500">
+               <div class="absolute top-0 right-0 w-32 h-32 bg-[#6F231E]/5 rounded-full -mr-16 -mt-16"></div>
+               <div class="relative z-10">
+                 <span class="text-xs font-bold text-[#6F231E] uppercase tracking-wide">Recommended</span>
+                 <h3 class="text-2xl font-bold text-slate-900 mt-2 mb-1">The Full Toolkit</h3>
+                 <p class="text-sm text-slate-500 mb-6">Card Game + Journal + Tracker + QR Access.</p>
+                 
+                 <div class="flex items-end gap-3 mb-6">
+                    <span class="text-4xl font-bold text-[#2A6268]">200k</span>
+                    <span class="text-xs text-slate-500 mb-2">UGX</span>
+                 </div>
+				 <div class="space-y-4 mb-8 text-foreground/70 text-base leading-relaxed">
+				<p>
+					<strong class="font-semibold text-foreground">DCI Card Game</strong> - A powerful tool for self-awareness
+					and shared learning, helping people uncover the 'why' behind their choices
+				</p>
+				<p>
+					<strong class="font-semibold text-foreground">DCI Journal</strong> - Structured self-reflection
+					exercises designed for mindfulness and personal growth
+				</p>
+				<p>
+					<strong class="font-semibold text-foreground">DCI Mood Tracker</strong> - Simple daily tool
+					that builds emotional awareness and helps recognise mental health patterns
+				</p>
+				<p>
+					<strong class="font-semibold text-foreground">Integrated QR Code System</strong> - Each toolkit
+					component features embedded QR codes providing instant access to our digital resource library
+				</p>
+			</div>
+				 <div class="flex flex-col sm:flex-row gap-3 items-center justify-center">
+					<a href={paymentLinks.toolkit} target="_blank" rel="noopener noreferrer">
+						<Button
+							size="lg"
+							class="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6"
+						>
+							Buy Complete Kit
+						</Button>
+					</a>
+					<a href={paymentLinks.donation} target="_blank" rel="noopener noreferrer">
+						<Button
+							size="lg"
+							variant="outline"
+							class="border-accent text-accent hover:bg-accent/10 rounded-full px-6 bg-transparent"
+						>
+							Sponsor a Kit
+						</Button>
+					</a>
+    </div>
+<!-- <div class="flex ">
+	<button class="w-full rounded-full bg-[#6F231E] py-4 text-sm font-bold text-white hover:bg-[#5a1b17] transition-colors mb-3">
+                   Sponsor a Toolkit
+                 </button>
+                 <button class="w-full rounded-full border border-slate-300 py-4 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+                   Buy a Toolkit
+                 </button>
+</div> -->
+                 
+                 <p class="text-[0.65rem] text-center text-slate-400 mt-4">
+                   10% funds community champion training.
+                 </p>
+               </div>
+            </div>
+          </div>
+
+		  
+		<!-- <div class="bg-primary/5 rounded-2xl p-8 md:p-10 border border-primary/20">
 			<h3 class="text-2xl sm:text-3xl font-semibold mb-6 text-foreground">
 				THE DCI MENTAL HEALTH TOOLKIT (3-IN-1)
 			</h3>
@@ -152,7 +218,7 @@
 					</a>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 

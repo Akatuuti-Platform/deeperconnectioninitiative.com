@@ -7,7 +7,7 @@
 </script>
 
 <Hero />
-<Toolkit />
 <Mission />
+<Toolkit />
 <Ecosystem />
 <GetInvolved />

@@ -1,71 +1,82 @@
-<section id="about" class="w-full py-16 sm:py-20 lg:py-24  ">
-	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid md:grid-cols-2 gap-8 lg:gap-10">
-			<!-- Left card - Mission statement -->
+<section id="about" class="w-full bg-white relative z-10">
+	<div
+		class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 grid md:grid-cols-[0.9fr_1.1fr] gap-12 items-start"
+	>
+		<div class="space-y-4 sticky top-24">
 			<div
-				class="rounded-2xl   border border-border-dark p-8 lg:p-10 space-y-4 shadow-sm"
+				class="inline-flex items-center gap-2 rounded-full border border-[#2A6268]/20 bg-[#2A6268]/5 px-3 py-1"
 			>
-				<h2 class="text-3xl sm:text-4xl font-bold tracking-tight ">Our Mission</h2>
-				<p class="text-lg sm:text-xl font-normal leading-relaxed ">
-					DCI exists to shift mental health from a passive service model to an active, self-led
-					journey.
-				</p>
-				<p class="text-base leading-relaxed  pt-2">
-					Through our ecosystem of tools, education, and community support, we're building a world
-					where mental wellness is accessible, sustainable, and rooted in human connection.
-				</p>
+				<span class="text-xs font-semibold tracking-wide text-[#2A6268] uppercase"
+					>The Philosophy</span
+				>
 			</div>
-
-			<!-- Right card - Ecosystem highlights -->
-			<div
-				class="rounded-2xl border border-border-dark p-8 lg:p-10 space-y-5 shadow-sm"
+			<h2
+				class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900"
+				style="font-family: 'Lato', system-ui;"
 			>
-				<h3 class="text-xl font-semibold text-cream mb-4">Through our ecosystem:</h3>
-				<ul class="space-y-3 text-base font-normal leading-relaxed text-cream/80">
-					<li class="flex gap-3">
-						<span class="mt-1.5 h-2 w-2 rounded-full bg-primary flex-shrink-0"></span>
-						<span
-							>Offline Toolkits enable reflection, conversation, and healing even without internet
-							access.</span
-						>
-					</li>
-					<li class="flex gap-3">
-						<span class="mt-1.5 h-2 w-2 rounded-full bg-primary flex-shrink-0"></span>
-						<span>Digital Wellness Library delivers practical, bite-sized learning.</span>
-					</li>
-					<li class="flex gap-3">
-						<span class="mt-1.5 h-2 w-2 rounded-full bg-primary flex-shrink-0"></span>
-						<span>
-							Conversation Clinics: Transforming how communities talk, listen, and support each
-							other's mental health.
-						</span>
-					</li>
-					<li class="flex gap-3">
-						<span class="mt-1.5 h-2 w-2 rounded-full bg-primary flex-shrink-0"></span>
-						<span
-							>Community Champions & Partner Trainings equip local leaders to guide healing safely.</span
-						>
-					</li>
-					<li class="flex gap-3">
-						<span class="mt-1.5 h-2 w-2 rounded-full bg-primary flex-shrink-0"></span>
-						<span
-							>DCI Angels & Monthly Missions activate volunteers to bring wellness into everyday
-							spaces.</span
-						>
-					</li>
-				</ul>
-			</div>
+				Our Mission
+			</h2>
+			<p class="text-lg font-medium leading-relaxed text-slate-600">
+				DCI exists to shift mental health from a passive service model to an
+				<span class="text-[#2A6268]">active, self-led journey.</span>
+			</p>
+			<p class="text-base leading-relaxed pt-2">
+				Through our ecosystem of tools, education, and community support, we're building a world
+				where mental wellness is accessible, sustainable, and rooted in human connection.
+			</p>
 		</div>
 
-		<!-- Bottom emphasis -->
-		<div class="mt-10 lg:mt-12 text-center space-y-3 max-w-4xl mx-auto">
-			<p class="text-lg sm:text-xl font-semibold leading-relaxed  ">
-				Help individuals and communities own their healing while building resilient, accessible
-				mental health ecosystems.
-			</p>
-			<p class="text-base sm:text-lg font-normal  ">
-				Ownership doesn't replace support — it makes support stronger.
-			</p>
+		<div class="space-y-8 bg-[#EFE5D0]/30 p-8 rounded-3xl border border-[#EFE5D0]">
+			<ul class="space-y-4 text-base font-normal leading-relaxed text-slate-800">
+				<li class="flex gap-4 items-start">
+					<span class="mt-1.5 h-2 w-2 rounded-full bg-[#2A6268] flex-shrink-0"></span>
+					<span
+						><strong>Offline Toolkits</strong> enable reflection, conversation, and healing even without
+						internet access.</span
+					>
+				</li>
+				<li class="flex gap-4 items-start">
+					<span class="mt-1.5 h-2 w-2 rounded-full bg-[#2A6268] flex-shrink-0"></span>
+					<span
+						><strong>Digital Wellness Library</strong> delivers practical, bite-sized learning.</span
+					>
+				</li>
+				<li class="flex gap-4 items-start">
+					<span class="mt-1.5 h-2 w-2 rounded-full bg-[#2A6268] flex-shrink-0"></span>
+					<span
+						><strong>Conversation Clinics:</strong> Transforming how communities talk, listen, and support
+						each other's mental health.</span
+					>
+				</li>
+				<li class="flex gap-4 items-start">
+					<span class="mt-1.5 h-2 w-2 rounded-full bg-[#2A6268] flex-shrink-0"></span>
+					<span
+						><strong>Community Champions & Partner Trainings</strong> equip local leaders to guide healing
+						safely.</span
+					>
+				</li>
+				<li class="flex gap-4 items-start">
+					<span class="mt-1.5 h-2 w-2 rounded-full bg-[#2A6268] flex-shrink-0"></span>
+					<span
+						><strong>DCI Angels & Monthly Missions</strong> activate volunteers to bring wellness into
+						everyday spaces.</span
+					>
+				</li>
+			</ul>
+
+			<div class="pt-4 border-t border-slate-200">
+				<p class="text-lg font-normal leading-relaxed text-slate-900">
+					Help individuals and communities <span class="font-bold text-[#2A6268]">
+						own their healing</span
+					>
+					while building resilient, accessible mental health ecosystems.
+
+					<br />
+					<span class="italic text-slate-600 text-base">
+						Ownership doesn't replace support — it makes support stronger. .</span
+					>
+				</p>
+			</div>
 		</div>
 	</div>
 </section>

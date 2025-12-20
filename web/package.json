@@ -16,7 +16,8 @@
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
 		"@eslint/js": "^9.39.1",
-		"@lucide/svelte": "^0.555.0",
+		"@internationalized/date": "^3.10.0",
+		"@lucide/svelte": "^0.561.0",
 		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/adapter-vercel": "^6.2.0",
 		"@sveltejs/kit": "^2.48.5",
@@ -44,6 +45,9 @@
 		"vite": "^7.2.2"
 	},
 	"dependencies": {
-		"gsap": "^3.13.0"
+		"bits-ui": "^2.14.4",
+		"class-variance-authority": "^0.7.1",
+		"gsap": "^3.13.0",
+		"mode-watcher": "^1.1.0"
 	}
 }

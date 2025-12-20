@@ -2,7 +2,7 @@
 	import { Check, Award } from '@lucide/svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { paymentLinks } from '$lib/payment-links';
- 
+//  import gsap from "gsap";
 
 	const tiers = [
 		{
@@ -108,8 +108,391 @@
 		{ step: 4, title: 'Attend Training', desc: '2-5 days intensive', icon: '🎓' },
 		{ step: 5, title: 'Get Certified', desc: 'Receive certificate & start', icon: '🏆' }
 	];
+
+	//   document.addEventListener("DOMContentLoaded", (event) => {
+    //   gsap.registerPlugin(ScrollTrigger);
+      
+    //   // Generic Reveal
+    //   gsap.utils.toArray('.gsap-reveal').forEach(elem => {
+    //     gsap.fromTo(elem, 
+    //       { y: 50, autoAlpha: 0 },
+    //       {
+    //         y: 0, 
+    //         autoAlpha: 1, 
+    //         duration: 1, 
+    //         ease: "power2.out",
+    //         scrollTrigger: { trigger: elem, start: "top 85%" }
+    //       }
+    //     );
+    //   });
+
+    //   // Staggered Pricing Cards
+    //   gsap.fromTo(".gsap-stagger-card", 
+    //     { y: 50, autoAlpha: 0 },
+    //     {
+    //       y: 0,
+    //       autoAlpha: 1,
+    //       stagger: 0.15,
+    //       duration: 0.8,
+    //       scrollTrigger: { trigger: "#training-grid", start: "top 75%" }
+    //     }
+    //   );
+
+    //   // Staggered Steps
+    //   gsap.fromTo(".gsap-stagger-step", 
+    //     { y: 30, autoAlpha: 0 },
+    //     {
+    //       y: 0,
+    //       autoAlpha: 1,
+    //       stagger: 0.1,
+    //       duration: 0.6,
+    //       scrollTrigger: { trigger: "#process-grid", start: "top 80%" }
+    //     }
+    //   );
+    // });
 </script>
 
+<!-- Texture -->
+<div class="bg-noise"></div>
+
+<main class="flex-1 pt-20">
+	<!-- HERO SECTION -->
+	<section class="bg-[#2A6268] text-white py-20 px-6 relative overflow-hidden">
+		<!-- Background Pattern -->
+		<div
+			class="absolute inset-0 opacity-10 pointer-events-none"
+			style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"
+		></div>
+
+		<div class="max-w-7xl mx-auto relative z-10 text-center gsap-reveal">
+			<div
+				class="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-bold mb-6 border border-white/30"
+			>
+				🎓 Training of Trainers (T.O.T) Certification
+			</div>
+			<h1 class="text-4xl lg:text-6xl font-black mb-6 serif-font tracking-tight leading-[1.1]">
+				Become a Community Champion
+			</h1>
+			<p class="text-xl mb-10 opacity-90 max-w-3xl mx-auto leading-relaxed font-light">
+				Empower yourself or your organization to facilitate healing conversations. Choose the
+				certification level that matches your impact goals.
+			</p>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a
+					href="#tiers"
+					class="bg-white text-[#2A6268] px-8 py-3.5 rounded-full text-sm font-bold hover:bg-white/90 transition shadow-lg inline-flex items-center justify-center"
+				>
+					Compare All Tiers
+				</a>
+				<a
+					href="#"
+					class="border border-white bg-transparent text-white px-8 py-3.5 rounded-full text-sm font-bold hover:bg-white hover:text-[#2A6268] transition inline-flex items-center justify-center"
+				>
+					Download Brochure
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- PRICING TIERS -->
+	<!-- Changed background to White to make the cards stand out -->
+	<section
+		id="tiers"
+		class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white rounded-b-[3rem] relative z-10 shadow-sm"
+	>
+		<div class="text-center mb-16 gsap-reveal">
+			<h2 class="text-3xl sm:text-4xl font-black text-slate-900 mb-4 serif-font">
+				Choose Your Certification Level
+			</h2>
+			<p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+				From individual champions to institutional programs to master trainers building regional
+				networks.
+			</p>
+		</div>
+
+		<div class="grid lg:grid-cols-3 gap-8 items-start" id="training-grid">
+			<!-- Tier 1: Foundation -->
+			<div
+				class="group bg-[#F6ECD9] rounded-3xl shadow-xl border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden gsap-stagger-card"
+			>
+				<div class="bg-[#2A6268] text-white p-8">
+					<div class="text-5xl mb-4">👤</div>
+					<h3 class="text-2xl font-black mb-1 serif-font">Foundation Level</h3>
+					<p class="text-sm opacity-90 mb-6 font-medium">Community Champion Certification</p>
+					<div class="text-4xl font-black mb-2">UGX 500,000</div>
+					<div class="text-sm opacity-90 font-mono tracking-wide">2-Day Training</div>
+				</div>
+				<div class="p-8 flex-1 flex flex-col">
+					<div class="mb-6">
+						<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+							Best For:
+						</div>
+						<div class="text-slate-900 font-medium">Individuals, venue staff, volunteers</div>
+					</div>
+					<div class="mb-8 flex-1">
+						<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
+							What's Included:
+						</div>
+						<ul class="space-y-3">
+							<li class="flex items-start gap-3 text-sm text-slate-700">
+								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Full T.O.T
+								manual (digital + print)
+							</li>
+							<li class="flex items-start gap-3 text-sm text-slate-700">
+								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Community Champion
+								certification
+							</li>
+							<li class="flex items-start gap-3 text-sm text-slate-700">
+								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> 2-day intensive
+								training
+							</li>
+							<li class="flex items-start gap-3 text-sm text-slate-700">
+								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Access to digital
+								resource library
+							</li>
+							<li class="flex items-start gap-3 text-sm text-slate-700">
+								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Listed in public
+								directory
+							</li>
+						</ul>
+					</div>
+					<a
+						href="#"
+						class="w-full bg-[#2A6268] text-white py-3.5 rounded-full text-sm font-bold text-center hover:bg-[#234f53] transition shadow-lg block mt-auto"
+					>
+						Become a Champion
+					</a>
+				</div>
+			</div>
+
+			<!-- Tier 2: Advanced (Popular) -->
+			<!-- Fixed rounding issues and badge positioning -->
+			<div class="relative flex flex-col h-full transform lg:-translate-y-4 z-20 gsap-stagger-card">
+				<!-- Badge -->
+				<div class="absolute -top-4 inset-x-0 flex justify-center z-30">
+					<span
+						class="bg-[#2A6268] text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg border-2 border-white"
+						>Most Popular</span
+					>
+				</div>
+
+				<div
+					class="bg-[#F6ECD9] rounded-3xl shadow-2xl border-2 border-[#2A6268] overflow-hidden flex flex-col h-full hover:shadow-3xl transition-shadow duration-300"
+				>
+					<div class="bg-[#6F231E] text-white p-8 pt-10">
+						<div class="text-5xl mb-4">🏢</div>
+						<h3 class="text-2xl font-black mb-1 serif-font">Advanced Level</h3>
+						<p class="text-sm opacity-90 mb-6 font-medium">Institutional Scale Certification</p>
+						<div class="text-4xl font-black mb-1">UGX 1.5M</div>
+						<div class="text-xs opacity-90 mb-2">+ UGX 400K per additional Champion</div>
+						<div class="text-sm opacity-90 font-mono tracking-wide">3-Day Training + Follow-up</div>
+					</div>
+					<div class="p-8 flex-1 flex flex-col">
+						<div class="mb-6">
+							<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+								Best For:
+							</div>
+							<div class="text-slate-900 font-medium">Schools, rehabs, NGOs, corporates</div>
+						</div>
+						<div class="mb-8 flex-1">
+							<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
+								What's Included:
+							</div>
+							<ul class="space-y-3">
+								<li class="flex items-start gap-3 text-sm text-slate-700">
+									<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Everything
+									in Foundation Level
+								</li>
+								<li class="flex items-start gap-3 text-sm text-slate-700">
+									<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Train up
+									to 3 Champions/cohort
+								</li>
+								<li class="flex items-start gap-3 text-sm text-slate-700">
+									<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Institutional
+									customization workshop
+								</li>
+								<li class="flex items-start gap-3 text-sm text-slate-700">
+									<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Impact measurement
+									tools
+								</li>
+								<li class="flex items-start gap-3 text-sm text-slate-700">
+									<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> 3-month follow-up
+									support
+								</li>
+							</ul>
+						</div>
+						<a
+							href="#"
+							class="w-full bg-[#6F231E] text-white py-3.5 rounded-full text-sm font-bold text-center hover:bg-[#5a1b17] transition shadow-lg block mt-auto"
+						>
+							Scale Your Impact
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Tier 3: Master -->
+			<div
+				class="group bg-[#F6ECD9] rounded-3xl shadow-xl border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden gsap-stagger-card"
+			>
+				<div class="bg-[#2A6268] text-white p-8">
+					<div class="text-5xl mb-4">🎓</div>
+					<h3 class="text-2xl font-black mb-1 serif-font">Master Trainer</h3>
+					<p class="text-sm opacity-90 mb-6 font-medium">Certified Trainer Certification</p>
+					<div class="text-4xl font-black mb-1">UGX 3M</div>
+					<div
+						class="inline-block bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold mb-2 border border-white/20"
+					>
+						30% Revenue Share
+					</div>
+					<div class="text-sm opacity-90 font-mono tracking-wide block mt-1">
+						5-Day Intensive + Practicum
+					</div>
+				</div>
+				<div class="p-8 flex-1 flex flex-col">
+					<div class="mb-6">
+						<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+							Best For:
+						</div>
+						<div class="text-slate-900 font-medium">Mental health professionals, entrepreneurs</div>
+					</div>
+					<div class="mb-8 flex-1">
+						<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
+							What's Included:
+						</div>
+						<ul class="space-y-3">
+							<li class="flex items-start gap-3 text-sm text-slate-700">
+								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Train-the-trainer
+								methodology
+							</li>
+							<li class="flex items-start gap-3 text-sm text-slate-700">
+								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Independent
+								training rights
+							</li>
+							<li class="flex items-start gap-3 text-sm text-slate-700">
+								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> DCI Master
+								Trainer license
+							</li>
+							<li class="flex items-start gap-3 text-sm text-slate-700">
+								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> 30% profit
+								split on trainings
+							</li>
+							<li class="flex items-start gap-3 text-sm text-slate-700">
+								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Lead generation
+								support
+							</li>
+						</ul>
+					</div>
+					<a
+						href="#"
+						class="w-full bg-[#2A6268] text-white py-3.5 rounded-full text-sm font-bold text-center hover:bg-[#234f53] transition shadow-lg block mt-auto"
+					>
+						Become a Master
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Process Steps -->
+	<section class="bg-[#EFE5D0] py-24 px-6 border-t border-[#2A6268]/10">
+		<div class="max-w-7xl mx-auto">
+			<h2 class="text-3xl font-black text-slate-900 mb-16 text-center serif-font gsap-reveal">
+				How T.O.T Certification Works
+			</h2>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6" id="process-grid">
+				<!-- Step 1 -->
+				<div
+					class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:-translate-y-1 transition-transform duration-300 gsap-stagger-step"
+				>
+					<div class="text-4xl mb-4">📝</div>
+					<div
+						class="bg-[#2A6268] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
+					>
+						1
+					</div>
+					<h4 class="font-bold text-slate-900 mb-1">Apply Online</h4>
+					<p class="text-xs text-slate-600">Fill form & select tier</p>
+				</div>
+				<!-- Step 2 -->
+				<div
+					class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:-translate-y-1 transition-transform duration-300 gsap-stagger-step"
+				>
+					<div class="text-4xl mb-4">💳</div>
+					<div
+						class="bg-[#2A6268] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
+					>
+						2
+					</div>
+					<h4 class="font-bold text-slate-900 mb-1">Make Payment</h4>
+					<p class="text-xs text-slate-600">MoMo, Airtel, or card</p>
+				</div>
+				<!-- Step 3 -->
+				<div
+					class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:-translate-y-1 transition-transform duration-300 gsap-stagger-step"
+				>
+					<div class="text-4xl mb-4">📚</div>
+					<div
+						class="bg-[#2A6268] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
+					>
+						3
+					</div>
+					<h4 class="font-bold text-slate-900 mb-1">Pre-Training</h4>
+					<p class="text-xs text-slate-600">Receive digital manual</p>
+				</div>
+				<!-- Step 4 -->
+				<div
+					class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:-translate-y-1 transition-transform duration-300 gsap-stagger-step"
+				>
+					<div class="text-4xl mb-4">🎓</div>
+					<div
+						class="bg-[#2A6268] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
+					>
+						4
+					</div>
+					<h4 class="font-bold text-slate-900 mb-1">Attend Training</h4>
+					<p class="text-xs text-slate-600">2-5 days intensive</p>
+				</div>
+				<!-- Step 5 -->
+				<div
+					class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:-translate-y-1 transition-transform duration-300 gsap-stagger-step"
+				>
+					<div class="text-4xl mb-4">🏆</div>
+					<div
+						class="bg-[#2A6268] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
+					>
+						5
+					</div>
+					<h4 class="font-bold text-slate-900 mb-1">Get Certified</h4>
+					<p class="text-xs text-slate-600">Receive certificate & start</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Bottom CTA -->
+	<section class="py-20 px-6 bg-[#2A6268] text-white text-center">
+		<div class="max-w-4xl mx-auto gsap-reveal">
+			<h2 class="text-4xl font-black mb-6 serif-font">Ready to Become a Certified Champion?</h2>
+			<p class="text-xl mb-8 opacity-90 font-light">
+				Join 500+ trained Champions healing Uganda one conversation at a time.
+			</p>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a
+					href="#"
+					class="bg-[#6F231E] text-white px-8 py-3.5 rounded-full text-sm font-bold hover:bg-[#5a1b17] transition shadow-lg"
+					>Apply for T.O.T Now</a
+				>
+				<a
+					href="#"
+					class="bg-white text-[#2A6268] px-8 py-3.5 rounded-full text-sm font-bold hover:bg-white/90 transition shadow-lg"
+					>Schedule a Call</a
+				>
+			</div>
+		</div>
+	</section>
+</main>
 <div class="min-h-screen bg-[#EFE5D0]">
 	<!-- Hero Section -->
 	<section class="bg-[#2A6268] text-white py-20 px-6">
@@ -298,3 +681,17 @@
 		</div>
 	</section>
 </div>
+
+<style>
+	  .bg-noise {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+	/* Animation States */
+    /* .gsap-reveal, .gsap-stagger-card, .gsap-stagger-step { visibility: hidden; } */
+</style>
