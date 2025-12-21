@@ -9,16 +9,17 @@
 		{
 			label: "Mission",
 			href: "#about",
-			children: [
-				{ label: "Our Story", href: "#story", description: "Learn about how DCI started" },
-				{ label: "Values", href: "#values", description: "The core principles guiding us" },
-				{ label: "Team", href: "#team", description: "Meet the people behind the initiative" },
-			],
+			// children: [
+			// 	{ label: "Our Story", href: "#story", description: "Learn about how DCI started" },
+			// 	{ label: "Values", href: "#values", description: "The core principles guiding us" },
+			// 	{ label: "Team", href: "#team", description: "Meet the people behind the initiative" },
+			// ],
 		},
 		{
 			label: "Ecosystem",
 			href: "#ecosystem",
 			children: [
+				{ label: "Trainings", href: "/trainings", description: "Get Certified" },
 				{ label: "Partners", href: "#partners", description: "Organizations we work with" },
 				{ label: "Community", href: "#community", description: "Join our growing network" },
 				{ label: "Events", href: "#events", description: "Upcoming workshops and gatherings" },
@@ -26,14 +27,14 @@
 		},
 		{
 			label: "Toolkit",
-			href: "#toolkit",
-			children: [
-				{ label: "Resources", href: "#resources", description: "Guides and tools for healing" },
-				{ label: "Workshops", href: "#workshops", description: "Interactive sessions" },
-				{ label: "Case Studies", href: "#case-studies", description: "Real impact stories" },
-			],
+			href: "/#toolkit",
+			// children: [
+			// 	{ label: "Resources", href: "#resources", description: "Guides and tools for healing" },
+			// 	{ label: "Workshops", href: "#workshops", description: "Interactive sessions" },
+			// 	{ label: "Case Studies", href: "#case-studies", description: "Real impact stories" },
+			// ],
 		},
-		{ label: "Get Involved", href: "#get-involved" },
+		{ label: "Get Involved", href: "/#get-involved" },
 	];
 
 	let isOpen = $state(false);
@@ -57,7 +58,7 @@
 					<div class="group/dropdown relative">
 						<a
 							href={item.href}
-							class="inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary group-hover/dropdown:bg-white group-hover/dropdown:text-foreground group-hover/dropdown:shadow-sm"
+							class="inline-flex h-10 items-center justify-center rounded-t-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary group-hover/dropdown:bg-white group-hover/dropdown:text-foreground group-hover/dropdown:shadow-sm"
 						>
 							{item.label}
 						</a>

@@ -21,7 +21,7 @@ func Open() (*sql.DB, error) {
 }
 
 func MigrateFs(db *sql.DB, migrationFs fs.FS, dir string) error {
-	goose.setBaseFS(migrationsFs)
+	goose.SetBaseFS(migrationsFs)
 
 	defer func() {
 		goose.SetBaseFS(nil)
