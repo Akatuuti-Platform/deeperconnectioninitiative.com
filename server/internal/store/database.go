@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"io/fs"
-
 	_ "github.com/jackc/pgx/v4/stdlib" // implicit usage
 	"github.com/pressly/goose/v3"
 )

@@ -9,3 +9,7 @@ install pgx
 install goose and get
 
 - [Aura Editor](https://www.aura.build/editor/b388a2c9-3b46-49ba-a709-c933e017e07d)
+
+https://gemini.google.com/app/8983df698d74a8ee
+
+https://gemini.google.com/app/8983df698d74a8ee
