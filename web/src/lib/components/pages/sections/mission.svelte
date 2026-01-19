@@ -1,8 +1,8 @@
-<section id="about" class="w-full bg-white relative z-10">
+<section id="about" class="w-full bg-white relative z-10 rounded-[4rem] ">
 	<div
 		class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 grid md:grid-cols-[0.9fr_1.1fr] gap-12 items-start"
 	>
-		<div class="space-y-4 sticky top-24">
+		<div class="space-y-4 md:sticky top-24">
 			<div
 				class="inline-flex items-center gap-2 rounded-full border border-[#2A6268]/20 bg-[#2A6268]/5 px-3 py-1"
 			>

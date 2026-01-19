@@ -20,7 +20,7 @@ func Open() (*sql.DB, error) {
 }
 
 func MigrateFs(db *sql.DB, migrationFs fs.FS, dir string) error {
-	goose.SetBaseFS(migrationsFs)
+	goose.SetBaseFS(migrationFs)
 
 	defer func() {
 		goose.SetBaseFS(nil)
@@ -32,12 +32,12 @@ func MigrateFs(db *sql.DB, migrationFs fs.FS, dir string) error {
 func Migrate(db *sql.DB, dir string) error {
 	err := goose.SetDialect("postgres")
 	if err != nil {
-		return nil, fmt.Errorf("migrate: %w", err)
+		return fmt.Errorf("migrate: %w", err)
 	}
 
 	err = goose.Up(db, dir)
 	if err != nil {
-		return nil, fmt.Errorf("goose up: %w", err)
+		return fmt.Errorf("goose up: %w", err)
 	}
 	return nil
 

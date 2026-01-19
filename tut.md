@@ -13,3 +13,5 @@ install goose and get
 https://gemini.google.com/app/8983df698d74a8ee
 
 https://gemini.google.com/app/8983df698d74a8ee
+
+

@@ -2,8 +2,9 @@
 	import Logo from "./logo.svelte";
 	import * as Sheet from "$lib/components/ui/sheet";
 	import { Button, buttonVariants } from "$lib/components/ui/button";
-	import { Menu } from "@lucide/svelte";
+	import { ChevronDown, Menu } from "@lucide/svelte";
 	import { cn } from "$lib/utils";
+	import NoiseOverlay from "./overlays/noise-overlay.svelte";
 
 	const navItems = [
 		{
@@ -22,7 +23,7 @@
 				{ label: "Trainings", href: "/trainings", description: "Get Certified" },
 				{ label: "Partners", href: "#partners", description: "Organizations we work with" },
 				{ label: "Community", href: "#community", description: "Join our growing network" },
-				{ label: "Events", href: "#events", description: "Upcoming workshops and gatherings" },
+				{ label: "Events", href: "/events", description: "Upcoming workshops and gatherings" },
 			],
 		},
 		{
@@ -34,20 +35,33 @@
 			// 	{ label: "Case Studies", href: "#case-studies", description: "Real impact stories" },
 			// ],
 		},
-		{ label: "Get Involved", href: "/#get-involved" },
+		{ label: "Contact Us", href: "/contact" },
 	];
 
 	let isOpen = $state(false);
+
+	// const isScrolled =  window.scrollY > 100
 </script>
 
 <!-- TODO: make the border translucent and the bar solid secondary color  -->
+<!-- <header
+	class={cn('fixed top-4 left-0 right-0 z-50 mx-auto w-[95%] max-w-6xl rounded-[.6rem]px-4 py-2', {
+		isScrolled:
+			'bg-[#ffffeb] shadow-sm backdrop-blur-md  supports-backdrop-filter:bg-background/60  border-2  border-secondary'
+	})}
+> -->
 <header
-	class="fixed top-4 left-0 right-0 z-50 mx-auto w-[95%] max-w-6xl rounded-2xl  border-4 bg-background/80 px-4 py-2 shadow-sm backdrop-blur-md supports-backdrop-filter:bg-background/60 border-secondary"
+	class={cn(
+		'fixed top-4 left-0 right-0 z-50 mx-auto w-[95%] max-w-6xl rounded-[.6rem] px-4 py-2',
+
+		'bg-[#ffffeb] shadow-sm backdrop-blur-md  supports-backdrop-filter:bg-background/60  border-2  border-secondary py-3'
+	)}
 >
+<NoiseOverlay />
 	<div class="flex items-center justify-between">
 		<!-- Logo -->
 		<div class="flex items-center gap-2 pl-2">
-			<Logo />
+			<Logo isLink />
 		</div>
 
 		<!-- Desktop Nav -->
@@ -61,13 +75,14 @@
 							class="inline-flex h-10 items-center justify-center rounded-t-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary group-hover/dropdown:bg-white group-hover/dropdown:text-foreground group-hover/dropdown:shadow-sm"
 						>
 							{item.label}
+							<ChevronDown class="size-5 pl-1" />
 						</a>
 						<!-- Dropdown Content -->
 						<div
 							class="absolute left-0 top-full pt-0 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-200 z-50"
 						>
 							<div
-								class="grid w-[500px] gap-3 p-4 bg-white border border-border/40 shadow-lg rounded-xl grid-cols-2"
+								class="grid w-[500px] gap-3 p-4 bg-white border-b border-border/40 shadow-lg rounded-b-xl rounded-r-xl grid-cols-2"
 							>
 								{#each item.children as child}
 									<a
@@ -87,7 +102,7 @@
 					<!-- Simple Link -->
 					<a
 						href={item.href}
-						class="inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary"
+						class="inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary hover:scale-95 ease-in-out"
 					>
 						{item.label}
 					</a>
@@ -96,16 +111,17 @@
 		</nav>
 
 		<!-- Actions (Desktop) -->
-		<div class="hidden items-center gap-3 md:flex">
+		<div class="hidden relative items-center gap-3 md:flex">
 			<a
 				href="#get-involved"
 				class={cn(
-					buttonVariants({ variant: 'ghost' }),
+					buttonVariants({ variant: 'outline' }),
 					'hidden rounded-xl text-primary hover:bg-primary/5 hover:text-primary lg:inline-flex'
 				)}
 			>
 				Join the movement
 			</a>
+			<span class="w-[.2px] h-9 bg-white/60" />
 			<a href="#toolkit" class={cn(buttonVariants(), 'rounded-xl')}> Sponsor a toolkit </a>
 		</div>
 
