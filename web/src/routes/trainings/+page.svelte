@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Check, Award } from '@lucide/svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { Badge } from '$lib/components/ui/badge';
 	import { paymentLinks } from '$lib/payment-links';
 //  import gsap from "gsap";
 
@@ -155,9 +156,9 @@
 <!-- Texture -->
 <div class="bg-noise"></div>
 
-<main class="flex-1 pt-20">
+<main class="flex-1">
 	<!-- HERO SECTION -->
-	<section class="bg-[#2A6268] text-white py-20 px-6 relative overflow-hidden">
+	<section class="bg-primary text-primary-foreground py-32 lg:py-56 px-6 relative overflow-hidden">
 		<!-- Background Pattern -->
 		<div
 			class="absolute inset-0 opacity-10 pointer-events-none"
@@ -165,12 +166,15 @@
 		></div>
 
 		<div class="max-w-7xl mx-auto relative z-10 text-center gsap-reveal">
-			<div
-				class="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-bold mb-6 border border-white/30"
+			<Badge
+				variant="outline"
+				class="mb-6 border-white/30 bg-white/20 px-6 py-2 text-sm font-bold backdrop-blur-sm hover:bg-white/20 text-white"
 			>
 				🎓 Training of Trainers (T.O.T) Certification
-			</div>
-			<h1 class="text-4xl lg:text-6xl font-black mb-6 serif-font tracking-tight leading-[1.1]">
+			</Badge>
+			<h1
+				class="font-bold tracking-tight text-center text-balance leading-tight sm:text-5xl lg:text-6xl text-4xl mb-6"
+			>
 				Become a Community Champion
 			</h1>
 			<p class="text-xl mb-10 opacity-90 max-w-3xl mx-auto leading-relaxed font-light">
@@ -178,18 +182,17 @@
 				certification level that matches your impact goals.
 			</p>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<a
-					href="#tiers"
-					class="bg-white text-[#2A6268] px-8 py-3.5 rounded-full text-sm font-bold hover:bg-white/90 transition shadow-lg inline-flex items-center justify-center"
-				>
+				<Button href="#tiers" variant="secondary" size="lg" class="shadow-lg font-bold">
 					Compare All Tiers
-				</a>
-				<a
+				</Button>
+				<Button
 					href="#"
-					class="border border-white bg-transparent text-white px-8 py-3.5 rounded-full text-sm font-bold hover:bg-white hover:text-[#2A6268] transition inline-flex items-center justify-center"
+					variant="outline"
+					size="lg"
+					class="border-white bg-transparent text-white hover:bg-white hover:text-primary transition shadow-lg font-bold"
 				>
 					Download Brochure
-				</a>
+				</Button>
 			</div>
 		</div>
 	</section>
@@ -198,13 +201,13 @@
 	<!-- Changed background to White to make the cards stand out -->
 	<section
 		id="tiers"
-		class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white rounded-b-[3rem] relative z-10 shadow-sm"
+		class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-background rounded-b-[3rem] relative z-10 shadow-sm"
 	>
 		<div class="text-center mb-16 gsap-reveal">
-			<h2 class="text-3xl sm:text-4xl font-black text-slate-900 mb-4 serif-font">
+			<h2 class="text-3xl sm:text-4xl font-black text-foreground mb-4 serif-font">
 				Choose Your Certification Level
 			</h2>
-			<p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+			<p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
 				From individual champions to institutional programs to master trainers building regional
 				networks.
 			</p>
@@ -213,9 +216,9 @@
 		<div class="grid lg:grid-cols-3 gap-8 items-start" id="training-grid">
 			<!-- Tier 1: Foundation -->
 			<div
-				class="group bg-[#F6ECD9] rounded-3xl shadow-xl border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden gsap-stagger-card"
+				class="group bg-secondary rounded-3xl shadow-xl border border-border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden gsap-stagger-card"
 			>
-				<div class="bg-[#2A6268] text-white p-8">
+				<div class="bg-primary text-primary-foreground p-8">
 					<div class="text-5xl mb-4">👤</div>
 					<h3 class="text-2xl font-black mb-1 serif-font">Foundation Level</h3>
 					<p class="text-sm opacity-90 mb-6 font-medium">Community Champion Certification</p>
@@ -224,44 +227,39 @@
 				</div>
 				<div class="p-8 flex-1 flex flex-col">
 					<div class="mb-6">
-						<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+						<div class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">
 							Best For:
 						</div>
-						<div class="text-slate-900 font-medium">Individuals, venue staff, volunteers</div>
+						<div class="text-foreground font-medium">Individuals, venue staff, volunteers</div>
 					</div>
 					<div class="mb-8 flex-1">
-						<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
+						<div class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">
 							What's Included:
 						</div>
 						<ul class="space-y-3">
-							<li class="flex items-start gap-3 text-sm text-slate-700">
+							<li class="flex items-start gap-3 text-sm text-muted-foreground">
 								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Full T.O.T
 								manual (digital + print)
 							</li>
-							<li class="flex items-start gap-3 text-sm text-slate-700">
+							<li class="flex items-start gap-3 text-sm text-muted-foreground">
 								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Community Champion
 								certification
 							</li>
-							<li class="flex items-start gap-3 text-sm text-slate-700">
+							<li class="flex items-start gap-3 text-sm text-muted-foreground">
 								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> 2-day intensive
 								training
 							</li>
-							<li class="flex items-start gap-3 text-sm text-slate-700">
+							<li class="flex items-start gap-3 text-sm text-muted-foreground">
 								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Access to digital
 								resource library
 							</li>
-							<li class="flex items-start gap-3 text-sm text-slate-700">
+							<li class="flex items-start gap-3 text-sm text-muted-foreground">
 								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Listed in public
 								directory
 							</li>
 						</ul>
 					</div>
-					<a
-						href="#"
-						class="w-full bg-[#2A6268] text-white py-3.5 rounded-full text-sm font-bold text-center hover:bg-[#234f53] transition shadow-lg block mt-auto"
-					>
-						Become a Champion
-					</a>
+					<Button href="#" class="w-full shadow-lg mt-auto font-bold">Become a Champion</Button>
 				</div>
 			</div>
 
@@ -270,16 +268,17 @@
 			<div class="relative flex flex-col h-full transform lg:-translate-y-4 z-20 gsap-stagger-card">
 				<!-- Badge -->
 				<div class="absolute -top-4 inset-x-0 flex justify-center z-30">
-					<span
-						class="bg-[#2A6268] text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg border-2 border-white"
-						>Most Popular</span
+					<Badge
+						variant="secondary"
+						class="bg-primary text-primary-foreground px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg border-2 border-white"
+						>Most Popular</Badge
 					>
 				</div>
 
 				<div
-					class="bg-[#F6ECD9] rounded-3xl shadow-2xl border-2 border-[#2A6268] overflow-hidden flex flex-col h-full hover:shadow-3xl transition-shadow duration-300"
+					class="bg-secondary rounded-3xl shadow-2xl border-2 border-primary overflow-hidden flex flex-col h-full hover:shadow-3xl transition-shadow duration-300"
 				>
-					<div class="bg-[#6F231E] text-white p-8 pt-10">
+					<div class="bg-destructive text-white p-8 pt-10">
 						<div class="text-5xl mb-4">🏢</div>
 						<h3 class="text-2xl font-black mb-1 serif-font">Advanced Level</h3>
 						<p class="text-sm opacity-90 mb-6 font-medium">Institutional Scale Certification</p>
@@ -289,53 +288,50 @@
 					</div>
 					<div class="p-8 flex-1 flex flex-col">
 						<div class="mb-6">
-							<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+							<div class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">
 								Best For:
 							</div>
-							<div class="text-slate-900 font-medium">Schools, rehabs, NGOs, corporates</div>
+							<div class="text-foreground font-medium">Schools, rehabs, NGOs, corporates</div>
 						</div>
 						<div class="mb-8 flex-1">
-							<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
+							<div class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">
 								What's Included:
 							</div>
 							<ul class="space-y-3">
-								<li class="flex items-start gap-3 text-sm text-slate-700">
+								<li class="flex items-start gap-3 text-sm text-muted-foreground">
 									<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Everything
 									in Foundation Level
 								</li>
-								<li class="flex items-start gap-3 text-sm text-slate-700">
+								<li class="flex items-start gap-3 text-sm text-muted-foreground">
 									<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Train up
 									to 3 Champions/cohort
 								</li>
-								<li class="flex items-start gap-3 text-sm text-slate-700">
+								<li class="flex items-start gap-3 text-sm text-muted-foreground">
 									<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Institutional
 									customization workshop
 								</li>
-								<li class="flex items-start gap-3 text-sm text-slate-700">
+								<li class="flex items-start gap-3 text-sm text-muted-foreground">
 									<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Impact measurement
 									tools
 								</li>
-								<li class="flex items-start gap-3 text-sm text-slate-700">
+								<li class="flex items-start gap-3 text-sm text-muted-foreground">
 									<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> 3-month follow-up
 									support
 								</li>
 							</ul>
 						</div>
-						<a
-							href="#"
-							class="w-full bg-[#6F231E] text-white py-3.5 rounded-full text-sm font-bold text-center hover:bg-[#5a1b17] transition shadow-lg block mt-auto"
-						>
+						<Button href="#" variant="destructive" class="w-full shadow-lg mt-auto font-bold">
 							Scale Your Impact
-						</a>
+						</Button>
 					</div>
 				</div>
 			</div>
 
 			<!-- Tier 3: Master -->
 			<div
-				class="group bg-[#F6ECD9] rounded-3xl shadow-xl border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden gsap-stagger-card"
+				class="group bg-secondary rounded-3xl shadow-xl border border-border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden gsap-stagger-card"
 			>
-				<div class="bg-[#2A6268] text-white p-8">
+				<div class="bg-primary text-primary-foreground p-8">
 					<div class="text-5xl mb-4">🎓</div>
 					<h3 class="text-2xl font-black mb-1 serif-font">Master Trainer</h3>
 					<p class="text-sm opacity-90 mb-6 font-medium">Certified Trainer Certification</p>
@@ -351,336 +347,146 @@
 				</div>
 				<div class="p-8 flex-1 flex flex-col">
 					<div class="mb-6">
-						<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+						<div class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">
 							Best For:
 						</div>
-						<div class="text-slate-900 font-medium">Mental health professionals, entrepreneurs</div>
+						<div class="text-foreground font-medium">
+							Mental health professionals, entrepreneurs
+						</div>
 					</div>
 					<div class="mb-8 flex-1">
-						<div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
+						<div class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">
 							What's Included:
 						</div>
 						<ul class="space-y-3">
-							<li class="flex items-start gap-3 text-sm text-slate-700">
+							<li class="flex items-start gap-3 text-sm text-muted-foreground">
 								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Train-the-trainer
 								methodology
 							</li>
-							<li class="flex items-start gap-3 text-sm text-slate-700">
+							<li class="flex items-start gap-3 text-sm text-muted-foreground">
 								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Independent
 								training rights
 							</li>
-							<li class="flex items-start gap-3 text-sm text-slate-700">
+							<li class="flex items-start gap-3 text-sm text-muted-foreground">
 								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> DCI Master
 								Trainer license
 							</li>
-							<li class="flex items-start gap-3 text-sm text-slate-700">
+							<li class="flex items-start gap-3 text-sm text-muted-foreground">
 								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> 30% profit
 								split on trainings
 							</li>
-							<li class="flex items-start gap-3 text-sm text-slate-700">
+							<li class="flex items-start gap-3 text-sm text-muted-foreground">
 								<i class="lucide lucide-check text-[#2A6268] w-4 h-4 mt-0.5 shrink-0"></i> Lead generation
 								support
 							</li>
 						</ul>
 					</div>
-					<a
-						href="#"
-						class="w-full bg-[#2A6268] text-white py-3.5 rounded-full text-sm font-bold text-center hover:bg-[#234f53] transition shadow-lg block mt-auto"
-					>
-						Become a Master
-					</a>
+					<Button href="#" class="w-full shadow-lg mt-auto font-bold">Become a Master</Button>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- Process Steps -->
-	<section class="bg-[#EFE5D0] py-24 px-6 border-t border-[#2A6268]/10">
+	<section class="  py-24 px-6  ">
 		<div class="max-w-7xl mx-auto">
-			<h2 class="text-3xl font-black text-slate-900 mb-16 text-center serif-font gsap-reveal">
+			<h2 class="text-3xl font-black text-foreground mb-16 text-center serif-font gsap-reveal">
 				How T.O.T Certification Works
 			</h2>
 
 			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6" id="process-grid">
 				<!-- Step 1 -->
 				<div
-					class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:-translate-y-1 transition-transform duration-300 gsap-stagger-step"
+					class="bg-white rounded-2xl p-6 text-center transition-transform duration-300 gsap-stagger-step"
 				>
 					<div class="text-4xl mb-4">📝</div>
 					<div
-						class="bg-[#2A6268] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
+						class="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
 					>
 						1
 					</div>
-					<h4 class="font-bold text-slate-900 mb-1">Apply Online</h4>
-					<p class="text-xs text-slate-600">Fill form & select tier</p>
+					<h4 class="font-bold text-foreground mb-1">Apply Online</h4>
+					<p class="text-xs text-muted-foreground">Fill form & select tier</p>
 				</div>
 				<!-- Step 2 -->
 				<div
-					class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:-translate-y-1 transition-transform duration-300 gsap-stagger-step"
+					class="bg-white rounded-2xl p-6 text-center transition-transform duration-300 gsap-stagger-step"
 				>
 					<div class="text-4xl mb-4">💳</div>
 					<div
-						class="bg-[#2A6268] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
+						class="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
 					>
 						2
 					</div>
-					<h4 class="font-bold text-slate-900 mb-1">Make Payment</h4>
-					<p class="text-xs text-slate-600">MoMo, Airtel, or card</p>
+					<h4 class="font-bold text-foreground mb-1">Make Payment</h4>
+					<p class="text-xs text-muted-foreground">MoMo, Airtel, or card</p>
 				</div>
 				<!-- Step 3 -->
 				<div
-					class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:-translate-y-1 transition-transform duration-300 gsap-stagger-step"
+					class="bg-white rounded-2xl p-6 text-center transition-transform duration-300 gsap-stagger-step"
 				>
 					<div class="text-4xl mb-4">📚</div>
 					<div
-						class="bg-[#2A6268] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
+						class="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
 					>
 						3
 					</div>
-					<h4 class="font-bold text-slate-900 mb-1">Pre-Training</h4>
-					<p class="text-xs text-slate-600">Receive digital manual</p>
+					<h4 class="font-bold text-foreground mb-1">Pre-Training</h4>
+					<p class="text-xs text-muted-foreground">Receive digital manual</p>
 				</div>
 				<!-- Step 4 -->
 				<div
-					class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:-translate-y-1 transition-transform duration-300 gsap-stagger-step"
+					class="bg-white rounded-2xl p-6 text-center transition-transform duration-300 gsap-stagger-step"
 				>
 					<div class="text-4xl mb-4">🎓</div>
 					<div
-						class="bg-[#2A6268] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
+						class="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
 					>
 						4
 					</div>
-					<h4 class="font-bold text-slate-900 mb-1">Attend Training</h4>
-					<p class="text-xs text-slate-600">2-5 days intensive</p>
+					<h4 class="font-bold text-foreground mb-1">Attend Training</h4>
+					<p class="text-xs text-muted-foreground">2-5 days intensive</p>
 				</div>
 				<!-- Step 5 -->
 				<div
-					class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:-translate-y-1 transition-transform duration-300 gsap-stagger-step"
+					class="bg-white rounded-2xl p-6 text-center transition-transform duration-300 gsap-stagger-step"
 				>
 					<div class="text-4xl mb-4">🏆</div>
 					<div
-						class="bg-[#2A6268] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
+						class="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm"
 					>
 						5
 					</div>
-					<h4 class="font-bold text-slate-900 mb-1">Get Certified</h4>
-					<p class="text-xs text-slate-600">Receive certificate & start</p>
+					<h4 class="font-bold text-foreground mb-1">Get Certified</h4>
+					<p class="text-xs text-muted-foreground">Receive certificate & start</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- Bottom CTA -->
-	<section class="py-20 px-6 bg-[#2A6268] text-white text-center">
+	<section class="py-20 px-6 bg-primary text-primary-foreground text-center rounded-2xl">
 		<div class="max-w-4xl mx-auto gsap-reveal">
 			<h2 class="text-4xl font-black mb-6 serif-font">Ready to Become a Certified Champion?</h2>
 			<p class="text-xl mb-8 opacity-90 font-light">
 				Join 500+ trained Champions healing Uganda one conversation at a time.
 			</p>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<a
-					href="#"
-					class="bg-[#6F231E] text-white px-8 py-3.5 rounded-full text-sm font-bold hover:bg-[#5a1b17] transition shadow-lg"
-					>Apply for T.O.T Now</a
-				>
-				<a
-					href="#"
-					class="bg-white text-[#2A6268] px-8 py-3.5 rounded-full text-sm font-bold hover:bg-white/90 transition shadow-lg"
-					>Schedule a Call</a
-				>
-			</div>
-		</div>
-	</section>
-</main>
-<div class="min-h-screen bg-[#EFE5D0]">
-	<!-- Hero Section -->
-	<section class="bg-[#2A6268] text-white py-20 px-6">
-		<div class="max-w-7xl mx-auto">
-			<div class="text-center max-w-4xl mx-auto">
-				<div
-					class="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-bold mb-6"
-				>
-					🎓 Training of Trainers (T.O.T) Certification
-				</div>
-				<h1 class="text-5xl lg:text-6xl font-black mb-6 font-sans">Become a Community Champion</h1>
-				<p class="text-xl mb-8 opacity-90 font-body leading-relaxed">
-					Empower yourself or your organization to facilitate healing conversations. Choose the
-					certification level that matches your impact goals.
-				</p>
-				<div class="flex flex-col sm:flex-row gap-4 justify-center">
-					<Button
-						class="bg-white text-[#2A6268] px-8 py-6 rounded-full text-lg font-bold hover:bg-white/90 transition"
-					>
-						Compare All Tiers
-					</Button>
-					<Button
-						class="border-2 border-white bg-transparent text-white px-8 py-6 rounded-full text-lg font-bold hover:bg-white hover:text-[#2A6268] transition"
-					>
-						Download Brochure
-					</Button>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Pricing Tiers -->
-	<section class="py-20 px-6">
-		<div class="max-w-7xl mx-auto">
-			<div class="text-center mb-16">
-				<h2 class="text-4xl font-black text-gray-900 mb-4 font-sans">
-					Choose Your Certification Level
-				</h2>
-				<p class="text-xl text-gray-600 max-w-3xl mx-auto font-body leading-relaxed">
-					From individual champions to institutional programs to master trainers building regional
-					networks— there's a pathway for every level of impact.
-				</p>
-			</div>
-
-			<div class="grid lg:grid-cols-3 gap-8">
-				{#each tiers as tier, index}
-					<div
-						class="relative bg-[#F6ECD9] rounded-3xl shadow-xl hover:shadow-2xl transition-all border-2 {tier.popular
-							? 'border-[#2A6268] scale-105'
-							: 'border-slate-300/40'}"
-					>
-						{#if tier.popular}
-							<div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-								<div
-									class="bg-[#2A6268] text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg"
-								>
-									⭐ Most Popular
-								</div>
-							</div>
-						{/if}
-
-						<div
-							class="{index === 0
-								? 'bg-[#2A6268]'
-								: index === 1
-									? 'bg-[#6F231E]'
-									: 'bg-[#2A6268]'} text-white p-8 rounded-t-3xl"
-						>
-							<div class="text-6xl mb-4">{tier.icon}</div>
-							<h3 class="text-2xl font-black mb-2 font-sans">{tier.name}</h3>
-							<p class="text-sm opacity-90 mb-6 font-body">{tier.subtitle}</p>
-							<div class="text-5xl font-black mb-2 font-sans">{tier.price}</div>
-							{#if tier.additionalPricing}
-								<div class="text-sm opacity-90 mb-2 font-body">{tier.additionalPricing}</div>
-							{/if}
-							{#if tier.profitShare}
-								<div
-									class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-2"
-								>
-									{tier.profitShare}
-								</div>
-							{/if}
-							<div class="text-sm opacity-90 font-body">{tier.duration}</div>
-						</div>
-
-						<div class="p-8">
-							<div class="mb-6">
-								<div class="text-sm font-semibold text-gray-600 mb-2 font-sans">BEST FOR:</div>
-								<div class="text-gray-900 font-body">{tier.bestFor}</div>
-							</div>
-
-							<div class="mb-6">
-								<div class="text-sm font-semibold text-gray-900 mb-3 font-sans">
-									WHAT'S INCLUDED:
-								</div>
-								<ul class="space-y-2">
-									{#each tier.includes as item}
-										<li class="flex items-start gap-2 text-sm text-gray-700">
-											<Check class="w-4 h-4 text-[#2A6268] flex-shrink-0 mt-0.5" />
-											<span class="font-body">{item}</span>
-										</li>
-									{/each}
-								</ul>
-							</div>
-
-							<div class="mb-8">
-								<div class="text-sm font-semibold text-gray-900 mb-3 font-sans">
-									YOU'LL BE ABLE TO:
-								</div>
-								<ul class="space-y-2">
-									{#each tier.outcomes as item}
-										<li class="flex items-start gap-2 text-sm text-gray-700">
-											<Award class="w-4 h-4 text-[#6F231E] flex-shrink-0 mt-0.5" />
-											<span class="font-body">{item}</span>
-										</li>
-									{/each}
-								</ul>
-							</div>
-
-							<a href={tier.paymentLink} target="_blank" rel="noopener noreferrer" class="w-full">
-								<Button
-									class="w-full {index === 0
-										? 'bg-[#2A6268] hover:bg-[#2A6268]/90'
-										: index === 1
-											? 'bg-[#6F231E] hover:bg-[#6F231E]/90'
-											: 'bg-[#2A6268] hover:bg-[#2A6268]/90'} text-white py-6 rounded-full font-bold transition shadow-lg"
-								>
-									{tier.cta}
-								</Button>
-							</a>
-						</div>
-					</div>
-				{/each}
-			</div>
-		</div>
-	</section>
-
-	<!-- Process Timeline -->
-	<section class="py-20 px-6 bg-[#F6ECD9]">
-		<div class="max-w-7xl mx-auto">
-			<h2 class="text-3xl font-black text-gray-900 mb-12 text-center font-sans">
-				How T.O.T Certification Works
-			</h2>
-			<div class="grid md:grid-cols-5 gap-6">
-				{#each processSteps as step}
-					<div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-300/40">
-						<div class="text-5xl mb-3">{step.icon}</div>
-						<div
-							class="bg-[#2A6268] text-white w-10 h-10 rounded-full flex items-center justify-center font-bold mx-auto mb-3"
-						>
-							{step.step}
-						</div>
-						<h4 class="font-bold text-gray-900 mb-2 font-sans">{step.title}</h4>
-						<p class="text-sm text-gray-600 font-body">{step.desc}</p>
-					</div>
-				{/each}
-			</div>
-		</div>
-	</section>
-
-	<!-- CTA -->
-	<section class="py-20 px-6 bg-[#2A6268] text-white">
-		<div class="max-w-4xl mx-auto text-center">
-			<h2 class="text-4xl font-black mb-6 font-sans">Ready to Become a Certified Champion?</h2>
-			<p class="text-xl mb-8 font-body leading-relaxed">
-				Join 500+ trained Champions healing Uganda one conversation at a time
-			</p>
-			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<a
-					href={paymentLinks.certifications.foundationLevelCommunityChampionCertification}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<Button
-						class="bg-[#6F231E] text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-[#6F231E]/90 transition shadow-lg"
-					>
-						Apply for T.O.T Now
-					</Button>
-				</a>
+				<Button href="#" variant="destructive" size="lg" class="shadow-lg font-bold">
+					Apply for T.O.T Now
+				</Button>
 				<Button
-					class="bg-white text-[#2A6268] px-12 py-6 rounded-full text-xl font-bold hover:bg-white/90 transition"
+					href="#"
+					variant="secondary"
+					size="lg"
+					class="text-primary hover:bg-white/90 shadow-lg font-bold"
 				>
 					Schedule a Call
 				</Button>
 			</div>
 		</div>
 	</section>
-</div>
+</main>
 
 <style>
 	  .bg-noise {

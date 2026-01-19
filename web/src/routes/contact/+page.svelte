@@ -2,12 +2,15 @@
 	import { Button, buttonVariants } from '@/lib/components/ui/button';
     import type { PageProps } from './$types';
 	import { cn } from '@/lib/utils';
+	import GetInvolved from '@/lib/components/pages/sections/get-involved.svelte';
 
     let { data }: PageProps = $props();
 </script>
 
 <section>
-	<div class=" max-w-7xl mx-auto px-8 w-full 2xl:max-w-[100rem] py-24 lg:min-h-[calc(100dvh-4rem)]">
+	<div
+		class=" max-w-7xl mx-auto px-8 w-full 2xl:max-w-[100rem] py-24 lg:min-h-[calc(100dvh-4rem)] flex flex-col justify-center"
+	>
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 			<div class="rounded-3xl bg-primary p-8 lg:p-12">
 				<span class="text-xs uppercase font-medium text-accent-200"> Contact Us </span>
@@ -118,4 +121,6 @@
 			</div>
 		</div>
 	</div>
+
+	<GetInvolved />
 </section>

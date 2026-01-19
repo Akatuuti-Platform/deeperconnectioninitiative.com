@@ -1,6 +1,31 @@
 <script>
 	import EventsCard from "@/lib/components/events-card.svelte";
-
+	const events = [
+		{
+			title: 'Community Garden cleanup',
+			description: 'Join us for our monthly community garden cleanup. Gloves and tools provided!',
+			url: '/events/1',
+			startDate: '2024-03-15T09:00:00',
+			endDate: '2024-03-15T12:00:00',
+			location: 'Central Park Community Garden'
+		},
+		{
+			title: 'City Council Meeting',
+			description: 'Quarterly public meeting to discuss neighborhood improvements and budget allocation.',
+			url: '/events/2',
+			startDate: '2024-03-20T18:00:00',
+			endDate: '2024-03-20T20:00:00',
+			location: 'City Hall, Room 101'
+		},
+		{
+			title: 'Spring Festival Planning',
+			description: 'Help us plan the upcoming Spring Festival. We need volunteers for various committees.',
+			url: '/events/3',
+			startDate: '2024-03-25T17:30:00',
+			endDate: '2024-03-25T19:00:00',
+			location: 'Community Center Main Hall'
+		}
+	];
 </script>
 
 <section>
