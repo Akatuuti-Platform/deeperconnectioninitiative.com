@@ -9,19 +9,19 @@ export const siteConfig = {
     github: "deeperconnectioniniative",
   },
   contacts: {
-    tel: ["+256-784330349"],
-    email: "collinsbenda30@gmail.com",
-    tele: "+256784330349",
-    address: "Plot 851 Serumaga Road, Bukoto, Kampala, Uganda",
+    tel: ["+256-773855144"],
+    email: "info@utaliicreative.com",
+    tele: "+256773855144",
+    address: "Acacia Avenue, Kampala, Uganda",
   },
   seo:{
-  title:"Your Page Title",
-  description:"A detailed description of your page content.",
-  canonical:"https://yourwebsite.com/current-page",
+  title:"Deeper Connection Initiative",
+  description:"Deeper Connection Initiative is a community-based organization that works to improve the mental health of the community.",
+  canonical:"https://deeperconnectioniniative.com/",
   openGraph:{
-    url: "https://yourwebsite.com/current-page",
-    title: "Your Page Title",
-    description: "A detailed description of your page content.",
+    url: "https://deeperconnectioniniative.com/",
+    title: "Deeper Connection Initiative",
+    description: "Deeper Connection Initiative is a community-based organization that works to improve the mental health of the community.",
     images: [
       {
         url: "https://yourwebsite.com/og-image.jpg",
@@ -31,7 +31,7 @@ export const siteConfig = {
         type: "image/jpeg",
       },
     ],
-    site_name: "Your Site Name",
+    site_name: "Deeper Connection Initiative",
     type: "website",
     locale: "en_US",
   },

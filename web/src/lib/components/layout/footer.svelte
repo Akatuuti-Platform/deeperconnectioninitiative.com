@@ -3,19 +3,18 @@ import { cn } from "@/lib/utils";
 import Button, { buttonVariants } from "../ui/button/button.svelte";
 import Logo from "./logo.svelte";
 	import { Github, X } from "@lucide/svelte";
+	import { siteConfig } from "@/lib/config/site";
 
 const primaryNav = [
   { label: "Home", href: "/" },
-  { label: "Announcements", href: "/announcements" },
-  { label: "Documents", href: "/documents" },
-  { label: "Board", href: "/board" },
+  { label: "trainings", href: "/trainings" },
+   { label: "Volunteering", href: "/volunteering" },
   { label: "Events", href: "/events" },
   { label: "Contact", href: "/contact" },
 ];
 const footerNavigation = [{ title: "Navigation", links: primaryNav }];
 const complianceLinks = [
-  { label: "Fair Housing Notice", href: "/fair-housing" },
-  { label: "Accessibility Statement", href: "/accessibility" },
+   { label: "Accessibility Statement", href: "/accessibility" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
 ];
@@ -46,23 +45,23 @@ const complianceLinks = [
 						</div>
 					{/each}
 					<div>
-						<p class="font-medium text-sm text-base-900">Homeowners Association</p>
-						<p class="text-sm text-base-600">Example City, ST • Est. 2014</p>
+						<p class="font-medium text-sm text-base-900">{siteConfig.name}</p>
+						<p class="text-sm text-base-600">{siteConfig.contacts.address}</p>
 						<div class="space-y-1 mt-8">
 							<p class="text-base-600 text-sm">
 								General contact:
 								<a href="#_" class="underline underline-offset-4 hover:text-base-900">
-									board@hoa-example.org
+{siteConfig.contacts.email}
 								</a>
 							</p>
 							<p class="text-base-600 text-sm">
 								Phone:
 								<a href="#_" class="underline underline-offset-4 hover:text-base-900">
-									(555) 555-0101
+{siteConfig.contacts.tele}
 								</a>
 							</p>
 							<p class="text-base-600 text-sm">Office hours: Mon–Fri, 9:00 AM–5:00 PM</p>
-							<p class="text-base-600 text-sm">Managed by Example Property Management</p>
+							<p class="text-base-600 text-sm">Managed by <a href="https://utaliicreative.com/" class="underline underline-offset-4 hover:text-base-900">Utalii Creative</a></p>
 						</div>
 					</div>
 				</div>
@@ -70,12 +69,11 @@ const complianceLinks = [
 			<div class="mt-12 w-full rounded-2xl bg-cream divide-y divide-accent-100">
 				<div class="p-8">
 					<p class="text-base-600 text-xs">
-						This community is operated in full compliance with all applicable federal, state, and
-						local fair housing laws. The Association is committed to providing equal access, fair
-						treatment, and reasonable accommodations to all residents, applicants, and visitors,
-						regardless of protected status. Discrimination, harassment, or exclusion of any kind is
-						not tolerated, and requests for reasonable accommodations or modifications will be
-						reviewed promptly and in good faith.
+						Our community is built on the foundation of belonging and mutual respect. Through our
+						Deeper Connection Initiative, we are committed to fostering a neighborhood where every
+						resident feels truly at home. We go beyond standard compliance to cultivate an inclusive
+						environment that celebrates our diversity, encourages active participation, and ensures
+						that every voice contributes to the vibrant spirit of our collective home.
 					</p>
 				</div>
 				<div class="flex flex-wrap lg:items-center lg:justify-between px-8 py-4 gap-x-4 gap-y-8">
