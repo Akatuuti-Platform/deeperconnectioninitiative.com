@@ -1,280 +1,204 @@
 <script lang="ts">
+	import { ArrowUpRight, HeartHandshake, QrCode, Sparkles } from '@lucide/svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { paymentLinks } from '$lib/payment-links';
 
 	const products = [
 		{
 			name: 'DCI Card Game',
-            image: 'https://res.cloudinary.com/dywd7jbbl/image/upload/v1716585371/Other/it_othe9w.jpg',
+			kicker: 'Conversation Cards',
 			description:
-				'Conversation cards that gently open discussions around emotions, relationships, stress, identity, and personal experiences.',
+				'A gentle way to open conversations around emotions, relationships, identity, and lived experience without pressure or judgment.',
 			price: '69,000 UGX',
-			paymentLink: paymentLinks.cardGame
+			paymentLink: paymentLinks.cardGame,
+			accent: 'text-[#6F231E]',
+			border: 'border-[#6F231E]/20'
 		},
 		{
 			name: 'DCI Reflection Journal',
-            image: 'https://res.cloudinary.com/dywd7jbbl/image/upload/v1716584375/Other/csps_dgkayq.png',
+			kicker: 'Guided Reflection',
 			description:
-				'A guided journal that supports self-reflection, emotional processing, and personal growth without requiring advanced literacy.',
+				'A guided journal designed to support reflection, emotional processing, and clarity even for people who do not usually write.',
 			price: '120,000 UGX',
-			paymentLink: paymentLinks.journal
+			paymentLink: paymentLinks.journal,
+			accent: 'text-[#2A6268]',
+			border: 'border-[#2A6268]/20'
 		},
 		{
 			name: 'DCI Mood Tracker',
-            image: 'https://res.cloudinary.com/dywd7jbbl/image/upload/v1716585253/Other/awf_ne3sdj.jpg',
+			kicker: 'Daily Awareness',
 			description:
-				'A simple tool that helps users recognise emotional patterns over time — especially useful where mental health language is limited.',
+				'A simple daily tool that helps people notice emotional patterns over time, especially where mental health language is limited.',
 			price: '31,000 UGX',
-			paymentLink: paymentLinks.moodTracker
+			paymentLink: paymentLinks.moodTracker,
+			accent: 'text-slate-700',
+			border: 'border-slate-300'
 		}
 	];
 </script>
 
-<section id="toolkit" class="  text-slate-900 max-w-6xl mx-auto px-6 py-20 space-y-16">
-	<!-- Header -->
-	<header class="max-w-3xl space-y-4">
-		<div
-			class="inline-flex items-center gap-2 rounded-full border border-[#2A6268]/20 bg-[#2A6268]/5 px-3 py-1"
-		>
-			<span class="text-xs font-semibold tracking-wide text-[#2A6268] uppercase"
-				>The Deeper Connection Toolkit</span
-			>
-		</div>
-		<h2 class="text-3xl font-semibold">Physical, low‑tech mental health tools</h2>
-		<p class="text-lg text-slate-600">
-			Designed to spark reflection, emotional awareness, and healthy conversation — no internet
-			required.
-		</p>
-	</header>
-
-	<!-- Product Layout (Editorial / Product‑forward) -->
-	<div class="space-y-20">
-		<!-- Product Row -->
-		<div class="grid md:grid-cols-2 gap-12 items-center">
+<section id="toolkit" class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+	<div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
+		<header class="space-y-6 lg:sticky lg:top-28 lg:self-start">
 			<div
-				class="h-72 rounded-3xl bg-linear-to-br from-[#6F231E]/15 to-[#6F231E]/5 flex items-center justify-center"
+				class="inline-flex items-center gap-2 rounded-full border border-[#2A6268]/20 bg-[#2A6268]/5 px-3 py-1"
 			>
-				<span class="text-sm uppercase tracking-widest text-[#6F231E]/70">Conversation Cards</span>
+				<span class="text-xs font-semibold uppercase tracking-wide text-[#2A6268]">
+					The Deeper Connection Toolkit
+				</span>
 			</div>
-			<div class="space-y-5">
-				<h3 class="text-2xl font-semibold">DCI Card Game</h3>
-				<p class="text-base leading-relaxed text-slate-600 max-w-md">
-					A gentle way to open conversations around emotions, relationships, identity, and lived
-					experience — without pressure or judgment.
+			<div class="space-y-4">
+				<h2
+					class="max-w-lg text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl"
+				>
+					Physical tools for conversations people can actually start.
+				</h2>
+				<p class="max-w-md text-base leading-relaxed text-slate-700 sm:text-lg">
+					Designed for homes, schools, clinics, youth groups, and community circles where support
+					needs to work without perfect internet, expert language, or a formal therapy room.
 				</p>
-				<div class="flex items-center gap-6">
-					<p class="text-xl font-semibold text-[#6F231E]">69,000 UGX</p>
-					<Button
-						href={paymentLinks.cardGame}
-						class="  px-6 py-3 text-sm font-medium text-white hover:bg-accent">Get this tool</Button
-					>
-				</div>
 			</div>
-		</div>
 
-		<!-- Product Row (reversed) -->
-		<div class="grid md:grid-cols-2 gap-12 items-center">
-			<div
-				class="md:order-2 h-72 rounded-3xl bg-linear-to-br from-[#2A6268]/15 to-[#2A6268]/5 flex items-center justify-center"
-			>
-				<span class="text-sm uppercase tracking-widest text-[#2A6268]/70">Guided Reflection</span>
-			</div>
-			<div class="md:order-1 space-y-5">
-				<h3 class="text-2xl font-semibold">DCI Reflection Journal</h3>
-				<p class="text-base leading-relaxed text-slate-600 max-w-md">
-					A guided journal designed to support reflection, emotional processing, and clarity — even
-					for people who don’t usually write.
-				</p>
-				<div class="flex items-center gap-6">
-					<p class="text-xl font-semibold text-[#6F231E]">120,000 UGX</p>
-					<Button
-						href={paymentLinks.journal}
-						class="  px-6 py-3 text-sm font-medium text-white hover:bg-accent">Get this tool</Button
-					>
+			<div class="grid max-w-md grid-cols-2 gap-3 text-sm text-slate-700">
+				<div class="rounded-2xl border border-[#2A6268]/15 bg-white/45 p-4">
+					<QrCode class="mb-5 size-5 text-[#2A6268]" strokeWidth={1.8} />
+					QR access to low-data digital resources.
+				</div>
+				<div class="rounded-2xl border border-[#6F231E]/15 bg-white/45 p-4">
+					<HeartHandshake class="mb-5 size-5 text-[#6F231E]" strokeWidth={1.8} />
+					10% supports training and donated kits.
 				</div>
 			</div>
-		</div>
+		</header>
 
-		<!-- Product Row -->
-		<div class="grid md:grid-cols-2 gap-12 items-center">
-			<div
-				class="h-72 rounded-3xl bg-linear-to-br from-slate-400/20 to-slate-300/10 flex items-center justify-center"
-			>
-				<span class="text-sm uppercase tracking-widest text-slate-500">Daily Awareness</span>
-			</div>
-			<div class="space-y-5">
-				<h3 class="text-2xl font-semibold">DCI Mood Tracker</h3>
-				<p class="text-base leading-relaxed text-slate-600 max-w-md">
-					A simple daily tool that helps people notice emotional patterns over time, especially
-					where mental health language is limited.
-				</p>
-				<div class="flex items-center gap-6">
-					<p class="text-xl font-semibold text-[#6F231E]">31,000 UGX</p>
-					<Button
-						href={paymentLinks.moodTracker}
-						class="  px-6 py-3 text-sm font-medium text-white hover:bg-accent">Get this tool</Button
-					>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="lg:sticky lg:top-24 gsap-reveal">
-		<div
-			class="bg-white rounded-3xl p-8 shadow-xl border border-slate-100 relative overflow-hidden transform hover:scale-[1.02] transition-transform duration-500"
-		>
-			<div class="absolute top-0 right-0 w-32 h-32 bg-[#6F231E]/5 rounded-full -mr-16 -mt-16"></div>
-			<div class="relative z-10">
-				<span class="text-xs font-bold text-[#6F231E] uppercase tracking-wide">Recommended</span>
-				<h3 class="text-2xl font-bold text-slate-900 mt-2 mb-1">The Full Toolkit</h3>
-				<p class="text-sm text-slate-500 mb-6">Card Game + Journal + Tracker + QR Access.</p>
-
-				<div class="flex items-end gap-3 mb-6">
-					<span class="text-4xl font-bold text-[#2A6268]">200k</span>
-					<span class="text-xs text-slate-500 mb-2">UGX</span>
-				</div>
-				<div class="space-y-4 mb-8 text-foreground/70 text-base leading-relaxed">
-					<p>
-						<strong class="font-semibold text-foreground">DCI Card Game</strong> - A powerful tool for
-						self-awareness and shared learning, helping people uncover the 'why' behind their choices
-					</p>
-					<p>
-						<strong class="font-semibold text-foreground">DCI Journal</strong> - Structured self-reflection
-						exercises designed for mindfulness and personal growth
-					</p>
-					<p>
-						<strong class="font-semibold text-foreground">DCI Mood Tracker</strong> - Simple daily tool
-						that builds emotional awareness and helps recognise mental health patterns
-					</p>
-					<p>
-						<strong class="font-semibold text-foreground">Integrated QR Code System</strong> - Each toolkit
-						component features embedded QR codes providing instant access to our digital resource library
-					</p>
-				</div>
-				<div class="flex flex-col sm:flex-row gap-3 items-center justify-center">
-					<a href={paymentLinks.toolkit} target="_blank" rel="noopener noreferrer">
-						<Button
-							size="lg"
-							class="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6"
+		<div class="space-y-6">
+			{#each products as product, index}
+				<article
+					class={`group grid overflow-hidden rounded-[2rem] border bg-[#ffffeb] shadow-[0_24px_70px_-55px_rgba(0,0,0,0.65)] transition duration-500 hover:-translate-y-1 md:grid-cols-[0.82fr_1fr] ${product.border}`}
+				>
+					<div class={`relative min-h-72 overflow-hidden ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+						<div
+							class={`flex h-full min-h-72 items-center justify-center p-8 transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-[#EAD5C8]' : index === 1 ? 'bg-[#EEF1E5]' : 'bg-[#ECE7DA]'}`}
 						>
-							Buy Complete Kit
-						</Button>
-					</a>
-					<a href={paymentLinks.donation} target="_blank" rel="noopener noreferrer">
-						<Button
-							size="lg"
-							variant="outline"
-							class="border-accent text-accent hover:bg-accent/10 rounded-full px-6 bg-transparent"
+							{#if index === 0}
+								<div class="grid w-full max-w-[270px] grid-cols-3 gap-3 -rotate-6">
+									{#each Array(9) as _, cardIndex}
+										<div
+											class={`aspect-[3/4] rounded-xl border border-[#6F231E]/15 p-3 shadow-sm ${cardIndex % 3 === 0 ? 'bg-[#ffffeb]' : cardIndex % 3 === 1 ? 'bg-[#DFA169]' : 'bg-[#F4D5D0]'}`}
+										>
+											<div class="h-1.5 w-9 rounded-full bg-[#6F231E]/45"></div>
+											<div class="mt-8 space-y-1.5">
+												<div class="h-1 rounded-full bg-[#6F231E]/20"></div>
+												<div class="h-1 rounded-full bg-[#6F231E]/20"></div>
+												<div class="h-1 w-2/3 rounded-full bg-[#6F231E]/20"></div>
+											</div>
+										</div>
+									{/each}
+								</div>
+							{:else if index === 1}
+								<div
+									class="aspect-[4/5] w-full max-w-[250px] rounded-2xl bg-[#F6ECD9] p-6 shadow-[0_22px_45px_-35px_rgba(0,0,0,0.7)]"
+								>
+									<div class="h-full rounded-xl border-2 border-[#2A6268]/25 p-5">
+										<p class="text-xs font-bold uppercase tracking-widest text-[#2A6268]">
+											Reflection Journal
+										</p>
+										<div class="mt-14 space-y-3">
+											<div class="h-2 rounded-full bg-[#2A6268]/25"></div>
+											<div class="h-2 rounded-full bg-[#2A6268]/20"></div>
+											<div class="h-2 w-2/3 rounded-full bg-[#2A6268]/20"></div>
+										</div>
+									</div>
+								</div>
+							{:else}
+								<div
+									class="aspect-[4/5] w-full max-w-[250px] rounded-2xl bg-[#ffffeb] p-6 shadow-[0_22px_45px_-35px_rgba(0,0,0,0.7)]"
+								>
+									<p class="text-xs font-bold uppercase tracking-widest text-[#2A6268]">
+										Mood Tracker
+									</p>
+									<div class="mt-10 grid grid-cols-5 gap-2">
+										{#each Array(25) as _, dotIndex}
+											<div
+												class={`aspect-square rounded-full ${dotIndex % 5 === 0 ? 'bg-[#6F231E]' : dotIndex % 4 === 0 ? 'bg-[#DFA169]' : 'bg-[#2A6268]/25'}`}
+											></div>
+										{/each}
+									</div>
+								</div>
+							{/if}
+						</div>
+						<div
+							class="absolute top-4 left-4 rounded-full bg-[#ffffeb]/90 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-slate-700"
 						>
-							Sponsor a Kit
-						</Button>
-					</a>
-				</div>
-				<!-- <div class="flex ">
-	<button class="w-full rounded-full bg-[#6F231E] py-4 text-sm font-bold text-white hover:bg-[#5a1b17] transition-colors mb-3">
-                   Sponsor a Toolkit
-                 </button>
-                 <button class="w-full rounded-full border border-slate-300 py-4 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
-                   Buy a Toolkit
-                 </button>
-</div> -->
+							{product.kicker}
+						</div>
+					</div>
 
-				<p class="text-[0.65rem] text-center text-slate-400 mt-4">
-					10% funds community champion training.
-				</p>
-			</div>
+					<div class="flex flex-col justify-between gap-8 p-6 sm:p-8 lg:p-10">
+						<div class="space-y-4">
+							<h3 class="text-3xl font-semibold leading-tight text-slate-950">{product.name}</h3>
+							<p class="max-w-md text-base leading-relaxed text-slate-700">{product.description}</p>
+						</div>
+
+						<div class="flex flex-wrap items-center gap-4">
+							<p class={`text-xl font-bold ${product.accent}`}>{product.price}</p>
+							<Button href={product.paymentLink} class="rounded-full px-5">
+								Get this tool
+								<ArrowUpRight class="size-4" strokeWidth={1.8} />
+							</Button>
+						</div>
+					</div>
+				</article>
+			{/each}
+
+			<article class="overflow-hidden rounded-[2rem] bg-[#171817] text-[#F6ECD9]">
+				<div class="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.78fr] lg:p-10">
+					<div class="space-y-5">
+						<div
+							class="inline-flex items-center gap-2 rounded-full border border-[#F6ECD9]/20 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-[#F6ECD9]/75"
+						>
+							<Sparkles class="size-3.5" strokeWidth={1.8} />
+							Recommended
+						</div>
+						<h3 class="text-4xl font-semibold leading-tight text-white">The full toolkit</h3>
+						<p class="max-w-xl text-base leading-relaxed text-[#F6ECD9]/75">
+							Card Game, Reflection Journal, Mood Tracker, and QR access bundled for everyday
+							self-awareness, group facilitation, and community support.
+						</p>
+					</div>
+
+					<div
+						class="flex flex-col justify-between gap-8 border-t border-[#F6ECD9]/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8"
+					>
+						<div>
+							<p class="text-sm uppercase tracking-widest text-[#F6ECD9]/55">Complete kit</p>
+							<div class="mt-2 flex items-end gap-3">
+								<span class="text-5xl font-bold text-white">200k</span>
+								<span class="mb-2 text-sm text-[#F6ECD9]/60">UGX</span>
+							</div>
+							<p class="mt-3 text-xs text-[#F6ECD9]/55">10% funds community champion training.</p>
+						</div>
+
+						<div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+							<Button
+								href={paymentLinks.toolkit}
+								size="lg"
+								class="rounded-full bg-[#F6ECD9] text-[#171817] hover:bg-white"
+							>
+								Buy complete kit
+							</Button>
+							<Button
+								href={paymentLinks.donation}
+								size="lg"
+								variant="outline"
+								class="rounded-full border-[#F6ECD9]/30 bg-transparent text-[#F6ECD9] hover:bg-[#F6ECD9]/10"
+							>
+								Sponsor a kit
+							</Button>
+						</div>
+					</div>
+				</div>
+			</article>
 		</div>
 	</div>
 </section>
-
-<!-- <svg
-								class="w-10 h-10 text-primary"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width={1.5}
-									d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-								/>
-							</svg> -->
-<!-- <div
-								class="BookContainer w-[150px] h-[195px] m-[30px] flex items-center justify-center perspective-900"
-							>
-								<div
-									class="Book w-[150px] h-[195px] relative preserve-3d rotate-y-30 transition-transform-075s"
-								>
-									<img
-										src={product.image}
-										alt="Book Cover"
-										class="FrontCover w-full h-full absolute rounded-r rounded-l-[3px] shadow-sm"
-									/>
-									<div
-										class="Pages bg-[#fff] h-[calc(195px-2*6px)] w-[37.5px] top-[3px] absolute page-transform"
-									/>
-									<div
-										class="BackCover rounded-r bg-[#01060f] h-[195px] w-[150px] left-0 absolute back-cover-transform shadow-lg"
-									/>
-								</div>
-							</div> -->
-
-<style>
-
-/* Background colors */
-:global(.bg-cream) {
-  background-color: #fefaf5;
-}
-
-:global(.bg-off-white) {
-  background-color: #fafafa;
-}
-
-/* 3D Books */
-
-.image-shadow {
-  box-shadow: 5px 5px 20px #2e2e2e;
-}
-
-.back-cover-shadow {
-  box-shadow: -10px 0 50px 10px #2e2e2e;
-}
-
-.perspective-900 {
-  perspective: 900px;
-}
-
-.preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.transition-transform-075s {
-  transition: transform 0.75s ease;
-}
-
-.rotate-y-30 {
-  transform: rotateY(-30deg);
-}
-
-.Book:hover {
-  transform: rotateY(0deg);
-}
-
-.content-empty {
-  content: " ";
-}
-
-.page-transform {
-  transform: translateX(calc(150px - 37.5px / 2 - 3px)) rotateY(90deg)
-    translateX(18.75px);
-}
-
-.back-cover-transform {
-  transform: translateZ(-37.5px);
-}
-
-.rotate-y-0 {
-  transform: rotateY(0deg);
-}
-
-</style>

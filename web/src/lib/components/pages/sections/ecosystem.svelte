@@ -70,7 +70,7 @@
 			subtitle: 'Venue Partners',
 			description:
 				'Transform your venue into a certified wellness hub. Drive traffic. Build community impact. Create recurring revenue.'
-		},
+		}
 		// {
 		// 	icon: Heart,
 		// 	title: 'Support Access',
@@ -81,16 +81,19 @@
 	];
 </script>
 
-<section id="ecosystem" class="w-full bg-[#1A3C40] text-[#EFE5D0] relative rounded-t-4xl">
+<section
+	id="ecosystem"
+	class="w-full bg-[#1A3C40] text-[#EFE5D0] relative rounded-t-4xl overflow-hidden"
+>
 	<!-- Background Pattern -->
 	<div
 		class="absolute inset-0 opacity-10 pointer-events-none rounded-t-4xl"
 		style="background-image: radial-gradient(#2A6268 1px, transparent 1px); background-size: 30px 30px;"
 	></div>
 
-	<div class="grid grid-cols-1 lg:grid-cols-2 lg:divide-x-2 lg:divide-accent/10">
+	<div class="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] lg:divide-x-2 lg:divide-accent/10">
 		<div class="p-8 lg:px-20">
-			<div class="py-16 lg:sticker lg:sticky top-20">
+			<div class="py-16 lg:sticky top-20">
 				<div class=" max-w-3xl mx-auto mb-16 gsap-reveal">
 					<div
 						class="inline-flex items-center gap-2 rounded-full border border-[#2A6268]/20 mb-3 bg-[#2A6268]/5 px-3 py-1"
@@ -99,11 +102,18 @@
 							>The DCI Ecosystem</span
 						>
 					</div>
-					<h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">Built for real life.</h2>
+					<h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+						Built for the places care already happens.
+					</h2>
 					<p class="text-lg text-[#EFE5D0]/80">
-						We integrate self-led learning, offline resources, and community action to ensure
-						accessible, sustainable mental wellbeing.
+						The DCI ecosystem moves from personal reflection to group conversation, trained
+						champions, and responsible support when someone needs more care.
 					</p>
+					<div class="mt-10 grid gap-3 text-sm text-[#EFE5D0]/75 sm:grid-cols-3">
+						<div class="border-t border-[#EFE5D0]/20 pt-3">Toolkit</div>
+						<div class="border-t border-[#EFE5D0]/20 pt-3">Conversation</div>
+						<div class="border-t border-[#EFE5D0]/20 pt-3">Referral</div>
+					</div>
 					<div class=" flex items-center mt-8">
 						<Button
 							href={paymentLinks.donation}
@@ -122,16 +132,19 @@
 			</div>
 		</div>
 		<ul
-			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-2 bg-accent-900 list-none"
+			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-px bg-[#EFE5D0]/10 list-none"
 			role="list"
 		>
 			{#each ecosystemData as item, index}
 				<li
-					class="p-8 bg-[#2A6268]/20 backdrop-blur-sm border border-[#2A6268]/40 rounded-2xl hover:bg-[#2A6268]/40 transition-colors lg:p-12"
+					class="group relative p-8 bg-[#1A3C40]/95 backdrop-blur-sm hover:bg-[#204B50] transition-colors lg:p-12"
 				>
+					<span class="absolute top-6 right-6 text-xs font-bold text-[#EFE5D0]/20">
+						{String(index + 1).padStart(2, '0')}
+					</span>
 					<div>
 						<div
-							class="mb-4 w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center"
+							class="mb-4 w-12 h-12 rounded-full bg-secondary/15 flex items-center justify-center transition group-hover:bg-secondary/25"
 						>
 							<svelte:component this={item.icon} class="w-6 h-6 text-secondary" />
 						</div>

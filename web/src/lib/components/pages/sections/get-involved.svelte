@@ -1,4 +1,5 @@
 <script>
+	import { Building2, Heart, Sparkles, Stethoscope } from '@lucide/svelte';
 	import { paymentLinks } from '$lib/payment-links';
 </script>
 
@@ -35,7 +36,7 @@
 				<div
 					class="h-12 w-12 rounded-lg bg-[#EFE5D0] flex items-center justify-center text-[#2A6268] mb-4"
 				>
-					<i class="lucide lucide-building-2 w-6 h-6"></i>
+					<Building2 class="size-6" strokeWidth={1.8} />
 				</div>
 				<h3 class="font-bold text-slate-900 mb-2">Venue Partner</h3>
 				<p class="text-sm text-slate-600 mb-4 flex-grow">
@@ -50,7 +51,7 @@
 				<div
 					class="h-12 w-12 rounded-lg bg-[#EFE5D0] flex items-center justify-center text-[#6F231E] mb-4"
 				>
-					<i class="lucide lucide-sparkles w-6 h-6"></i>
+					<Sparkles class="size-6" strokeWidth={1.8} />
 				</div>
 				<h3 class="font-bold text-slate-900 mb-2">DCI Angel</h3>
 				<p class="text-sm text-slate-600 mb-4 flex-grow">
@@ -65,7 +66,7 @@
 				<div
 					class="h-12 w-12 rounded-lg bg-[#EFE5D0] flex items-center justify-center text-[#2A6268] mb-4"
 				>
-					<i class="lucide lucide-stethoscope w-6 h-6"></i>
+					<Stethoscope class="size-6" strokeWidth={1.8} />
 				</div>
 				<h3 class="font-bold text-slate-900 mb-2">Provider Network</h3>
 				<p class="text-sm text-slate-600 mb-4 flex-grow">
@@ -80,7 +81,7 @@
 				<div
 					class="h-12 w-12 rounded-lg bg-[#ffffff]/20 flex items-center justify-center text-white mb-4"
 				>
-					<i class="lucide lucide-heart w-6 h-6"></i>
+					<Heart class="size-6" strokeWidth={1.8} />
 				</div>
 				<h3 class="font-bold text-white mb-2">Sponsor</h3>
 				<p class="text-sm text-[#EFE5D0]/80 mb-4 flex-grow">
