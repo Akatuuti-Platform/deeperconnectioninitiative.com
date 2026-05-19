@@ -1,10 +1,15 @@
 <script>
 	import { Building2, Heart, Sparkles, Stethoscope } from '@lucide/svelte';
 	import { paymentLinks } from '$lib/payment-links';
+	import SpotIllustration from '$lib/components/spot-illustration.svelte';
 </script>
 
-<section id="get-involved" class="w-full bg-slate-50 py-24 rounded-b-4xl">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section id="get-involved" class="relative w-full overflow-hidden bg-slate-50 py-24 rounded-b-4xl">
+	<SpotIllustration
+		variant="community"
+		class="pointer-events-none absolute -right-8 top-8 hidden w-72 rotate-2 opacity-95 lg:block xl:right-12"
+	/>
+	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<!-- <div class="text-center mb-16 gsap-reveal">
           <h2 class="text-4xl font-bold text-slate-900">There is a place for you here.</h2>
           <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Whether you are a venue owner, mental health professional, volunteer, or sponsor, there is a place for you in the DeeperConnection ecosystem.</p>

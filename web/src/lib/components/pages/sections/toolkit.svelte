@@ -2,6 +2,7 @@
 	import { ArrowUpRight, HeartHandshake, QrCode, Sparkles } from '@lucide/svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { paymentLinks } from '$lib/payment-links';
+	import SpotIllustration from '$lib/components/spot-illustration.svelte';
 
 	const products = [
 		{
@@ -39,7 +40,7 @@
 
 <section id="toolkit" class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
 	<div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
-		<header class="space-y-6 lg:sticky lg:top-28 lg:self-start">
+		<header class="relative space-y-6 lg:sticky lg:top-28 lg:self-start">
 			<div
 				class="inline-flex items-center gap-2 rounded-full border border-[#2A6268]/20 bg-[#2A6268]/5 px-3 py-1"
 			>
@@ -69,6 +70,11 @@
 					10% supports training and donated kits.
 				</div>
 			</div>
+
+			<SpotIllustration
+				variant="toolkit"
+				class="pointer-events-none hidden w-64 -rotate-6 opacity-95 lg:block"
+			/>
 		</header>
 
 		<div class="space-y-6">
