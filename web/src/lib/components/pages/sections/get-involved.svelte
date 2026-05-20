@@ -5,32 +5,36 @@
 </script>
 
 <section id="get-involved" class="relative w-full overflow-hidden bg-slate-50 py-24 rounded-b-4xl">
-	<SpotIllustration
-		variant="community"
-		class="pointer-events-none absolute -right-8 top-8 hidden w-72 rotate-2 opacity-95 lg:block xl:right-12"
-	/>
 	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<!-- <div class="text-center mb-16 gsap-reveal">
           <h2 class="text-4xl font-bold text-slate-900">There is a place for you here.</h2>
           <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Whether you are a venue owner, mental health professional, volunteer, or sponsor, there is a place for you in the DeeperConnection ecosystem.</p>
         </div> -->
-		<div class="max-w-3xl space-y-3 mb-16 gsap-reveal">
-			<p
-				class="text-xs font-medium uppercase tracking-tight text-[#2A6268]"
-				style="font-family: 'Lato', system-ui, -apple-system;"
-			>
-				Get involved
-			</p>
-			<h2
-				class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900"
-				style="font-family: 'Lato', system-ui, -apple-system;"
-			>
-				There is a place for you here
-			</h2>
-			<p class="text-base sm:text-lg font-normal leading-relaxed text-slate-800/95">
-				Whether you are a venue owner, mental health professional, volunteer, or sponsor, there is a
-				place for you in the DeeperConnection ecosystem.
-			</p>
+		<div
+			class="mb-16 grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start lg:gap-12"
+		>
+			<div class="max-w-3xl space-y-3 gsap-reveal">
+				<p
+					class="text-xs font-medium uppercase tracking-tight text-[#2A6268]"
+					style="font-family: 'Lato', system-ui, -apple-system;"
+				>
+					Get involved
+				</p>
+				<h2
+					class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900"
+					style="font-family: 'Lato', system-ui, -apple-system;"
+				>
+					There is a place for you here
+				</h2>
+				<p class="text-base sm:text-lg font-normal leading-relaxed text-slate-800/95">
+					Whether you are a venue owner, mental health professional, volunteer, or sponsor, there is a
+					place for you in the DeeperConnection ecosystem.
+				</p>
+			</div>
+
+			<div class="pointer-events-none hidden justify-end lg:flex">
+				<SpotIllustration variant="community" class="-mt-16 w-80 rotate-2 opacity-95" />
+			</div>
 		</div>
 
 		<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4" id="involved-grid">

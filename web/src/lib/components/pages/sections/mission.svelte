@@ -5,7 +5,7 @@
 <section id="about" class="w-full bg-white relative z-10 overflow-hidden rounded-[4rem]">
 	<SpotIllustration
 		variant="care"
-		class="pointer-events-none absolute -right-10 top-6 hidden w-72 rotate-3 opacity-95 lg:block xl:right-6"
+		class="pointer-events-none absolute -right-16 top-0 hidden w-[24rem] rotate-2 opacity-95 lg:block xl:right-0"
 	/>
 	<div
 		class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 grid md:grid-cols-[0.9fr_1.1fr] gap-12 items-start"

@@ -71,10 +71,12 @@
 				</div>
 			</div>
 
-			<SpotIllustration
-				variant="toolkit"
-				class="pointer-events-none hidden w-64 -rotate-6 opacity-95 lg:block"
-			/>
+			<div class="pointer-events-none relative hidden h-44 max-w-md lg:block">
+				<SpotIllustration
+					variant="toolkit"
+					class="absolute -left-8 -top-5 w-80 -rotate-3 opacity-95"
+				/>
+			</div>
 		</header>
 
 		<div class="space-y-6">
