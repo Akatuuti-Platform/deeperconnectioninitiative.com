@@ -1,64 +1,70 @@
 <script lang="ts">
-	import { cn } from "../utils";
-	import Button, { buttonVariants } from "./ui/button/button.svelte";
+	import {
+		ArrowUpRightIcon as ArrowUpRight,
+		CalendarDotsIcon as CalendarDays,
+		MapPinIcon as MapPin
+	} from 'phosphor-svelte';
+	import { Button } from './ui/button';
 
-    // Foundations
-type EventProps = {
-  url: string,
-  title: string,
-  description:string,
-  startDate:string,
-  endDate: string,
-  location: string,
-};
-    let { event }: { event: EventProps } = $props();
+	type EventProps = {
+		url: string;
+		title: string;
+		description: string;
+		startDate: string;
+		endDate: string;
+		location: string;
+		type: string;
+	};
 
-    let FmtStartDate = $derived(new Date(event.startDate));
-    
-    let formattedTime = $derived(FmtStartDate.toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "2-digit",
-    }));
-    let monthLabel = $derived(FmtStartDate.toLocaleDateString("en-US", { month: "short" }));
-    let dayLabel = $derived(FmtStartDate.getDate());
+	let { event }: { event: EventProps } = $props();
+
+	const startDate = $derived(new Date(event.startDate));
+	const endDate = $derived(new Date(event.endDate));
+	const monthLabel = $derived(startDate.toLocaleDateString('en-US', { month: 'short' }));
+	const dayLabel = $derived(startDate.getDate());
+	const timeLabel = $derived(
+		`${startDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} - ${endDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`
+	);
 </script>
 
 <article
-	class="flex flex-col group h-full justify-between p-4 lg:p-8 rounded-3xl bg-accent-50 transition-colors duration-200"
+	class="group dci-soft-hover flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-[#2A6268]/12 bg-[#F6ECD9] p-5 shadow-[0_24px_70px_-60px_rgba(0,0,0,0.75)] transition duration-300 sm:p-6"
 >
-	<div class="lg:col-span-2">
-		<div class="flex items-center gap-3">
-			<div
-				class="flex flex-col items-center justify-center size-14 bg-white rounded-xl text-base-900 shrink-0"
-			>
-				<span class="text-xs font-semibold uppercase">{monthLabel}</span>
-				<span class="text-lg sm:text-xl md:text-2xl font-medium text-base-600 font-display italicx"
-					>{dayLabel}</span
+	<div>
+		<div class="flex items-start justify-between gap-4">
+			<div class="flex gap-3">
+				<div
+					class="flex size-14 shrink-0 flex-col items-center justify-center rounded-xl bg-[#1A3C40] text-[#F6ECD9]"
 				>
-			</div>
-			<div class="flex flex-col">
-				<span class="text-xs text-base-600 uppercase font-medium">
-					<time datetime={FmtStartDate.toISOString()}>{formattedTime}</time>
-				</span>
-				<span class="text-xs text-base-600">
-					{event.location}
-				</span>
+					<span class="text-[0.65rem] font-bold uppercase tracking-wide">{monthLabel}</span>
+					<span class="text-2xl font-semibold leading-none">{dayLabel}</span>
+				</div>
+				<div class="pt-1">
+					<p class="text-xs font-semibold uppercase tracking-wide text-[#6F231E]">{event.type}</p>
+					<p class="mt-2 flex items-center gap-1.5 text-sm text-slate-600">
+						<CalendarDays class="size-3.5" weight="regular" />
+						{timeLabel}
+					</p>
+				</div>
 			</div>
 		</div>
 
-		<h3 class="text-base font-medium text-base-900 mt-8">
-			{event.title}
-		</h3>
-		<p class="text-sm text-base-600 mt-2">
-			{event.description}
+		<h3 class="mt-8 text-2xl font-semibold leading-tight text-slate-950">{event.title}</h3>
+		<p class="mt-3 text-sm leading-relaxed text-slate-700">{event.description}</p>
+		<p class="mt-5 flex items-start gap-2 text-sm font-medium text-[#1A3C40]">
+			<MapPin class="mt-0.5 size-4 shrink-0" weight="regular" />
+			<span>{event.location}</span>
 		</p>
 	</div>
+
 	<Button
 		href={event.url}
+		variant="outline"
+		class="mt-8 w-fit rounded-full border-[#2A6268]/20 bg-transparent text-[#1A3C40] hover:bg-[#2A6268]/7"
 		title={`View event: ${event.title}`}
 		aria-label={`View event: ${event.title}`}
-		class={cn('w-fit mt-8', buttonVariants({ variant: 'ghost', size: 'sm' }))}
 	>
 		View event
+		<ArrowUpRight class="size-4" weight="regular" />
 	</Button>
 </article>

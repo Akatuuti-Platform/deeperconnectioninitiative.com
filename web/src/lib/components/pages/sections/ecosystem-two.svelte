@@ -1,15 +1,15 @@
 <script>
 	import {
-		Leaf,
-		Library,
-		MessageCircle,
-		Users,
-		Building2,
-		Sparkles,
-		HeartHandshake,
-		Globe,
-		Heart
-	} from '@lucide/svelte';
+		LeafIcon as Leaf,
+		BooksIcon as Library,
+		ChatCircleTextIcon as MessageCircle,
+		UsersThreeIcon as Users,
+		BuildingsIcon as Building2,
+		SparkleIcon as Sparkles,
+		HandshakeIcon as HeartHandshake,
+		GlobeHemisphereWestIcon as Globe,
+		HeartIcon as Heart
+	} from 'phosphor-svelte';
 	import { paymentLinks } from '$lib/payment-links';
 
 	const ecosystemData = [
@@ -97,7 +97,7 @@
 				<div class="eco-card bg-[#2A6268]/20 backdrop-blur-sm border border-[#2A6268]/40 p-6 rounded-2xl hover:bg-[#2A6268]/40 transition-colors">
 
 					<div class="mb-4 w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
-						<svelte:component this={item.icon} class="w-6 h-6 text-secondary" />
+						<svelte:component this={item.icon} class="w-6 h-6 text-secondary" weight="duotone" />
 					</div>
 					<h3 class="text-lg font-bold mb-1 text-white">{item.title}</h3>
 					<p class="text-xs text-secondary font-semibold mb-3 uppercase tracking-wide">
@@ -110,7 +110,7 @@
 			{/each}
         
 		<a href={paymentLinks.donation} target="_blank" class="eco-card bg-[#6F231E]/20 backdrop-blur-sm border border-[#6F231E]/40 p-6 rounded-2xl hover:bg-[#6F231E]/40 transition-colors">
- 				<Heart class="lucide lucide-heart text-[#F6ECD9] w-8 h-8 mb-4"/>
+ 				<Heart class="text-[#F6ECD9] w-8 h-8 mb-4" weight="duotone" />
 				<h3 class="text-xl font-bold text-white mb-2">Support Access</h3>
 				<p class="text-xs text-primary font-semibold mb-3 uppercase tracking-wide">
 					Sponsor a toolkit

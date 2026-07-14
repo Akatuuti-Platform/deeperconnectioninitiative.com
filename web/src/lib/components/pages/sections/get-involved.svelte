@@ -1,7 +1,13 @@
 <script>
-	import { Building2, Heart, Sparkles, Stethoscope } from '@lucide/svelte';
+	import {
+		BuildingsIcon as Building2,
+		HeartIcon as Heart,
+		SparkleIcon as Sparkles,
+		StethoscopeIcon as Stethoscope
+	} from 'phosphor-svelte';
 	import { paymentLinks } from '$lib/payment-links';
 	import SpotIllustration from '$lib/components/spot-illustration.svelte';
+	import { reveal } from '$lib/actions/reveal';
 </script>
 
 <section id="get-involved" class="relative w-full overflow-hidden bg-slate-50 py-24 rounded-b-4xl">
@@ -13,7 +19,7 @@
 		<div
 			class="mb-16 grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start lg:gap-12"
 		>
-			<div class="max-w-3xl space-y-3 gsap-reveal">
+			<div class="max-w-3xl space-y-3" use:reveal={{ delay: 0, y: 18 }}>
 				<p
 					class="text-xs font-medium uppercase tracking-tight text-[#2A6268]"
 					style="font-family: 'Lato', system-ui, -apple-system;"
@@ -33,19 +39,29 @@
 			</div>
 
 			<div class="pointer-events-none hidden justify-end lg:flex">
-				<SpotIllustration variant="community" class="-mt-16 w-80 rotate-2 opacity-95" />
+				<SpotIllustration
+					variant="community"
+					class="dci-float-slow -mt-16 w-80 opacity-95 [--float-rotate:2deg]"
+				/>
 			</div>
 		</div>
 
 		<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4" id="involved-grid">
 			<!-- Cards... -->
 			<div
-				class="involved-card bg-white p-6 rounded-xl border border-slate-200 hover:border-[#2A6268] transition-all cursor-pointer h-full flex flex-col"
+				use:reveal={{ delay: 0, y: 18 }}
+				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-slate-200 hover:border-[#2A6268] transition-all cursor-pointer h-full flex flex-col overflow-hidden"
 			>
+				<img
+					src="/photos/section7-venue.jpg"
+					alt="A wellness hub hosting a DCI clinic"
+					loading="lazy"
+					class="-mx-6 -mt-6 mb-4 block h-28 w-[calc(100%+3rem)] max-w-none object-cover"
+				/>
 				<div
 					class="h-12 w-12 rounded-lg bg-[#EFE5D0] flex items-center justify-center text-[#2A6268] mb-4"
 				>
-					<Building2 class="size-6" strokeWidth={1.8} />
+					<Building2 class="size-6" weight="duotone" />
 				</div>
 				<h3 class="font-bold text-slate-900 mb-2">Venue Partner</h3>
 				<p class="text-sm text-slate-600 mb-4 flex-grow">
@@ -55,12 +71,19 @@
 			</div>
 
 			<div
-				class="involved-card bg-white p-6 rounded-xl border border-slate-200 hover:border-[#6F231E] transition-all cursor-pointer h-full flex flex-col"
+				use:reveal={{ delay: 70, y: 18 }}
+				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-slate-200 hover:border-[#6F231E] transition-all cursor-pointer h-full flex flex-col overflow-hidden"
 			>
+				<img
+					src="/photos/champion-training-hero.jpg"
+					alt="DCI Angels supporting a clinic"
+					loading="lazy"
+					class="-mx-6 -mt-6 mb-4 block h-28 w-[calc(100%+3rem)] max-w-none object-cover"
+				/>
 				<div
 					class="h-12 w-12 rounded-lg bg-[#EFE5D0] flex items-center justify-center text-[#6F231E] mb-4"
 				>
-					<Sparkles class="size-6" strokeWidth={1.8} />
+					<Sparkles class="size-6" weight="duotone" />
 				</div>
 				<h3 class="font-bold text-slate-900 mb-2">DCI Angel</h3>
 				<p class="text-sm text-slate-600 mb-4 flex-grow">
@@ -70,12 +93,19 @@
 			</div>
 
 			<div
-				class="involved-card bg-white p-6 rounded-xl border border-slate-200 hover:border-[#2A6268] transition-all cursor-pointer h-full flex flex-col"
+				use:reveal={{ delay: 140, y: 18 }}
+				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-slate-200 hover:border-[#2A6268] transition-all cursor-pointer h-full flex flex-col overflow-hidden"
 			>
+				<img
+					src="/photos/section7-clinics.jpg"
+					alt="A Conversation Clinic in session"
+					loading="lazy"
+					class="-mx-6 -mt-6 mb-4 block h-28 w-[calc(100%+3rem)] max-w-none object-cover"
+				/>
 				<div
 					class="h-12 w-12 rounded-lg bg-[#EFE5D0] flex items-center justify-center text-[#2A6268] mb-4"
 				>
-					<Stethoscope class="size-6" strokeWidth={1.8} />
+					<Stethoscope class="size-6" weight="duotone" />
 				</div>
 				<h3 class="font-bold text-slate-900 mb-2">Provider Network</h3>
 				<p class="text-sm text-slate-600 mb-4 flex-grow">
@@ -85,12 +115,13 @@
 			</div>
 
 			<div
-				class="involved-card bg-[#2A6268] p-6 rounded-xl border border-[#2A6268] hover:bg-[#234f53] transition-all cursor-pointer h-full flex flex-col"
+				use:reveal={{ delay: 210, y: 18 }}
+				class="involved-card dci-soft-hover bg-[#2A6268] p-6 rounded-xl border border-[#2A6268] hover:bg-[#234f53] transition-all cursor-pointer h-full flex flex-col"
 			>
 				<div
 					class="h-12 w-12 rounded-lg bg-[#ffffff]/20 flex items-center justify-center text-white mb-4"
 				>
-					<Heart class="size-6" strokeWidth={1.8} />
+					<Heart class="size-6" weight="duotone" />
 				</div>
 				<h3 class="font-bold text-white mb-2">Sponsor</h3>
 				<p class="text-sm text-[#EFE5D0]/80 mb-4 flex-grow">

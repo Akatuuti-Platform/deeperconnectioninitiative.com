@@ -1,8 +1,17 @@
 <script lang="ts">
 	import { Button } from '@/lib/components/ui/button';
 	import GetInvolved from '@/lib/components/pages/sections/get-involved.svelte';
+	import SpotIllustration from '@/lib/components/spot-illustration.svelte';
+	import { reveal } from '@/lib/actions/reveal';
 	import { siteConfig } from '@/lib/config/site';
-	import { ArrowUpRight, Clock3, Mail, MapPin, MessageCircle, Phone } from '@lucide/svelte';
+	import {
+		ArrowUpRightIcon as ArrowUpRight,
+		ClockIcon as Clock3,
+		EnvelopeIcon as Mail,
+		MapPinIcon as MapPin,
+		ChatCircleTextIcon as MessageCircle,
+		PhoneIcon as Phone
+	} from 'phosphor-svelte';
 
 	const supportPaths = [
 		'Toolkit purchase or sponsorship',
@@ -20,6 +29,7 @@
 	<div class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
 		<div class="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
 			<aside
+				use:reveal={{ delay: 0, y: 18 }}
 				class="relative overflow-hidden rounded-[2rem] bg-[#1A3C40] p-8 text-[#F6ECD9] lg:sticky lg:top-28 lg:p-10"
 			>
 				<div
@@ -49,12 +59,12 @@
 					<div class="grid gap-3">
 						<a
 							href={`mailto:${siteConfig.contacts.email}`}
-							class="group grid grid-cols-[2.75rem_1fr] gap-3 rounded-2xl border border-[#F6ECD9]/12 bg-[#F6ECD9]/6 p-4 transition hover:bg-[#F6ECD9]/10"
+							class="group dci-soft-hover grid grid-cols-[2.75rem_1fr] gap-3 rounded-2xl border border-[#F6ECD9]/12 bg-[#F6ECD9]/6 p-4 transition hover:bg-[#F6ECD9]/10"
 						>
 							<span
 								class="flex size-11 items-center justify-center rounded-xl bg-[#F6ECD9]/12 text-[#F6ECD9]"
 							>
-								<Mail class="size-5" strokeWidth={1.8} />
+								<Mail class="size-5" weight="duotone" />
 							</span>
 							<span>
 								<span class="block text-sm font-semibold text-white">Email</span>
@@ -62,7 +72,7 @@
 									{siteConfig.contacts.email}
 									<ArrowUpRight
 										class="size-3.5 opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
-										strokeWidth={1.8}
+										weight="regular"
 									/>
 								</span>
 							</span>
@@ -70,12 +80,12 @@
 
 						<a
 							href={`tel:${siteConfig.contacts.tele}`}
-							class="group grid grid-cols-[2.75rem_1fr] gap-3 rounded-2xl border border-[#F6ECD9]/12 bg-[#F6ECD9]/6 p-4 transition hover:bg-[#F6ECD9]/10"
+							class="group dci-soft-hover grid grid-cols-[2.75rem_1fr] gap-3 rounded-2xl border border-[#F6ECD9]/12 bg-[#F6ECD9]/6 p-4 transition hover:bg-[#F6ECD9]/10"
 						>
 							<span
 								class="flex size-11 items-center justify-center rounded-xl bg-[#F6ECD9]/12 text-[#F6ECD9]"
 							>
-								<Phone class="size-5" strokeWidth={1.8} />
+								<Phone class="size-5" weight="duotone" />
 							</span>
 							<span>
 								<span class="block text-sm font-semibold text-white">Phone</span>
@@ -89,7 +99,7 @@
 							<span
 								class="flex size-11 items-center justify-center rounded-xl bg-[#F6ECD9]/12 text-[#F6ECD9]"
 							>
-								<MapPin class="size-5" strokeWidth={1.8} />
+								<MapPin class="size-5" weight="duotone" />
 							</span>
 							<span>
 								<span class="block text-sm font-semibold text-white">Office</span>
@@ -102,14 +112,14 @@
 
 					<div class="grid gap-3 border-t border-[#F6ECD9]/15 pt-6 sm:grid-cols-2">
 						<div>
-							<Clock3 class="mb-3 size-5 text-[#F6ECD9]/70" strokeWidth={1.8} />
+							<Clock3 class="mb-3 size-5 text-[#F6ECD9]/70" weight="regular" />
 							<p class="text-sm font-semibold text-white">Office hours</p>
 							<p class="mt-1 text-sm leading-relaxed text-[#F6ECD9]/65">
 								Monday-Friday, 9:00 AM-5:00 PM
 							</p>
 						</div>
 						<div>
-							<MessageCircle class="mb-3 size-5 text-[#F6ECD9]/70" strokeWidth={1.8} />
+							<MessageCircle class="mb-3 size-5 text-[#F6ECD9]/70" weight="regular" />
 							<p class="text-sm font-semibold text-white">Response window</p>
 							<p class="mt-1 text-sm leading-relaxed text-[#F6ECD9]/65">
 								Usually within 1-2 working days.
@@ -120,9 +130,14 @@
 			</aside>
 
 			<div
-				class="rounded-[2rem] border border-[#2A6268]/10 bg-[#ffffeb] p-5 shadow-[0_24px_80px_-60px_rgba(0,0,0,0.7)] sm:p-8 lg:p-10"
+				use:reveal={{ delay: 120, y: 18 }}
+				class="relative overflow-hidden rounded-[2rem] border border-[#2A6268]/12 bg-[#F6ECD9] p-5 shadow-[0_24px_80px_-60px_rgba(0,0,0,0.7)] sm:p-8 lg:p-10"
 			>
-				<div class="mb-8 max-w-2xl space-y-3">
+				<SpotIllustration
+					variant="care"
+					class="pointer-events-none absolute -right-20 bottom-20 hidden w-80 rotate-3 opacity-16 lg:block"
+				/>
+				<div class="relative z-10 mb-8 max-w-2xl space-y-3">
 					<p class="text-xs font-semibold uppercase tracking-wide text-[#2A6268]">Send a message</p>
 					<h2
 						class="text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl"
@@ -135,7 +150,7 @@
 					</p>
 				</div>
 
-				<form class="space-y-6">
+				<form class="relative z-10 space-y-6">
 					<input
 						autocomplete="off"
 						name="hidden"
@@ -156,7 +171,7 @@
 								autocomplete="name"
 								required
 								placeholder="Full name"
-								class="h-12 w-full rounded-2xl border border-[#2A6268]/15 bg-white/70 px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2A6268]/50 focus:bg-white focus:ring-4 focus:ring-[#2A6268]/10"
+								class="h-12 w-full rounded-2xl border border-[#2A6268]/15 bg-[#FFF9EA] px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2A6268]/50 focus:bg-white focus:ring-4 focus:ring-[#2A6268]/10"
 							/>
 						</div>
 
@@ -169,7 +184,7 @@
 								autocomplete="email"
 								required
 								placeholder="you@example.com"
-								class="h-12 w-full rounded-2xl border border-[#2A6268]/15 bg-white/70 px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2A6268]/50 focus:bg-white focus:ring-4 focus:ring-[#2A6268]/10"
+								class="h-12 w-full rounded-2xl border border-[#2A6268]/15 bg-[#FFF9EA] px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2A6268]/50 focus:bg-white focus:ring-4 focus:ring-[#2A6268]/10"
 							/>
 						</div>
 					</div>
@@ -183,7 +198,7 @@
 								type="tel"
 								autocomplete="tel"
 								placeholder="+256..."
-								class="h-12 w-full rounded-2xl border border-[#2A6268]/15 bg-white/70 px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2A6268]/50 focus:bg-white focus:ring-4 focus:ring-[#2A6268]/10"
+								class="h-12 w-full rounded-2xl border border-[#2A6268]/15 bg-[#FFF9EA] px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2A6268]/50 focus:bg-white focus:ring-4 focus:ring-[#2A6268]/10"
 							/>
 						</div>
 
@@ -194,7 +209,7 @@
 							<select
 								id="topic"
 								name="topic"
-								class="h-12 w-full rounded-2xl border border-[#2A6268]/15 bg-white/70 px-4 text-base text-slate-950 outline-none transition focus:border-[#2A6268]/50 focus:bg-white focus:ring-4 focus:ring-[#2A6268]/10"
+								class="h-12 w-full rounded-2xl border border-[#2A6268]/15 bg-[#FFF9EA] px-4 text-base text-slate-950 outline-none transition focus:border-[#2A6268]/50 focus:bg-white focus:ring-4 focus:ring-[#2A6268]/10"
 							>
 								{#each supportPaths as path}
 									<option>{path}</option>
@@ -211,7 +226,7 @@
 							rows="7"
 							required
 							placeholder="Tell us what you are hoping to do, who the support is for, and the best way to reach you."
-							class="w-full resize-y rounded-2xl border border-[#2A6268]/15 bg-white/70 px-4 py-4 text-base leading-relaxed text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2A6268]/50 focus:bg-white focus:ring-4 focus:ring-[#2A6268]/10"
+							class="w-full resize-y rounded-2xl border border-[#2A6268]/15 bg-[#FFF9EA] px-4 py-4 text-base leading-relaxed text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2A6268]/50 focus:bg-white focus:ring-4 focus:ring-[#2A6268]/10"
 						></textarea>
 					</div>
 

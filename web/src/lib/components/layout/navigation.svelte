@@ -3,19 +3,20 @@
 	import * as Sheet from '$lib/components/ui/sheet';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils';
+	import { page } from '$app/state';
 	import {
-		ArrowUpRight,
-		BookOpen,
-		Building2,
-		CalendarDays,
-		ChevronDown,
-		HeartHandshake,
-		Menu,
-		MessageCircle,
-		Sparkles,
-		Users,
-		X
-	} from '@lucide/svelte';
+		ArrowUpRightIcon as ArrowUpRight,
+		BookOpenTextIcon as BookOpen,
+		BuildingsIcon as Building2,
+		CalendarDotsIcon as CalendarDays,
+		CaretDownIcon as ChevronDown,
+		ChartLineUpIcon as ChartLineUp,
+		HandshakeIcon as HeartHandshake,
+		ListIcon as Menu,
+		ChatCircleTextIcon as MessageCircle,
+		SparkleIcon as Sparkles,
+		UsersThreeIcon as Users
+	} from 'phosphor-svelte';
 	import NoiseOverlay from './overlays/noise-overlay.svelte';
 
 	const navItems = [
@@ -53,20 +54,26 @@
 		},
 		{
 			label: 'Toolkit',
-			href: '/#toolkit',
+			href: '/toolkit',
 			description: 'Physical tools for reflection, conversation, and emotional awareness.',
 			children: [
 				{
-					label: 'Conversation cards',
-					href: '/#toolkit',
-					description: 'Prompts that help people speak without pressure.',
+					label: 'Open the kit',
+					href: '/toolkit',
+					description: 'Explore how cards, journals, and mood tracking work.',
 					icon: Sparkles
 				},
 				{
-					label: 'Reflection journal',
-					href: '/#toolkit',
-					description: 'Guided pages for processing and self-awareness.',
+					label: 'Toolkit products',
+					href: '/#toolkit-products',
+					description: 'Compare the card game, journal, mood tracker, and full kit.',
 					icon: BookOpen
+				},
+				{
+					label: 'Connection Miles',
+					href: '/connection-miles',
+					description: 'Track sponsored toolkits, field activity, and the miles rubric.',
+					icon: ChartLineUp
 				},
 				{
 					label: 'Sponsor a kit',
@@ -86,6 +93,47 @@
 	let activeItem = $derived(
 		navItems.find((item) => item.label === activeDesktopMenu && item.children)
 	);
+	let currentPath = $derived(page.url.pathname);
+	let currentHash = $derived(page.url.hash);
+
+	function normalizePath(href: string) {
+		if (href.startsWith('/#')) return '/';
+		if (href.startsWith('#')) return '/';
+		return href.split('#')[0] || '/';
+	}
+
+	function isHrefActive(href: string) {
+		if (href.startsWith('#')) {
+			return currentPath === '/' && currentHash === href;
+		}
+
+		if (href.startsWith('/#')) {
+			return currentPath === '/' && (!currentHash || currentHash === href.slice(1));
+		}
+
+		return currentPath === normalizePath(href);
+	}
+
+	function isNavItemActive(item: (typeof navItems)[number]) {
+		return (
+			isHrefActive(item.href) || (item.children?.some((child) => isHrefActive(child.href)) ?? false)
+		);
+	}
+
+	function activeDesktopClass(isActive: boolean) {
+		return cn(
+			'h-10 rounded-full bg-transparent px-4 text-[0.92rem] font-medium text-foreground/80 hover:bg-[#2A6268]/7 hover:text-[#1A3C40] focus:bg-[#2A6268]/7',
+			isActive &&
+				'bg-[#6F231E]/10 text-[#6F231E] ring-1 ring-[#6F231E]/15 hover:bg-[#6F231E]/12 hover:text-[#6F231E]'
+		);
+	}
+
+	function activeMobileClass(isActive: boolean) {
+		return cn(
+			'flex items-center justify-between rounded-2xl border border-[#2A6268]/10 bg-white/45 px-4 py-4 text-lg font-semibold text-[#1A3C40] hover:bg-[#EFE5D0]/70',
+			isActive && 'border-[#6F231E]/20 bg-[#6F231E]/8 text-[#6F231E]'
+		);
+	}
 
 	function closeMobileMenu() {
 		isOpen = false;
@@ -117,12 +165,12 @@
 	class="fixed top-3 right-0 left-0 z-50 mx-auto w-[calc(100%-1rem)] max-w-7xl px-2 sm:top-4 sm:w-[calc(100%-2rem)]"
 >
 	<div
-		class="relative overflow-visible rounded-2xl border border-[#2A6268]/10 bg-[#ffffeb]/90 px-3 py-2 shadow-[0_18px_55px_-42px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:px-4"
+		class="relative overflow-visible rounded-2xl border border-[#2A6268]/12 bg-[#F6ECD9]/92 px-3 py-2 shadow-[0_18px_55px_-42px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:px-4"
 	>
 		<NoiseOverlay />
 		<div class="relative flex h-14 items-center justify-between gap-4">
 			<div class="flex min-w-0 items-center">
-				<Logo isLink class="w-36 sm:w-40" />
+				<Logo isLink />
 			</div>
 
 			<div
@@ -134,13 +182,20 @@
 				<nav aria-label="Main navigation">
 					<ul class="flex list-none items-center justify-center gap-1">
 						{#each navItems as item}
+							{@const isActive = isNavItemActive(item)}
 							<li class="relative">
 								{#if item.children}
 									<button
 										type="button"
-										class="h-10 rounded-full bg-transparent px-4 text-[0.92rem] text-foreground/80 hover:bg-[#2A6268]/7 hover:text-[#1A3C40] data-[state=open]:bg-[#2A6268]/8 data-[state=open]:text-[#1A3C40]"
+										class={cn(
+											activeDesktopClass(isActive),
+											'data-[state=open]:bg-[#2A6268]/8 data-[state=open]:text-[#1A3C40]',
+											isActive &&
+												'data-[state=open]:bg-[#6F231E]/10 data-[state=open]:text-[#6F231E]'
+										)}
 										data-state={activeDesktopMenu === item.label ? 'open' : 'closed'}
 										aria-expanded={activeDesktopMenu === item.label}
+										aria-current={isActive ? 'page' : undefined}
 										aria-controls="desktop-navigation-viewport"
 										onmouseenter={() => openDesktopMenu(item.label)}
 										onfocus={() => openDesktopMenu(item.label)}
@@ -155,13 +210,14 @@
 												'ml-1 inline size-3.5 transition-transform duration-300',
 												activeDesktopMenu === item.label && 'rotate-180'
 											)}
-											strokeWidth={1.8}
+											weight="regular"
 										/>
 									</button>
 								{:else}
 									<a
 										href={item.href}
-										class="h-10 rounded-full bg-transparent px-4 py-2 text-[0.92rem] font-medium text-foreground/80 hover:bg-[#2A6268]/7 hover:text-[#1A3C40] focus:bg-[#2A6268]/7"
+										class={cn(activeDesktopClass(isActive), 'inline-flex items-center py-2')}
+										aria-current={isActive ? 'page' : undefined}
 									>
 										{item.label}
 									</a>
@@ -176,12 +232,12 @@
 						id="desktop-navigation-viewport"
 						role="region"
 						aria-label={`${activeItem.label} navigation`}
-						class="absolute top-[calc(100%+0.85rem)] left-1/2 z-50 w-[680px] -translate-x-1/2 overflow-hidden rounded-[1.35rem] border border-[#2A6268]/10 bg-[#ffffeb] p-4 text-popover-foreground shadow-[0_30px_90px_-50px_rgba(0,0,0,0.75)] duration-200 animate-in fade-in-0 zoom-in-95"
+						class="absolute top-[calc(100%+0.85rem)] left-1/2 z-50 w-[680px] -translate-x-1/2 overflow-hidden rounded-[1.35rem] border border-[#2A6268]/10 bg-[#F6ECD9] p-4 text-popover-foreground shadow-[0_30px_90px_-50px_rgba(0,0,0,0.75)] duration-200 animate-in fade-in-0 zoom-in-95"
 						onmouseenter={() => openDesktopMenu(activeItem.label)}
 						onmouseleave={scheduleDesktopClose}
 					>
 						<div
-							class="absolute -top-1 left-1/2 size-3 -translate-x-1/2 rotate-45 rounded-[2px] border-t border-l border-[#2A6268]/10 bg-[#ffffeb]"
+							class="absolute -top-1 left-1/2 size-3 -translate-x-1/2 rotate-45 rounded-[2px] border-t border-l border-[#2A6268]/10 bg-[#F6ECD9]"
 						></div>
 						<div class="grid grid-cols-[0.78fr_1fr] gap-4">
 							<a
@@ -201,7 +257,7 @@
 									View overview
 									<ArrowUpRight
 										class="size-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-										strokeWidth={1.8}
+										weight="regular"
 									/>
 								</span>
 							</a>
@@ -217,14 +273,14 @@
 										<span
 											class="flex size-10 items-center justify-center rounded-lg bg-[#EFE5D0] text-[#2A6268] transition group-hover:bg-[#2A6268] group-hover:text-[#F6ECD9]"
 										>
-											<Icon class="size-5" strokeWidth={1.8} />
+											<Icon class="size-5" weight="duotone" />
 										</span>
 										<span>
 											<span class="flex items-center gap-2 text-sm font-semibold text-slate-950">
 												{child.label}
 												<ArrowUpRight
 													class="size-3.5 opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
-													strokeWidth={1.8}
+													weight="regular"
 												/>
 											</span>
 											<span class="mt-1 block text-sm leading-snug text-slate-600">
@@ -244,7 +300,7 @@
 					href="#get-involved"
 					class={cn(
 						buttonVariants({ variant: 'outline' }),
-						'rounded-full border-[#2A6268]/20 bg-[#ffffeb]/70 px-5 text-[#1A3C40] hover:bg-[#2A6268]/7 hover:text-[#1A3C40]'
+						'rounded-full border-[#2A6268]/20 bg-[#FFF9EA]/70 px-5 text-[#1A3C40] hover:bg-[#2A6268]/7 hover:text-[#1A3C40]'
 					)}
 				>
 					Join the movement
@@ -261,19 +317,19 @@
 							size="icon-lg"
 							class="shrink-0 rounded-full text-[#1A3C40] hover:bg-[#2A6268]/8 lg:hidden"
 						>
-							<Menu class="size-5" strokeWidth={1.8} />
+							<Menu class="size-5" weight="regular" />
 							<span class="sr-only">Open menu</span>
 						</Button>
 					{/snippet}
 				</Sheet.Trigger>
 				<Sheet.Content
 					side="right"
-					class="w-full max-w-none overflow-y-auto border-l-0 bg-[#ffffeb] p-0 sm:max-w-md"
+					class="w-full max-w-none overflow-y-auto border-l-0 bg-[#F6ECD9] p-0 sm:max-w-md"
 				>
 					<div class="flex min-h-dvh flex-col">
 						<Sheet.Header class="border-b border-[#2A6268]/10 p-5">
 							<div class="flex items-center justify-between gap-4 pr-10">
-								<Logo isLink class="w-36" />
+								<Logo isLink />
 								<Sheet.Title class="text-sm font-semibold text-[#1A3C40]">Navigation</Sheet.Title>
 							</div>
 							<Sheet.Description class="sr-only">Main navigation menu</Sheet.Description>
@@ -282,12 +338,22 @@
 						<nav class="flex-1 px-5 py-6" aria-label="Mobile navigation">
 							<div class="space-y-2">
 								{#each navItems as item}
+									{@const isActive = isNavItemActive(item)}
 									{#if item.children}
-										<div class="rounded-2xl border border-[#2A6268]/10 bg-white/45">
+										<div
+											class={cn(
+												'rounded-2xl border border-[#2A6268]/10 bg-white/45',
+												isActive && 'border-[#6F231E]/20 bg-[#6F231E]/8'
+											)}
+										>
 											<button
 												type="button"
-												class="flex w-full items-center justify-between gap-4 px-4 py-4 text-left text-lg font-semibold text-[#1A3C40]"
+												class={cn(
+													'flex w-full items-center justify-between gap-4 px-4 py-4 text-left text-lg font-semibold text-[#1A3C40]',
+													isActive && 'text-[#6F231E]'
+												)}
 												aria-expanded={openMobileSection === item.label}
+												aria-current={isActive ? 'page' : undefined}
 												onclick={() => toggleMobileSection(item.label)}
 											>
 												<span>{item.label}</span>
@@ -296,14 +362,18 @@
 														'size-5 transition-transform duration-300',
 														openMobileSection === item.label && 'rotate-180'
 													)}
-													strokeWidth={1.8}
+													weight="regular"
 												/>
 											</button>
 											{#if openMobileSection === item.label}
 												<div class="grid gap-1 border-t border-[#2A6268]/10 p-2">
 													<a
 														href={item.href}
-														class="rounded-xl px-3 py-3 text-sm font-semibold text-[#6F231E] hover:bg-[#EFE5D0]/70"
+														class={cn(
+															'rounded-xl px-3 py-3 text-sm font-semibold text-[#6F231E] hover:bg-[#EFE5D0]/70',
+															isHrefActive(item.href) && 'bg-[#6F231E]/10'
+														)}
+														aria-current={isHrefActive(item.href) ? 'page' : undefined}
 														onclick={closeMobileMenu}
 													>
 														View {item.label}
@@ -312,16 +382,25 @@
 														{@const Icon = child.icon}
 														<a
 															href={child.href}
-															class="grid grid-cols-[2.5rem_1fr] gap-3 rounded-xl px-3 py-3 hover:bg-[#EFE5D0]/70"
+															class={cn(
+																'grid grid-cols-[2.5rem_1fr] gap-3 rounded-xl px-3 py-3 hover:bg-[#EFE5D0]/70',
+																isHrefActive(child.href) && 'bg-[#6F231E]/10'
+															)}
+															aria-current={isHrefActive(child.href) ? 'page' : undefined}
 															onclick={closeMobileMenu}
 														>
 															<span
 																class="flex size-10 items-center justify-center rounded-lg bg-[#EFE5D0] text-[#2A6268]"
 															>
-																<Icon class="size-5" strokeWidth={1.8} />
+																<Icon class="size-5" weight="duotone" />
 															</span>
 															<span>
-																<span class="block text-sm font-semibold text-slate-950">
+																<span
+																	class={cn(
+																		'block text-sm font-semibold text-slate-950',
+																		isHrefActive(child.href) && 'text-[#6F231E]'
+																	)}
+																>
 																	{child.label}
 																</span>
 																<span class="mt-1 block text-sm leading-snug text-slate-600">
@@ -336,11 +415,12 @@
 									{:else}
 										<a
 											href={item.href}
-											class="flex items-center justify-between rounded-2xl border border-[#2A6268]/10 bg-white/45 px-4 py-4 text-lg font-semibold text-[#1A3C40] hover:bg-[#EFE5D0]/70"
+											class={activeMobileClass(isActive)}
+											aria-current={isActive ? 'page' : undefined}
 											onclick={closeMobileMenu}
 										>
 											{item.label}
-											<ArrowUpRight class="size-4" strokeWidth={1.8} />
+											<ArrowUpRight class="size-4" weight="regular" />
 										</a>
 									{/if}
 								{/each}

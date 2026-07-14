@@ -2,7 +2,6 @@
 import { cn } from "@/lib/utils";
 import Button, { buttonVariants } from "../ui/button/button.svelte";
 import Logo from "./logo.svelte";
-	import { Github, X } from "@lucide/svelte";
 	import { siteConfig } from "@/lib/config/site";
 
 const primaryNav = [
@@ -26,7 +25,7 @@ const complianceLinks = [
 			<div class="grid grid-cols-1 gap-12 lg:grid-cols-3">
 				<div>
 					<a href="/" class="flex items-center gap-3 text-base-900">
-						<Logo class=" shrink-0" />
+						<Logo />
 					</a>
 				</div>
 				<div class="lg:col-span-2 grid grid-cols-1 gap-12 lg:grid-cols-2">

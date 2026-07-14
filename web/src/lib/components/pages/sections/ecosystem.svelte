@@ -1,18 +1,19 @@
 <script>
 	import {
-		Leaf,
-		Library,
-		MessageCircle,
-		Users,
-		Building2,
-		Sparkles,
-		HeartHandshake,
-		Globe,
-		Heart
-	} from '@lucide/svelte';
+		LeafIcon as Leaf,
+		BooksIcon as Library,
+		ChatCircleTextIcon as MessageCircle,
+		UsersThreeIcon as Users,
+		BuildingsIcon as Building2,
+		SparkleIcon as Sparkles,
+		HandshakeIcon as HeartHandshake,
+		GlobeHemisphereWestIcon as Globe,
+		HeartIcon as Heart
+	} from 'phosphor-svelte';
 	import { paymentLinks } from '$lib/payment-links';
 	import Button, { buttonVariants } from '../../ui/button/button.svelte';
 	import { cn } from '@/lib/utils';
+	import { reveal } from '@/lib/actions/reveal';
 
 	const ecosystemData = [
 		{
@@ -94,7 +95,7 @@
 	<div class="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] lg:divide-x-2 lg:divide-accent/10">
 		<div class="p-8 lg:px-20">
 			<div class="py-16 lg:sticky top-20">
-				<div class=" max-w-3xl mx-auto mb-16 gsap-reveal">
+				<div class="max-w-3xl mx-auto mb-16" use:reveal={{ delay: 0, y: 18 }}>
 					<div
 						class="inline-flex items-center gap-2 rounded-full border border-[#2A6268]/20 mb-3 bg-[#2A6268]/5 px-3 py-1"
 					>
@@ -120,7 +121,7 @@
 							target="_blank"
 							class={cn(buttonVariants({ size: 'lg' }), 'w-fit ')}
 						>
-							<Heart class="lucide lucide-heart text-[#F6ECD9]  " />
+							<Heart class="text-[#F6ECD9]" weight="duotone" />
 
 							Sponsor a toolkit
 						</Button>
@@ -137,6 +138,7 @@
 		>
 			{#each ecosystemData as item, index}
 				<li
+					use:reveal={{ delay: index * 55, y: 18 }}
 					class="group relative p-8 bg-[#1A3C40]/95 backdrop-blur-sm hover:bg-[#204B50] transition-colors lg:p-12"
 				>
 					<span class="absolute top-6 right-6 text-xs font-bold text-[#EFE5D0]/20">
@@ -146,7 +148,7 @@
 						<div
 							class="mb-4 w-12 h-12 rounded-full bg-secondary/15 flex items-center justify-center transition group-hover:bg-secondary/25"
 						>
-							<svelte:component this={item.icon} class="w-6 h-6 text-secondary" />
+							<svelte:component this={item.icon} class="w-6 h-6 text-secondary" weight="duotone" />
 						</div>
 						<h3 class="text-lg font-bold mb-1 text-white">{item.title}</h3>
 
