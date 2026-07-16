@@ -39,9 +39,9 @@
 		<div class="mb-10 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
 			<div class="space-y-4" use:reveal={{ delay: 0, y: 18 }}>
 				<div
-					class="inline-flex items-center rounded-full border border-[#2A6268]/20 bg-[#2A6268]/5 px-3 py-1"
+					class="inline-flex items-center rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1"
 				>
-					<span class="text-xs font-semibold uppercase tracking-wide text-[#2A6268]">
+					<span class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
 						What this makes possible
 					</span>
 				</div>
@@ -61,7 +61,7 @@
 		<div class="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
 			<article
 				use:reveal={{ delay: 0, y: 22 }}
-				class="relative min-h-[34rem] overflow-hidden rounded-[2.5rem] bg-[#1A3C40] p-6 text-[#F6ECD9] shadow-[0_28px_85px_-64px_rgba(0,0,0,0.72)] sm:p-8 lg:p-10"
+				class="relative min-h-[34rem] overflow-hidden rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream shadow-dci-panel sm:p-8 lg:p-10"
 			>
 				<div
 					class="pointer-events-none absolute inset-0 opacity-10"
@@ -76,11 +76,11 @@
 				<div class="relative z-10 flex min-h-[30rem] max-w-xl flex-col justify-between">
 					<div>
 						<div
-							class="mb-8 flex size-12 items-center justify-center rounded-xl bg-[#F6ECD9]/10 text-[#F6ECD9]"
+							class="mb-8 flex size-12 items-center justify-center rounded-xl bg-dci-cream/10 text-dci-cream"
 						>
 							<UsersThreeIcon class="size-6" weight="duotone" />
 						</div>
-						<p class="text-xs font-semibold uppercase tracking-wide text-[#F6ECD9]/55">
+						<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
 							Field note
 						</p>
 						<h3 class="mt-4 max-w-lg text-4xl font-semibold leading-tight text-white sm:text-5xl">
@@ -88,22 +88,22 @@
 						</h3>
 					</div>
 
-					<div class="mt-10 grid gap-3 border-t border-[#F6ECD9]/15 pt-6 sm:grid-cols-3">
+					<div class="mt-10 grid gap-3 border-t border-dci-cream/15 pt-6 sm:grid-cols-3">
 						<div>
-							<p class="text-xs font-semibold uppercase tracking-wide text-[#F6ECD9]/45">Before</p>
-							<p class="mt-2 text-sm leading-relaxed text-[#F6ECD9]/72">
+							<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Before</p>
+							<p class="mt-2 text-sm leading-relaxed text-dci-cream/72">
 								People know something feels heavy.
 							</p>
 						</div>
 						<div>
-							<p class="text-xs font-semibold uppercase tracking-wide text-[#F6ECD9]/45">During</p>
-							<p class="mt-2 text-sm leading-relaxed text-[#F6ECD9]/72">
+							<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">During</p>
+							<p class="mt-2 text-sm leading-relaxed text-dci-cream/72">
 								A card, page, or trained guide gives the moment shape.
 							</p>
 						</div>
 						<div>
-							<p class="text-xs font-semibold uppercase tracking-wide text-[#F6ECD9]/45">After</p>
-							<p class="mt-2 text-sm leading-relaxed text-[#F6ECD9]/72">
+							<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">After</p>
+							<p class="mt-2 text-sm leading-relaxed text-dci-cream/72">
 								The next support step becomes easier to name.
 							</p>
 						</div>
@@ -116,16 +116,16 @@
 					{@const Icon = note.icon}
 					<article
 						use:reveal={{ delay: index * 90, y: 18 }}
-						class="dci-soft-hover rounded-[2rem] border border-[#2A6268]/12 bg-[#F6ECD9] p-6 shadow-[0_24px_70px_-62px_rgba(0,0,0,0.72)]"
+						class="dci-soft-hover rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
 					>
 						<div class="mb-5 flex items-center justify-between gap-4">
 							<div
-								class="flex size-11 items-center justify-center rounded-xl bg-[#FFF9EA]"
+								class="flex size-11 items-center justify-center rounded-xl bg-dci-paper"
 								style={`color:${note.accent}`}
 							>
 								<Icon class="size-5" weight="duotone" />
 							</div>
-							<p class="text-xs font-semibold uppercase tracking-wide text-[#2A6268]">{note.label}</p>
+							<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">{note.label}</p>
 						</div>
 						<h3 class="text-2xl font-semibold leading-tight text-slate-950">{note.title}</h3>
 						<p class="mt-3 text-sm leading-relaxed text-slate-700">{note.body}</p>
@@ -135,10 +135,10 @@
 				<a
 					href="/events"
 					use:reveal={{ delay: 280, y: 18 }}
-					class="group flex items-center justify-between gap-4 rounded-[2rem] border border-[#6F231E]/15 bg-[#FFF9EA]/75 p-6 text-[#1A3C40] transition hover:bg-[#F6ECD9]"
+					class="group flex items-center justify-between gap-4 rounded-[2rem] border border-dci-burgundy/15 bg-dci-paper/75 p-6 text-dci-teal-deep transition hover:bg-dci-cream"
 				>
 					<span>
-						<span class="block text-sm font-semibold uppercase tracking-wide text-[#6F231E]">
+						<span class="block text-sm font-semibold uppercase tracking-wide text-dci-burgundy">
 							See it in practice
 						</span>
 						<span class="mt-2 block text-2xl font-semibold leading-tight text-slate-950">

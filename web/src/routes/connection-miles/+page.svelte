@@ -2,6 +2,7 @@
 	import { reveal } from '$lib/actions/reveal';
 	import ToolkitDemo from '$lib/components/pages/sections/toolkit-demo.svelte';
 	import { Button } from '$lib/components/ui/button';
+	import { PageHero } from '$lib/components/sections';
 	import { paymentLinks } from '$lib/payment-links';
 	import {
 		ArrowUpRightIcon as ArrowUpRight,
@@ -30,12 +31,12 @@
 	];
 
 	const mapLocations = [
-		{ name: 'Kampala', toolkits: 58, miles: 1240, x: 46, y: 66, tone: 'bg-[#6F231E]' },
-		{ name: 'Wakiso', toolkits: 34, miles: 760, x: 39, y: 61, tone: 'bg-[#D49C70]' },
-		{ name: 'Jinja', toolkits: 21, miles: 410, x: 57, y: 59, tone: 'bg-[#2A6268]' },
-		{ name: 'Mbarara', toolkits: 18, miles: 360, x: 30, y: 78, tone: 'bg-[#6F231E]' },
-		{ name: 'Gulu', toolkits: 16, miles: 295, x: 42, y: 27, tone: 'bg-[#2A6268]' },
-		{ name: 'Mbale', toolkits: 14, miles: 270, x: 67, y: 43, tone: 'bg-[#D49C70]' }
+		{ name: 'Kampala', toolkits: 58, miles: 1240, x: 46, y: 66, tone: 'bg-dci-burgundy' },
+		{ name: 'Wakiso', toolkits: 34, miles: 760, x: 39, y: 61, tone: 'bg-dci-clay' },
+		{ name: 'Jinja', toolkits: 21, miles: 410, x: 57, y: 59, tone: 'bg-dci-teal' },
+		{ name: 'Mbarara', toolkits: 18, miles: 360, x: 30, y: 78, tone: 'bg-dci-burgundy' },
+		{ name: 'Gulu', toolkits: 16, miles: 295, x: 42, y: 27, tone: 'bg-dci-teal' },
+		{ name: 'Mbale', toolkits: 14, miles: 270, x: 67, y: 43, tone: 'bg-dci-clay' }
 	];
 
 	const rubric = [
@@ -96,79 +97,52 @@
 	];
 </script>
 
-<section class="relative isolate overflow-hidden pt-28">
-	<div
-		class="absolute inset-0 -z-10 bg-[linear-gradient(120deg,rgba(246,236,217,0.92),rgba(255,249,234,0.76)_45%,rgba(212,156,112,0.28))]"
-	></div>
-	<div
-		class="absolute top-28 right-0 -z-10 h-72 w-1/2 bg-[radial-gradient(circle_at_center,rgba(42,98,104,0.18),transparent_68%)]"
-	></div>
-
-	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-		<div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-			<div class="space-y-7" use:reveal={{ delay: 0, y: 18 }}>
-				<div
-					class="inline-flex items-center gap-2 rounded-full border border-[#2A6268]/20 bg-[#FFF9EA]/80 px-3 py-1 shadow-[0_18px_60px_-48px_rgba(0,0,0,0.8)]"
-				>
-					<SparkleIcon class="size-4 text-[#6F231E]" weight="duotone" />
-					<span class="text-xs font-semibold uppercase tracking-wide text-[#1A3C40]">
-						Toolkit field tracker
-					</span>
-				</div>
-				<div class="space-y-5">
-					<h1
-						class="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl"
-					>
-						Every toolkit can move connection further.
-					</h1>
-					<p class="max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg">
-						Track how sponsored DCI toolkits, Conversation Clinics, journal entries, and mood
-						check-ins are building measurable Connection Miles across the field.
+<PageHero
+	eyebrow="Toolkit field tracker"
+	eyebrowIcon={SparkleIcon}
+	title="Every toolkit can move connection further."
+	description="Track how sponsored DCI toolkits, Conversation Clinics, journal entries, and mood check-ins are building measurable Connection Miles across the field."
+>
+	{#snippet actions()}
+		<Button href={paymentLinks.toolkit} target="_blank" rel="noopener noreferrer" size="lg" class="rounded-full">
+			Buy a toolkit
+			<ArrowUpRight class="size-4" weight="regular" />
+		</Button>
+		<Button
+			href={paymentLinks.donation} target="_blank" rel="noopener noreferrer"
+			size="lg"
+			variant="outline"
+			class="rounded-full border-dci-teal/25 bg-transparent px-7 text-dci-teal-deep hover:bg-dci-teal/7"
+		>
+			Sponsor a field kit
+		</Button>
+	{/snippet}
+	{#snippet aside()}
+		<div
+			class="grid gap-3 rounded-[2rem] border border-dci-teal/12 bg-dci-teal-deep p-4 text-dci-cream shadow-dci-panel sm:grid-cols-3 sm:p-5"
+		>
+			{#each campaignStats as stat}
+				<div class="rounded-2xl border border-dci-cream/10 bg-dci-cream/8 p-5">
+					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
+						{stat.label}
 					</p>
+					<p class="mt-3 text-4xl font-semibold leading-none text-white">{stat.value}</p>
+					<p class="mt-3 text-sm leading-relaxed text-dci-cream/68">{stat.detail}</p>
 				</div>
-				<div class="flex flex-col gap-3 sm:flex-row">
-					<Button href={paymentLinks.toolkit} size="lg" class="rounded-full">
-						Buy a toolkit
-						<ArrowUpRight class="size-4" weight="regular" />
-					</Button>
-					<Button
-						href={paymentLinks.donation}
-						size="lg"
-						variant="outline"
-						class="rounded-full border-[#1A3C40]/20 bg-[#FFF9EA]/70 text-[#1A3C40] hover:bg-[#FFF9EA]"
-					>
-						Sponsor a field kit
-					</Button>
-				</div>
-			</div>
-
-			<div
-				use:reveal={{ delay: 120, y: 18 }}
-				class="grid gap-3 rounded-[2rem] border border-[#2A6268]/12 bg-[#1A3C40] p-4 text-[#F6ECD9] shadow-[0_30px_90px_-56px_rgba(0,0,0,0.78)] sm:grid-cols-3 sm:p-5"
-			>
-				{#each campaignStats as stat}
-					<div class="rounded-[1.35rem] border border-[#F6ECD9]/10 bg-[#F6ECD9]/8 p-5">
-						<p class="text-xs font-semibold uppercase tracking-wide text-[#F6ECD9]/55">
-							{stat.label}
-						</p>
-						<p class="mt-3 text-4xl font-semibold leading-none text-white">{stat.value}</p>
-						<p class="mt-3 text-sm leading-relaxed text-[#F6ECD9]/68">{stat.detail}</p>
-					</div>
-				{/each}
-			</div>
+			{/each}
 		</div>
-	</div>
-</section>
+	{/snippet}
+</PageHero>
 
 <section class="px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
 	<div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.06fr_0.94fr]">
 		<div
 			use:reveal={{ delay: 0, y: 18 }}
-			class="relative min-h-[560px] overflow-hidden rounded-[2rem] border border-[#2A6268]/12 bg-[#FFF9EA] p-5 shadow-[0_26px_80px_-62px_rgba(0,0,0,0.72)] sm:p-8"
+			class="relative min-h-[560px] overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-paper p-5 shadow-dci-lift sm:p-8"
 		>
 			<div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
 				<div>
-					<p class="text-xs font-semibold uppercase tracking-wide text-[#2A6268]">Connection map</p>
+					<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Connection map</p>
 					<h2
 						class="mt-3 max-w-xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl"
 					>
@@ -209,16 +183,16 @@
 						style={`left:${location.x}%; top:${location.y}%`}
 					>
 						<div
-							class={`relative size-5 rounded-full ${location.tone} ring-4 ring-[#FFF9EA] shadow-[0_12px_28px_-10px_rgba(26,60,64,0.8)]`}
+							class={`relative size-5 rounded-full ${location.tone} ring-4 ring-dci-paper shadow-[0_12px_28px_-10px_rgba(26,60,64,0.8)]`}
 						>
 							<div
 								class={`absolute inset-0 rounded-full ${location.tone} opacity-35 animate-ping`}
 							></div>
 						</div>
 						<div
-							class="pointer-events-none absolute bottom-[calc(100%+0.7rem)] left-1/2 w-44 -translate-x-1/2 rounded-2xl border border-[#2A6268]/10 bg-[#F6ECD9] p-3 text-left opacity-0 shadow-[0_18px_50px_-34px_rgba(0,0,0,0.8)] transition duration-200 group-hover:opacity-100"
+							class="pointer-events-none absolute bottom-[calc(100%+0.7rem)] left-1/2 w-44 -translate-x-1/2 rounded-2xl border border-dci-teal/10 bg-dci-cream p-3 text-left opacity-0 shadow-[0_18px_50px_-34px_rgba(0,0,0,0.8)] transition duration-200 group-hover:opacity-100"
 						>
-							<p class="text-sm font-semibold text-[#1A3C40]">{location.name}</p>
+							<p class="text-sm font-semibold text-dci-teal-deep">{location.name}</p>
 							<p class="mt-1 text-xs text-slate-600">{location.toolkits} toolkits funded</p>
 							<p class="text-xs text-slate-600">{location.miles} connection miles</p>
 						</div>
@@ -230,13 +204,13 @@
 		<div class="space-y-6">
 			<div
 				use:reveal={{ delay: 90, y: 18 }}
-				class="rounded-[2rem] bg-[#1A3C40] p-6 text-[#F6ECD9] shadow-[0_26px_80px_-62px_rgba(0,0,0,0.72)] sm:p-8"
+				class="rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift sm:p-8"
 			>
-				<p class="text-xs font-semibold uppercase tracking-wide text-[#F6ECD9]/55">The rubric</p>
+				<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">The rubric</p>
 				<h2 class="mt-3 text-4xl font-semibold leading-tight text-white">
 					How Connection Miles are counted.
 				</h2>
-				<p class="mt-4 text-sm leading-relaxed text-[#F6ECD9]/72">
+				<p class="mt-4 text-sm leading-relaxed text-dci-cream/72">
 					Using a toolkit and sponsoring a toolkit are intentionally separate actions. Participants
 					earn miles by engaging with the tools; sponsors earn miles by funding full kits into the
 					field.
@@ -248,11 +222,11 @@
 					{@const Icon = item.icon}
 					<article
 						use:reveal={{ delay: 150 + index * 70, y: 18 }}
-						class="rounded-[1.5rem] border border-[#2A6268]/12 bg-[#F6ECD9] p-5 shadow-[0_20px_70px_-60px_rgba(0,0,0,0.8)]"
+						class="rounded-2xl border border-dci-teal/12 bg-dci-cream p-5 shadow-[0_20px_70px_-60px_rgba(0,0,0,0.8)]"
 					>
 						<div class="flex gap-4">
 							<div
-								class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[#FFF9EA] text-[#6F231E]"
+								class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-dci-paper text-dci-burgundy"
 							>
 								<Icon class="size-6" weight="duotone" />
 							</div>
@@ -262,11 +236,11 @@
 								<div class="mt-4 grid gap-2">
 									{#each item.items as score}
 										<div
-											class="flex items-center justify-between gap-3 rounded-xl bg-[#FFF9EA]/72 px-3 py-2"
+											class="flex items-center justify-between gap-3 rounded-xl bg-dci-paper/72 px-3 py-2"
 										>
-											<span class="text-sm font-medium text-[#1A3C40]">{score.action}</span>
+											<span class="text-sm font-medium text-dci-teal-deep">{score.action}</span>
 											<span
-												class="shrink-0 rounded-full bg-[#2A6268]/10 px-3 py-1 text-xs font-bold text-[#2A6268]"
+												class="shrink-0 rounded-full bg-dci-teal/10 px-3 py-1 text-xs font-bold text-dci-teal"
 											>
 												{score.miles}
 											</span>
@@ -286,7 +260,7 @@
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-12 grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-end">
 			<div class="space-y-5" use:reveal={{ delay: 0, y: 18 }}>
-				<p class="text-xs font-semibold uppercase tracking-wide text-[#2A6268]">Open the kit</p>
+				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Open the kit</p>
 				<h2
 					class="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl"
 				>
@@ -300,9 +274,9 @@
 
 			<div
 				use:reveal={{ delay: 120, y: 18 }}
-				class="rounded-[2rem] bg-[#F6ECD9] p-6 shadow-[0_24px_80px_-62px_rgba(0,0,0,0.72)] sm:p-8"
+				class="rounded-[2rem] bg-dci-cream p-6 shadow-dci-lift sm:p-8"
 			>
-				<p class="text-xs font-semibold uppercase tracking-wide text-[#2A6268]">
+				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
 					Field-ready support
 				</p>
 				<p class="mt-4 text-2xl font-semibold leading-tight text-slate-950">
@@ -319,7 +293,7 @@
 <section id="toolkit-products" class="scroll-mt-28 px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-8 max-w-3xl space-y-3" use:reveal={{ delay: 0, y: 18 }}>
-			<p class="text-xs font-semibold uppercase tracking-wide text-[#2A6268]">Choose a tool</p>
+			<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Choose a tool</p>
 			<h2 class="text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
 				Buy one piece or support access to the full kit.
 			</h2>
@@ -330,11 +304,11 @@
 				{@const Icon = product.icon}
 				<article
 					use:reveal={{ delay: index * 80, y: 18 }}
-					class="dci-soft-hover flex min-h-72 flex-col justify-between rounded-[2rem] border border-[#2A6268]/12 bg-[#F6ECD9] p-6 shadow-[0_24px_70px_-60px_rgba(0,0,0,0.72)]"
+					class="dci-soft-hover flex min-h-72 flex-col justify-between rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
 				>
 					<div>
 						<div
-							class="mb-8 flex size-12 items-center justify-center rounded-xl bg-[#FFF9EA]"
+							class="mb-8 flex size-12 items-center justify-center rounded-xl bg-dci-paper"
 							style={`color:${product.accent}`}
 						>
 							<Icon class="size-6" weight="duotone" />
@@ -343,7 +317,7 @@
 						<p class="mt-3 text-sm leading-relaxed text-slate-700">{product.description}</p>
 					</div>
 					<div class="mt-8">
-						<p class="text-lg font-bold text-[#1A3C40]">{product.price}</p>
+						<p class="text-lg font-bold text-dci-teal-deep">{product.price}</p>
 						<Button href={product.href} class="mt-4 rounded-full">
 							Get this tool
 							<ArrowUpRight class="size-4" weight="regular" />
@@ -354,31 +328,31 @@
 
 			<article
 				use:reveal={{ delay: 260, y: 18 }}
-				class="flex min-h-72 flex-col justify-between rounded-[2rem] bg-[#1A3C40] p-6 text-[#F6ECD9] shadow-[0_24px_70px_-60px_rgba(0,0,0,0.72)]"
+				class="flex min-h-72 flex-col justify-between rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift"
 			>
 				<div>
-					<p class="text-xs font-semibold uppercase tracking-wide text-[#F6ECD9]/55">
+					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
 						Complete kit
 					</p>
 					<h3 class="mt-4 text-3xl font-semibold leading-tight text-white">All tools together.</h3>
-					<p class="mt-3 text-sm leading-relaxed text-[#F6ECD9]/72">
+					<p class="mt-3 text-sm leading-relaxed text-dci-cream/72">
 						Card Game, Reflection Journal, Mood Tracker, and QR access bundled for personal and
 						group support.
 					</p>
 				</div>
 				<div class="mt-8 flex flex-col gap-3">
 					<Button
-						href={paymentLinks.toolkit}
+						href={paymentLinks.toolkit} target="_blank" rel="noopener noreferrer"
 						size="lg"
-						class="rounded-full bg-[#F6ECD9] text-[#1A3C40] hover:bg-white"
+						class="rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
 					>
 						Buy complete kit
 					</Button>
 					<Button
-						href={paymentLinks.donation}
+						href={paymentLinks.donation} target="_blank" rel="noopener noreferrer"
 						size="lg"
 						variant="outline"
-						class="rounded-full border-[#F6ECD9]/30 bg-transparent text-[#F6ECD9] hover:bg-[#F6ECD9]/10"
+						class="rounded-full border-dci-cream/30 bg-transparent text-dci-cream hover:bg-dci-cream/10"
 					>
 						Sponsor a kit
 					</Button>

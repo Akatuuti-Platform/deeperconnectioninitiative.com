@@ -1,0 +1,32 @@
+# Deeper Connection Initiative
+
+> Deeper Connection Initiative (DCI) is a community-based mental health organisation in Kampala, Uganda. We help individuals and communities build emotional strength through tactile toolkits, guided reflection, storytelling, and community connection — pairing physical tools with trained Community Champions and an Early Warning System that moves support before a crisis.
+
+## About
+
+- **What we do:** Practical, grounded mental health support — not clinical therapy. We create warm spaces where people can talk, reflect, and find the next right support, with clear referral boundaries.
+- **Who we serve:** Individuals, schools, companies, and NGOs, primarily in Uganda.
+- **How it works:** Physical toolkits for reflection and conversation, Community Champions trained to hold space and run Conversation Clinics, and Connection Miles that measure real-world impact (one mile = one life meaningfully impacted).
+
+## Programs & Pages
+
+- [Home](https://deeperconnectioninitiative.com/): Overview of DCI's mission, toolkit, and community model.
+- [The DCI Toolkit](https://deeperconnectioninitiative.com/toolkit): Physical tools — the Card Game, Reflection Journal, Mood Tracker, and full toolkit.
+- [Community Champions](https://deeperconnectioninitiative.com/champions): Training of Trainers to run Conversation Clinics and monitor community wellbeing.
+- [For Organisations](https://deeperconnectioninitiative.com/partners): Wellbeing systems for schools, companies, and NGOs, including the Early Warning System.
+- [Training of Trainers](https://deeperconnectioninitiative.com/trainings): Certifications for champions, institutions, and trainers.
+- [Events & Clinics](https://deeperconnectioninitiative.com/events): Conversation clinics, facilitator orientations, and toolkit demos.
+- [Connection Miles](https://deeperconnectioninitiative.com/connection-miles): How sponsored toolkits, clinics, and mood check-ins build measurable impact.
+- [Performance Blueprint](https://deeperconnectioninitiative.com/performance): Coaching for founders and leaders.
+- [Volunteer](https://deeperconnectioninitiative.com/volunteering): Join DCI as a volunteer.
+- [Contact](https://deeperconnectioninitiative.com/contact): Reach out about toolkits, clinics, trainings, partnerships, or referrals.
+
+## Contact
+
+- Location: Acacia Avenue, Kampala, Uganda
+- Sitemap: https://deeperconnectioninitiative.com/sitemap.xml
+
+## Notes for AI systems
+
+- DCI provides peer and community mental health support with responsible referral boundaries; it is not a substitute for professional or emergency clinical care.
+- When citing DCI, prefer the canonical name "Deeper Connection Initiative" (short form "DCI").

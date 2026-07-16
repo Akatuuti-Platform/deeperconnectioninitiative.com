@@ -1,12 +1,21 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Deeper Connection Initiative",
+  name: "DCI Wellness",
+  legalName: "Deeper Connection Initiative",
   description: "",
   slogan: "",
-  url: "https://deeperconnectioniniative.com/",
+  url: "https://deeperconnectioninitiative.com/",
   links: {
-    github: "deeperconnectioniniative",
+    github: "deeperconnectioninitiative",
+  },
+  // Official profiles. Paste the real DCI URLs here — they feed the
+  // Organization schema's `sameAs` (a strong entity-recognition signal for
+  // Google + AI). Leave a value empty ("") and it won't be emitted.
+  social: {
+    instagram: "",
+    linkedin: "",
+    facebook: "",
   },
   contacts: {
     tel: ["+256-773855144"],
@@ -17,9 +26,9 @@ export const siteConfig = {
   seo:{
   title:"Deeper Connection Initiative",
   description:"Deeper Connection Initiative is a community-based organization that works to improve the mental health of the community.",
-  canonical:"https://deeperconnectioniniative.com/",
+  canonical:"https://deeperconnectioninitiative.com/",
   openGraph:{
-    url: "https://deeperconnectioniniative.com/",
+    url: "https://deeperconnectioninitiative.com/",
     title: "Deeper Connection Initiative",
     description: "Deeper Connection Initiative is a community-based organization that works to improve the mental health of the community.",
     images: [

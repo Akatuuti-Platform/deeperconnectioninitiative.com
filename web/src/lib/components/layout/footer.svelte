@@ -6,9 +6,13 @@ import Logo from "./logo.svelte";
 
 const primaryNav = [
   { label: "Home", href: "/" },
-  { label: "trainings", href: "/trainings" },
-   { label: "Volunteering", href: "/volunteering" },
+  { label: "Toolkit", href: "/toolkit" },
+  { label: "Champions", href: "/champions" },
+  { label: "Partners", href: "/partners" },
+  { label: "Trainings", href: "/trainings" },
+  { label: "Volunteering", href: "/volunteering" },
   { label: "Events", href: "/events" },
+  { label: "Performance", href: "/performance" },
   { label: "Contact", href: "/contact" },
 ];
 const footerNavigation = [{ title: "Navigation", links: primaryNav }];
@@ -49,13 +53,13 @@ const complianceLinks = [
 						<div class="space-y-1 mt-8">
 							<p class="text-base-600 text-sm">
 								General contact:
-								<a href="#_" class="underline underline-offset-4 hover:text-base-900">
+								<a href={`mailto:${siteConfig.contacts.email}`} class="underline underline-offset-4 hover:text-base-900">
 {siteConfig.contacts.email}
 								</a>
 							</p>
 							<p class="text-base-600 text-sm">
 								Phone:
-								<a href="#_" class="underline underline-offset-4 hover:text-base-900">
+								<a href={`tel:${siteConfig.contacts.tele}`} class="underline underline-offset-4 hover:text-base-900">
 {siteConfig.contacts.tele}
 								</a>
 							</p>

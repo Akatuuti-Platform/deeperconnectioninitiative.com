@@ -13,22 +13,18 @@
 
 {#snippet mark()}
 	<span class={cn('inline-flex items-center gap-2.5', className)}>
-		<img
-			src="/photos/dci-logo-mark.png"
-			alt="Deeper Connection Initiative"
-			class="h-10 w-auto shrink-0"
-		/>
+		<img src="/photos/dci-logo-mark.png" alt="DCI Wellness" class="h-9 w-auto shrink-0" />
 		<span class="flex flex-col leading-none">
-			<span class="text-sm font-bold uppercase tracking-tight text-[#1A3C40]">Deeper Connection</span>
-			<span class="text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[#6F231E]">
-				Initiative
+			<span class="text-lg font-bold uppercase tracking-tight text-dci-teal-deep">DCI</span>
+			<span class="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-dci-burgundy">
+				Wellness
 			</span>
 		</span>
 	</span>
 {/snippet}
 
 {#if isLink}
-	<a href="/" class="inline-flex" aria-label="Deeper Connection Initiative home">
+	<a href="/" class="inline-flex" aria-label="DCI Wellness home">
 		{@render mark()}
 	</a>
 {:else}

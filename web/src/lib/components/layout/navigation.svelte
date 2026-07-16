@@ -34,21 +34,27 @@
 				},
 				{
 					label: 'Partners',
-					href: '#partners',
+					href: '/partners',
 					description: 'Build mental wellness into trusted local spaces.',
 					icon: Building2
 				},
 				{
-					label: 'Community',
-					href: '#community',
-					description: 'Join circles, clinics, and local support actions.',
-					icon: MessageCircle
+					label: 'Champions',
+					href: '/champions',
+					description: 'Become the infrastructure in your community.',
+					icon: Users
 				},
 				{
 					label: 'Events',
 					href: '/events',
 					description: 'Workshops, clinics, and upcoming gatherings.',
 					icon: CalendarDays
+				},
+				{
+					label: 'Check-in',
+					href: '/platform',
+					description: 'The Early Warning System and your Connection Miles.',
+					icon: MessageCircle
 				}
 			]
 		},
@@ -83,6 +89,7 @@
 				}
 			]
 		},
+		{ label: 'Performance', href: '/performance' },
 		{ label: 'Contact Us', href: '/contact' }
 	];
 
@@ -122,16 +129,16 @@
 
 	function activeDesktopClass(isActive: boolean) {
 		return cn(
-			'h-10 rounded-full bg-transparent px-4 text-[0.92rem] font-medium text-foreground/80 hover:bg-[#2A6268]/7 hover:text-[#1A3C40] focus:bg-[#2A6268]/7',
+			'h-10 rounded-full bg-transparent px-4 text-[0.92rem] font-medium text-foreground/80 hover:bg-dci-teal/7 hover:text-dci-teal-deep focus:bg-dci-teal/7',
 			isActive &&
-				'bg-[#6F231E]/10 text-[#6F231E] ring-1 ring-[#6F231E]/15 hover:bg-[#6F231E]/12 hover:text-[#6F231E]'
+				'bg-dci-burgundy/10 text-dci-burgundy ring-1 ring-dci-burgundy/15 hover:bg-dci-burgundy/12 hover:text-dci-burgundy'
 		);
 	}
 
 	function activeMobileClass(isActive: boolean) {
 		return cn(
-			'flex items-center justify-between rounded-2xl border border-[#2A6268]/10 bg-white/45 px-4 py-4 text-lg font-semibold text-[#1A3C40] hover:bg-[#EFE5D0]/70',
-			isActive && 'border-[#6F231E]/20 bg-[#6F231E]/8 text-[#6F231E]'
+			'flex items-center justify-between rounded-2xl border border-dci-teal/10 bg-white/45 px-4 py-4 text-lg font-semibold text-dci-teal-deep hover:bg-dci-sand/70',
+			isActive && 'border-dci-burgundy/20 bg-dci-burgundy/8 text-dci-burgundy'
 		);
 	}
 
@@ -159,16 +166,28 @@
 		if (closeTimer) clearTimeout(closeTimer);
 		activeDesktopMenu = '';
 	}
+
+	// Keep the menu open while focus moves between the trigger and its submenu
+	// links (keyboard nav): focusout schedules a close, focusin cancels it.
+	function cancelDesktopClose() {
+		if (closeTimer) clearTimeout(closeTimer);
+	}
+
+	function handleDesktopKeydown(event: KeyboardEvent) {
+		if (event.key === 'Escape' && activeDesktopMenu) {
+			closeDesktopMenu();
+		}
+	}
 </script>
 
 <header
 	class="fixed top-3 right-0 left-0 z-50 mx-auto w-[calc(100%-1rem)] max-w-7xl px-2 sm:top-4 sm:w-[calc(100%-2rem)]"
 >
 	<div
-		class="relative overflow-visible rounded-2xl border border-[#2A6268]/12 bg-[#F6ECD9]/92 px-3 py-2 shadow-[0_18px_55px_-42px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:px-4"
+		class="relative overflow-visible rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 py-1.5 shadow-[0_18px_55px_-42px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:px-4"
 	>
 		<NoiseOverlay />
-		<div class="relative flex h-14 items-center justify-between gap-4">
+		<div class="relative flex h-12 items-center justify-between gap-4">
 			<div class="flex min-w-0 items-center">
 				<Logo isLink />
 			</div>
@@ -178,6 +197,8 @@
 				class="relative hidden flex-1 justify-center lg:flex"
 				onmouseleave={scheduleDesktopClose}
 				onfocusout={scheduleDesktopClose}
+				onfocusin={cancelDesktopClose}
+				onkeydown={handleDesktopKeydown}
 			>
 				<nav aria-label="Main navigation">
 					<ul class="flex list-none items-center justify-center gap-1">
@@ -189,9 +210,9 @@
 										type="button"
 										class={cn(
 											activeDesktopClass(isActive),
-											'data-[state=open]:bg-[#2A6268]/8 data-[state=open]:text-[#1A3C40]',
+											'data-[state=open]:bg-dci-teal/8 data-[state=open]:text-dci-teal-deep',
 											isActive &&
-												'data-[state=open]:bg-[#6F231E]/10 data-[state=open]:text-[#6F231E]'
+												'data-[state=open]:bg-dci-burgundy/10 data-[state=open]:text-dci-burgundy'
 										)}
 										data-state={activeDesktopMenu === item.label ? 'open' : 'closed'}
 										aria-expanded={activeDesktopMenu === item.label}
@@ -232,21 +253,22 @@
 						id="desktop-navigation-viewport"
 						role="region"
 						aria-label={`${activeItem.label} navigation`}
-						class="absolute top-[calc(100%+0.85rem)] left-1/2 z-50 w-[680px] -translate-x-1/2 overflow-hidden rounded-[1.35rem] border border-[#2A6268]/10 bg-[#F6ECD9] p-4 text-popover-foreground shadow-[0_30px_90px_-50px_rgba(0,0,0,0.75)] duration-200 animate-in fade-in-0 zoom-in-95"
+						class="absolute top-[calc(100%+0.85rem)] left-1/2 z-50 w-[680px] -translate-x-1/2 overflow-hidden rounded-2xl border border-dci-teal/10 bg-dci-cream p-4 text-popover-foreground shadow-dci-panel duration-200 animate-in fade-in-0 zoom-in-95"
 						onmouseenter={() => openDesktopMenu(activeItem.label)}
 						onmouseleave={scheduleDesktopClose}
+						onfocusin={cancelDesktopClose}
 					>
 						<div
-							class="absolute -top-1 left-1/2 size-3 -translate-x-1/2 rotate-45 rounded-[2px] border-t border-l border-[#2A6268]/10 bg-[#F6ECD9]"
+							class="absolute -top-1 left-1/2 size-3 -translate-x-1/2 rotate-45 rounded-[2px] border-t border-l border-dci-teal/10 bg-dci-cream"
 						></div>
 						<div class="grid grid-cols-[0.78fr_1fr] gap-4">
 							<a
 								href={activeItem.href}
-								class="group flex min-h-64 flex-col justify-between rounded-2xl bg-[#1A3C40] p-6 text-[#F6ECD9] outline-none transition hover:bg-[#204B50] focus-visible:ring-2 focus-visible:ring-[#2A6268]"
+								class="group flex min-h-64 flex-col justify-between rounded-2xl bg-dci-teal-deep p-6 text-dci-cream outline-none transition hover:bg-[#204B50] focus-visible:ring-2 focus-visible:ring-dci-teal"
 								onclick={closeDesktopMenu}
 							>
 								<div>
-									<p class="text-xs font-bold uppercase tracking-widest text-[#F6ECD9]/55">
+									<p class="text-xs font-bold uppercase tracking-widest text-dci-cream/70">
 										{activeItem.label}
 									</p>
 									<h3 class="mt-4 text-3xl font-semibold leading-tight text-white">
@@ -267,13 +289,13 @@
 									{@const Icon = child.icon}
 									<a
 										href={child.href}
-										class="group grid grid-cols-[2.5rem_1fr] gap-3 rounded-xl p-3 outline-none hover:bg-[#EFE5D0]/65 focus:bg-[#EFE5D0]/65 focus-visible:ring-2 focus-visible:ring-[#2A6268]/30"
+										class="group grid grid-cols-[2.5rem_1fr] gap-3 rounded-xl p-3 outline-none hover:bg-dci-sand/65 focus:bg-dci-sand/65 focus-visible:ring-2 focus-visible:ring-dci-teal/30"
 										onclick={closeDesktopMenu}
 									>
 										<span
-											class="flex size-10 items-center justify-center rounded-lg bg-[#EFE5D0] text-[#2A6268] transition group-hover:bg-[#2A6268] group-hover:text-[#F6ECD9]"
+											class="flex size-10 items-center justify-center rounded-lg bg-dci-sand text-dci-teal transition group-hover:bg-dci-teal group-hover:text-dci-cream"
 										>
-											<Icon class="size-5" weight="duotone" />
+											<Icon class="size-5" weight="duotone" aria-hidden="true" />
 										</span>
 										<span>
 											<span class="flex items-center gap-2 text-sm font-semibold text-slate-950">
@@ -300,7 +322,7 @@
 					href="#get-involved"
 					class={cn(
 						buttonVariants({ variant: 'outline' }),
-						'rounded-full border-[#2A6268]/20 bg-[#FFF9EA]/70 px-5 text-[#1A3C40] hover:bg-[#2A6268]/7 hover:text-[#1A3C40]'
+						'rounded-full border-dci-teal/20 bg-dci-paper/70 px-5 text-dci-teal-deep hover:bg-dci-teal/7 hover:text-dci-teal-deep'
 					)}
 				>
 					Join the movement
@@ -315,7 +337,7 @@
 							{...props}
 							variant="ghost"
 							size="icon-lg"
-							class="shrink-0 rounded-full text-[#1A3C40] hover:bg-[#2A6268]/8 lg:hidden"
+							class="shrink-0 rounded-full text-dci-teal-deep hover:bg-dci-teal/8 lg:hidden"
 						>
 							<Menu class="size-5" weight="regular" />
 							<span class="sr-only">Open menu</span>
@@ -324,13 +346,13 @@
 				</Sheet.Trigger>
 				<Sheet.Content
 					side="right"
-					class="w-full max-w-none overflow-y-auto border-l-0 bg-[#F6ECD9] p-0 sm:max-w-md"
+					class="w-full max-w-none overflow-y-auto border-l-0 bg-dci-cream p-0 sm:max-w-md"
 				>
 					<div class="flex min-h-dvh flex-col">
-						<Sheet.Header class="border-b border-[#2A6268]/10 p-5">
+						<Sheet.Header class="border-b border-dci-teal/10 p-5">
 							<div class="flex items-center justify-between gap-4 pr-10">
 								<Logo isLink />
-								<Sheet.Title class="text-sm font-semibold text-[#1A3C40]">Navigation</Sheet.Title>
+								<Sheet.Title class="text-sm font-semibold text-dci-teal-deep">Navigation</Sheet.Title>
 							</div>
 							<Sheet.Description class="sr-only">Main navigation menu</Sheet.Description>
 						</Sheet.Header>
@@ -342,15 +364,15 @@
 									{#if item.children}
 										<div
 											class={cn(
-												'rounded-2xl border border-[#2A6268]/10 bg-white/45',
-												isActive && 'border-[#6F231E]/20 bg-[#6F231E]/8'
+												'rounded-2xl border border-dci-teal/10 bg-white/45',
+												isActive && 'border-dci-burgundy/20 bg-dci-burgundy/8'
 											)}
 										>
 											<button
 												type="button"
 												class={cn(
-													'flex w-full items-center justify-between gap-4 px-4 py-4 text-left text-lg font-semibold text-[#1A3C40]',
-													isActive && 'text-[#6F231E]'
+													'flex w-full items-center justify-between gap-4 px-4 py-4 text-left text-lg font-semibold text-dci-teal-deep',
+													isActive && 'text-dci-burgundy'
 												)}
 												aria-expanded={openMobileSection === item.label}
 												aria-current={isActive ? 'page' : undefined}
@@ -366,12 +388,12 @@
 												/>
 											</button>
 											{#if openMobileSection === item.label}
-												<div class="grid gap-1 border-t border-[#2A6268]/10 p-2">
+												<div class="grid gap-1 border-t border-dci-teal/10 p-2">
 													<a
 														href={item.href}
 														class={cn(
-															'rounded-xl px-3 py-3 text-sm font-semibold text-[#6F231E] hover:bg-[#EFE5D0]/70',
-															isHrefActive(item.href) && 'bg-[#6F231E]/10'
+															'rounded-xl px-3 py-3 text-sm font-semibold text-dci-burgundy hover:bg-dci-sand/70',
+															isHrefActive(item.href) && 'bg-dci-burgundy/10'
 														)}
 														aria-current={isHrefActive(item.href) ? 'page' : undefined}
 														onclick={closeMobileMenu}
@@ -383,22 +405,22 @@
 														<a
 															href={child.href}
 															class={cn(
-																'grid grid-cols-[2.5rem_1fr] gap-3 rounded-xl px-3 py-3 hover:bg-[#EFE5D0]/70',
-																isHrefActive(child.href) && 'bg-[#6F231E]/10'
+																'grid grid-cols-[2.5rem_1fr] gap-3 rounded-xl px-3 py-3 hover:bg-dci-sand/70',
+																isHrefActive(child.href) && 'bg-dci-burgundy/10'
 															)}
 															aria-current={isHrefActive(child.href) ? 'page' : undefined}
 															onclick={closeMobileMenu}
 														>
 															<span
-																class="flex size-10 items-center justify-center rounded-lg bg-[#EFE5D0] text-[#2A6268]"
+																class="flex size-10 items-center justify-center rounded-lg bg-dci-sand text-dci-teal"
 															>
-																<Icon class="size-5" weight="duotone" />
+																<Icon class="size-5" weight="duotone" aria-hidden="true" />
 															</span>
 															<span>
 																<span
 																	class={cn(
 																		'block text-sm font-semibold text-slate-950',
-																		isHrefActive(child.href) && 'text-[#6F231E]'
+																		isHrefActive(child.href) && 'text-dci-burgundy'
 																	)}
 																>
 																	{child.label}
@@ -427,7 +449,7 @@
 							</div>
 						</nav>
 
-						<div class="border-t border-[#2A6268]/10 p-5">
+						<div class="border-t border-dci-teal/10 p-5">
 							<div class="grid gap-3">
 								<a
 									href="#toolkit"
@@ -440,7 +462,7 @@
 									href="#get-involved"
 									class={cn(
 										buttonVariants({ variant: 'outline', size: 'lg' }),
-										'w-full rounded-full border-[#2A6268]/20 bg-transparent text-[#1A3C40]'
+										'w-full rounded-full border-dci-teal/20 bg-transparent text-dci-teal-deep'
 									)}
 									onclick={closeMobileMenu}
 								>

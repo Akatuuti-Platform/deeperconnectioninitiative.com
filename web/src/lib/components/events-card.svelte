@@ -28,19 +28,19 @@
 </script>
 
 <article
-	class="group dci-soft-hover flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-[#2A6268]/12 bg-[#F6ECD9] p-5 shadow-[0_24px_70px_-60px_rgba(0,0,0,0.75)] transition duration-300 sm:p-6"
+	class="group dci-soft-hover flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift transition duration-300 sm:p-6"
 >
 	<div>
 		<div class="flex items-start justify-between gap-4">
 			<div class="flex gap-3">
 				<div
-					class="flex size-14 shrink-0 flex-col items-center justify-center rounded-xl bg-[#1A3C40] text-[#F6ECD9]"
+					class="flex size-14 shrink-0 flex-col items-center justify-center rounded-xl bg-dci-teal-deep text-dci-cream"
 				>
 					<span class="text-[0.65rem] font-bold uppercase tracking-wide">{monthLabel}</span>
 					<span class="text-2xl font-semibold leading-none">{dayLabel}</span>
 				</div>
 				<div class="pt-1">
-					<p class="text-xs font-semibold uppercase tracking-wide text-[#6F231E]">{event.type}</p>
+					<p class="text-xs font-semibold uppercase tracking-wide text-dci-burgundy">{event.type}</p>
 					<p class="mt-2 flex items-center gap-1.5 text-sm text-slate-600">
 						<CalendarDays class="size-3.5" weight="regular" />
 						{timeLabel}
@@ -51,7 +51,7 @@
 
 		<h3 class="mt-8 text-2xl font-semibold leading-tight text-slate-950">{event.title}</h3>
 		<p class="mt-3 text-sm leading-relaxed text-slate-700">{event.description}</p>
-		<p class="mt-5 flex items-start gap-2 text-sm font-medium text-[#1A3C40]">
+		<p class="mt-5 flex items-start gap-2 text-sm font-medium text-dci-teal-deep">
 			<MapPin class="mt-0.5 size-4 shrink-0" weight="regular" />
 			<span>{event.location}</span>
 		</p>
@@ -60,7 +60,7 @@
 	<Button
 		href={event.url}
 		variant="outline"
-		class="mt-8 w-fit rounded-full border-[#2A6268]/20 bg-transparent text-[#1A3C40] hover:bg-[#2A6268]/7"
+		class="mt-8 w-fit rounded-full border-dci-teal/20 bg-transparent text-dci-teal-deep hover:bg-dci-teal/7"
 		title={`View event: ${event.title}`}
 		aria-label={`View event: ${event.title}`}
 	>

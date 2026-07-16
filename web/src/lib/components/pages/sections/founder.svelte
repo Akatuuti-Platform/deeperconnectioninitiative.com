@@ -14,7 +14,7 @@
 	>
 		<div class="relative" use:reveal={{ delay: 0, y: 18 }}>
 			<div
-				class="overflow-hidden rounded-3xl border-[10px] border-[#F6ECD9] shadow-[0_24px_75px_-52px_rgba(26,60,64,0.6)]"
+				class="overflow-hidden rounded-3xl border-[10px] border-dci-cream shadow-[0_24px_75px_-52px_rgba(26,60,64,0.6)]"
 			>
 				<img
 					src="/photos/ann-banya.jpg"
@@ -27,23 +27,20 @@
 
 		<div class="space-y-5" use:reveal={{ delay: 120, y: 18 }}>
 			<div
-				class="inline-flex items-center gap-2 rounded-full border border-[#2A6268]/20 bg-[#2A6268]/5 px-3 py-1"
+				class="inline-flex items-center gap-2 rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1"
 			>
-				<span class="text-xs font-semibold tracking-wide text-[#2A6268] uppercase"
+				<span class="text-xs font-semibold tracking-wide text-dci-teal uppercase"
 					>Recognised infrastructure</span
 				>
 			</div>
 
-			<h2
-				class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900"
-				style="font-family: 'Lato', system-ui;"
-			>
+			<h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900">
 				40+ years of experience started this journey
 			</h2>
 
 			<div class="space-y-1">
 				<p class="text-lg font-semibold text-slate-900">Ann Banya</p>
-				<p class="text-base text-[#2A6268]">
+				<p class="text-base text-dci-teal">
 					Early Child Development Specialist &middot; 40 years of experience
 				</p>
 			</div>
@@ -60,7 +57,7 @@
 				<ul class="flex flex-wrap gap-2">
 					{#each affiliations as name}
 						<li
-							class="rounded-full border border-[#EFE5D0] bg-[#F6ECD9]/60 px-4 py-1.5 text-sm font-medium text-slate-800"
+							class="rounded-full border border-dci-sand bg-dci-cream/60 px-4 py-1.5 text-sm font-medium text-slate-800"
 						>
 							{name}
 						</li>

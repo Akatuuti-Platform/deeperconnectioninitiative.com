@@ -84,7 +84,7 @@
 
 <section
 	id="ecosystem"
-	class="w-full bg-[#1A3C40] text-[#EFE5D0] relative rounded-t-4xl overflow-hidden"
+	class="w-full bg-dci-teal-deep text-dci-sand relative rounded-t-4xl overflow-hidden"
 >
 	<!-- Background Pattern -->
 	<div
@@ -97,35 +97,36 @@
 			<div class="py-16 lg:sticky top-20">
 				<div class="max-w-3xl mx-auto mb-16" use:reveal={{ delay: 0, y: 18 }}>
 					<div
-						class="inline-flex items-center gap-2 rounded-full border border-[#2A6268]/20 mb-3 bg-[#2A6268]/5 px-3 py-1"
+						class="inline-flex items-center gap-2 rounded-full border border-dci-teal/20 mb-3 bg-dci-teal/5 px-3 py-1"
 					>
-						<span class="text-[#EFE5D0]/60 font-bold tracking-widest uppercase text-xs"
+						<span class="text-dci-sand/60 font-bold tracking-widest uppercase text-xs"
 							>The DCI Ecosystem</span
 						>
 					</div>
 					<h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
 						Built for the places care already happens.
 					</h2>
-					<p class="text-lg text-[#EFE5D0]/80">
+					<p class="text-lg text-dci-sand/80">
 						The DCI ecosystem moves from personal reflection to group conversation, trained
 						champions, and responsible support when someone needs more care.
 					</p>
-					<div class="mt-10 grid gap-3 text-sm text-[#EFE5D0]/75 sm:grid-cols-3">
-						<div class="border-t border-[#EFE5D0]/20 pt-3">Toolkit</div>
-						<div class="border-t border-[#EFE5D0]/20 pt-3">Conversation</div>
-						<div class="border-t border-[#EFE5D0]/20 pt-3">Referral</div>
+					<div class="mt-10 grid gap-3 text-sm text-dci-sand/75 sm:grid-cols-3">
+						<div class="border-t border-dci-sand/20 pt-3">Toolkit</div>
+						<div class="border-t border-dci-sand/20 pt-3">Conversation</div>
+						<div class="border-t border-dci-sand/20 pt-3">Referral</div>
 					</div>
 					<div class=" flex items-center mt-8">
 						<Button
 							href={paymentLinks.donation}
 							target="_blank"
+							rel="noopener noreferrer"
 							class={cn(buttonVariants({ size: 'lg' }), 'w-fit ')}
 						>
-							<Heart class="text-[#F6ECD9]" weight="duotone" />
+							<Heart class="text-dci-cream" weight="duotone" />
 
 							Sponsor a toolkit
 						</Button>
-						<p class="text-xs text-[#EFE5D0]/70 pl-6 max-w-3xs font-light">
+						<p class="text-xs text-dci-sand/70 pl-6 max-w-3xs font-light">
 							10% of each toolkit sold funds community champion trainings and donations.
 						</p>
 					</div>
@@ -133,15 +134,15 @@
 			</div>
 		</div>
 		<ul
-			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-px bg-[#EFE5D0]/10 list-none"
+			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-px bg-dci-sand/10 list-none"
 			role="list"
 		>
 			{#each ecosystemData as item, index}
 				<li
 					use:reveal={{ delay: index * 55, y: 18 }}
-					class="group relative p-8 bg-[#1A3C40]/95 backdrop-blur-sm hover:bg-[#204B50] transition-colors lg:p-12"
+					class="group relative p-8 bg-dci-teal-deep/95 backdrop-blur-sm hover:bg-[#204B50] transition-colors lg:p-12"
 				>
-					<span class="absolute top-6 right-6 text-xs font-bold text-[#EFE5D0]/20">
+					<span class="absolute top-6 right-6 text-xs font-bold text-dci-sand/20">
 						{String(index + 1).padStart(2, '0')}
 					</span>
 					<div>
@@ -155,7 +156,7 @@
 						<p class="text-xs text-secondary font-semibold mb-3 uppercase tracking-wide">
 							{item.subtitle}
 						</p>
-						<p class="  leading-relaxed text-sm text-[#EFE5D0]/70">{item.description}</p>
+						<p class="  leading-relaxed text-sm text-dci-sand/70">{item.description}</p>
 					</div>
 				</li>
 			{/each}
