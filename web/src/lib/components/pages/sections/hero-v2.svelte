@@ -131,11 +131,11 @@
 		</div>
 
 		<!-- Center: DCI logo mark head (on top of both curves via z-index) -->
-		<div class="pointer-events-none relative z-10 mx-[-4%] shrink-0">
+		<div class="pointer-events-none relative z-10 mx-[-10%] shrink-0 self-end">
 			<img
 				src="/photos/dci-logo-mark.png"
 				alt=""
-				class="h-[180px] w-auto object-contain sm:h-[240px] lg:h-[300px]"
+				class="h-[120px] w-auto object-contain sm:h-[160px] lg:h-[200px]"
 				loading="lazy"
 			/>
 		</div>
@@ -153,7 +153,7 @@
 					id="curve-good"
 					d="M2.04309 563.872C111.592 558.268 316.491 554.016 517.963 490.064C703.017 431.323 875.319 444.531 1021.88 453.216"
 					stroke="#1A3C40"
-					stroke-width="30"
+					stroke-width="80"
 				/>
 				<text x="-4500">
 					<textPath id="marquee-good" href="#curve-good">{goodText}</textPath>
@@ -172,19 +172,21 @@
 <style>
 	/* Bad thoughts text — ghostly, thin */
 	:global(#marquee-bad) {
-		font-size: inherit;
+		font-family: 'Outfit', sans-serif;
+		font-size: 64px;
 		font-weight: 400;
 		fill: #1a3c40;
-		baseline-shift: -20%;
+		baseline-shift: -45%;
 		opacity: 0.4;
 	}
 
 	/* Good thoughts text — bold, cream on dark band */
 	:global(#marquee-good) {
-		font-size: inherit;
+		font-family: 'Outfit', sans-serif;
+		font-size: 64px;
 		font-weight: 600;
 		fill: #f6ecd9;
-		baseline-shift: -30%;
+		dominant-baseline: central;
 	}
 
 	/* SVG paths should be transparent fill */
