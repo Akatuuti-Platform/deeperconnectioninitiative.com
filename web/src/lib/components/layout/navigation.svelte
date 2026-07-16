@@ -115,7 +115,7 @@
 		}
 
 		if (href.startsWith('/#')) {
-			return currentPath === '/' && (!currentHash || currentHash === href.slice(1));
+			return currentPath === '/' && currentHash === href.slice(1);
 		}
 
 		return currentPath === normalizePath(href);
