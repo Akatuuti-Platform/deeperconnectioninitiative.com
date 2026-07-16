@@ -14,7 +14,7 @@
 </script>
 
 <section
-	class="relative w-full overflow-hidden px-4 pt-32 pb-0 sm:px-6 lg:px-8 lg:pt-40 lg:pb-0"
+	class="relative w-full overflow-visible px-4 pt-32 pb-0 sm:px-6 lg:px-8 lg:pt-40 lg:pb-0"
 >
 	<div class="pointer-events-none absolute top-28 left-0 hidden w-[42vw] opacity-45 lg:block">
 		<AnimateSvg
@@ -101,7 +101,7 @@
 
 	<!-- Flowing thoughts animation — side by side: [left curve] [HEAD] [right curve] -->
 	<div
-		class="relative mx-auto mt-4 flex w-full max-w-7xl items-center lg:mt-6"
+		class="relative mt-4 flex w-full items-center lg:mt-6 -mx-4 sm:-mx-6 lg:-mx-8"
 		use:reveal={{ delay: 200, y: 30 }}
 	>
 		<!-- Left: bad thoughts flowing L→R into the head -->
@@ -112,6 +112,7 @@
 				viewBox="0 0 1048 594"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
+				style="overflow: visible;"
 			>
 				<path
 					id="curve-bad"
@@ -130,8 +131,8 @@
 			</svg>
 		</div>
 
-		<!-- Center: DCI logo mark head (on top of both curves via z-index) -->
-		<div class="pointer-events-none relative z-10 mx-[-10%] shrink-0 self-end">
+		<!-- Center: DCI logo mark head — above the left (bad) curve, below the right (good) band -->
+		<div class="pointer-events-none relative z-10 mx-[-10%] shrink-0 self-end translate-y-[55%]">
 			<img
 				src="/photos/dci-logo-mark.png"
 				alt=""
@@ -148,10 +149,11 @@
 				viewBox="0 0 1024 620"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
+				style="overflow: visible;"
 			>
 				<path
 					id="curve-good"
-					d="M2.04309 563.872C111.592 558.268 316.491 554.016 517.963 490.064C703.017 431.323 875.319 444.531 1021.88 453.216"
+					d="M2.04309 563.872C111.592 558.268 316.491 554.016 517.963 490.064C703.017 431.323 875.319 444.531 1021.88 453.216L1500 453.216"
 					stroke="#1A3C40"
 					stroke-width="80"
 				/>
@@ -199,8 +201,16 @@
 	.hero-anim-left,
 	.hero-anim-right {
 		position: relative;
-		z-index: 1;
 		overflow: visible;
+	}
+
+	/* Left (bad) curve sits behind the head; right (good) band in front of it */
+	.hero-anim-left {
+		z-index: 1;
+	}
+
+	.hero-anim-right {
+		z-index: 5;
 	}
 
 	/* Reduced motion — pause animations */

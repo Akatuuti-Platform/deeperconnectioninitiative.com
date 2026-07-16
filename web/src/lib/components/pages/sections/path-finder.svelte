@@ -76,7 +76,7 @@
 
 <section
 	id="find-your-path"
-	class="relative scroll-mt-28 overflow-hidden px-4 py-14 sm:px-6 lg:px-8 lg:py-20"
+	class="relative z-10 scroll-mt-28 overflow-hidden px-4 py-14 sm:px-6 lg:px-8 lg:py-20"
 >
 	<div
 		use:reveal={{ delay: 0, y: 18 }}

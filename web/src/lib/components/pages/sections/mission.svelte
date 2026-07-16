@@ -3,7 +3,7 @@
 	import { reveal } from '$lib/actions/reveal';
 </script>
 
-<section id="about" class="w-full bg-white relative z-10 overflow-hidden rounded-[4rem]">
+<section id="about" class="w-full bg-white relative z-10 overflow-hidden rounded-t-[4rem]">
 	<div
 		class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 grid md:grid-cols-[0.9fr_1.1fr] gap-12 items-start"
 	>

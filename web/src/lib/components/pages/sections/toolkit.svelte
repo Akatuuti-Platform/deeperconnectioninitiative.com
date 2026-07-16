@@ -163,7 +163,7 @@
 
 			<article
 				use:reveal={{ delay: 120, y: 22 }}
-				class="overflow-hidden rounded-[2rem] bg-[#171817] text-dci-cream"
+				class="overflow-hidden rounded-[2rem] border border-dci-cream/15 bg-[#171817] text-dci-cream"
 			>
 				<img
 					src="/photos/product-full-toolkit.jpg"
