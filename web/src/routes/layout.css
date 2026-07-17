@@ -326,6 +326,14 @@ a {
 	.text-dci-burgundy {
 		color: var(--dci-burgundy);
 	}
+
+	/* Logo color overrides for dark backgrounds */
+	.logo-on-dark .text-dci-teal-deep {
+		color: white;
+	}
+	.logo-on-dark .text-dci-burgundy {
+		color: var(--dci-cream);
+	}
 }
 
 @keyframes dci-float {
