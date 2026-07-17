@@ -1,0 +1,48 @@
+[2026-07-16T06:04:11.528Z] [error] Error: <svg> attribute height: Expected length, "auto".
+[2026-07-16T06:04:11.528Z] [error] Error: <svg> attribute height: Expected length, "auto".
+[2026-07-16T06:04:12.453Z] [debug] [vite] connecting...
+[2026-07-16T06:04:12.455Z] [debug] [vite] connected.
+[2026-07-16T06:15:33.694Z] [error] Error: <svg> attribute height: Expected length, "auto".
+[2026-07-16T06:15:33.695Z] [error] Error: <svg> attribute height: Expected length, "auto".
+[2026-07-16T06:15:34.749Z] [debug] [vite] connecting...
+[2026-07-16T06:15:34.784Z] [debug] [vite] connected.
+[2026-07-16T06:18:30.288Z] [log] [vite] server connection lost. Polling for restart...
+[2026-07-16T06:18:29.622Z] [log] [vite] server connection lost. Polling for restart...
+[2026-07-16T06:31:01.509Z] [debug] [vite] connecting...
+[2026-07-16T06:31:02.248Z] [debug] [vite] connected.
+[2026-07-16T06:31:06.956Z] [warning] Failed to hydrate:  HierarchyRequestError: Failed to execute 'appendChild' on 'Node': This node type does not support this method.
+
+	in <unknown>
+	in +layout.svelte
+	in root.svelte
+	in undefined
+
+    at Module.child (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4885:27)
+    at Navigation (http://localhost:3001/src/lib/components/layout/navigation.svelte:265:14)
+    at http://localhost:3001/node_modules/.vite/deps/chunk-6MAGVFME.js?v=91170e5c:721:56
+    at update_reaction (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4118:18)
+    at update_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4259:21)
+    at create_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:3608:7)
+    at branch (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:3784:10)
+    at http://localhost:3001/node_modules/.vite/deps/chunk-6MAGVFME.js?v=91170e5c:715:17
+    at update_reaction (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4118:18)
+    at update_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4259:21)
+[2026-07-16T06:31:09.747Z] [debug] [vite] connecting...
+[2026-07-16T06:31:11.127Z] [debug] [vite] connected.
+[2026-07-16T06:31:11.826Z] [warning] Failed to hydrate:  HierarchyRequestError: Failed to execute 'appendChild' on 'Node': This node type does not support this method.
+
+	in <unknown>
+	in +layout.svelte
+	in root.svelte
+	in undefined
+
+    at Module.child (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4885:27)
+    at Navigation (http://localhost:3001/src/lib/components/layout/navigation.svelte:265:14)
+    at http://localhost:3001/node_modules/.vite/deps/chunk-6MAGVFME.js?v=91170e5c:721:56
+    at update_reaction (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4118:18)
+    at update_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4259:21)
+    at create_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:3608:7)
+    at branch (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:3784:10)
+    at http://localhost:3001/node_modules/.vite/deps/chunk-6MAGVFME.js?v=91170e5c:715:17
+    at update_reaction (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4118:18)
+    at update_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4259:21)
