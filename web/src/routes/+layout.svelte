@@ -1,11 +1,16 @@
 <script lang="ts">
 	import './layout.css';
+	import { page } from '$app/state';
 	import Navigation from '@/lib/components/layout/navigation.svelte';
 	import Footer from '@/lib/components/layout/footer.svelte';
 	import NoiseOverlay from '@/lib/components/layout/overlays/noise-overlay.svelte';
 	import Seo from '@/lib/components/seo.svelte';
 
 	let { children } = $props();
+
+	// The Blueprint Assessment is a distraction-free flow with its own minimal
+	// chrome, so the site nav + footer are hidden on that route.
+	let minimalChrome = $derived(page.url.pathname.startsWith('/performance/assessment'));
 </script>
 
 <svelte:head>
@@ -28,7 +33,9 @@
 >
 	Skip to content
 </a>
-<Navigation />
+{#if !minimalChrome}
+	<Navigation />
+{/if}
 <NoiseOverlay />
 <div class="flex min-h-screen flex-col">
 	<!-- Subtle radial background accents -->
@@ -44,5 +51,7 @@
 	<main id="main" class="flex-1">
 		{@render children()}
 	</main>
-	<Footer />
+	{#if !minimalChrome}
+		<Footer />
+	{/if}
 </div>

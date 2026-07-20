@@ -27,6 +27,7 @@
 			lead: 'Self-guided',
 			blurb: 'Discover the hidden patterns shaping your performance.',
 			cta: 'Start the assessment',
+			href: '/performance/assessment',
 			accent: '#2A6268'
 		},
 		{
@@ -64,7 +65,7 @@
 	description="Discover the system behind how you think, lead, and perform. For founders and leaders who are winning on the outside and fighting themselves on the inside."
 >
 	{#snippet actions()}
-		<Button href="/contact" size="lg" class="rounded-full px-7">Take the free assessment</Button>
+		<Button href="/performance/assessment" size="lg" class="rounded-full px-7">Take the free assessment</Button>
 		<Button
 			href="#tiers"
 			size="lg"
@@ -155,7 +156,7 @@
 				<p class="mt-4 text-3xl font-bold" style={`color:${tier.accent}`}>{tier.price}</p>
 				<p class="mt-1 text-sm font-medium text-slate-600">{tier.lead}</p>
 				<p class="mt-4 flex-grow text-sm leading-relaxed text-slate-700">{tier.blurb}</p>
-				<Button href="/contact" class="mt-6 rounded-full">
+				<Button href={tier.href ?? '/contact'} class="mt-6 rounded-full">
 					{tier.cta}
 					<ArrowUpRight class="size-4" weight="regular" />
 				</Button>

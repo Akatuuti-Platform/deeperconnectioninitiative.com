@@ -40,6 +40,11 @@ export const PAGE_META: Record<string, PageMeta> = {
 		description:
 			'Coaching for founders and leaders winning on the outside and fighting themselves on the inside. Rebuild the systems beneath how you think, recover, and lead.'
 	},
+	'/performance/assessment': {
+		title: `The Blueprint Assessment${SUFFIX}`,
+		description:
+			'A free 10-minute reflection tool. Twenty statements across five facets — how you think, recover, decide, communicate, and lead under pressure — with a personal Blueprint snapshot at the end.'
+	},
 	'/platform': {
 		title: `Early Warning System — Coming Soon${SUFFIX}`,
 		description:
