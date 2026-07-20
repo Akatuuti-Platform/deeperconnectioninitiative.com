@@ -114,7 +114,7 @@
 			{#each products as product, index}
 				<article
 					use:reveal={{ delay: index * 90, y: 22 }}
-					class={`group grid overflow-hidden rounded-[2rem] border bg-[#ffffeb] shadow-[0_24px_70px_-55px_rgba(0,0,0,0.65)] transition duration-500 hover:-translate-y-1 md:grid-cols-[0.82fr_1fr] ${product.border}`}
+					class={`group grid overflow-hidden rounded-[2rem] border bg-[#ffffeb] shadow-[0_24px_70px_-55px_rgba(0,0,0,0.65)] transition duration-500 hover:-translate-y-1 md:grid-cols-[0.82fr_1fr] md:h-[22rem] ${product.border}`}
 				>
 					<div class={`relative min-h-72 overflow-hidden ${index % 2 === 1 ? 'md:order-2' : ''}`}>
 						{#if product.video}

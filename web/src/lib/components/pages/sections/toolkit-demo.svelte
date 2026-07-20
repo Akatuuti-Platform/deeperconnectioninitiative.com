@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { reveal } from '$lib/actions/reveal';
 	import { cn } from '$lib/utils';
 	import {
@@ -22,7 +24,9 @@
 			detail: 'Best for clinics, youth groups, family check-ins, and first sessions.',
 			cta: 'See card game',
 			href: '#toolkit-products',
-			accent: '#6F231E'
+			accent: '#6F231E',
+			video: null as string | null,
+			poster: '/photos/product-card-game.jpg'
 		},
 		{
 			id: 'journal',
@@ -35,7 +39,9 @@
 			detail: 'Best for personal practice, counseling support, and post-session reflection.',
 			cta: 'See journal',
 			href: '#toolkit-products',
-			accent: '#2A6268'
+			accent: '#2A6268',
+			video: '/videos/journal.mp4' as string | null,
+			poster: '/photos/product-journal.jpg'
 		},
 		{
 			id: 'mood',
@@ -48,13 +54,22 @@
 			detail: 'Best for daily awareness, support teams, and low-language mental health settings.',
 			cta: 'See tracker',
 			href: '#toolkit-products',
-			accent: '#2A6268'
+			accent: '#2A6268',
+			video: '/videos/mood-tracker.mp4' as string | null,
+			poster: '/photos/product-mood-tracker.jpg'
 		}
-	] as const;
+	];
 
 	type Tool = (typeof tools)[number];
 
 	let activeTool = $state<Tool>(tools[0]);
+
+	// Only autoplay the tool videos when the user hasn't asked for reduced
+	// motion. Starts off (poster shown) and enables on the client if allowed.
+	let allowMotion = $state(false);
+	onMount(() => {
+		allowMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	});
 </script>
 
 <section
@@ -121,72 +136,34 @@
 
 		<div class="relative overflow-hidden bg-dci-cream p-6 text-slate-950 sm:p-8 lg:p-10">
 			<div class="grid gap-8 2xl:grid-cols-[0.9fr_1fr] 2xl:items-center">
-				<div class="relative min-h-[20rem] 2xl:min-h-[23rem]">
-					<div class="absolute inset-0 rounded-[2rem] bg-dci-paper/70"></div>
-					{#if activeTool.id === 'cards'}
-						<div class="absolute inset-0 flex items-center justify-center">
-							<div class="relative h-64 w-64 2xl:h-72 2xl:w-72">
-								{#each Array(5) as _, index}
-									<div
-										class={cn(
-											'absolute left-1/2 top-1/2 aspect-[3/4] w-32 origin-bottom rounded-2xl border border-dci-burgundy/15 p-4 shadow-[0_22px_45px_-35px_rgba(0,0,0,0.72)] transition-transform duration-500 2xl:w-36',
-											index % 3 === 0 ? 'bg-dci-paper' : index % 3 === 1 ? 'bg-[#DFA169]' : 'bg-[#F4D5D0]'
-										)}
-										style={`transform: translate(-50%, -50%) rotate(${(index - 2) * 10}deg) translateY(${Math.abs(index - 2) * 8}px);`}
-									>
-										<div class="h-1.5 w-12 rounded-full bg-dci-burgundy/45"></div>
-										<div class="mt-16 space-y-2">
-											<div class="h-1.5 rounded-full bg-dci-burgundy/20"></div>
-											<div class="h-1.5 rounded-full bg-dci-burgundy/20"></div>
-											<div class="h-1.5 w-2/3 rounded-full bg-dci-burgundy/20"></div>
-										</div>
-									</div>
-								{/each}
-							</div>
+				<div
+					class="relative min-h-[20rem] overflow-hidden rounded-[2rem] bg-dci-paper/70 shadow-[0_24px_55px_-38px_rgba(0,0,0,0.72)] 2xl:min-h-[23rem]"
+				>
+					{#key activeTool.id}
+						<div class="absolute inset-0" in:fade={{ duration: 320 }}>
+							{#if activeTool.video}
+								<!-- svelte-ignore a11y_media_has_caption -->
+								<video
+									src={activeTool.video}
+									poster={activeTool.poster}
+									autoplay={allowMotion}
+									loop
+									muted
+									playsinline
+									preload="none"
+									aria-label={`${activeTool.label} in use`}
+									class="h-full w-full object-cover"
+								></video>
+							{:else}
+								<img
+									src={activeTool.poster}
+									alt={`${activeTool.label} in use`}
+									loading="lazy"
+									class="h-full w-full object-cover"
+								/>
+							{/if}
 						</div>
-					{:else if activeTool.id === 'journal'}
-						<div class="absolute inset-0 flex items-center justify-center p-8">
-							<div class="aspect-[4/5] w-full max-w-[18rem] rounded-2xl bg-dci-paper p-6 shadow-[0_24px_55px_-38px_rgba(0,0,0,0.72)]">
-								<div class="h-full rounded-2xl border-2 border-dci-teal/20 p-5">
-									<p class="text-xs font-bold uppercase tracking-widest text-dci-teal">
-										Reflection Journal
-									</p>
-									<p class="mt-8 text-2xl font-semibold leading-tight text-slate-950">
-										What felt heavy today?
-									</p>
-									<div class="mt-10 space-y-3">
-										<div class="h-2 rounded-full bg-dci-teal/22"></div>
-										<div class="h-2 rounded-full bg-dci-teal/18"></div>
-										<div class="h-2 w-2/3 rounded-full bg-dci-teal/18"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					{:else}
-						<div class="absolute inset-0 flex items-center justify-center p-8">
-							<div class="aspect-[4/5] w-full max-w-[18rem] rounded-2xl bg-[#EEF1E5] p-6 shadow-[0_24px_55px_-38px_rgba(0,0,0,0.72)]">
-								<p class="text-xs font-bold uppercase tracking-widest text-dci-teal">
-									Mood Tracker
-								</p>
-								<div class="mt-10 grid grid-cols-5 gap-3">
-									{#each Array(30) as _, index}
-										<span
-											class={cn(
-												'aspect-square rounded-full transition duration-500',
-												index % 7 === 0
-													? 'bg-dci-burgundy'
-													: index % 5 === 0
-														? 'bg-dci-clay'
-														: index % 4 === 0
-															? 'bg-dci-teal/35'
-															: 'bg-dci-teal/18'
-											)}
-										></span>
-									{/each}
-								</div>
-							</div>
-						</div>
-					{/if}
+					{/key}
 				</div>
 
 				<div>
