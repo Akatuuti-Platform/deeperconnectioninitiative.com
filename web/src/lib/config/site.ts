@@ -13,7 +13,7 @@ export const siteConfig = {
   // Organization schema's `sameAs` (a strong entity-recognition signal for
   // Google + AI). Leave a value empty ("") and it won't be emitted.
   social: {
-    instagram: "",
+    instagram: "https://www.instagram.com/dci_wellness",
     linkedin: "",
     facebook: "",
   },
