@@ -1,5 +1,10 @@
 <script lang="ts">
 	import { reveal } from '$lib/actions/reveal';
+	import { PlayIcon } from 'phosphor-svelte';
+
+	let showVideo = $state(false);
+
+	const videoId = 'wMUYQ6uZn0Q';
 
 	const affiliations = [
 		'UPFMH',
@@ -16,12 +21,41 @@
 			<div
 				class="overflow-hidden rounded-3xl border-[10px] border-dci-cream shadow-[0_24px_75px_-52px_rgba(26,60,64,0.6)]"
 			>
-				<img
-					src="/photos/ann-banya.jpg"
-					alt="Ann Banya, Early Child Development Specialist"
-					loading="lazy"
-					class="aspect-[4/5] w-full object-cover"
-				/>
+				{#if showVideo}
+					<div class="aspect-video w-full">
+						<iframe
+							src="https://www.youtube-nocookie.com/embed/{videoId}?autoplay=1&rel=0"
+							title="Ann Banya — Deeper Connection Initiative"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen
+							class="h-full w-full"
+						></iframe>
+					</div>
+				{:else}
+					<button
+						type="button"
+						onclick={() => (showVideo = true)}
+						class="group relative block w-full cursor-pointer"
+						aria-label="Play video about Ann Banya and DCI"
+					>
+						<img
+							src="/photos/ann-banya.jpg"
+							alt="Ann Banya, Early Child Development Specialist"
+							loading="lazy"
+							class="aspect-video w-full object-cover"
+						/>
+						<div
+							class="absolute inset-0 flex items-center justify-center bg-black/20 transition group-hover:bg-black/30"
+						>
+							<span
+								class="flex size-16 items-center justify-center rounded-full bg-white/90 text-dci-teal-deep shadow-lg transition group-hover:scale-110"
+							>
+								<PlayIcon class="size-7 ml-0.5" weight="fill" />
+							</span>
+						</div>
+					</button>
+				{/if}
 			</div>
 		</div>
 

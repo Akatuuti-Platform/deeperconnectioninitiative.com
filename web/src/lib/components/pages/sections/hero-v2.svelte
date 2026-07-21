@@ -86,16 +86,6 @@
 			<Button href="#toolkit" class={cn(buttonVariants({ size: 'lg' }), 'bg-primary px-7')}>
 				Buy or sponsor a toolkit
 			</Button>
-
-			<Button
-				href="#ecosystem"
-				class={cn(
-					buttonVariants({ variant: 'outline', size: 'lg' }),
-					'border-primary/30 bg-transparent px-7 text-primary hover:bg-primary/5'
-				)}
-			>
-				Explore the ecosystem
-			</Button>
 		</div>
 	</div>
 

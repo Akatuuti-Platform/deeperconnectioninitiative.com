@@ -107,13 +107,22 @@
 						Built for the places care already happens.
 					</h2>
 					<p class="text-lg text-dci-sand/80">
-						The DCI ecosystem moves from personal reflection to group conversation, trained
-						champions, and responsible support when someone needs more care.
+						DCI is to mental health what Airbnb is to hospitality — we don't provide the support
+						directly. We build what community support runs on.
 					</p>
-					<div class="mt-10 grid gap-3 text-sm text-dci-sand/75 sm:grid-cols-3">
-						<div class="border-t border-dci-sand/20 pt-3">Toolkit</div>
-						<div class="border-t border-dci-sand/20 pt-3">Conversation</div>
-						<div class="border-t border-dci-sand/20 pt-3">Referral</div>
+					<div class="mt-10 grid gap-3 text-sm sm:grid-cols-3">
+						<div class="border-t border-dci-sand/20 pt-3">
+							<p class="font-semibold text-dci-sand/90 mb-1">Tools layer</p>
+							<p class="text-dci-sand/60 text-xs leading-relaxed">Physical toolkits and digital resources that make self-reflection accessible.</p>
+						</div>
+						<div class="border-t border-dci-sand/20 pt-3">
+							<p class="font-semibold text-dci-sand/90 mb-1">Conversation layer</p>
+							<p class="text-dci-sand/60 text-xs leading-relaxed">Facilitated clinics and trained champions turning individual awareness into group support.</p>
+						</div>
+						<div class="border-t border-dci-sand/20 pt-3">
+							<p class="font-semibold text-dci-sand/90 mb-1">Referral layer</p>
+							<p class="text-dci-sand/60 text-xs leading-relaxed">Responsible pathways to professional care when community support is not enough.</p>
+						</div>
 					</div>
 					<div class=" flex items-center mt-8">
 						<Button
@@ -140,7 +149,7 @@
 			{#each ecosystemData as item, index}
 				<li
 					use:reveal={{ delay: index * 55, y: 18 }}
-					class="group relative p-8 bg-dci-teal-deep/95 backdrop-blur-sm hover:bg-[#204B50] transition-colors lg:p-12"
+					class="group relative p-8 bg-dci-teal-deep/95 backdrop-blur-sm hover:bg-dci-teal-mid transition-colors lg:p-12"
 				>
 					<span class="absolute top-6 right-6 text-xs font-bold text-dci-sand/20">
 						{String(index + 1).padStart(2, '0')}
