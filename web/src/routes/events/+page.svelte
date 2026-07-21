@@ -11,12 +11,14 @@
 		{
 			title: 'Wellness Wednesday Conversation Clinic',
 			description:
-				'A guided community session using DCI cards, reflection prompts, and low-pressure group conversation.',
+				'A peer-led wellness meetup with a trained Champion, DCI toolkit, and willing participants. Booking checks you in and connects you to the Early Warning System.',
 			url: '/contact',
 			startDate: '2026-07-29T17:30:00',
 			endDate: '2026-07-29T19:00:00',
 			location: 'Partner venue, Kampala',
-			type: 'Clinic'
+			type: 'Clinic',
+			price: 'UGX 20,000',
+			miles: '10+ Connection Miles'
 		},
 		{
 			title: 'Community Champion Orientation',

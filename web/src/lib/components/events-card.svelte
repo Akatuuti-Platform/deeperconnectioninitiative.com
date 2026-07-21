@@ -14,6 +14,8 @@
 		endDate: string;
 		location: string;
 		type: string;
+		price?: string;
+		miles?: string;
 	};
 
 	let { event }: { event: EventProps } = $props();
@@ -55,6 +57,20 @@
 			<MapPin class="mt-0.5 size-4 shrink-0" weight="regular" />
 			<span>{event.location}</span>
 		</p>
+		{#if event.price || event.miles}
+			<div class="mt-4 flex flex-wrap gap-2">
+				{#if event.price}
+					<span class="rounded-full bg-dci-teal-deep px-3 py-1 text-xs font-semibold text-dci-cream">
+						{event.price}
+					</span>
+				{/if}
+				{#if event.miles}
+					<span class="rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1 text-xs font-semibold text-dci-teal">
+						{event.miles}
+					</span>
+				{/if}
+			</div>
+		{/if}
 	</div>
 
 	<Button

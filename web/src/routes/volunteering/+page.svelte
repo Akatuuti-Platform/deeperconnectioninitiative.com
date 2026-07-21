@@ -2,6 +2,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import SpotIllustration from '$lib/components/spot-illustration.svelte';
 	import { reveal } from '$lib/actions/reveal';
+	import { paymentLinks } from '$lib/payment-links';
 	import { PageHero } from '$lib/components/sections';
 	import {
 		ArrowUpRightIcon as ArrowUpRight,
@@ -10,6 +11,7 @@
 		MapTrifoldIcon as MapPinned,
 		ChatCircleDotsIcon as MessageCircleHeart,
 		ShieldCheckIcon as ShieldCheck,
+		TShirtIcon,
 		UsersThreeIcon as UsersRound
 	} from 'phosphor-svelte';
 
@@ -93,6 +95,35 @@
 					<p class="mt-3 text-sm leading-relaxed text-slate-700">{role.description}</p>
 				</article>
 			{/each}
+		</div>
+
+		<!-- DCI Angels Shirt -->
+		<div
+			use:reveal={{ delay: 0, y: 18 }}
+			class="mt-12 grid items-center gap-8 rounded-[2rem] border border-dci-teal/12 bg-white p-6 sm:p-8 md:grid-cols-[auto_1fr]"
+		>
+			<div class="flex size-16 items-center justify-center rounded-2xl bg-dci-teal/8 text-dci-teal">
+				<TShirtIcon class="size-8" weight="duotone" />
+			</div>
+			<div class="flex flex-wrap items-center justify-between gap-6">
+				<div>
+					<h3 class="text-xl font-semibold text-slate-950">DCI Angels Shirt</h3>
+					<p class="mt-1 max-w-lg text-sm leading-relaxed text-slate-600">
+						Wear it. You become the signal. Mental health is talked about openly here, and
+						you're the reason someone feels safe enough to start.
+					</p>
+					<p class="mt-2 text-lg font-bold text-dci-teal">UGX 50,000</p>
+				</div>
+				<Button
+					href={paymentLinks.tShirt}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="rounded-full px-6"
+				>
+					Get the shirt
+					<ArrowUpRight class="size-4" weight="regular" />
+				</Button>
+			</div>
 		</div>
 	</div>
 </section>

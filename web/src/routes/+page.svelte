@@ -10,6 +10,7 @@
 	import CrisisPrevention from "@/lib/components/pages/sections/crisis-prevention.svelte";
 	import LogoPhilosophy from "@/lib/components/pages/sections/logo-philosophy.svelte";
 	import CardDraw from "@/lib/components/pages/sections/card-draw.svelte";
+	import OrgCta from "@/lib/components/pages/sections/org-cta.svelte";
 </script>
 
 <HeroV2 />
@@ -22,4 +23,5 @@
 <Toolkit />
 <CardDraw />
 <Ecosystem />
+<OrgCta />
 <GetInvolved />
