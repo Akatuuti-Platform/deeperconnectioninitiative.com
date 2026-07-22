@@ -175,7 +175,7 @@
 						</p>
 						<a
 							href={activePath.href}
-							class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-dci-teal-deep px-6 text-sm font-semibold text-dci-cream transition hover:bg-[#234F53] active:scale-[0.98]"
+							class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-dci-teal-deep px-6 text-sm font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98]"
 						>
 							{activePath.cta}
 							<ArrowUpRightIcon class="size-4" weight="regular" />

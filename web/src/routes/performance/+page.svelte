@@ -145,7 +145,7 @@
 		{#each tiers as tier, index}
 			<article
 				use:reveal={{ delay: index * 70, y: 22 }}
-				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-[#ffffeb] p-6 shadow-dci-lift ${tier.popular ? 'border-dci-burgundy/35 xl:-mt-4 xl:mb-4' : 'border-dci-teal/12'}`}
+				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-dci-paper p-6 shadow-dci-lift ${tier.popular ? 'border-dci-burgundy/35 xl:-mt-4 xl:mb-4' : 'border-dci-teal/12'}`}
 			>
 				{#if tier.popular}
 					<div class="absolute right-5 top-5 rounded-full bg-dci-burgundy px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">

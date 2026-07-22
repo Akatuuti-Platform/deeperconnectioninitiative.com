@@ -20,7 +20,7 @@
 			href: paymentLinks.cardGame,
 			image: '/photos/product-card-game.jpg',
 			video: null as string | null,
-			bg: 'bg-[#EAD5C8]'
+			bg: 'bg-dci-blush'
 		},
 		{
 			name: 'DCI Reflection Journal',
@@ -29,7 +29,7 @@
 			href: paymentLinks.journal,
 			image: '/photos/product-journal.jpg',
 			video: '/videos/journal.mp4',
-			bg: 'bg-[#EEF1E5]'
+			bg: 'bg-dci-mist'
 		},
 		{
 			name: 'DCI Mood Tracker',
@@ -38,7 +38,7 @@
 			href: paymentLinks.moodTracker,
 			image: '/photos/product-mood-tracker.jpg',
 			video: '/videos/mood-tracker.mp4',
-			bg: 'bg-[#ECE7DA]'
+			bg: 'bg-dci-oat'
 		}
 	];
 </script>

@@ -99,7 +99,7 @@
 							<!-- Active card -->
 							{#key drawKey}
 								<div
-									class="relative rounded-2xl border border-dci-teal/15 bg-white p-8 shadow-[0_16px_50px_-30px_rgba(26,60,64,0.4)]"
+									class="relative rounded-2xl border border-dci-teal/15 bg-white p-8 shadow-dci-soft"
 									in:fly={allowMotion ? { y: 30, duration: 350 } : { y: 0, duration: 0 }}
 								>
 									<CardsIcon

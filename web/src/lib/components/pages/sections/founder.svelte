@@ -19,7 +19,7 @@
 	>
 		<div class="relative" use:reveal={{ delay: 0, y: 18 }}>
 			<div
-				class="overflow-hidden rounded-3xl border-[10px] border-dci-cream shadow-[0_24px_75px_-52px_rgba(26,60,64,0.6)]"
+				class="overflow-hidden rounded-3xl border-[10px] border-dci-cream shadow-dci-teal"
 			>
 				{#if showVideo}
 					<div class="aspect-video w-full">

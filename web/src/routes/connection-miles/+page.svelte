@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import 'leaflet/dist/leaflet.css';
 	import { reveal } from '$lib/actions/reveal';
 	import ToolkitDemo from '$lib/components/pages/sections/toolkit-demo.svelte';
 	import { Button } from '$lib/components/ui/button';
@@ -9,7 +11,10 @@
 		CardsIcon,
 		ChartLineUpIcon,
 		NotebookIcon,
-		SparkleIcon
+		SparkleIcon,
+		TrophyIcon,
+		UsersThreeIcon,
+		BuildingsIcon
 	} from 'phosphor-svelte';
 
 	const campaignStats = [
@@ -30,14 +35,65 @@
 		}
 	];
 
+	// Real geographic coordinates (lat/lng) for each field location in Uganda.
 	const mapLocations = [
-		{ name: 'Kampala', toolkits: 58, miles: 1240, x: 46, y: 66, tone: 'bg-dci-burgundy' },
-		{ name: 'Wakiso', toolkits: 34, miles: 760, x: 39, y: 61, tone: 'bg-dci-clay' },
-		{ name: 'Jinja', toolkits: 21, miles: 410, x: 57, y: 59, tone: 'bg-dci-teal' },
-		{ name: 'Mbarara', toolkits: 18, miles: 360, x: 30, y: 78, tone: 'bg-dci-burgundy' },
-		{ name: 'Gulu', toolkits: 16, miles: 295, x: 42, y: 27, tone: 'bg-dci-teal' },
-		{ name: 'Mbale', toolkits: 14, miles: 270, x: 67, y: 43, tone: 'bg-dci-clay' }
+		{ name: 'Kampala', toolkits: 58, miles: 1240, lat: 0.3476, lng: 32.5825, color: '#6F231E' },
+		{ name: 'Wakiso', toolkits: 34, miles: 760, lat: 0.4044, lng: 32.4594, color: '#D49C70' },
+		{ name: 'Jinja', toolkits: 21, miles: 410, lat: 0.4244, lng: 33.2041, color: '#2A6268' },
+		{ name: 'Mbarara', toolkits: 18, miles: 360, lat: -0.6072, lng: 30.6545, color: '#6F231E' },
+		{ name: 'Gulu', toolkits: 16, miles: 295, lat: 2.7746, lng: 32.299, color: '#2A6268' },
+		{ name: 'Mbale', toolkits: 14, miles: 270, lat: 1.0644, lng: 34.1797, color: '#D49C70' }
 	];
+
+	let mapEl: HTMLDivElement;
+
+	onMount(() => {
+		let map: import('leaflet').Map | undefined;
+		let cancelled = false;
+
+		(async () => {
+			const L = (await import('leaflet')).default;
+			if (cancelled || !mapEl) return;
+
+			map = L.map(mapEl, {
+				scrollWheelZoom: false, // don't hijack page scroll
+				zoomControl: true,
+				attributionControl: true
+			}).setView([1.3, 32.4], 7);
+
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 18,
+				attribution: '&copy; OpenStreetMap contributors'
+			}).addTo(map);
+
+			for (const loc of mapLocations) {
+				const icon = L.divIcon({
+					className: 'dci-map-pin',
+					html: `<span class="dci-pin-dot" style="--pin:${loc.color}"></span>`,
+					iconSize: [20, 20],
+					iconAnchor: [10, 10]
+				});
+				L.marker([loc.lat, loc.lng], { icon, title: loc.name })
+					.addTo(map)
+					.bindPopup(
+						`<div class="dci-pin-pop"><p class="dci-pin-name">${loc.name}</p>` +
+							`<p>${loc.toolkits} toolkits funded</p>` +
+							`<p>${loc.miles} connection miles</p></div>`
+					);
+			}
+
+			// Frame the view to the actual field points.
+			const bounds = L.latLngBounds(
+				mapLocations.map((l) => [l.lat, l.lng] as [number, number])
+			);
+			map.fitBounds(bounds, { padding: [48, 48] });
+		})();
+
+		return () => {
+			cancelled = true;
+			map?.remove();
+		};
+	});
 
 	const rubric = [
 		{
@@ -95,6 +151,52 @@
 			accent: '#2A6268'
 		}
 	];
+
+	// Public leaderboard — illustrative preview of what champions and partner
+	// organizations see on their DCI dashboard. Ranked by total Connection Miles
+	// (1 mile = 1 life meaningfully impacted). Real figures will come from the
+	// platform; these are representative field numbers.
+	type Leader = { name: string; meta: string; miles: number };
+
+	const boards: Record<'champions' | 'organizations', { label: string; icon: typeof TrophyIcon; rows: Leader[] }> = {
+		champions: {
+			label: 'Champions',
+			icon: UsersThreeIcon,
+			rows: [
+				{ name: 'Aisha Namubiru', meta: 'Verified Champion · Kampala', miles: 624 },
+				{ name: 'Daniel Okello', meta: 'Verified Champion · Gulu', miles: 512 },
+				{ name: 'Grace Achan', meta: 'Professional Champion · Mbarara', miles: 448 },
+				{ name: 'Samuel Kato', meta: 'Verified Champion · Jinja', miles: 361 },
+				{ name: 'Patience Nakato', meta: 'Verified Champion · Wakiso', miles: 297 },
+				{ name: 'Ronald Mugisha', meta: 'Verified Champion · Mbale', miles: 254 }
+			]
+		},
+		organizations: {
+			label: 'Organizations',
+			icon: BuildingsIcon,
+			rows: [
+				{ name: 'Butabika Community Outreach', meta: 'Implementer · Kampala', miles: 1180 },
+				{ name: 'UCU Wellness Circle', meta: 'Grassroots · Mukono', miles: 640 },
+				{ name: 'Mbarara Hope Center', meta: 'Implementer · Mbarara', miles: 545 },
+				{ name: 'Gulu Youth Minds', meta: 'Grassroots · Gulu', miles: 412 },
+				{ name: 'Jinja Safe Space', meta: 'Grassroots · Jinja', miles: 330 }
+			]
+		}
+	};
+
+	let activeBoard = $state<'champions' | 'organizations'>('champions');
+	const activeRows = $derived(boards[activeBoard].rows);
+	const leaderMiles = $derived(activeRows[0].miles);
+
+	const rankTone = ['bg-dci-burgundy text-dci-cream', 'bg-dci-teal text-dci-cream', 'bg-dci-clay text-dci-cream'];
+
+	const initials = (name: string) =>
+		name
+			.split(' ')
+			.slice(0, 2)
+			.map((w) => w[0])
+			.join('')
+			.toUpperCase();
 </script>
 
 <PageHero
@@ -154,51 +256,11 @@
 				</p>
 			</div>
 
-			<div class="relative mx-auto aspect-[0.86] w-full max-w-[520px]">
-				<svg
-					viewBox="0 0 460 540"
-					class="h-full w-full drop-shadow-[0_26px_40px_rgba(26,60,64,0.18)]"
-					aria-label="Uganda field activity map"
-				>
-					<path
-						d="M202 22 245 38 283 68 323 72 349 106 340 148 375 182 360 225 384 268 350 306 357 352 321 382 307 432 262 446 227 506 181 482 139 488 105 451 73 423 76 374 50 340 64 291 42 245 72 209 68 160 96 126 116 83 160 72Z"
-						fill="#EFE5D0"
-						stroke="#1A3C40"
-						stroke-width="5"
-						stroke-linejoin="round"
-					/>
-					<path
-						d="M120 129c45 44 92 58 149 51 36-4 58 8 79 29M77 257c61-20 128-17 202 12 43 17 72 15 102-5M101 421c59-50 112-71 159-64 35 5 64-5 96-31M169 76c-22 86-19 160 9 223 24 55 20 109-13 162M286 74c-10 72-1 130 27 174 29 46 27 92-5 139"
-						fill="none"
-						stroke="#2A6268"
-						stroke-width="2"
-						stroke-linecap="round"
-						opacity="0.18"
-					/>
-				</svg>
-
-				{#each mapLocations as location}
-					<div
-						class="group absolute -translate-x-1/2 -translate-y-1/2"
-						style={`left:${location.x}%; top:${location.y}%`}
-					>
-						<div
-							class={`relative size-5 rounded-full ${location.tone} ring-4 ring-dci-paper shadow-[0_12px_28px_-10px_rgba(26,60,64,0.8)]`}
-						>
-							<div
-								class={`absolute inset-0 rounded-full ${location.tone} opacity-35 animate-ping`}
-							></div>
-						</div>
-						<div
-							class="pointer-events-none absolute bottom-[calc(100%+0.7rem)] left-1/2 w-44 -translate-x-1/2 rounded-2xl border border-dci-teal/10 bg-dci-cream p-3 text-left opacity-0 shadow-[0_18px_50px_-34px_rgba(0,0,0,0.8)] transition duration-200 group-hover:opacity-100"
-						>
-							<p class="text-sm font-semibold text-dci-teal-deep">{location.name}</p>
-							<p class="mt-1 text-xs text-slate-600">{location.toolkits} toolkits funded</p>
-							<p class="text-xs text-slate-600">{location.miles} connection miles</p>
-						</div>
-					</div>
-				{/each}
-			</div>
+			<div
+				bind:this={mapEl}
+				class="dci-map relative z-0 h-[420px] w-full overflow-hidden rounded-[1.5rem] border border-dci-teal/12 sm:h-[480px]"
+				aria-label="Interactive map of DCI field activity across Uganda"
+			></div>
 		</div>
 
 		<div class="space-y-6">
@@ -222,7 +284,7 @@
 					{@const Icon = item.icon}
 					<article
 						use:reveal={{ delay: 150 + index * 70, y: 18 }}
-						class="rounded-2xl border border-dci-teal/12 bg-dci-cream p-5 shadow-[0_20px_70px_-60px_rgba(0,0,0,0.8)]"
+						class="rounded-2xl border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift"
 					>
 						<div class="flex gap-4">
 							<div
@@ -252,6 +314,107 @@
 					</article>
 				{/each}
 			</div>
+		</div>
+	</div>
+</section>
+
+<section class="px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
+	<div class="mx-auto max-w-7xl">
+		<div class="mb-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+			<div class="space-y-5" use:reveal={{ delay: 0, y: 18 }}>
+				<p class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-dci-teal">
+					<TrophyIcon class="size-4" weight="duotone" />
+					The leaderboard
+				</p>
+				<h2
+					class="max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl"
+				>
+					Every mile is one life. Here's who's moving the most.
+				</h2>
+			</div>
+			<p class="max-w-2xl text-base leading-relaxed text-slate-700" use:reveal={{ delay: 90, y: 18 }}>
+				Champions and partner organizations earn Connection Miles for every reflection, clinic, and
+				kit that reaches the field. The public leaderboard mirrors what they see on their DCI
+				dashboard — recognition that the quiet work is counted.
+			</p>
+		</div>
+
+		<div
+			use:reveal={{ delay: 120, y: 18 }}
+			class="overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-cream shadow-dci-lift"
+		>
+			<!-- Board toggle -->
+			<div class="flex flex-wrap items-center justify-between gap-4 border-b border-dci-teal/10 p-5 sm:p-6">
+				<div class="inline-flex rounded-full border border-dci-teal/15 bg-dci-paper p-1">
+					{#each Object.entries(boards) as [key, board]}
+						{@const Icon = board.icon}
+						<button
+							type="button"
+							onclick={() => (activeBoard = key as 'champions' | 'organizations')}
+							class={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${
+								activeBoard === key
+									? 'bg-dci-teal-deep text-dci-cream shadow-dci-soft'
+									: 'text-dci-teal-deep hover:bg-dci-teal/8'
+							}`}
+							aria-pressed={activeBoard === key}
+						>
+							<Icon class="size-4" weight="duotone" />
+							{board.label}
+						</button>
+					{/each}
+				</div>
+				<p class="text-xs font-medium uppercase tracking-wide text-slate-500">
+					Total Connection Miles · this season
+				</p>
+			</div>
+
+			<!-- Ranked rows -->
+			<ol class="divide-y divide-dci-teal/8">
+				{#each activeRows as row, index (activeBoard + row.name)}
+					<li
+						class="flex items-center gap-4 px-5 py-4 sm:gap-5 sm:px-6 sm:py-5"
+						use:reveal={{ delay: index * 60, y: 12 }}
+					>
+						<span
+							class={`flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
+								index < 3 ? rankTone[index] : 'bg-dci-paper text-dci-teal-deep'
+							}`}
+						>
+							{index + 1}
+						</span>
+
+						<span
+							class="flex size-11 shrink-0 items-center justify-center rounded-full bg-dci-teal/10 text-sm font-bold text-dci-teal-deep"
+							aria-hidden="true"
+						>
+							{initials(row.name)}
+						</span>
+
+						<div class="min-w-0 flex-1">
+							<p class="truncate text-base font-semibold text-slate-950 sm:text-lg">{row.name}</p>
+							<p class="truncate text-xs text-slate-600 sm:text-sm">{row.meta}</p>
+							<div class="mt-2 h-1.5 w-full max-w-xs overflow-hidden rounded-full bg-dci-paper">
+								<div
+									class="h-full rounded-full bg-dci-teal transition-[width] duration-500"
+									style={`width:${Math.round((row.miles / leaderMiles) * 100)}%`}
+								></div>
+							</div>
+						</div>
+
+						<div class="shrink-0 text-right">
+							<p class="text-xl font-bold text-dci-teal-deep sm:text-2xl">
+								{row.miles.toLocaleString()}
+							</p>
+							<p class="text-[0.65rem] font-semibold uppercase tracking-wide text-slate-500">miles</p>
+						</div>
+					</li>
+				{/each}
+			</ol>
+
+			<p class="border-t border-dci-teal/10 px-5 py-4 text-xs leading-relaxed text-slate-500 sm:px-6">
+				1 Connection Mile = 1 life meaningfully impacted. Figures shown are representative field
+				numbers; live rankings open with the DCI platform.
+			</p>
 		</div>
 	</div>
 </section>
@@ -361,3 +524,66 @@
 		</div>
 	</div>
 </section>
+
+<style>
+	/* Brand-styled Leaflet pins + popups.
+	   These target Leaflet-injected DOM, so they must be :global. */
+	:global(.dci-map .leaflet-container) {
+		background: var(--dci-sand);
+		font-family: var(--font-sans), system-ui, sans-serif;
+	}
+
+	:global(.dci-pin-dot) {
+		display: block;
+		width: 20px;
+		height: 20px;
+		border-radius: 9999px;
+		background: var(--pin, #2a6268);
+		box-shadow:
+			0 0 0 4px var(--dci-paper),
+			0 6px 16px -6px rgba(26, 60, 64, 0.6);
+		position: relative;
+	}
+	:global(.dci-pin-dot::after) {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: 9999px;
+		background: var(--pin, #2a6268);
+		opacity: 0.35;
+		animation: dci-pin-ping 1.7s cubic-bezier(0, 0, 0.2, 1) infinite;
+	}
+	@keyframes dci-pin-ping {
+		75%,
+		100% {
+			transform: scale(2.1);
+			opacity: 0;
+		}
+	}
+
+	:global(.leaflet-popup-content-wrapper) {
+		border-radius: 1rem;
+		background: var(--dci-cream);
+		border: 1px solid rgba(42, 98, 104, 0.15);
+		box-shadow: var(--shadow-dci-lift);
+	}
+	:global(.leaflet-popup-tip) {
+		background: var(--dci-cream);
+	}
+	:global(.dci-pin-pop .dci-pin-name) {
+		font-weight: 600;
+		color: var(--dci-teal-deep);
+		font-size: 0.875rem;
+	}
+	:global(.dci-pin-pop p) {
+		margin: 0.15rem 0 0;
+		font-size: 0.75rem;
+		color: #475569;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:global(.dci-pin-dot::after) {
+			animation: none;
+		}
+	}
+</style>

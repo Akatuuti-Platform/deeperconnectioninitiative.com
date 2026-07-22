@@ -1,48 +1,25 @@
-[2026-07-16T06:04:11.528Z] [error] Error: <svg> attribute height: Expected length, "auto".
-[2026-07-16T06:04:11.528Z] [error] Error: <svg> attribute height: Expected length, "auto".
-[2026-07-16T06:04:12.453Z] [debug] [vite] connecting...
-[2026-07-16T06:04:12.455Z] [debug] [vite] connected.
-[2026-07-16T06:15:33.694Z] [error] Error: <svg> attribute height: Expected length, "auto".
-[2026-07-16T06:15:33.695Z] [error] Error: <svg> attribute height: Expected length, "auto".
-[2026-07-16T06:15:34.749Z] [debug] [vite] connecting...
-[2026-07-16T06:15:34.784Z] [debug] [vite] connected.
-[2026-07-16T06:18:30.288Z] [log] [vite] server connection lost. Polling for restart...
-[2026-07-16T06:18:29.622Z] [log] [vite] server connection lost. Polling for restart...
-[2026-07-16T06:31:01.509Z] [debug] [vite] connecting...
-[2026-07-16T06:31:02.248Z] [debug] [vite] connected.
-[2026-07-16T06:31:06.956Z] [warning] Failed to hydrate:  HierarchyRequestError: Failed to execute 'appendChild' on 'Node': This node type does not support this method.
-
-	in <unknown>
-	in +layout.svelte
-	in root.svelte
-	in undefined
-
-    at Module.child (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4885:27)
-    at Navigation (http://localhost:3001/src/lib/components/layout/navigation.svelte:265:14)
-    at http://localhost:3001/node_modules/.vite/deps/chunk-6MAGVFME.js?v=91170e5c:721:56
-    at update_reaction (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4118:18)
-    at update_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4259:21)
-    at create_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:3608:7)
-    at branch (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:3784:10)
-    at http://localhost:3001/node_modules/.vite/deps/chunk-6MAGVFME.js?v=91170e5c:715:17
-    at update_reaction (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4118:18)
-    at update_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4259:21)
-[2026-07-16T06:31:09.747Z] [debug] [vite] connecting...
-[2026-07-16T06:31:11.127Z] [debug] [vite] connected.
-[2026-07-16T06:31:11.826Z] [warning] Failed to hydrate:  HierarchyRequestError: Failed to execute 'appendChild' on 'Node': This node type does not support this method.
-
-	in <unknown>
-	in +layout.svelte
-	in root.svelte
-	in undefined
-
-    at Module.child (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4885:27)
-    at Navigation (http://localhost:3001/src/lib/components/layout/navigation.svelte:265:14)
-    at http://localhost:3001/node_modules/.vite/deps/chunk-6MAGVFME.js?v=91170e5c:721:56
-    at update_reaction (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4118:18)
-    at update_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4259:21)
-    at create_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:3608:7)
-    at branch (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:3784:10)
-    at http://localhost:3001/node_modules/.vite/deps/chunk-6MAGVFME.js?v=91170e5c:715:17
-    at update_reaction (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4118:18)
-    at update_effect (http://localhost:3001/node_modules/.vite/deps/chunk-YF7AQZA4.js?v=91170e5c:4259:21)
+[2026-07-20T13:00:32.489Z] [error] Failed to load resource: the server responded with a status of 404 ()
+[2026-07-20T13:00:32.975Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
+[2026-07-20T13:00:32.975Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
+[2026-07-20T13:00:32.975Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
+[2026-07-20T13:00:33.031Z] [log] Adobe Analytics configured: trackExternalLinks = false
+[2026-07-20T13:00:33.181Z] [error] Failed to load resource: the server responded with a status of 403 ()
+[2026-07-20T13:00:33.182Z] [error] Failed to load resource: the server responded with a status of 403 ()
+[2026-07-20T13:00:34.127Z] [warning] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://aws.demdex.net') does not match the recipient window's origin ('null').
+[2026-07-20T13:00:37.984Z] [log] Adobe Analytics configured: trackExternalLinks = false
+[2026-07-20T13:00:44.164Z] [log] Adobe Analytics configured: trackExternalLinks = false
+[2026-07-20T13:01:00.757Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
+[2026-07-20T13:01:00.757Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
+[2026-07-20T13:01:00.759Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
+[2026-07-20T13:01:00.847Z] [log] Adobe Analytics configured: trackExternalLinks = false
+[2026-07-20T13:01:21.507Z] [error] Failed to load resource: the server responded with a status of 404 ()
+[2026-07-20T13:01:21.565Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
+[2026-07-20T13:01:21.565Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
+[2026-07-20T13:01:21.566Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
+[2026-07-20T13:01:21.601Z] [log] Adobe Analytics configured: trackExternalLinks = false
+[2026-07-20T13:01:37.210Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/github/awesome-copilot/main/README.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
+[2026-07-20T13:01:45.030Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/github/spec-kit/main/templates/plan-template.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
+[2026-07-20T13:01:54.677Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/kirodotdev/Kiro/main/README.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
+[2026-07-20T13:01:55.220Z] [error] Failed to load resource: the server responded with a status of 404 ()
+[2026-07-20T13:01:55.220Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/dotcursorrules/awesome-cursorrules/main/README.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
+[2026-07-20T13:02:00.891Z] [error] Failed to load resource: the server responded with a status of 401 ()

@@ -112,10 +112,10 @@
 
 			<div
 				use:reveal={{ delay: 210, y: 18 }}
-				class="involved-card dci-soft-hover bg-dci-teal p-6 rounded-xl border border-dci-teal hover:bg-[#234f53] transition-all cursor-pointer h-full flex flex-col"
+				class="involved-card dci-soft-hover bg-dci-teal p-6 rounded-xl border border-dci-teal hover:bg-dci-teal-mid transition-all cursor-pointer h-full flex flex-col"
 			>
 				<div
-					class="h-12 w-12 rounded-lg bg-[#ffffff]/20 flex items-center justify-center text-white mb-4"
+					class="h-12 w-12 rounded-lg bg-white/20 flex items-center justify-center text-white mb-4"
 				>
 					<Heart class="size-6" weight="duotone" />
 				</div>
@@ -137,7 +137,7 @@
           </div>
           <form class="flex w-full md:w-auto gap-2">
              <input type="email" placeholder="you@example.org" class="w-full md:w-64 rounded-full border border-slate-300 px-4 py-2 text-sm focus:ring-2 focus:ring-dci-teal focus:outline-none">
-             <button class="rounded-full bg-dci-teal px-6 py-2 text-sm font-bold text-white hover:bg-[#1f4a4e]">Subscribe</button>
+             <button class="rounded-full bg-dci-teal px-6 py-2 text-sm font-bold text-white hover:bg-dci-teal-mid">Subscribe</button>
           </form>
         </div> -->
 	</div>

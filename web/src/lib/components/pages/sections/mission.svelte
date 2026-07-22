@@ -35,7 +35,7 @@
 			/>
 			<div
 				use:reveal={{ delay: 120, y: 18 }}
-				class="relative z-10 space-y-8 rounded-3xl border border-dci-sand bg-dci-cream/88 p-8 shadow-[0_24px_75px_-62px_rgba(26,60,64,0.55)] backdrop-blur-sm"
+				class="relative z-10 space-y-8 rounded-3xl border border-dci-sand bg-dci-cream/88 p-8 shadow-dci-teal backdrop-blur-sm"
 			>
 				<ul class="space-y-4 text-base font-normal leading-relaxed text-slate-800">
 					<li class="flex gap-4 items-start">

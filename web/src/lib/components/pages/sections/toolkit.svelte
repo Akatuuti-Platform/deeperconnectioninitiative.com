@@ -114,7 +114,7 @@
 			{#each products as product, index}
 				<article
 					use:reveal={{ delay: index * 90, y: 22 }}
-					class={`group grid overflow-hidden rounded-[2rem] border bg-[#ffffeb] shadow-[0_24px_70px_-55px_rgba(0,0,0,0.65)] transition duration-500 hover:-translate-y-1 md:grid-cols-[0.82fr_1fr] md:h-[22rem] ${product.border}`}
+					class={`group grid overflow-hidden rounded-[2rem] border bg-dci-paper shadow-dci-lift transition duration-500 hover:-translate-y-1 md:grid-cols-[0.82fr_1fr] md:h-[22rem] ${product.border}`}
 				>
 					<div class={`relative min-h-72 overflow-hidden ${index % 2 === 1 ? 'md:order-2' : ''}`}>
 						{#if product.video}
@@ -127,18 +127,18 @@
 								playsinline
 								preload="none"
 								aria-label={product.name}
-								class={`h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-[#EAD5C8]' : index === 1 ? 'bg-[#EEF1E5]' : 'bg-[#ECE7DA]'}`}
+								class={`h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-dci-blush' : index === 1 ? 'bg-dci-mist' : 'bg-dci-oat'}`}
 							></video>
 						{:else}
 							<img
 								src={product.image}
 								alt={product.name}
 								loading="lazy"
-								class={`h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-[#EAD5C8]' : index === 1 ? 'bg-[#EEF1E5]' : 'bg-[#ECE7DA]'}`}
+								class={`h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-dci-blush' : index === 1 ? 'bg-dci-mist' : 'bg-dci-oat'}`}
 							/>
 						{/if}
 						<div
-							class="absolute top-4 left-4 rounded-full bg-[#ffffeb]/90 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-slate-700"
+							class="absolute top-4 left-4 rounded-full bg-dci-paper/90 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-slate-700"
 						>
 							{product.kicker}
 						</div>
@@ -163,7 +163,7 @@
 
 			<article
 				use:reveal={{ delay: 120, y: 22 }}
-				class="overflow-hidden rounded-[2rem] border border-dci-cream/15 bg-[#171817] text-dci-cream"
+				class="overflow-hidden rounded-[2rem] border border-dci-cream/15 bg-dci-ink text-dci-cream"
 			>
 				<img
 					src="/photos/product-full-toolkit.jpg"
@@ -202,7 +202,7 @@
 							<Button
 								href={paymentLinks.toolkit} target="_blank" rel="noopener noreferrer"
 								size="lg"
-								class="rounded-full bg-dci-cream text-[#171817] hover:bg-white"
+								class="rounded-full bg-dci-cream text-dci-ink hover:bg-white"
 							>
 								Buy complete kit
 							</Button>

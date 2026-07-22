@@ -184,7 +184,7 @@
 	class="fixed top-3 right-0 left-0 z-50 mx-auto w-[calc(100%-1rem)] max-w-7xl px-2 sm:top-4 sm:w-[calc(100%-2rem)]"
 >
 	<div
-		class="relative overflow-visible rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 py-1.5 shadow-[0_18px_55px_-42px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:px-4"
+		class="relative overflow-visible rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 py-1.5 shadow-dci-lift backdrop-blur-xl sm:px-4"
 	>
 		<NoiseOverlay />
 		<div class="relative flex h-12 items-center justify-between gap-4">
@@ -264,7 +264,7 @@
 						<div class="grid grid-cols-[0.78fr_1fr] gap-4">
 							<a
 								href={activeItem.href}
-								class="group flex min-h-64 flex-col justify-between rounded-2xl bg-dci-teal-deep p-6 text-dci-cream outline-none transition hover:bg-[#204B50] focus-visible:ring-2 focus-visible:ring-dci-teal"
+								class="group flex min-h-64 flex-col justify-between rounded-2xl bg-dci-teal-deep p-6 text-dci-cream outline-none transition hover:bg-dci-teal-mid focus-visible:ring-2 focus-visible:ring-dci-teal"
 								onclick={closeDesktopMenu}
 							>
 								<div>

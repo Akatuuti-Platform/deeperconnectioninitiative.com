@@ -19,6 +19,12 @@
 	--dci-sand: #efe5d0;
 	--dci-paper: #fff9ea;
 	--dci-clay: #d49c70;
+	--dci-teal-mid: #234f53; /* hover shade for teal / teal-deep surfaces */
+	--dci-ink: #171817; /* neutral near-black for dark cards + text */
+	/* Product-card media tints (toolkit) */
+	--dci-blush: #ead5c8;
+	--dci-mist: #eef1e5;
+	--dci-oat: #ece7da;
 
 	--radius: 0.625rem;
 	--background: oklch(0.92 0.02 85);
@@ -167,10 +173,18 @@
 	--color-dci-sand: var(--dci-sand);
 	--color-dci-paper: var(--dci-paper);
 	--color-dci-clay: var(--dci-clay);
+	--color-dci-teal-mid: var(--dci-teal-mid);
+	--color-dci-ink: var(--dci-ink);
+	--color-dci-blush: var(--dci-blush);
+	--color-dci-mist: var(--dci-mist);
+	--color-dci-oat: var(--dci-oat);
 
-	/* Two soft-lift shadows replace ~20 near-identical arbitrary values */
-	--shadow-dci-lift: 0 24px 70px -58px rgba(0, 0, 0, 0.72);
-	--shadow-dci-panel: 0 28px 90px -60px rgba(0, 0, 0, 0.75);
+	/* Shadow scale — replaces ~20 near-identical arbitrary values.
+	   Neutral lifts (lift/panel) + teal-tinted family (teal/soft). */
+	--shadow-dci-lift: 0 24px 70px -58px rgba(0, 0, 0, 0.72); /* large neutral lift */
+	--shadow-dci-panel: 0 28px 90px -60px rgba(0, 0, 0, 0.75); /* XL neutral panel */
+	--shadow-dci-teal: 0 24px 72px -54px rgba(26, 60, 64, 0.55); /* large teal-tinted */
+	--shadow-dci-soft: 0 16px 44px -26px rgba(26, 60, 64, 0.5); /* small/tight teal-tinted */
 }
 
 @layer base {

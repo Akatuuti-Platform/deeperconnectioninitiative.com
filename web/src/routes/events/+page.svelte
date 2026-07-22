@@ -148,7 +148,7 @@
 						{src}
 						alt={`DCI community moment ${index + 1}`}
 						loading="lazy"
-						class="w-full break-inside-avoid rounded-2xl object-cover shadow-[0_20px_60px_-50px_rgba(0,0,0,0.7)]"
+						class="w-full break-inside-avoid rounded-2xl object-cover shadow-dci-lift"
 					/>
 				{/each}
 			</div>

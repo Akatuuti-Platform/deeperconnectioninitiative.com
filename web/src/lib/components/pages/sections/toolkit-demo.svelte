@@ -137,7 +137,7 @@
 		<div class="relative overflow-hidden bg-dci-cream p-6 text-slate-950 sm:p-8 lg:p-10">
 			<div class="grid gap-8 2xl:grid-cols-[0.9fr_1fr] 2xl:items-center">
 				<div
-					class="relative min-h-[20rem] overflow-hidden rounded-[2rem] bg-dci-paper/70 shadow-[0_24px_55px_-38px_rgba(0,0,0,0.72)] 2xl:min-h-[23rem]"
+					class="relative min-h-[20rem] overflow-hidden rounded-[2rem] bg-dci-paper/70 shadow-dci-lift 2xl:min-h-[23rem]"
 				>
 					{#key activeTool.id}
 						<div class="absolute inset-0" in:fade={{ duration: 320 }}>
@@ -179,7 +179,7 @@
 					</div>
 					<a
 						href={activeTool.href}
-						class="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-dci-teal-deep px-6 text-sm font-semibold text-dci-cream transition hover:bg-[#234F53] active:scale-[0.98]"
+						class="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-dci-teal-deep px-6 text-sm font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98]"
 					>
 						{activeTool.cta}
 						<ArrowUpRightIcon class="size-4" weight="regular" />
