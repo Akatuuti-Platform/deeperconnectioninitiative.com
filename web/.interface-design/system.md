@@ -95,6 +95,14 @@ Defined as `--dci-*` and exposed as Tailwind tokens (`text-dci-teal`, `bg-dci-cr
 - `rounded-2xl` + `border border-dci-teal/20` + `bg-dci-paper` (or `bg-off-white`) + `p-6`/`p-8`
 - Optional lift: `shadow-dci-lift` and/or `.dci-soft-hover`
 
+### Product card (toolkit)
+Two-column split (`md:grid-cols-[0.82fr_1fr]`), media one side + copy the other, image side **alternates** per row (`index % 2` → `md:order-2`). Container: `rounded-[2rem] border bg-dci-paper shadow-dci-lift md:min-h-[22rem]`, hover `-translate-y-1` + media `group-hover:scale-[1.03]`.
+- **Never fix the height** (`md:h-[...]` + `overflow-hidden` clips the price/CTA). Use `md:min-h-[...]` so content-rich cards grow.
+- **Copy column** (`justify-between`): title (`text-3xl` Fraunces) → description → optional italic `credit` line → **Connection Miles badge** → price + CTA row (`justify-between`).
+- **Connection Miles™ badge** (the signature): a short `whitespace-nowrap` pill (`inline-flex rounded-full border px-3 py-1 text-[0.7rem] font-bold uppercase tracking-widest`) holding **only the metric** (`8 Connection Miles™`), with the plain-language gloss (`8 lives impacted`) beside it as `text-sm text-slate-500` — never inside the pill (long copy wraps a `rounded-full` pill onto two ugly lines on mobile). Colored per product via a single `badge` token string, e.g. `border-dci-burgundy/25 bg-dci-burgundy/10 text-dci-burgundy` (also teal / teal-deep). Use `/10` fill so the pill actually reads (`/5` is too faint). Anchor the term once per section with a gloss linking to `/connection-miles`.
+- **Badge-only accent:** the per-product accent color lives **only** in the Miles badge. Prices stay a consistent `text-dci-teal-deep` ink so they never compete with the teal primary CTA. (This is how burgundy stays a spotlight, not a fill.)
+- **Bundle/upsell card:** invert to `bg-dci-ink text-dci-cream` with cream CTAs — the one dark surface in the set signals "the complete thing."
+
 ### Input
 `rounded-full border border-slate-300 px-4 py-2 text-sm focus:ring-2 focus:ring-dci-teal focus:outline-none`
 
@@ -112,5 +120,6 @@ Defined as `--dci-*` and exposed as Tailwind tokens (`text-dci-teal`, `bg-dci-cr
 - Generous radius (`rounded-full` / `rounded-2xl` / `rounded-xl`) — nothing sharp or clinical.
 - Warm surfaces (cream/sand/paper) over flat white; keep the textured page background.
 - Burgundy is a spotlight, not a fill — use it to draw the eye, sparingly.
+- **Badge-only accent** on multi-item card sets: one colored element (the badge) carries identity; shared elements (price, CTA) stay neutral/consistent so accents never compete.
 - `font-semibold` + Fraunces headings; keep body at `text-sm`/`text-base`.
 - One section rhythm per band (`py-24` default); don't mix vertical spacing arbitrarily.
