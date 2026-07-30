@@ -4,7 +4,7 @@
 	import ToolkitDemo from '$lib/components/pages/sections/toolkit-demo.svelte';
 	import ProductGallery from '$lib/components/product-gallery.svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { cardGamePhotos, journalPhotos } from '$lib/product-photos';
+	import { cardGamePhotos, journalPhotos, moodTrackerPhotos } from '$lib/product-photos';
 	import { paymentLinks } from '$lib/payment-links';
 	import { ArrowUpRightIcon as ArrowUpRight, SparkleIcon } from 'phosphor-svelte';
 
@@ -41,7 +41,7 @@
 			price: '31,000 UGX',
 			href: paymentLinks.moodTracker,
 			image: '/photos/product-mood-tracker.jpg',
-			images: null as string[] | null,
+			images: moodTrackerPhotos as string[] | null,
 			video: '/videos/mood-tracker.mp4',
 			bg: 'bg-dci-oat'
 		}

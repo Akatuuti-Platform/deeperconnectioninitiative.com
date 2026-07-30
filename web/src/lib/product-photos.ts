@@ -14,3 +14,8 @@ export const journalPhotos = [
 	'/photos/journal/journal-2.jpg',
 	'/photos/journal/journal-3.jpg'
 ];
+
+export const moodTrackerPhotos = [
+	'/photos/mood-tracker/mood-tracker-1.jpg',
+	'/photos/mood-tracker/mood-tracker-2.jpg'
+];

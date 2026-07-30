@@ -11,7 +11,7 @@
 	import ProductGallery from '$lib/components/product-gallery.svelte';
 	import SpotIllustration from '$lib/components/spot-illustration.svelte';
 	import { reveal } from '$lib/actions/reveal';
-	import { cardGamePhotos, journalPhotos } from '$lib/product-photos';
+	import { cardGamePhotos, journalPhotos, moodTrackerPhotos } from '$lib/product-photos';
 
 	// Only autoplay the product videos when the user hasn't asked for reduced
 	// motion. Starts off (poster shown) and enables on the client if allowed,
@@ -66,7 +66,7 @@
 			impact: '1 life tracked',
 			price: '31,000 UGX',
 			image: '/photos/product-mood-tracker.jpg',
-			images: null as string[] | null,
+			images: moodTrackerPhotos as string[] | null,
 			video: '/videos/mood-tracker.mp4',
 			paymentLink: paymentLinks.moodTracker,
 			border: 'border-dci-teal-deep/20',
