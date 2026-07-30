@@ -4,7 +4,7 @@
 	import ToolkitDemo from '$lib/components/pages/sections/toolkit-demo.svelte';
 	import ProductGallery from '$lib/components/product-gallery.svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { cardGamePhotos } from '$lib/card-game-photos';
+	import { cardGamePhotos, journalPhotos } from '$lib/product-photos';
 	import { paymentLinks } from '$lib/payment-links';
 	import { ArrowUpRightIcon as ArrowUpRight, SparkleIcon } from 'phosphor-svelte';
 
@@ -28,10 +28,10 @@
 		{
 			name: 'DCI Reflection Journal',
 			description: 'Guided pages for processing, naming, and noticing what is happening.',
-			price: '120,000 UGX',
+			price: '100,000 UGX',
 			href: paymentLinks.journal,
 			image: '/photos/product-journal.jpg',
-			images: null as string[] | null,
+			images: journalPhotos as string[] | null,
 			video: '/videos/journal.mp4',
 			bg: 'bg-dci-mist'
 		},
@@ -109,7 +109,15 @@
 					<div
 						class={`relative overflow-hidden ${product.bg} ${product.images ? '' : 'aspect-[4/3]'}`}
 					>
-						{#if product.video}
+						{#if product.images}
+							<ProductGallery
+								images={product.images}
+								alt={product.name}
+								video={product.video}
+								poster={product.image}
+								dynamicAspect
+							/>
+						{:else if product.video}
 							<video
 								src={product.video}
 								poster={product.image}
@@ -121,8 +129,6 @@
 								aria-label={`${product.name} preview`}
 								class="h-full w-full object-cover"
 							></video>
-						{:else if product.images}
-							<ProductGallery images={product.images} alt={product.name} dynamicAspect />
 						{:else}
 							<img
 								src={product.image}

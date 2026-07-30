@@ -11,7 +11,7 @@
 	import ProductGallery from '$lib/components/product-gallery.svelte';
 	import SpotIllustration from '$lib/components/spot-illustration.svelte';
 	import { reveal } from '$lib/actions/reveal';
-	import { cardGamePhotos } from '$lib/card-game-photos';
+	import { cardGamePhotos, journalPhotos } from '$lib/product-photos';
 
 	// Only autoplay the product videos when the user hasn't asked for reduced
 	// motion. Starts off (poster shown) and enables on the client if allowed,
@@ -48,9 +48,9 @@
 			credit: null as string | null,
 			miles: '1 Connection Mile™',
 			impact: 'Your life, on the map',
-			price: '120,000 UGX',
+			price: '100,000 UGX',
 			image: '/photos/product-journal.jpg',
-			images: null as string[] | null,
+			images: journalPhotos as string[] | null,
 			video: '/videos/journal.mp4',
 			paymentLink: paymentLinks.journal,
 			border: 'border-dci-teal/20',
@@ -143,7 +143,15 @@
 					class={`group grid overflow-hidden rounded-[2rem] border bg-dci-paper shadow-dci-lift transition duration-500 hover:-translate-y-1 md:grid-cols-[0.82fr_1fr] md:min-h-[22rem] ${product.border}`}
 				>
 					<div class={`relative min-h-72 overflow-hidden ${index % 2 === 1 ? 'md:order-2' : ''}`}>
-						{#if product.video}
+						{#if product.images}
+							<ProductGallery
+								images={product.images}
+								alt={product.name}
+								video={product.video}
+								poster={product.image}
+								imgClass="min-h-72"
+							/>
+						{:else if product.video}
 							<video
 								src={product.video}
 								poster={product.image}
@@ -155,8 +163,6 @@
 								aria-label={product.name}
 								class={`h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-dci-blush' : index === 1 ? 'bg-dci-mist' : 'bg-dci-oat'}`}
 							></video>
-						{:else if product.images}
-							<ProductGallery images={product.images} alt={product.name} imgClass="min-h-72" />
 						{:else}
 							<img
 								src={product.image}

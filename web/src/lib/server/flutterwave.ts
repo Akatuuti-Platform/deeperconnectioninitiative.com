@@ -30,7 +30,7 @@ export const products: Record<string, Product> = {
 		slug: 'journal',
 		name: 'DCI Reflection Journal',
 		description: 'Structured journaling that turns daily reflection into emotional strength.',
-		amount: 120_000
+		amount: 100_000
 	},
 	'mood-tracker': {
 		slug: 'mood-tracker',

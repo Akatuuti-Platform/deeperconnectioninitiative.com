@@ -137,7 +137,7 @@
 		{
 			name: 'DCI Reflection Journal',
 			description: 'Guided pages for processing, naming, and noticing what is happening.',
-			price: '120,000 UGX',
+			price: '100,000 UGX',
 			href: paymentLinks.journal,
 			icon: NotebookIcon,
 			accent: '#2A6268'
