@@ -34,7 +34,7 @@
 			icon: LightningIcon,
 			title: 'Connection Miles as currency',
 			description:
-				'Each Mile represents one life meaningfully impacted. Miles are earned through products sold, clinics hosted, and Champions trained — then used for platform access and ongoing support.'
+				'Each Mile represents one life meaningfully impacted. Miles are earned through products sold, clinics hosted, and Champions trained, then used for platform access and ongoing support.'
 		}
 	];
 </script>
@@ -85,7 +85,7 @@
 		>
 			<p class="text-sm sm:text-base font-medium text-dci-cream/90 leading-relaxed">
 				Connection Miles enable organisations to transition from crisis reaction to early
-				detection — pay-as-you-go data tracking that compounds with every toolkit sold, clinic
+				detection: pay-as-you-go data tracking that compounds with every toolkit sold, clinic
 				hosted, and Champion trained.
 			</p>
 		</div>

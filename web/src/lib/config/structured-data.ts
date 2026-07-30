@@ -14,7 +14,7 @@ const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const LOGO_URL = `${SITE_URL}/photos/dci-logo-mark.png`;
 
-// The org's declared social presence. Feeds schema.org `sameAs` — a strong
+// The org's declared social presence. Feeds schema.org `sameAs` - a strong
 // entity-recognition signal. Real profile URLs live in siteConfig.social;
 // empty values are dropped so we never emit a broken link.
 const SAME_AS = [
@@ -222,7 +222,7 @@ export function coursesStructuredData(tiers: CourseInput[]): string {
 
 		const node: Record<string, unknown> = {
 			'@type': 'Course',
-			name: `${t.name} — ${t.subtitle}`,
+			name: `${t.name}: ${t.subtitle}`,
 			description: t.bestFor
 				? `${t.subtitle}. Best for ${t.bestFor}.`
 				: t.subtitle,

@@ -9,7 +9,7 @@
 
 	const prompts: Prompt[] = [
 		{
-			text: 'What are you using to get through a normal Tuesday — and is it actually working?',
+			text: 'What are you using to get through a normal Tuesday, and is it actually working?',
 			theme: 'Coping',
 			tone: 'clay',
 			no: 7
@@ -149,7 +149,7 @@
 		></div>
 		<div class="absolute inset-3 rounded-[1.15rem] border border-dci-cream/15"></div>
 		<div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
-			<!-- pulse / breathing emblem — the brand's living-body motif -->
+			<!-- pulse / breathing emblem - the brand's living-body motif -->
 			<div class="relative size-14 {z === 2 ? 'dci-breathe' : ''}">
 				<div class="absolute inset-0 rounded-full border border-dci-cream/25"></div>
 				<div class="absolute inset-2 rounded-full border border-dci-cream/20"></div>
@@ -191,7 +191,7 @@
 						Start a conversation people actually want to have.
 					</h3>
 					<p class="mt-4 max-w-md text-base leading-relaxed text-dci-cream/72">
-						Every DCI conversation card carries a real prompt — not a therapy question, just an
+						Every DCI conversation card carries a real prompt, not a therapy question, just an
 						honest one. Draw one and see what surfaces.
 					</p>
 

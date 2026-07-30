@@ -41,7 +41,7 @@
 			label: 'RESPOND',
 			title: 'Crisis',
 			description:
-				'When everyday pressure becomes a clinical emergency, the cost — human and financial — multiplies.',
+				'When everyday pressure becomes a clinical emergency, the cost, human and financial, multiplies.',
 			icon: FirstAidKitIcon,
 			crisis: true
 		}
@@ -72,7 +72,7 @@
 			</div>
 			<div class="flex items-end">
 				<p class="text-base lg:text-lg leading-relaxed text-slate-600">
-					Mental health emergencies rarely come out of nowhere. They follow a pattern — pressure,
+					Mental health emergencies rarely come out of nowhere. They follow a pattern: pressure,
 					signals, a support gap, then crisis. DCI's ecosystem targets the first three stages so
 					the fourth rarely happens.
 				</p>
@@ -148,7 +148,7 @@
 		>
 			<p class="text-sm sm:text-base font-medium text-dci-cream/90 leading-relaxed">
 				Prevention is cheaper, kinder, and more effective than response. DCI puts tools
-				where pressure builds — homes, schools, clinics, and community spaces.
+				where pressure builds: homes, schools, clinics, and community spaces.
 			</p>
 		</div>
 	</div>

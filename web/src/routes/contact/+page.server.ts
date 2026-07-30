@@ -38,9 +38,9 @@ export const actions: Actions = {
 		}
 
 		// Deliver via Resend (https://resend.com). Reads config from private env:
-		//   RESEND_API_KEY       — required to actually send
-		//   CONTACT_TO_EMAIL     — where enquiries land (default: DCI inbox)
-		//   CONTACT_FROM_EMAIL   — verified Resend sender (default: resend test sender)
+		//   RESEND_API_KEY       - required to actually send
+		//   CONTACT_TO_EMAIL     - where enquiries land (default: DCI inbox)
+		//   CONTACT_FROM_EMAIL   - verified Resend sender (default: resend test sender)
 		const apiKey = env.RESEND_API_KEY;
 		const to = env.CONTACT_TO_EMAIL || 'info@utaliicreative.com';
 		const from = env.CONTACT_FROM_EMAIL || 'DCI Website <onboarding@resend.dev>';
@@ -49,20 +49,20 @@ export const actions: Actions = {
 			// No key configured yet: validate + acknowledge so the form works in
 			// dev, but make it loud that nothing was delivered.
 			console.warn(
-				'[contact] RESEND_API_KEY not set — enquiry NOT delivered:',
+				'[contact] RESEND_API_KEY not set - enquiry NOT delivered:',
 				JSON.stringify({ name, email, topic })
 			);
 			return { success: true };
 		}
 
-		const subject = `New enquiry${topic ? `: ${topic}` : ''} — ${name}`;
-		const text = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || '—'}\nTopic: ${topic || '—'}\n\n${message}`;
+		const subject = `New enquiry${topic ? `: ${topic}` : ''} - ${name}`;
+		const text = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || '-'}\nTopic: ${topic || '-'}\n\n${message}`;
 		const html = `
 			<h2>New DCI enquiry</h2>
 			<p><strong>Name:</strong> ${escapeHtml(name)}</p>
 			<p><strong>Email:</strong> ${escapeHtml(email)}</p>
-			<p><strong>Phone:</strong> ${escapeHtml(phone) || '—'}</p>
-			<p><strong>Topic:</strong> ${escapeHtml(topic) || '—'}</p>
+			<p><strong>Phone:</strong> ${escapeHtml(phone) || '-'}</p>
+			<p><strong>Topic:</strong> ${escapeHtml(topic) || '-'}</p>
 			<hr />
 			<p style="white-space:pre-wrap">${escapeHtml(message)}</p>
 		`;

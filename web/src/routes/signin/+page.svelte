@@ -4,7 +4,7 @@
 	import { reveal } from '$lib/actions/reveal';
 	import { ArrowUpRightIcon as ArrowUpRight, LockKeyIcon as LockKeyhole, EnvelopeIcon as Mail } from 'phosphor-svelte';
 
-	// Accounts are not open yet — prevent the form from submitting (a plain
+	// Accounts are not open yet - prevent the form from submitting (a plain
 	// <form> with no method would GET, leaking the password into the URL).
 	let notice = $state(false);
 	function handleSubmit(event: SubmitEvent) {
@@ -49,7 +49,7 @@
 			<form class="space-y-6" onsubmit={handleSubmit}>
 				{#if notice}
 					<p class="rounded-2xl border border-dci-teal/20 bg-dci-teal/5 px-4 py-3 text-sm text-dci-teal-deep" role="status">
-						Accounts aren't open yet — the DCI platform is coming soon. <a href="/platform" class="font-semibold underline underline-offset-4">Learn more</a>.
+						Accounts aren't open yet. The DCI platform is coming soon. <a href="/platform" class="font-semibold underline underline-offset-4">Learn more</a>.
 					</p>
 				{/if}
 

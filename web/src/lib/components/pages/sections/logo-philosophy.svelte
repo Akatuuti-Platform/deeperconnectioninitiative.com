@@ -11,7 +11,7 @@
 				The mark
 			</span>
 
-			<!-- Breathing logo mark — the pulse is the point -->
+			<!-- Breathing logo mark - the pulse is the point -->
 			<img
 				src="/photos/dci-logo-mark.png"
 				alt="DCI logo mark"
@@ -23,7 +23,7 @@
 				No skin. No name. No gender.
 			</h2>
 			<p class="text-base leading-relaxed text-slate-600 max-w-xl mx-auto">
-				Our mark is drawn from the muscular system — the body with the skin peeled
+				Our mark is drawn from the muscular system: the body with the skin peeled
 				back. Look beneath the surface and you can't tell who is Black, who is Indian,
 				who is anyone. The striving underneath looks the same in all of us. That shared,
 				unhidden humanity is the whole idea of DCI.
@@ -37,21 +37,21 @@
 			<div class="rounded-2xl border border-dci-sand bg-dci-cream/70 p-6">
 				<p class="text-xs font-bold uppercase tracking-widest text-dci-teal/70 mb-2">Peel back</p>
 				<p class="text-sm leading-relaxed text-slate-700">
-					Healing starts by stripping away the layers we perform behind — and looking
+					Healing starts by stripping away the layers we perform behind, and looking
 					honestly at what's really there.
 				</p>
 			</div>
 			<div class="rounded-2xl border border-dci-sand bg-dci-cream/70 p-6">
 				<p class="text-xs font-bold uppercase tracking-widest text-dci-teal/70 mb-2">Breathe</p>
 				<p class="text-sm leading-relaxed text-slate-700">
-					A living body is always moving — blood through muscle, a pulse through the whole.
+					A living body is always moving: blood through muscle, a pulse through the whole.
 					The mark breathes because healing is motion, not a finished state.
 				</p>
 			</div>
 			<div class="rounded-2xl border border-dci-sand bg-dci-cream/70 p-6">
 				<p class="text-xs font-bold uppercase tracking-widest text-dci-teal/70 mb-2">Unfinished</p>
 				<p class="text-sm leading-relaxed text-slate-700">
-					The mark is deliberately incomplete — because the work is never done, and the
+					The mark is deliberately incomplete, because the work is never done, and the
 					person doing it can be anyone willing to start an honest conversation.
 				</p>
 			</div>
@@ -61,14 +61,14 @@
 			use:reveal={{ delay: 220, y: 14 }}
 			class="mt-12 text-lg font-medium italic text-dci-teal"
 		>
-			Own your healing — peel back the layers.
+			Own your healing: peel back the layers.
 		</p>
 	</div>
 </section>
 
 <style>
 	/* The mark breathes: a slow pulse, like blood moving through muscle.
-	   Subtle by design — healing in motion, never a hard beat. */
+	   Subtle by design - healing in motion, never a hard beat. */
 	.dci-breathe {
 		animation: dci-breathe 4.5s ease-in-out infinite;
 		transform-origin: center;

@@ -43,10 +43,10 @@ export const PAGE_META: Record<string, PageMeta> = {
 	'/performance/assessment': {
 		title: `The Blueprint Assessment${SUFFIX}`,
 		description:
-			'A free 10-minute reflection tool. Twenty statements across five facets — how you think, recover, decide, communicate, and lead under pressure — with a personal Blueprint snapshot at the end.'
+			'A free 10-minute reflection tool. Twenty statements across five facets: how you think, recover, decide, communicate, and lead under pressure, with a personal Blueprint snapshot at the end.'
 	},
 	'/platform': {
-		title: `Early Warning System — Coming Soon${SUFFIX}`,
+		title: `Early Warning System: Coming Soon${SUFFIX}`,
 		description:
 			'Log in, check your Connection Miles, and follow your community’s Early Warning System. Coming soon.'
 	},

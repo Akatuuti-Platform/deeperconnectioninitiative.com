@@ -84,7 +84,7 @@
 				“You're not underperforming. You're exhausted from fighting yourself.”
 			</p>
 			<p class="mt-5 text-sm leading-relaxed text-dci-cream/70">
-				The Blueprint works on the systems beneath your performance — how you think, recover,
+				The Blueprint works on the systems beneath your performance: how you think, recover,
 				communicate, lead, and decide under pressure.
 			</p>
 		</div>

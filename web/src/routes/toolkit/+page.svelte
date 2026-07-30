@@ -2,7 +2,9 @@
 	import { onMount } from 'svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import ToolkitDemo from '$lib/components/pages/sections/toolkit-demo.svelte';
+	import ProductGallery from '$lib/components/product-gallery.svelte';
 	import { Button } from '$lib/components/ui/button';
+	import { cardGamePhotos } from '$lib/card-game-photos';
 	import { paymentLinks } from '$lib/payment-links';
 	import { ArrowUpRightIcon as ArrowUpRight, SparkleIcon } from 'phosphor-svelte';
 
@@ -19,6 +21,7 @@
 			price: '69,000 UGX',
 			href: paymentLinks.cardGame,
 			image: '/photos/product-card-game.jpg',
+			images: cardGamePhotos as string[] | null,
 			video: null as string | null,
 			bg: 'bg-dci-blush'
 		},
@@ -28,6 +31,7 @@
 			price: '120,000 UGX',
 			href: paymentLinks.journal,
 			image: '/photos/product-journal.jpg',
+			images: null as string[] | null,
 			video: '/videos/journal.mp4',
 			bg: 'bg-dci-mist'
 		},
@@ -37,6 +41,7 @@
 			price: '31,000 UGX',
 			href: paymentLinks.moodTracker,
 			image: '/photos/product-mood-tracker.jpg',
+			images: null as string[] | null,
 			video: '/videos/mood-tracker.mp4',
 			bg: 'bg-dci-oat'
 		}
@@ -101,7 +106,9 @@
 					use:reveal={{ delay: index * 80, y: 18 }}
 					class="dci-soft-hover flex min-h-72 flex-col overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-cream shadow-dci-lift"
 				>
-					<div class={`relative aspect-[4/3] overflow-hidden ${product.bg}`}>
+					<div
+						class={`relative overflow-hidden ${product.bg} ${product.images ? '' : 'aspect-[4/3]'}`}
+					>
 						{#if product.video}
 							<video
 								src={product.video}
@@ -114,6 +121,8 @@
 								aria-label={`${product.name} preview`}
 								class="h-full w-full object-cover"
 							></video>
+						{:else if product.images}
+							<ProductGallery images={product.images} alt={product.name} dynamicAspect />
 						{:else}
 							<img
 								src={product.image}

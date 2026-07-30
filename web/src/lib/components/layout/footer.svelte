@@ -104,7 +104,7 @@ const complianceLinks = [
 			<p class="text-xs text-dci-sand/50 leading-relaxed max-w-3xl">
 				Our community is built on the foundation of belonging and mutual respect. Through our
 				Deeper Connection Initiative, we are committed to fostering a neighborhood where every
-				resident feels truly at home &mdash; celebrating diversity, encouraging participation,
+				resident feels truly at home: celebrating diversity, encouraging participation,
 				and ensuring every voice contributes to the vibrant spirit of our collective home.
 			</p>
 			<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

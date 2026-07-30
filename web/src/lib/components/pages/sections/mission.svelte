@@ -83,7 +83,7 @@
 
 						<br />
 						<span class="italic text-slate-600 text-base">
-							Ownership doesn't replace support — it makes support stronger.</span
+							Ownership doesn't replace support: it makes support stronger.</span
 						>
 					</p>
 				</div>

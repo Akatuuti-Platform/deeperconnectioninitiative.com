@@ -1,14 +1,16 @@
-
+// Internal checkout routes. Each one collects the buyer's details, creates a
+// Flutterwave payment server-side (see $lib/server/flutterwave.ts), and
+// redirects to Flutterwave's hosted payment page.
 export const paymentLinks = {
-    toolkit:"https://flutterwave.com/pay/iyjwtttlx2ak",
-    tShirt:"https://flutterwave.com/pay/usqdio6u1ihs",
-    cardGame:"https://flutterwave.com/pay/cidkcgcayir3",
-    moodTracker:"https://flutterwave.com/pay/uejw5ohwx88z",
-    journal:"https://flutterwave.com/pay/tvskdp7x03sy",
-    certifications:{
-        foundationLevelCommunityChampionCertification: "https://flutterwave.com/pay/otgd1nua58va",
-        advancedLevelInstitutionalChampionCertification:"https://flutterwave.com/pay/9dztppy5qgq1",
-        masterTrainerCertification:"https://flutterwave.com/pay/w9vyugjuszjq",
-    },
-    donation:"https://flutterwave.com/donate/clhbvmmxfsfx"
-}
+	toolkit: '/checkout/toolkit',
+	tShirt: '/checkout/t-shirt',
+	cardGame: '/checkout/card-game',
+	moodTracker: '/checkout/mood-tracker',
+	journal: '/checkout/journal',
+	certifications: {
+		foundationLevelCommunityChampionCertification: '/checkout/cert-foundation',
+		advancedLevelInstitutionalChampionCertification: '/checkout/cert-advanced',
+		masterTrainerCertification: '/checkout/cert-master'
+	},
+	donation: '/checkout/donate'
+};

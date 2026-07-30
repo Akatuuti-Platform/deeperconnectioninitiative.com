@@ -48,8 +48,8 @@ export const actions: Actions = {
 
 		const snapshotLines = facets.map((f) => {
 			const value = scores[f.key];
-			const band = typeof value === 'number' ? bandLabels[bandFor(value)] : '—';
-			const shown = typeof value === 'number' ? value.toFixed(1) : '—';
+			const band = typeof value === 'number' ? bandLabels[bandFor(value)] : '-';
+			const shown = typeof value === 'number' ? value.toFixed(1) : '-';
 			return `${f.label}: ${band} (${shown}/5)`;
 		});
 
@@ -61,18 +61,18 @@ export const actions: Actions = {
 			// No key configured yet: acknowledge so the flow works in dev, but make
 			// it loud that nothing was delivered.
 			console.warn(
-				'[assessment] RESEND_API_KEY not set — lead NOT delivered:',
+				'[assessment] RESEND_API_KEY not set - lead NOT delivered:',
 				JSON.stringify({ name, email, role, company })
 			);
 			return { success: true };
 		}
 
-		const subject = `New Blueprint Assessment — ${name}`;
+		const subject = `New Blueprint Assessment - ${name}`;
 		const text = [
 			`Name: ${name}`,
 			`Email: ${email}`,
-			`Role: ${role || '—'}`,
-			`Company: ${company || '—'}`,
+			`Role: ${role || '-'}`,
+			`Company: ${company || '-'}`,
 			'',
 			'Blueprint snapshot:',
 			...snapshotLines
@@ -81,8 +81,8 @@ export const actions: Actions = {
 			<h2>New Blueprint Assessment</h2>
 			<p><strong>Name:</strong> ${escapeHtml(name)}</p>
 			<p><strong>Email:</strong> ${escapeHtml(email)}</p>
-			<p><strong>Role:</strong> ${escapeHtml(role) || '—'}</p>
-			<p><strong>Company:</strong> ${escapeHtml(company) || '—'}</p>
+			<p><strong>Role:</strong> ${escapeHtml(role) || '-'}</p>
+			<p><strong>Company:</strong> ${escapeHtml(company) || '-'}</p>
 			<hr />
 			<p><strong>Blueprint snapshot</strong></p>
 			<ul>${snapshotLines.map((l) => `<li>${escapeHtml(l)}</li>`).join('')}</ul>

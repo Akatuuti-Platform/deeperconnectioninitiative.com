@@ -152,7 +152,7 @@
 		}
 	];
 
-	// Public leaderboard — illustrative preview of what champions and partner
+	// Public leaderboard - illustrative preview of what champions and partner
 	// organizations see on their DCI dashboard. Ranked by total Connection Miles
 	// (1 mile = 1 life meaningfully impacted). Real figures will come from the
 	// platform; these are representative field numbers.
@@ -335,7 +335,7 @@
 			<p class="max-w-2xl text-base leading-relaxed text-slate-700" use:reveal={{ delay: 90, y: 18 }}>
 				Champions and partner organizations earn Connection Miles for every reflection, clinic, and
 				kit that reaches the field. The public leaderboard mirrors what they see on their DCI
-				dashboard — recognition that the quiet work is counted.
+				dashboard: recognition that the quiet work is counted.
 			</p>
 		</div>
 

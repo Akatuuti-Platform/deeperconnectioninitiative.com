@@ -126,7 +126,7 @@
 			class="fixed inset-0 z-50 flex items-center justify-center bg-dci-teal-deep/80 p-4 backdrop-blur-sm"
 			role="dialog"
 			aria-modal="true"
-			aria-label="Ann Banya — video"
+			aria-label="Ann Banya: video"
 			transition:fade={{ duration: fadeDuration() }}
 		>
 			<button
@@ -150,7 +150,7 @@
 				<div class="aspect-video w-full overflow-hidden rounded-2xl bg-black shadow-dci-panel">
 					<iframe
 						src="https://www.youtube-nocookie.com/embed/{videoId}?autoplay=1&rel=0"
-						title="Ann Banya — Deeper Connection Initiative"
+						title="Ann Banya: Deeper Connection Initiative"
 						frameborder="0"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen

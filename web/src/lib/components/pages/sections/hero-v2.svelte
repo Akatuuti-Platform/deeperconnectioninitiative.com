@@ -16,19 +16,6 @@
 <section
 	class="relative w-full overflow-visible px-4 pt-32 pb-0 sm:px-6 lg:px-8 lg:pt-40 lg:pb-0"
 >
-	<div class="pointer-events-none absolute top-28 left-0 hidden w-[42vw] opacity-45 lg:block">
-		<AnimateSvg
-			width="100%"
-			height="100%"
-			viewBox="0 0 560 240"
-			path="M8 70 C112 16, 178 206, 272 142 C343 93, 374 36, 452 58 C500 72, 529 110, 552 155"
-			strokeColor="oklch(0.35 0.12 25 / 0.48)"
-			strokeWidth={3}
-			strokeLinecap="round"
-			animationDuration={1.8}
-		/>
-	</div>
-
 	<div
 		class="mx-auto flex max-w-3xl flex-col items-center space-y-8 text-center"
 		use:reveal={{ delay: 0, y: 18 }}
@@ -89,7 +76,7 @@
 		</div>
 	</div>
 
-	<!-- Flowing thoughts animation — side by side: [left curve] [HEAD] [right curve] -->
+	<!-- Flowing thoughts animation - side by side: [left curve] [HEAD] [right curve] -->
 	<div
 		class="relative mt-4 flex w-full items-center lg:mt-6 -mx-4 sm:-mx-6 lg:-mx-8"
 		use:reveal={{ delay: 200, y: 30 }}
@@ -121,7 +108,7 @@
 			</svg>
 		</div>
 
-		<!-- Center: DCI logo mark head — above the left (bad) curve, below the right (good) band -->
+		<!-- Center: DCI logo mark head - above the left (bad) curve, below the right (good) band -->
 		<div class="pointer-events-none relative z-10 mx-[-10%] shrink-0 self-end translate-y-[55%]">
 			<img
 				src="/photos/dci-logo-mark.png"
@@ -162,7 +149,7 @@
 </section>
 
 <style>
-	/* Bad thoughts text — ghostly, thin */
+	/* Bad thoughts text - ghostly, thin */
 	:global(#marquee-bad) {
 		font-family: 'Outfit', sans-serif;
 		font-size: 64px;
@@ -172,7 +159,7 @@
 		opacity: 0.4;
 	}
 
-	/* Good thoughts text — bold, cream on dark band */
+	/* Good thoughts text - bold, cream on dark band */
 	:global(#marquee-good) {
 		font-family: 'Outfit', sans-serif;
 		font-size: 64px;
@@ -187,7 +174,7 @@
 		fill: transparent;
 	}
 
-	/* Side-by-side layout — curves flanking the head */
+	/* Side-by-side layout - curves flanking the head */
 	.hero-anim-left,
 	.hero-anim-right {
 		position: relative;
@@ -203,7 +190,7 @@
 		z-index: 5;
 	}
 
-	/* Reduced motion — pause animations */
+	/* Reduced motion - pause animations */
 	@media (prefers-reduced-motion: reduce) {
 		:global(#marquee-bad animate),
 		:global(#marquee-good animate) {

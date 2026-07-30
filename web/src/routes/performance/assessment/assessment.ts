@@ -1,4 +1,4 @@
-// The Blueprint Assessment — content + scoring model.
+// The Blueprint Assessment - content + scoring model.
 // A reflection tool: 20 statements across 5 facets of how someone operates
 // under pressure. Each facet scores 1-5, which maps to one of three bands.
 

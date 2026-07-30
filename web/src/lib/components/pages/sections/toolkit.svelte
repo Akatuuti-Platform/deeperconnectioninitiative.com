@@ -8,8 +8,10 @@
 	import { onMount } from 'svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { paymentLinks } from '$lib/payment-links';
+	import ProductGallery from '$lib/components/product-gallery.svelte';
 	import SpotIllustration from '$lib/components/spot-illustration.svelte';
 	import { reveal } from '$lib/actions/reveal';
+	import { cardGamePhotos } from '$lib/card-game-photos';
 
 	// Only autoplay the product videos when the user hasn't asked for reduced
 	// motion. Starts off (poster shown) and enables on the client if allowed,
@@ -24,14 +26,15 @@
 			name: 'DCI Card Game',
 			kicker: 'Conversation Cards',
 			description:
-				"60 conversation cards that open the doors you've been keeping closed. Play with friends, family, or use them solo alongside your journal. Start light, go as deep as you're ready for — each card is a question worth sitting with.",
-			credit: 'Compiled by Ann Banya — Early Child Development Specialist, 40+ years of experience.' as
+				"60 conversation cards that open the doors you've been keeping closed. Play with friends, family, or use them solo alongside your journal. Start light, go as deep as you're ready for. Each card is a question worth sitting with.",
+			credit: 'Compiled by Ann Banya, Early Child Development Specialist, 40+ years of experience.' as
 				| string
 				| null,
 			miles: '8 Connection Miles™',
 			impact: '8 lives impacted',
 			price: '69,000 UGX',
 			image: '/photos/product-card-game.jpg',
+			images: cardGamePhotos as string[] | null,
 			video: null as string | null,
 			paymentLink: paymentLinks.cardGame,
 			border: 'border-dci-burgundy/20',
@@ -41,12 +44,13 @@
 			name: 'DCI Reflection Journal',
 			kicker: 'Guided Reflection',
 			description:
-				'A year-long emotional healing journey, guided by Ann Banya. Each month explores a different stage of your development — helping you understand where your patterns, habits, and feelings actually came from. Because healing starts with understanding your story.',
+				'A year-long emotional healing journey, guided by Ann Banya. Each month explores a different stage of your development, helping you understand where your patterns, habits, and feelings actually came from. Because healing starts with understanding your story.',
 			credit: null as string | null,
 			miles: '1 Connection Mile™',
 			impact: 'Your life, on the map',
 			price: '120,000 UGX',
 			image: '/photos/product-journal.jpg',
+			images: null as string[] | null,
 			video: '/videos/journal.mp4',
 			paymentLink: paymentLinks.journal,
 			border: 'border-dci-teal/20',
@@ -56,12 +60,13 @@
 			name: 'DCI Mood Tracker',
 			kicker: 'Daily Awareness',
 			description:
-				'12 months. Daily check-ins. One colour at a time. Track how you actually feel — not how you think you should feel. Look back weekly or monthly and start to see your patterns: what triggers you, what restores you, what your stress has been trying to tell you all along.',
+				'12 months. Daily check-ins. One colour at a time. Track how you actually feel, not how you think you should feel. Look back weekly or monthly and start to see your patterns: what triggers you, what restores you, what your stress has been trying to tell you all along.',
 			credit: null as string | null,
 			miles: '1 Connection Mile™',
 			impact: '1 life tracked',
 			price: '31,000 UGX',
 			image: '/photos/product-mood-tracker.jpg',
+			images: null as string[] | null,
 			video: '/videos/mood-tracker.mp4',
 			paymentLink: paymentLinks.moodTracker,
 			border: 'border-dci-teal-deep/20',
@@ -98,7 +103,7 @@
 					>
 						Connection Miles™
 					</a>
-					— our way of tracking the real connection each purchase puts into the world.
+					, our way of tracking the real connection each purchase puts into the world.
 				</p>
 			</div>
 
@@ -150,6 +155,8 @@
 								aria-label={product.name}
 								class={`h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-dci-blush' : index === 1 ? 'bg-dci-mist' : 'bg-dci-oat'}`}
 							></video>
+						{:else if product.images}
+							<ProductGallery images={product.images} alt={product.name} imgClass="min-h-72" />
 						{:else}
 							<img
 								src={product.image}

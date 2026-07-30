@@ -18,15 +18,15 @@
 	<h2>What we collect</h2>
 	<ul>
 		<li>
-			<strong>Contact details you give us</strong> — your name, email, phone number, and message when
+			<strong>Contact details you give us</strong>: your name, email, phone number, and message when
 			you use our contact form or sign up for a programme.
 		</li>
 		<li>
-			<strong>Purchase information</strong> — when you buy or sponsor a toolkit or training, payment
+			<strong>Purchase information</strong>: when you buy or sponsor a toolkit or training, payment
 			is handled by our payment provider (Flutterwave). We do not store your card details.
 		</li>
 		<li>
-			<strong>Basic usage data</strong> — standard, non-identifying information your browser sends,
+			<strong>Basic usage data</strong>: standard, non-identifying information your browser sends,
 			used to keep the site secure and working.
 		</li>
 	</ul>

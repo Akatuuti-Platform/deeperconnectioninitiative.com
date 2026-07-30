@@ -107,7 +107,7 @@
 						Built for the places care already happens.
 					</h2>
 					<p class="text-lg text-dci-sand/80">
-						DCI is to mental health what Airbnb is to hospitality — we don't provide the support
+						DCI is to mental health what Airbnb is to hospitality: we don't provide the support
 						directly. We build what community support runs on.
 					</p>
 					<div class="mt-10 grid gap-3 text-sm sm:grid-cols-3">

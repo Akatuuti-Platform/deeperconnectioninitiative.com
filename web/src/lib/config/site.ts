@@ -4,13 +4,13 @@ export const siteConfig = {
   name: "DCI Wellness",
   legalName: "Deeper Connection Initiative",
   description:
-    "A mental health initiative helping individuals and communities build emotional strength through tactile toolkits, guided reflection, storytelling, and community connection. DCI is to mental health what Airbnb is to hospitality — we don't provide the support, we build the infrastructure that lets communities own it.",
+    "A mental health initiative helping individuals and communities build emotional strength through tactile toolkits, guided reflection, storytelling, and community connection. DCI is to mental health what Airbnb is to hospitality: we don't provide the support, we build the infrastructure that lets communities own it.",
   slogan: "Own your healing.",
   url: "https://deeperconnectioninitiative.com/",
   links: {
     github: "deeperconnectioninitiative",
   },
-  // Official profiles. Paste the real DCI URLs here — they feed the
+  // Official profiles. Paste the real DCI URLs here - they feed the
   // Organization schema's `sameAs` (a strong entity-recognition signal for
   // Google + AI). Leave a value empty ("") and it won't be emitted.
   social: {
@@ -34,14 +34,14 @@ export const siteConfig = {
   canonical:"https://deeperconnectioninitiative.com/",
   openGraph:{
     url: "https://deeperconnectioninitiative.com/",
-    title: "Deeper Connection Initiative — Own your healing",
+    title: "Deeper Connection Initiative: Own your healing",
     description: "A mental health initiative helping individuals and communities build emotional strength through tactile toolkits, guided reflection, storytelling, and community connection.",
     images: [
       {
         url: "https://deeperconnectioninitiative.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Deeper Connection Initiative — Own your healing",
+        alt: "Deeper Connection Initiative: Own your healing",
         type: "image/png",
       },
     ],

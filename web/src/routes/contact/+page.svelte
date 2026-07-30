@@ -159,7 +159,7 @@
 						class="relative z-10 mb-6 rounded-2xl border border-dci-teal/25 bg-dci-teal/8 px-5 py-4 text-sm text-dci-teal-deep"
 						role="status"
 					>
-						<p class="font-semibold">Thanks — your message is in.</p>
+						<p class="font-semibold">Thanks, your message is in.</p>
 						<p class="mt-1 text-slate-700">We'll follow up at the email you provided. For anything urgent, call {siteConfig.contacts.tele}.</p>
 					</div>
 				{/if}
