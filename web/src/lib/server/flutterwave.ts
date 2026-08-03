@@ -84,7 +84,7 @@ export function productSlugFromTxRef(txRef: string): string | null {
 type CreatePaymentInput = {
 	product: Product;
 	amount: number;
-	customer: { name: string; email: string; phone?: string };
+	customer: { email: string; name?: string; phone?: string };
 	redirectUrl: string;
 };
 
@@ -114,7 +114,7 @@ export async function createPayment(
 				redirect_url: redirectUrl,
 				customer: {
 					email: customer.email,
-					name: customer.name,
+					...(customer.name ? { name: customer.name } : {}),
 					...(customer.phone ? { phonenumber: customer.phone } : {})
 				},
 				customizations: {

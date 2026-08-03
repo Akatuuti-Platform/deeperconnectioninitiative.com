@@ -17,11 +17,9 @@ export const actions: Actions = {
 		if (!product) error(404, 'Product not found');
 
 		const data = await request.formData();
-		const name = String(data.get('name') ?? '').trim();
 		const email = String(data.get('email') ?? '').trim();
-		const phone = String(data.get('phone') ?? '').trim();
 		const rawAmount = String(data.get('amount') ?? '').trim();
-		const values = { name, email, phone, amount: rawAmount };
+		const values = { email, amount: rawAmount };
 
 		let amount = product.amount;
 		if (amount === null) {
@@ -29,7 +27,6 @@ export const actions: Actions = {
 		}
 
 		const errors: Record<string, string> = {};
-		if (!name) errors.name = 'Please add your name.';
 		if (!EMAIL_RE.test(email)) errors.email = 'Please add a valid email address.';
 		if (product.amount === null && (!Number.isFinite(amount) || (amount ?? 0) < MIN_DONATION)) {
 			errors.amount = `Please enter an amount of at least ${MIN_DONATION.toLocaleString('en-US')} UGX.`;
@@ -42,7 +39,7 @@ export const actions: Actions = {
 		const result = await createPayment(fetch, {
 			product,
 			amount: amount as number,
-			customer: { name, email, phone: phone || undefined },
+			customer: { email },
 			redirectUrl: `${url.origin}/payment/callback`
 		});
 
