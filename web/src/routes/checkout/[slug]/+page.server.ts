@@ -17,6 +17,13 @@ export const actions: Actions = {
 		if (!product) error(404, 'Product not found');
 
 		const data = await request.formData();
+
+		// Honeypot: bots fill the hidden field; humans leave it empty. Bounce
+		// them without creating a payment session.
+		if (String(data.get('company') ?? '').trim() !== '') {
+			redirect(303, '/');
+		}
+
 		const email = String(data.get('email') ?? '').trim();
 		const rawAmount = String(data.get('amount') ?? '').trim();
 		const values = { email, amount: rawAmount };

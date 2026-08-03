@@ -53,6 +53,15 @@
 					};
 				}}
 			>
+				<input
+					autocomplete="off"
+					name="company"
+					type="text"
+					tabindex="-1"
+					aria-hidden="true"
+					class="hidden"
+				/>
+
 				{#if data.product.amount === null}
 					<div class="space-y-3">
 						<span class="text-sm font-semibold text-slate-950">Choose an amount (UGX)</span>

@@ -142,6 +142,7 @@ export type VerifiedTransaction = {
 	amount: number;
 	currency: string;
 	txRef: string;
+	customerEmail: string;
 };
 
 export async function verifyTransaction(
@@ -168,7 +169,8 @@ export async function verifyTransaction(
 			status: String(body.data.status ?? ''),
 			amount: Number(body.data.amount ?? 0),
 			currency: String(body.data.currency ?? ''),
-			txRef: String(body.data.tx_ref ?? '')
+			txRef: String(body.data.tx_ref ?? ''),
+			customerEmail: String(body.data.customer?.email ?? '')
 		};
 	} catch (err) {
 		console.error('[payments] verify threw', err);
