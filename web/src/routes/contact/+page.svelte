@@ -17,13 +17,23 @@
 		PhoneIcon as Phone
 	} from 'phosphor-svelte';
 
+	import { page } from '$app/state';
+
 	const supportPaths = [
 		'Toolkit purchase or sponsorship',
+		'Performance Blueprint application',
 		'Community clinic or event',
+		'Community Champion application',
 		'Partner training',
 		'Provider network',
 		'Volunteer inquiry'
 	];
+
+	// CTAs across the site link here with ?topic= and ?about= so the form
+	// arrives already knowing what the visitor wants.
+	const topicParam = page.url.searchParams.get('topic') ?? '';
+	const aboutParam = page.url.searchParams.get('about') ?? '';
+	let topic = $state(supportPaths.includes(topicParam) ? topicParam : supportPaths[0]);
 </script>
 
 <section class="relative overflow-hidden pt-28">
@@ -251,6 +261,7 @@
 							<select
 								id="topic"
 								name="topic"
+								bind:value={topic}
 								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 							>
 								{#each supportPaths as path}
@@ -270,7 +281,7 @@
 							aria-invalid={form?.errors?.message ? 'true' : undefined}
 							placeholder="Tell us what you are hoping to do, who the support is for, and the best way to reach you."
 							class="w-full resize-y rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 py-4 text-base leading-relaxed text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
-							>{form?.values?.message ?? ''}</textarea>
+							>{form?.values?.message ?? aboutParam}</textarea>
 						{#if form?.errors?.message}
 							<p class="text-sm text-dci-burgundy">{form.errors.message}</p>
 						{/if}

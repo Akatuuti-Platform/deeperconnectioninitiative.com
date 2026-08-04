@@ -17,7 +17,7 @@ const navGroups = [
     title: "Organization",
     links: [
       { label: "Partners", href: "/partners" },
-      { label: "Performance", href: "/performance" },
+      { label: "Coaching", href: "/performance" },
       { label: "Contact", href: "/contact" },
     ],
   },

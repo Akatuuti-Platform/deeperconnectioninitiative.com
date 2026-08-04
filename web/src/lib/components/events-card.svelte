@@ -16,6 +16,7 @@
 		type: string;
 		price?: string;
 		miles?: string;
+		cta?: string;
 	};
 
 	let { event }: { event: EventProps } = $props();
@@ -75,12 +76,12 @@
 
 	<Button
 		href={event.url}
-		variant="outline"
-		class="mt-8 w-fit rounded-full border-dci-teal/20 bg-transparent text-dci-teal-deep hover:bg-dci-teal/7"
-		title={`View event: ${event.title}`}
-		aria-label={`View event: ${event.title}`}
+		variant={event.cta ? 'default' : 'outline'}
+		class={`mt-8 w-fit rounded-full ${event.cta ? '' : 'border-dci-teal/20 bg-transparent text-dci-teal-deep hover:bg-dci-teal/7'}`}
+		title={`${event.cta ?? 'View event'}: ${event.title}`}
+		aria-label={`${event.cta ?? 'View event'}: ${event.title}`}
 	>
-		View event
+		{event.cta ?? 'View event'}
 		<ArrowUpRight class="size-4" weight="regular" />
 	</Button>
 </article>

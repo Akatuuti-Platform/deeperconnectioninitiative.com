@@ -12,6 +12,12 @@
 	import { reveal } from '$lib/actions/reveal';
 	import { PageHero, Section, SectionHeading, FeatureCard, CtaBand } from '$lib/components/sections';
 
+	// Apply links land on the contact form with the tier preselected, so the
+	// applicant never has to explain what they are applying for.
+	function applyHref(tier: string) {
+		return `/contact?topic=${encodeURIComponent('Performance Blueprint application')}&about=${encodeURIComponent(`I would like to apply for the ${tier}.`)}`;
+	}
+
 	const facets = [
 		{ icon: Brain, title: 'How you think', description: 'The mental models running underneath every decision you make.' },
 		{ icon: BatteryCharging, title: 'How you recover', description: "What actually restores you, versus what you've mistaken for rest." },
@@ -36,6 +42,7 @@
 			lead: 'Ann Banya, solo',
 			blurb: 'Wellbeing frame. The accessible entry rung. 4 weekly sessions + full DCI toolkit.',
 			cta: 'Apply',
+			href: applyHref('Guided Toolkit Experience (UGX 700,000)'),
 			accent: '#2A6268'
 		},
 		{
@@ -44,6 +51,7 @@
 			lead: 'Emily leads, Ann as principal',
 			blurb: 'The flagship. 6–8 sessions over ~4 months, full assessment + re-assessment, between-session support.',
 			cta: 'Apply',
+			href: applyHref('Performance Blueprint Coaching (UGX 3,500,000)'),
 			accent: '#6F231E',
 			popular: true
 		},
@@ -53,6 +61,7 @@
 			lead: 'Ann leads, Emily supporting',
 			blurb: 'Bespoke, for founders & C-suite. 4–6 months, highest touch. By quotation.',
 			cta: 'Request a conversation',
+			href: applyHref('Executive Performance Blueprint (from UGX 7,000,000)'),
 			accent: '#2A6268'
 		}
 	];
@@ -206,6 +215,12 @@
 	description="The Blueprint is where you redesign how you perform. The DCI Inner Circle is where you sustain it, a private circle of high performers on the same path. Coaching clients are first in."
 >
 	{#snippet actions()}
-		<Button href="/contact" size="lg" class="rounded-full px-8">Join the waitlist</Button>
+		<Button
+			href={`/contact?topic=${encodeURIComponent('Performance Blueprint application')}&about=${encodeURIComponent('Please add me to the DCI Inner Circle waitlist.')}`}
+			size="lg"
+			class="rounded-full px-8"
+		>
+			Join the waitlist
+		</Button>
 	{/snippet}
 </CtaBand>

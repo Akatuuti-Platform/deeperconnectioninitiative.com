@@ -11,14 +11,27 @@
 		{
 			title: 'Wellness Wednesday Conversation Clinic',
 			description:
-				'A peer-led wellness meetup with a trained Champion, DCI toolkit, and willing participants. Booking checks you in and connects you to the Early Warning System.',
-			url: '/contact',
+				'A peer-led wellness meetup with a trained Champion, DCI toolkit, and willing participants. Booking pays for your seat and checks you in on arrival.',
+			url: '/checkout/clinic',
+			cta: 'Book your seat',
+			startDate: '2026-08-26T17:30:00',
+			endDate: '2026-08-26T19:00:00',
+			location: 'Partner venue, Kampala',
+			type: 'Clinic',
+			price: 'UGX 20,000',
+			miles: 'Earns Connection Miles'
+		},
+		{
+			title: 'Wellness Wednesday Conversation Clinic',
+			description:
+				'A peer-led wellness meetup with a trained Champion, DCI toolkit, and willing participants.',
+			url: '/checkout/clinic',
 			startDate: '2026-07-29T17:30:00',
 			endDate: '2026-07-29T19:00:00',
 			location: 'Partner venue, Kampala',
 			type: 'Clinic',
 			price: 'UGX 20,000',
-			miles: '10+ Connection Miles'
+			miles: 'Earns Connection Miles'
 		},
 		{
 			title: 'Community Champion Orientation',
@@ -79,7 +92,10 @@
 					Bring a clinic, demo, or champion orientation into your school, venue, clinic, or youth
 					group.
 				</p>
-				<Button href="/contact" class="mt-7 rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white">
+				<Button
+					href="/contact?topic=Community%20clinic%20or%20event"
+					class="mt-7 rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
+				>
 					Request an event
 					<ArrowUpRight class="size-4" weight="regular" />
 				</Button>

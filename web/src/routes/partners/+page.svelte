@@ -43,7 +43,7 @@
 	description="Crisis is expensive. Connection is cheap. Schools, corporates, NGOs, faith communities, and hospitality spaces: this is your entry point."
 >
 	{#snippet actions()}
-		<Button href="/contact" size="lg" class="rounded-full px-7">Book a 30-minute call</Button>
+		<Button href="/contact?topic=Partner%20training" size="lg" class="rounded-full px-7">Book a 30-minute call</Button>
 		<Button
 			href="/trainings"
 			size="lg"
@@ -94,7 +94,7 @@
 				Organisations start from USD 20,000 annually. We scope every engagement around your people,
 				your setting, and the outcomes you report on.
 			</p>
-			<Button href="/contact" size="lg" class="rounded-full bg-dci-cream px-7 text-dci-teal-deep hover:bg-white">
+			<Button href="/contact?topic=Partner%20training" size="lg" class="rounded-full bg-dci-cream px-7 text-dci-teal-deep hover:bg-white">
 				Request a call
 				<ArrowUpRight class="size-4" weight="regular" />
 			</Button>
@@ -124,6 +124,6 @@
 	description="Activate the system across your school, company, or community, and give your people an early warning system before burnout hits."
 >
 	{#snippet actions()}
-		<Button href="/contact" size="lg" class="rounded-full px-8">Book a 30-minute call</Button>
+		<Button href="/contact?topic=Partner%20training" size="lg" class="rounded-full px-8">Book a 30-minute call</Button>
 	{/snippet}
 </CtaBand>

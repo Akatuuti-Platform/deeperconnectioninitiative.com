@@ -20,10 +20,10 @@
 	import NoiseOverlay from './overlays/noise-overlay.svelte';
 
 	const navItems = [
-		{ label: 'Mission', href: '#about' },
+		{ label: 'Mission', href: '/#about' },
 		{
 			label: 'Ecosystem',
-			href: '#ecosystem',
+			href: '/#ecosystem',
 			description: 'The care pathway from self-led tools to community support.',
 			children: [
 				{
@@ -47,14 +47,8 @@
 				{
 					label: 'Events',
 					href: '/events',
-					description: 'Workshops, clinics, and upcoming gatherings.',
+					description: 'Book a clinic seat, join workshops and gatherings.',
 					icon: CalendarDays
-				},
-				{
-					label: 'Check-in',
-					href: '/platform',
-					description: 'The Early Warning System and your Connection Miles.',
-					icon: MessageCircle
 				}
 			]
 		},
@@ -89,7 +83,7 @@
 				}
 			]
 		},
-		{ label: 'Performance', href: '/performance' },
+		{ label: 'Coaching', href: '/performance' },
 		{ label: 'Contact Us', href: '/contact' }
 	];
 
@@ -319,15 +313,17 @@
 
 			<div class="hidden shrink-0 items-center gap-2 lg:flex">
 				<a
-					href="#get-involved"
+					href="/checkout/donate"
 					class={cn(
 						buttonVariants({ variant: 'outline' }),
 						'rounded-full border-dci-teal/20 bg-dci-paper/70 px-5 text-dci-teal-deep hover:bg-dci-teal/7 hover:text-dci-teal-deep'
 					)}
 				>
-					Join the movement
+					Sponsor a kit
 				</a>
-				<a href="#toolkit" class={cn(buttonVariants(), 'rounded-full px-5')}> Sponsor a toolkit </a>
+				<a href="/toolkit#toolkit-products" class={cn(buttonVariants(), 'rounded-full px-5')}>
+					Get the toolkit
+				</a>
 			</div>
 
 			<Sheet.Root bind:open={isOpen}>
@@ -452,21 +448,21 @@
 						<div class="border-t border-dci-teal/10 p-5">
 							<div class="grid gap-3">
 								<a
-									href="#toolkit"
+									href="/toolkit#toolkit-products"
 									class={cn(buttonVariants({ size: 'lg' }), 'w-full rounded-full')}
 									onclick={closeMobileMenu}
 								>
-									Sponsor a toolkit
+									Get the toolkit
 								</a>
 								<a
-									href="#get-involved"
+									href="/checkout/donate"
 									class={cn(
 										buttonVariants({ variant: 'outline', size: 'lg' }),
 										'w-full rounded-full border-dci-teal/20 bg-transparent text-dci-teal-deep'
 									)}
 									onclick={closeMobileMenu}
 								>
-									Join the movement
+									Sponsor a kit
 								</a>
 							</div>
 						</div>

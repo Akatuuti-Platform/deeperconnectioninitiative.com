@@ -45,7 +45,7 @@
 	description="A certified DCI facilitator trained through the Training of Trainers program to run clinics, hold space, and monitor mood data across their community."
 >
 	{#snippet actions()}
-		<Button href="/contact" size="lg" class="rounded-full px-7">Apply for the next cohort</Button>
+		<Button href="/contact?topic=Community%20Champion%20application" size="lg" class="rounded-full px-7">Apply for the next cohort</Button>
 		<Button
 			href="/trainings"
 			size="lg"
@@ -109,7 +109,7 @@
 	description="You don't just help one person, you change the texture of a whole community. And your miles keep compounding as it grows."
 >
 	{#snippet actions()}
-		<Button href="/contact" size="lg" class="rounded-full px-8">
+		<Button href="/contact?topic=Community%20Champion%20application" size="lg" class="rounded-full px-8">
 			Submit application
 			<ArrowUpRight class="size-4" weight="regular" />
 		</Button>

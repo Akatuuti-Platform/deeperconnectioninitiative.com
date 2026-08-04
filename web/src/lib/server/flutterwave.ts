@@ -62,6 +62,13 @@ export const products: Record<string, Product> = {
 		description: 'Train and certify new champions as a DCI master trainer.',
 		amount: 3_000_000
 	},
+	clinic: {
+		slug: 'clinic',
+		name: 'Conversation Clinic Seat',
+		description:
+			'One seat at the next Wellness Wednesday Conversation Clinic: a peer-led session with a trained Champion and the full DCI toolkit. Booking checks you in and counts your Connection Mile.',
+		amount: 20_000
+	},
 	donate: {
 		slug: 'donate',
 		name: 'Sponsor a Toolkit',
