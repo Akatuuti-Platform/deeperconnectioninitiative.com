@@ -2,19 +2,17 @@
 	import { cn } from '@/lib/utils';
 	import Button, { buttonVariants } from '../../ui/button/button.svelte';
 	import AnimateSvg from '@/lib/components/animate-svg.svelte';
-	import HeadCarousel from '@/lib/components/head-carousel.svelte';
-	import { heroCarouselImages } from '@/lib/hero-carousel-images';
 	import { reveal } from '@/lib/actions/reveal';
 </script>
 
 <section class="relative w-full overflow-hidden px-4 pt-28 pb-16 sm:px-6 lg:px-8 lg:pt-36 lg:pb-24">
-	<!-- Soft brand wash behind the carousel column, desktop only. -->
+	<!-- Soft brand wash behind the mark, desktop only. -->
 	<div
 		class="pointer-events-none absolute top-1/2 right-[-10%] hidden size-[36rem] -translate-y-1/2 rounded-full bg-dci-teal/8 blur-3xl lg:block"
 	></div>
 
 	<div
-		class="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
+		class="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
 	>
 		<!-- Message first in the DOM, so it also comes first when the layout stacks. -->
 		<div class="max-w-2xl space-y-7" use:reveal={{ delay: 0, y: 18 }}>
@@ -83,13 +81,46 @@
 			</div>
 		</div>
 
-		<!-- Carousel second in the DOM: below the message on small screens. -->
-		<div class="relative mx-auto w-full max-w-md lg:max-w-none" use:reveal={{ delay: 160, y: 24 }}>
-			<HeadCarousel
-				images={heroCarouselImages}
-				class="w-full"
-				label="Moments from DCI clinics and community sessions"
+		<!--
+			The DCI mark. Second in the DOM, so it sits below the message when the
+			layout stacks. Width is capped per breakpoint so it never crowds the
+			headline; width and height attributes reserve its space to avoid shift.
+		-->
+		<div class="dci-mark relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none">
+			<img
+				src="/photos/head-motif-760.webp"
+				srcset="/photos/head-motif-500.webp 500w, /photos/head-motif-760.webp 760w, /photos/head-motif-1020.webp 1020w"
+				sizes="(min-width: 1024px) 42vw, (min-width: 640px) 24rem, 20rem"
+				width="956"
+				height="1073"
+				alt="The DCI mark: a head in profile built from layered geometric pattern. No hair, no gender, no name, because the person starting an honest conversation can be anyone."
+				fetchpriority="high"
+				decoding="sync"
+				class="h-auto w-full select-none object-contain"
 			/>
 		</div>
 	</div>
 </section>
+
+<style>
+	/* A slow, shallow drift so the mark feels alive without pulling focus. */
+	.dci-mark {
+		animation: dci-mark-drift 9s ease-in-out infinite alternate;
+		will-change: transform;
+	}
+
+	@keyframes dci-mark-drift {
+		from {
+			transform: translate3d(0, -0.5%, 0);
+		}
+		to {
+			transform: translate3d(0, 1.5%, 0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.dci-mark {
+			animation: none;
+		}
+	}
+</style>
