@@ -1,5 +1,10 @@
 <script lang="ts">
 	import Logo from './logo.svelte';
+	import DciMark from '$lib/components/dci-mark/dci-mark.svelte';
+	import { createCompactHeader } from '$lib/components/dci-mark/header-state.svelte';
+
+	// Compact state comes from an IntersectionObserver sentinel, not a scroll listener.
+	const header = createCompactHeader();
 	import * as Sheet from '$lib/components/ui/sheet';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils';
@@ -181,13 +186,19 @@
 <header
 	class="fixed top-3 right-0 left-0 z-50 mx-auto w-[calc(100%-1rem)] max-w-7xl px-2 sm:top-4 sm:w-[calc(100%-2rem)]"
 >
+	<!--
+		Fixed height per breakpoint, transitioning 78px to 60px over 300ms, with
+		overflow hidden so the ribbons cannot bleed into the hero on first paint.
+	-->
 	<div
-		class="relative overflow-visible rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 py-1.5 shadow-dci-lift backdrop-blur-xl sm:px-4"
+		class={`dci-header-shell relative overflow-hidden rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 shadow-dci-lift backdrop-blur-xl sm:px-4${
+			header.compact ? ' is-compact' : ''
+		}`}
 	>
 		<NoiseOverlay />
-		<div class="relative flex h-12 items-center justify-between gap-4">
+		<div class="relative flex h-full items-center justify-between gap-4">
 			<div class="flex min-w-0 items-center">
-				<Logo isLink />
+				<DciMark compact={header.compact} />
 			</div>
 
 			<div

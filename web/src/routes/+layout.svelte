@@ -5,8 +5,14 @@
 	import Footer from '@/lib/components/layout/footer.svelte';
 	import NoiseOverlay from '@/lib/components/layout/overlays/noise-overlay.svelte';
 	import Seo from '@/lib/components/seo.svelte';
+	import DciMarkDefs from '@/lib/components/dci-mark/dci-mark-defs.svelte';
+	import { useReducedMotionSvg } from '@/lib/components/dci-mark/header-state.svelte';
+	import '@/lib/components/dci-mark/dci-mark.css';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 	import { dev } from '$app/environment';
+
+	// CSS prefers-reduced-motion cannot stop SMIL, so this is not optional.
+	useReducedMotionSvg();
 
 	// Vercel Web Analytics: cookieless, so no consent banner is required.
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
@@ -29,6 +35,9 @@
 	<meta name="theme-color" content="#F6ECD9" />
 	<meta name="robots" content="index, follow" />
 </svelte:head>
+
+<!-- Rendered once, above everything else. Every mark instance references its ids. -->
+<DciMarkDefs />
 
 <Seo />
 

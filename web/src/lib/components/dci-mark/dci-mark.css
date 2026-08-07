@@ -1,0 +1,271 @@
+/* ==========================================================================
+   DCI animated mark
+   One variable drives every dimension: --dci-mark-h
+   Nothing below is allowed to hardcode a pixel size.
+   ========================================================================== */
+
+.dci-mark {
+  --dci-mark-h: clamp(34px, 4.5vw, 56px);
+  --dci-ribbon-w: calc(var(--dci-mark-h) * 2.5);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  height: var(--dci-mark-h);
+  line-height: 1;
+  text-decoration: none;
+}
+
+/* --- head ---------------------------------------------------------------- */
+
+.dci-mark__head {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: block;
+}
+
+.dci-mark__img {
+  display: block;
+  height: 100%;
+  width: auto;
+
+  /* faded base: the shoulders dissolve instead of ending in a hard cut */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.45) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.45) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  animation: dci-breathe 5.5s ease-in-out infinite;
+  transform-origin: 50% 88%;
+  will-change: transform;
+}
+
+@keyframes dci-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2.5%) scale(1.018);
+  }
+}
+
+/* --- ribbons ------------------------------------------------------------- */
+
+.dci-ribbons {
+  position: absolute;
+  left: 46%;
+  bottom: 44%;
+  z-index: 1;
+  width: var(--dci-ribbon-w);
+  height: calc(var(--dci-ribbon-w) * 0.432); /* viewBox 250 x 108 */
+  pointer-events: none;
+  overflow: visible;
+  transition: opacity 300ms ease;
+}
+
+.dci-band {
+  will-change: transform;
+}
+
+.dci-band--a {
+  animation: dci-sway 7s ease-in-out infinite;
+}
+.dci-band--b {
+  animation: dci-sway 8.5s ease-in-out infinite;
+  animation-delay: -2s;
+}
+.dci-band--c {
+  animation: dci-sway 10s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+@keyframes dci-sway {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* colour blocks travel along the band inside its clip.
+   the block sequence tiles every 130 units, so -130 loops seamlessly. */
+.dci-drift {
+  will-change: transform;
+}
+
+.dci-drift--a {
+  animation: dci-drift 16s linear infinite;
+}
+.dci-drift--b {
+  animation: dci-drift 21s linear infinite;
+}
+.dci-drift--c {
+  animation: dci-drift 26s linear infinite;
+}
+
+@keyframes dci-drift {
+  to {
+    transform: translateX(-130px);
+  }
+}
+
+.dci-hatch {
+  fill: url(#dciHatch);
+}
+
+.dci-ink {
+  fill: none;
+  stroke: #1e1e28;
+  stroke-opacity: 0.72;
+  stroke-width: 0.9;
+}
+
+/* --- wordmark ------------------------------------------------------------ */
+
+.dci-mark__word {
+  position: relative;
+  z-index: 3;
+  font-size: calc(var(--dci-mark-h) * 0.3);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #00534c;
+  white-space: nowrap;
+}
+
+/* --- scroll state -------------------------------------------------------- */
+
+.dci-mark.is-compact {
+  --dci-mark-h: clamp(30px, 3.2vw, 40px);
+}
+
+.dci-mark.is-compact .dci-ribbons {
+  opacity: 0;
+}
+
+/* --- breakpoints --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .dci-mark {
+    --dci-ribbon-w: calc(var(--dci-mark-h) * 2.1);
+  }
+  .dci-band--c {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .dci-mark {
+    --dci-ribbon-w: calc(var(--dci-mark-h) * 1.7);
+  }
+  .dci-mark__word {
+    display: none;
+  }
+  /* the fine hatch collapses into moiré below ~40px, so swap in the bold tile */
+  .dci-hatch {
+    fill: url(#dciHatchBold);
+  }
+  .dci-ink {
+    stroke-width: 1.4;
+  }
+}
+
+/* ==========================================================================
+   Full artwork variant, for The mark section.
+   Same geometry, same texture, rotated so the ribbons rise from the crown.
+   ========================================================================== */
+
+.dci-mark--full {
+  --dci-mark-h: clamp(220px, 34vw, 420px);
+  --dci-ribbon-w: calc(var(--dci-mark-h) * 1.55);
+  display: block;
+  width: max-content;
+  margin-inline: auto;
+}
+
+.dci-mark--full .dci-mark__img {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 72%,
+    rgba(0, 0, 0, 0.4) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 72%,
+    rgba(0, 0, 0, 0.4) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  animation-duration: 7s;
+}
+
+.dci-mark--full .dci-ribbons {
+  left: 34%;
+  bottom: 62%;
+  transform: rotate(-54deg);
+  transform-origin: 0% 100%;
+}
+
+.dci-mark--full .dci-band--c {
+  display: block;
+}
+
+/* --- quality floor ------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .dci-mark__img,
+  .dci-band,
+  .dci-drift {
+    animation: none !important;
+  }
+  .dci-ribbons {
+    opacity: 0.4;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Header shell.
+   Fixed height per breakpoint so the ribbons have room and cannot bleed
+   into the hero. Separate from .dci-mark, which stays driven by --dci-mark-h.
+   ========================================================================== */
+
+.dci-header-shell {
+  height: 78px;
+  transition: height 300ms ease;
+}
+
+.dci-header-shell.is-compact {
+  height: 60px;
+}
+
+@media (max-width: 640px) {
+  .dci-header-shell {
+    height: 66px;
+  }
+  .dci-header-shell.is-compact {
+    height: 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dci-header-shell {
+    transition: none;
+  }
+}
