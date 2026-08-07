@@ -19,36 +19,66 @@
 	} from 'phosphor-svelte';
 	import NoiseOverlay from './overlays/noise-overlay.svelte';
 
+	// Five top-level items and one primary CTA. The nav is a decision path, not a
+	// directory: every item either sells something or explains who we are.
+	// Pages removed from the nav stay live at their URLs, in the footer, and in
+	// the sitemap. Nothing here has been deleted.
 	const navItems = [
-		{ label: 'Mission', href: '/#about' },
 		{
-			label: 'Ecosystem',
-			href: '/#ecosystem',
-			description: 'The care pathway from self-led tools to community support.',
+			label: 'Toolkit',
+			href: '/toolkit',
+			description: 'Physical tools for reflection, conversation, and emotional awareness.',
 			children: [
 				{
-					label: 'Trainings',
-					href: '/trainings',
-					description: 'Equip community champions and partner teams.',
-					icon: Users
+					label: 'Open the kit',
+					href: '/toolkit',
+					description: 'See how the cards, journal, and mood tracker work.',
+					icon: Sparkles
 				},
 				{
-					label: 'Partners',
+					label: 'Buy a tool',
+					href: '/toolkit#toolkit-products',
+					description: 'Compare the card game, journal, mood tracker, and full kit.',
+					icon: BookOpen
+				},
+				{
+					label: 'Connection Miles',
+					href: '/connection-miles',
+					description: 'How we count the impact every purchase puts into the world.',
+					icon: ChartLineUp
+				},
+				{
+					label: 'Sponsor a kit',
+					href: '/checkout/donate',
+					description: 'Put a toolkit in the hands of someone who cannot buy one.',
+					icon: HeartHandshake
+				}
+			]
+		},
+		{ label: 'Clinics', href: '/clinics' },
+		{ label: 'Coaching', href: '/performance' },
+		{
+			label: 'Organisations',
+			href: '/partners',
+			description: 'Wellbeing infrastructure for schools, companies, and NGOs.',
+			children: [
+				{
+					label: 'For organisations',
 					href: '/partners',
-					description: 'Build mental wellness into trusted local spaces.',
+					description: 'Build wellbeing into how your people already work.',
 					icon: Building2
 				},
 				{
-					label: 'Champions',
-					href: '/champions',
-					description: 'Become the infrastructure in your community.',
+					label: 'Champion certification',
+					href: '/trainings',
+					description: 'Certify the people who will hold the conversations.',
 					icon: Users
 				},
 				{
-					label: 'Conversation Clinics',
-					href: '/clinics',
-					description: 'The monthly meet-up. Last Wednesday, every month.',
-					icon: MessageCircle
+					label: 'Become a Champion',
+					href: '/champions',
+					description: 'What the role involves and who it suits.',
+					icon: Users
 				},
 				{
 					label: 'Events',
@@ -58,43 +88,11 @@
 				}
 			]
 		},
-		{
-			label: 'Toolkit',
-			href: '/toolkit',
-			description: 'Physical tools for reflection, conversation, and emotional awareness.',
-			children: [
-				{
-					label: 'Open the kit',
-					href: '/toolkit',
-					description: 'Explore how cards, journals, and mood tracking work.',
-					icon: Sparkles
-				},
-				{
-					label: 'Toolkit products',
-					href: '/#toolkit-products',
-					description: 'Compare the card game, journal, mood tracker, and full kit.',
-					icon: BookOpen
-				},
-				{
-					label: 'Connection Miles',
-					href: '/connection-miles',
-					description: 'Track sponsored toolkits, field activity, and the miles rubric.',
-					icon: ChartLineUp
-				},
-				{
-					label: 'Sponsor a kit',
-					href: '/#toolkit',
-					description: 'Fund toolkit access and community champion training.',
-					icon: HeartHandshake
-				}
-			]
-		},
-		{ label: 'Coaching', href: '/performance' },
-		{ label: 'Contact Us', href: '/contact' }
+		{ label: 'About', href: '/#about' }
 	];
 
 	let isOpen = $state(false);
-	let openMobileSection = $state('Ecosystem');
+	let openMobileSection = $state('Toolkit');
 	let activeDesktopMenu = $state('');
 	let closeTimer: ReturnType<typeof setTimeout> | undefined;
 	let activeItem = $derived(
@@ -317,16 +315,10 @@
 				{/if}
 			</div>
 
-			<div class="hidden shrink-0 items-center gap-2 lg:flex">
-				<a
-					href="/checkout/donate"
-					class={cn(
-						buttonVariants({ variant: 'outline' }),
-						'rounded-full border-dci-teal/20 bg-dci-paper/70 px-5 text-dci-teal-deep hover:bg-dci-teal/7 hover:text-dci-teal-deep'
-					)}
-				>
-					Sponsor a kit
-				</a>
+			<!-- One primary CTA. Sponsorship still converts from the toolkit section
+			     and the get-involved block, where it reads as a choice rather than
+			     as competition for the purchase. -->
+			<div class="hidden shrink-0 items-center lg:flex">
 				<a href="/toolkit#toolkit-products" class={cn(buttonVariants(), 'rounded-full px-5')}>
 					Get the toolkit
 				</a>
@@ -459,16 +451,6 @@
 									onclick={closeMobileMenu}
 								>
 									Get the toolkit
-								</a>
-								<a
-									href="/checkout/donate"
-									class={cn(
-										buttonVariants({ variant: 'outline', size: 'lg' }),
-										'w-full rounded-full border-dci-teal/20 bg-transparent text-dci-teal-deep'
-									)}
-									onclick={closeMobileMenu}
-								>
-									Sponsor a kit
 								</a>
 							</div>
 						</div>

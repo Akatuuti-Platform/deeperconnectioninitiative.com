@@ -5,6 +5,11 @@
 	import Footer from '@/lib/components/layout/footer.svelte';
 	import NoiseOverlay from '@/lib/components/layout/overlays/noise-overlay.svelte';
 	import Seo from '@/lib/components/seo.svelte';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+	import { dev } from '$app/environment';
+
+	// Vercel Web Analytics: cookieless, so no consent banner is required.
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 
 	let { children } = $props();
 

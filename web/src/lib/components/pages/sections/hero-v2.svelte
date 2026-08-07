@@ -64,8 +64,8 @@
 			</h1>
 
 			<p class="mx-auto max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
-				A mental health initiative helping people build emotional strength through tactile
-				toolkits, guided reflection, storytelling, and community connection.
+				A mental health initiative equipping individuals and communities with a physical toolkit
+				and an AI-powered early warning system.
 			</p>
 		</div>
 
