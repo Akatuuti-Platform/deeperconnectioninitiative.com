@@ -12,60 +12,66 @@
 
 	const pathways = [
 		{
-			id: 'support',
-			label: 'I need support',
-			kicker: 'Start with care',
-			icon: FirstAidKitIcon,
-			illustration: 'care',
-			title: 'Tell us what kind of support is needed.',
-			description:
-				'Use the contact route when someone needs help finding the right DCI touchpoint, clinic, toolkit, or responsible referral.',
-			steps: ['Share the situation', 'We route it carefully', 'You get the next step'],
-			href: '/contact',
-			cta: 'Contact DCI',
-			accent: '#6F231E'
-		},
-		{
 			id: 'tools',
 			label: 'I want tools',
-			kicker: 'Use the toolkit',
+			kicker: 'Own your healing',
 			icon: BookOpenTextIcon,
 			illustration: 'toolkit',
-			title: 'Choose a tactile tool people can use offline.',
+			title: 'I am ready to own my healing.',
 			description:
-				'Start with cards, a reflection journal, a mood tracker, or the full kit for homes, youth groups, schools, and community circles.',
-			steps: ['Pick the tool', 'Use it in real settings', 'Build a habit of reflection'],
-			href: '#toolkit',
-			cta: 'Explore toolkit',
+				'Three tools that give you somewhere to start. Everything works on paper, so a conversation can happen anywhere, with anyone, without waiting for an appointment.',
+			steps: ['Choose your tool', 'Start the conversation', 'See your patterns'],
+			helper: 'Want all three? The full toolkit is 200,000 UGX and earns 10 Connection Miles.',
+			href: '/toolkit#toolkit-products',
+			cta: 'Open the toolkit',
 			accent: '#2A6268'
 		},
 		{
-			id: 'training',
-			label: 'I train people',
-			kicker: 'Build capacity',
+			id: 'lead',
+			label: 'I want to lead',
+			kicker: 'Become a champion',
 			icon: GraduationCapIcon,
 			illustration: 'community',
-			title: 'Equip champions to hold safer conversations.',
+			title: 'I am a mental health advocate.',
 			description:
-				'Use the training path when your school, venue, nonprofit, clinic, or team needs a practical mental wellness model.',
-			steps: ['Choose a tier', 'Train facilitators', 'Launch a support pathway'],
+				'There will never be enough counsellors. There are already enough people who care. Training of Trainers certifies you to facilitate a session safely, use the toolkit with a group, recognise when someone needs more than you can give, and follow the referral procedure.',
+			steps: ['Reserve with a deposit', 'Join the cohort list', 'Train and certify'],
+			helper: 'Dates are confirmed by email and WhatsApp, and announced on @dci_wellness.',
 			href: '/trainings',
-			cta: 'View trainings',
+			cta: 'Reserve a place',
 			accent: '#6F231E'
 		},
 		{
-			id: 'help',
-			label: 'I can help',
-			kicker: 'Sponsor or volunteer',
+			id: 'organisation',
+			label: 'I run an organisation',
+			kicker: 'Early Warning System',
+			icon: FirstAidKitIcon,
+			illustration: 'care',
+			title: 'I am an organisation or a funder.',
+			description:
+				'You can count who showed up. We help you see what changed. Participants complete a paper mood tracker themselves, trained champions collect them, and we turn them into cohort-level measures with a documented referral procedure attached. You see the pattern. Never the person.',
+			steps: ['Book a diagnostic', 'We map the gap', 'You get a costed plan'],
+			helper:
+				"The Early Warning System earns no Connection Miles of its own. It is what makes everyone else's countable.",
+			href: '/partners',
+			cta: 'How organisations use DCI',
+			accent: '#2A6268'
+		},
+		{
+			id: 'give',
+			label: 'I want to give',
+			kicker: 'Sponsor access',
 			icon: HandshakeIcon,
 			illustration: 'community',
-			title: 'Move resources toward people and places that need them.',
+			title: "I want to fund someone else's start.",
 			description:
-				'Support toolkit access, volunteer at clinics, connect a venue, or help DCI reach communities where support is harder to find.',
-			steps: ['Choose your role', 'Connect with DCI', 'Support monthly missions'],
-			href: '#get-involved',
-			cta: 'Get involved',
-			accent: '#2A6268'
+				'A toolkit for someone who cannot buy one, or a scholarship place on Champion training. One sponsored toolkit is 10 Connection Miles. Ten lives, none of them yours.',
+			steps: ['Choose what to fund', 'We match it to a site', 'You see where it went'],
+			helper:
+				'Ten per cent of every toolkit sold already funds Champion training. Venue partners, DCI Angels and the provider network start at Volunteering.',
+			href: '/checkout/donate',
+			cta: 'Sponsor a kit',
+			accent: '#6F231E'
 		}
 	] as const;
 
@@ -95,7 +101,7 @@
 					Start where you are.
 				</h2>
 				<p class="mt-4 max-w-md text-base leading-relaxed text-dci-cream/72">
-					DCI can be a toolkit, a clinic, a training path, or a way to sponsor access. Choose
+					DCI can be a toolkit, a training path, a measurement system, or a way to sponsor access. Choose
 					the entry point that matches what brought you here.
 				</p>
 
@@ -170,9 +176,16 @@
 					</div>
 
 					<div class="mt-8 flex flex-col gap-3 border-t border-dci-teal/12 pt-6 sm:flex-row sm:items-center sm:justify-between">
-						<p class="max-w-sm text-sm leading-relaxed text-slate-600">
-							Not sure yet? Start with contact and DCI can route you to the right pathway.
-						</p>
+						<div class="max-w-sm space-y-2">
+							<p class="text-sm leading-relaxed text-slate-600">{activePath.helper}</p>
+							<p class="text-sm leading-relaxed text-slate-600">
+								Not sure where to start?
+								<a href="/performance" class="font-semibold text-dci-teal underline underline-offset-4">
+									Take the free Blueprint Assessment
+								</a>
+								and see what the patterns say.
+							</p>
+						</div>
 						<a
 							href={activePath.href}
 							class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-dci-teal-deep px-6 text-sm font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98]"

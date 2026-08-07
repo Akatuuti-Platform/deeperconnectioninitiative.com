@@ -201,8 +201,8 @@
 			<div>
 				<h3 class="text-2xl font-semibold text-slate-950">Ann</h3>
 				<p class="mt-3 text-sm leading-relaxed text-slate-700">
-					40+ years as a behavioural-health specialist. Clinical-grade depth, brought to every
-					engagement she leads or supports.
+					40+ years as an Early Childhood Development and behavioural specialist. Four decades of
+					practice, brought to every engagement she leads or supports.
 				</p>
 			</div>
 		</article>

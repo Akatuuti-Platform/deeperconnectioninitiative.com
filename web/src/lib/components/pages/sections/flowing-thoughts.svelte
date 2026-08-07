@@ -31,13 +31,14 @@
 	// The second control point shares HEAD_CY so the curve leaves horizontally
 	// and meets the straight run without a kink.
 	const GOOD_PATH = `M -300 330 C 150 330, 500 ${HEAD_CY}, 700 ${HEAD_CY} L 2300 ${HEAD_CY}`;
-	// Tangles in from the left and stops short of the head, so the worried words
-	// never end up trapped behind the face.
-	const BAD_PATH =
-		'M -300 80 C 80 30, 240 230, 450 230 C 610 230, 668 124, 552 116 C 448 110, 466 230, 626 258 C 726 274, 786 232, 850 196';
+	// Tangles in from the left, then levels out onto HEAD_CY and runs just inside
+	// the head's left edge, so the worry visibly flows into the head and the
+	// strip carries the line back out the other side. The last control point
+	// shares HEAD_CY so the approach is horizontal and reads as one line.
+	const BAD_PATH = `M -300 80 C 80 30, 240 230, 450 230 C 610 230, 668 124, 552 116 C 448 110, 466 230, 626 258 C 726 274, 820 ${HEAD_CY}, 925 ${HEAD_CY}`;
 
 	const badPhrase =
-		'stress · anxiety · isolation · burnout · why me · not sleeping · always busy · can’t cope · ';
+		'stress · a way through · isolation · someone noticed · always busy · one honest hour · not sleeping · a place to start · ';
 	const goodPhrase =
 		'clarity · connection · hope · belonging · healing · supported · seen · I’m not alone · ';
 

@@ -86,7 +86,7 @@
 			</h2>
 
 			<p class="text-base leading-relaxed text-slate-700">
-				DCI is built on clinical-grade depth, not an emerging idea. Every toolkit, clinic, and
+				DCI is built on four decades of behavioural practice, not an emerging idea. Every toolkit, clinic, and
 				training carries decades of behavioural-health experience behind it.
 			</p>
 

@@ -63,7 +63,7 @@
 					class="inline-flex items-center gap-2 rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1 mb-4"
 				>
 					<span class="text-xs font-semibold tracking-wide text-dci-teal uppercase"
-						>The Crisis Prevention Model</span
+						>The Prevention Model</span
 					>
 				</div>
 				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900">
