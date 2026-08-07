@@ -60,8 +60,8 @@
 			</h1>
 
 			<p class="max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
-				A mental health initiative equipping individuals and communities with a physical toolkit
-				and an AI-powered early warning system for emotional wellbeing.
+				A mental health initiative equipping individuals and communities with a physical wellness
+				toolkit and an AI-powered early warning system for emotional wellbeing.
 			</p>
 
 			<div class="flex flex-col gap-3 pt-1 sm:flex-row">
