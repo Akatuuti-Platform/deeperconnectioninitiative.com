@@ -2,6 +2,7 @@
 	import { cn } from '@/lib/utils';
 	import Button, { buttonVariants } from '../../ui/button/button.svelte';
 	import AnimateSvg from '@/lib/components/animate-svg.svelte';
+	import DciMark from '@/lib/components/dci-mark.svelte';
 	import { reveal } from '@/lib/actions/reveal';
 </script>
 
@@ -83,44 +84,10 @@
 
 		<!--
 			The DCI mark. Second in the DOM, so it sits below the message when the
-			layout stacks. Width is capped per breakpoint so it never crowds the
-			headline; width and height attributes reserve its space to avoid shift.
+			layout stacks. Capped tighter on phones than on desktop so it stays a
+			punctuation mark there and a full brand statement on large screens.
 		-->
-		<div class="dci-mark relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none">
-			<img
-				src="/photos/head-motif-760.webp"
-				srcset="/photos/head-motif-500.webp 500w, /photos/head-motif-760.webp 760w, /photos/head-motif-1020.webp 1020w"
-				sizes="(min-width: 1024px) 42vw, (min-width: 640px) 24rem, 20rem"
-				width="956"
-				height="1073"
-				alt="The DCI mark: a head in profile built from layered geometric pattern. No hair, no gender, no name, because the person starting an honest conversation can be anyone."
-				fetchpriority="high"
-				decoding="sync"
-				class="h-auto w-full select-none object-contain"
-			/>
-		</div>
+		<DciMark class="mx-auto w-full max-w-[15rem] sm:max-w-[20rem] lg:max-w-none" />
 	</div>
 </section>
 
-<style>
-	/* A slow, shallow drift so the mark feels alive without pulling focus. */
-	.dci-mark {
-		animation: dci-mark-drift 9s ease-in-out infinite alternate;
-		will-change: transform;
-	}
-
-	@keyframes dci-mark-drift {
-		from {
-			transform: translate3d(0, -0.5%, 0);
-		}
-		to {
-			transform: translate3d(0, 1.5%, 0);
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.dci-mark {
-			animation: none;
-		}
-	}
-</style>
