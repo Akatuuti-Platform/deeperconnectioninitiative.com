@@ -45,9 +45,15 @@
 					icon: Users
 				},
 				{
+					label: 'Conversation Clinics',
+					href: '/clinics',
+					description: 'The monthly meet-up. Last Wednesday, every month.',
+					icon: MessageCircle
+				},
+				{
 					label: 'Events',
 					href: '/events',
-					description: 'Book a clinic seat, join workshops and gatherings.',
+					description: 'Workshops, orientations, and one-off gatherings.',
 					icon: CalendarDays
 				}
 			]

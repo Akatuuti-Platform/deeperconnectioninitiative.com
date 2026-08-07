@@ -1,0 +1,285 @@
+<script lang="ts">
+	import { Button } from '$lib/components/ui/button';
+	import { Section, SectionHeading } from '$lib/components/sections';
+	import { reveal } from '$lib/actions/reveal';
+	import {
+		CalendarDotsIcon as CalendarDays,
+		MapPinIcon as MapPin,
+		ClockIcon as Clock,
+		ChatCircleTextIcon as MessageCircle,
+		UsersThreeIcon as Users,
+		HandHeartIcon as HandHeart,
+		ArrowUpRightIcon as ArrowUpRight
+	} from 'phosphor-svelte';
+	import {
+		CLINIC_END,
+		CLINIC_PRICE_UGX,
+		CLINIC_START,
+		CLINIC_VENUE,
+		formatClinicDate,
+		formatClinicDateShort
+	} from '$lib/clinics';
+
+	let { data } = $props();
+
+	const dates = $derived(data.clinics.map((iso: string) => new Date(iso)));
+	const next = $derived(dates[0]);
+	const later = $derived(dates.slice(1));
+
+	const price = `${CLINIC_PRICE_UGX.toLocaleString('en-US')} UGX`;
+
+	const howItWorks = [
+		{
+			icon: Users,
+			title: 'You arrive and you sit down',
+			body: 'A small group, a trained Champion holding the room, and a set of cards on the table. Nobody is put on the spot.'
+		},
+		{
+			icon: MessageCircle,
+			title: 'A card opens the conversation',
+			body: 'Someone draws a question. You answer if you want to. Listening counts as taking part, and plenty of people start there.'
+		},
+		{
+			icon: HandHeart,
+			title: 'You leave with something practical',
+			body: 'A way of naming what you are carrying, and people who now know your name. Many come back the following month.'
+		}
+	];
+
+	const isFor = [
+		'You have been meaning to talk to someone and have not got round to it',
+		'You are the person everyone else leans on',
+		'You want to see how the toolkit works before buying it',
+		'You are curious about facilitating one of these yourself'
+	];
+
+	const isNot = [
+		'It is not therapy, and it does not replace care from a professional',
+		'It is not a place where you have to speak',
+		'It is not a lecture. There is no expert at the front of the room'
+	];
+</script>
+
+<svelte:head>
+	<title>Conversation Clinics | DCI Wellness</title>
+	<meta
+		name="description"
+		content="A monthly Conversation Clinic in Kampala. Last Wednesday of every month at {CLINIC_VENUE}. Book your seat for {price}."
+	/>
+</svelte:head>
+
+<section class="relative overflow-hidden pt-28">
+	<div class="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+		<div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+			<div class="space-y-6" use:reveal={{ delay: 0, y: 18 }}>
+				<div
+					class="inline-flex items-center gap-2 rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1"
+				>
+					<CalendarDays class="size-4 text-dci-teal" weight="duotone" />
+					<span class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
+						Every last Wednesday
+					</span>
+				</div>
+				<h1
+					class="max-w-2xl text-5xl font-semibold leading-[0.95] tracking-tight text-slate-950 sm:text-6xl"
+				>
+					A room where the conversation is already started.
+				</h1>
+				<p class="max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
+					The Conversation Clinic is a monthly meet-up in Kampala. A trained Champion, the DCI
+					card game, and a small group of people who came for the same reason you did. You do not
+					need the right words. The cards do that part.
+				</p>
+			</div>
+
+			<div
+				use:reveal={{ delay: 120, y: 18 }}
+				class="relative overflow-hidden rounded-[2rem] bg-dci-teal-deep p-7 text-dci-cream shadow-dci-panel sm:p-9"
+			>
+				<div
+					class="pointer-events-none absolute inset-0 opacity-10"
+					style="background-image: radial-gradient(#F6ECD9 1px, transparent 1px); background-size: 26px 26px;"
+				></div>
+				<div class="relative space-y-6">
+					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
+						Next clinic
+					</p>
+					<p class="text-3xl font-semibold leading-tight text-white sm:text-4xl">
+						{formatClinicDate(next)}
+					</p>
+
+					<div class="space-y-3 border-t border-dci-cream/15 pt-5 text-sm">
+						<p class="flex items-center gap-2.5 text-dci-cream/85">
+							<Clock class="size-4 shrink-0" weight="regular" />
+							{CLINIC_START} to {CLINIC_END}
+						</p>
+						<p class="flex items-start gap-2.5 text-dci-cream/85">
+							<MapPin class="mt-0.5 size-4 shrink-0" weight="regular" />
+							{CLINIC_VENUE}
+						</p>
+					</div>
+
+					<div class="border-t border-dci-cream/15 pt-5">
+						<p class="text-3xl font-bold text-white">{price}</p>
+						<p class="mt-1 text-sm text-dci-cream/70">Per seat, includes the session.</p>
+					</div>
+
+					<Button
+						href="/checkout/clinic"
+						size="lg"
+						class="w-full rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
+					>
+						Book your seat
+					</Button>
+					<p class="text-center text-xs text-dci-cream/60">
+						Pay by Mobile Money or card. Seats are limited.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<Section tone="cream">
+	<SectionHeading
+		eyebrow="What actually happens"
+		title="Ninety minutes of your month."
+		class="mb-12"
+	/>
+	<div class="grid gap-6 md:grid-cols-3">
+		{#each howItWorks as step, index}
+			{@const Icon = step.icon}
+			<div
+				use:reveal={{ delay: index * 80, y: 22 }}
+				class="rounded-[2rem] border border-dci-teal/12 bg-dci-paper p-7"
+			>
+				<span
+					class="flex size-11 items-center justify-center rounded-xl bg-dci-teal/10 text-dci-teal"
+				>
+					<Icon class="size-5" weight="duotone" />
+				</span>
+				<h3 class="mt-5 text-xl font-semibold leading-tight text-slate-950">{step.title}</h3>
+				<p class="mt-3 text-sm leading-relaxed text-slate-700">{step.body}</p>
+			</div>
+		{/each}
+	</div>
+</Section>
+
+<Section>
+	<div class="grid gap-6 lg:grid-cols-2">
+		<div
+			use:reveal={{ delay: 0, y: 22 }}
+			class="rounded-[2rem] border border-dci-teal/15 bg-dci-cream p-7 sm:p-9"
+		>
+			<h2 class="text-2xl font-semibold leading-tight text-slate-950">Come if</h2>
+			<ul class="mt-6 space-y-4">
+				{#each isFor as item}
+					<li class="flex gap-3 text-base leading-relaxed text-slate-700">
+						<span class="mt-2 size-1.5 shrink-0 rounded-full bg-dci-teal"></span>
+						{item}
+					</li>
+				{/each}
+			</ul>
+		</div>
+
+		<div
+			use:reveal={{ delay: 90, y: 22 }}
+			class="rounded-[2rem] border border-dci-burgundy/15 bg-dci-paper p-7 sm:p-9"
+		>
+			<h2 class="text-2xl font-semibold leading-tight text-slate-950">Worth being clear about</h2>
+			<ul class="mt-6 space-y-4">
+				{#each isNot as item}
+					<li class="flex gap-3 text-base leading-relaxed text-slate-700">
+						<span class="mt-2 size-1.5 shrink-0 rounded-full bg-dci-burgundy"></span>
+						{item}
+					</li>
+				{/each}
+			</ul>
+			<p class="mt-6 border-t border-dci-burgundy/12 pt-5 text-sm leading-relaxed text-slate-600">
+				If you are going through something that needs more than a monthly conversation, that is
+				worth saying out loud.
+				<a href="/contact" class="font-semibold text-dci-teal underline underline-offset-4">
+					Tell us and we will point you to the right support.
+				</a>
+			</p>
+		</div>
+	</div>
+</Section>
+
+<Section tone="cream">
+	<SectionHeading
+		eyebrow="Put it in your calendar"
+		title="The last Wednesday, every month."
+		class="mb-10"
+	/>
+	<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+		<article
+			use:reveal={{ delay: 0, y: 20 }}
+			class="flex flex-col justify-between rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream"
+		>
+			<div>
+				<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Next up</p>
+				<p class="mt-3 text-2xl font-semibold leading-tight text-white">
+					{formatClinicDateShort(next)}
+				</p>
+				<p class="mt-2 text-sm text-dci-cream/70">{CLINIC_START}</p>
+			</div>
+			<Button
+				href="/checkout/clinic"
+				class="mt-6 rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
+			>
+				Book your seat
+			</Button>
+		</article>
+
+		{#each later as date, index}
+			<article
+				use:reveal={{ delay: (index + 1) * 70, y: 20 }}
+				class="flex flex-col justify-between rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6"
+			>
+				<div>
+					<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Then</p>
+					<p class="mt-3 text-2xl font-semibold leading-tight text-slate-950">
+						{formatClinicDateShort(date)}
+					</p>
+					<p class="mt-2 text-sm text-slate-600">{CLINIC_START}</p>
+				</div>
+				<Button
+					href="/checkout/clinic"
+					variant="outline"
+					class="mt-6 rounded-full border-dci-teal/20 bg-transparent text-dci-teal-deep hover:bg-dci-teal/7"
+				>
+					Book ahead
+				</Button>
+			</article>
+		{/each}
+	</div>
+	<p class="mt-6 max-w-2xl text-sm leading-relaxed text-slate-600">
+		Bringing a group, or want a clinic hosted at your school, workplace, or venue?
+		<a
+			href="/contact?topic=Community%20clinic%20or%20event"
+			class="font-semibold text-dci-teal underline underline-offset-4">Talk to us about hosting one.</a
+		>
+	</p>
+</Section>
+
+<Section>
+	<div
+		use:reveal={{ delay: 0, y: 22 }}
+		class="grid gap-8 rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center"
+	>
+		<div>
+			<h2 class="text-3xl font-semibold leading-tight tracking-tight text-slate-950">
+				Take the conversation home.
+			</h2>
+			<p class="mt-3 max-w-xl text-base leading-relaxed text-slate-700">
+				The card game on the table at every clinic is the same one you can take home. Most people
+				meet it here first, then keep using it with the people they live with.
+			</p>
+		</div>
+		<Button href="/toolkit#toolkit-products" size="lg" class="shrink-0 rounded-full px-7">
+			See the toolkit
+			<ArrowUpRight class="size-4" weight="regular" />
+		</Button>
+	</div>
+</Section>

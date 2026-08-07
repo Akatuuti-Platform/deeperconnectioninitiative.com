@@ -10,6 +10,7 @@ const navGroups = [
       { label: "Champions", href: "/champions" },
       { label: "Trainings", href: "/trainings" },
       { label: "Volunteering", href: "/volunteering" },
+      { label: "Conversation Clinics", href: "/clinics" },
       { label: "Events", href: "/events" },
     ],
   },

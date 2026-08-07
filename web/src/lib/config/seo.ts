@@ -60,6 +60,11 @@ export const PAGE_META: Record<string, PageMeta> = {
 		description:
 			'Track how sponsored toolkits, Conversation Clinics, and mood check-ins build measurable Connection Miles. One mile equals one life meaningfully impacted.'
 	},
+	'/clinics': {
+		title: `Conversation Clinics${SUFFIX}`,
+		description:
+			'A monthly Conversation Clinic in Kampala, the last Wednesday of every month. A trained Champion, the DCI card game, and a small group. Book your seat for 20,000 UGX.'
+	},
 	'/events': {
 		title: `Events & Clinics${SUFFIX}`,
 		description:
