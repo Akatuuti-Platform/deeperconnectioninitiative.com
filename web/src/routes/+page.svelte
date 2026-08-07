@@ -8,7 +8,6 @@
 	import PathFinder from "@/lib/components/pages/sections/path-finder.svelte";
 	import Toolkit from "@/lib/components/pages/sections/toolkit.svelte";
 	import CrisisPrevention from "@/lib/components/pages/sections/crisis-prevention.svelte";
-	import LogoPhilosophy from "@/lib/components/pages/sections/logo-philosophy.svelte";
 	import CardDraw from "@/lib/components/pages/sections/card-draw.svelte";
 	import OrgCta from "@/lib/components/pages/sections/org-cta.svelte";
 </script>
@@ -17,7 +16,6 @@
 <PathFinder />
 <CrisisPrevention />
 <Mission />
-<LogoPhilosophy />
 <Founder />
 <ImpactStories />
 <Toolkit />

@@ -61,18 +61,20 @@
 	style={`transform: translate3d(0, ${offset}px, 0)`}
 >
 	<div class="dci-mark-float" class:dci-mark-animate={allowMotion}>
+		<!--
+			The supplied DCI mark. Source is static/photos/head-icon.jpg; the only
+			processing is removing the white background (flood filled from the
+			edges and verified to leave exactly one transparent region, so no
+			pixel inside the artwork was touched) and re-encoding.
+			Native size is 317x326, so it is never displayed above that width.
+		-->
 		<picture>
-			<source
-				type="image/avif"
-				srcset="/photos/dci-mark-480.avif 480w, /photos/dci-mark-760.avif 760w, /photos/dci-mark-1040.avif 1040w"
-				sizes="(min-width: 1024px) 42vw, (min-width: 640px) 20rem, 15rem"
-			/>
+			<source type="image/avif" srcset="/photos/dci-mark.avif" />
+			<source type="image/webp" srcset="/photos/dci-mark.webp" />
 			<img
-				src="/photos/dci-mark-760.webp"
-				srcset="/photos/dci-mark-480.webp 480w, /photos/dci-mark-760.webp 760w, /photos/dci-mark-1040.webp 1040w"
-				sizes="(min-width: 1024px) 42vw, (min-width: 640px) 20rem, 15rem"
-				width="956"
-				height="1073"
+				src="/photos/dci-mark.png"
+				width="317"
+				height="326"
 				alt="The DCI mark: a head in profile built from layered geometric pattern. No hair, no gender, no name, because the person starting an honest conversation can be anyone."
 				fetchpriority="high"
 				decoding="sync"

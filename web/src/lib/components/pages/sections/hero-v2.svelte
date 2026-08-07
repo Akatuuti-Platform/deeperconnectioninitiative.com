@@ -87,7 +87,7 @@
 			layout stacks. Capped tighter on phones than on desktop so it stays a
 			punctuation mark there and a full brand statement on large screens.
 		-->
-		<DciMark class="mx-auto w-full max-w-[15rem] sm:max-w-[20rem] lg:max-w-none" />
+		<DciMark class="mx-auto w-full max-w-[13rem] sm:max-w-[17rem] lg:max-w-[19.8rem]" />
 	</div>
 </section>
 
