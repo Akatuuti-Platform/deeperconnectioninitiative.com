@@ -2,32 +2,29 @@
 	import { cn } from '@/lib/utils';
 	import Button, { buttonVariants } from '../../ui/button/button.svelte';
 	import AnimateSvg from '@/lib/components/animate-svg.svelte';
+	import HeadCarousel from '@/lib/components/head-carousel.svelte';
+	import { heroCarouselImages } from '@/lib/hero-carousel-images';
 	import { reveal } from '@/lib/actions/reveal';
-
-	const badPhrase =
-		'stress \u00b7 anxiety \u00b7 isolation \u00b7 burnout \u00b7 why me \u00b7 not sleeping \u00b7 always busy \u00b7 can\u2019t cope \u00b7 ';
-	const goodPhrase =
-		'clarity \u00b7 connection \u00b7 hope \u00b7 belonging \u00b7 healing \u00b7 supported \u00b7 seen \u00b7 I\u2019m not alone \u00b7 ';
-
-	const badText = badPhrase.repeat(10);
-	const goodText = goodPhrase.repeat(10);
 </script>
 
-<section
-	class="relative w-full overflow-visible px-4 pt-32 pb-0 sm:px-6 lg:px-8 lg:pt-40 lg:pb-0"
->
+<section class="relative w-full overflow-hidden px-4 pt-28 pb-16 sm:px-6 lg:px-8 lg:pt-36 lg:pb-24">
+	<!-- Soft brand wash behind the carousel column, desktop only. -->
 	<div
-		class="mx-auto flex max-w-3xl flex-col items-center space-y-8 text-center"
-		use:reveal={{ delay: 0, y: 18 }}
-	>
-		<div
-			class="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/5 px-3 py-1"
-		>
-			<span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-			<span class="text-xs font-semibold tracking-tight text-accent">Own your healing</span>
-		</div>
+		class="pointer-events-none absolute top-1/2 right-[-10%] hidden size-[36rem] -translate-y-1/2 rounded-full bg-dci-teal/8 blur-3xl lg:block"
+	></div>
 
-		<div class="space-y-5">
+	<div
+		class="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
+	>
+		<!-- Message first in the DOM, so it also comes first when the layout stacks. -->
+		<div class="max-w-2xl space-y-7" use:reveal={{ delay: 0, y: 18 }}>
+			<div
+				class="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/5 px-3 py-1"
+			>
+				<span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+				<span class="text-xs font-semibold tracking-tight text-accent">Own your healing</span>
+			</div>
+
 			<h1
 				class="text-5xl font-semibold leading-[0.95] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
 			>
@@ -63,138 +60,36 @@
 				</span>
 			</h1>
 
-			<p class="mx-auto max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
+			<p class="max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
 				A mental health initiative equipping individuals and communities with a physical toolkit
-				and an AI-powered early warning system.
+				and an AI-powered early warning system for emotional wellbeing.
 			</p>
+
+			<div class="flex flex-col gap-3 pt-1 sm:flex-row">
+				<Button
+					href="/toolkit#toolkit-products"
+					class={cn(buttonVariants({ size: 'lg' }), 'bg-primary px-8')}
+				>
+					Buy a Toolkit
+				</Button>
+				<Button
+					href="/checkout/donate"
+					variant="outline"
+					size="lg"
+					class="rounded-md border-dci-teal/25 bg-transparent px-8 text-dci-teal-deep hover:bg-dci-teal/7"
+				>
+					Sponsor a Toolkit
+				</Button>
+			</div>
 		</div>
 
-		<div class="flex flex-col justify-center gap-3 sm:flex-row">
-			<Button href="#toolkit" class={cn(buttonVariants({ size: 'lg' }), 'bg-primary px-7')}>
-				Buy or sponsor a toolkit
-			</Button>
-		</div>
-	</div>
-
-	<!-- Flowing thoughts animation - side by side: [left curve] [HEAD] [right curve] -->
-	<div
-		class="relative mt-4 flex w-full items-center lg:mt-6 -mx-4 sm:-mx-6 lg:-mx-8"
-		use:reveal={{ delay: 200, y: 30 }}
-	>
-		<!-- Left: bad thoughts flowing L→R into the head -->
-		<div class="hero-anim-left flex-1">
-			<svg
-				width="100%"
-				height="auto"
-				viewBox="0 0 1048 594"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-				style="overflow: visible;"
-			>
-				<path
-					id="curve-bad"
-					d="M0.597656 50.924805C17.4612 143.2965 97.8522 293.141 284.508 353.548C440.828 399.056 583.839 294.067 500.618 184.7492C417.397 75.4309 238.217 282.098 499.258 441.668C551.913 477.802 817.468 561.26 1046.43 565.235"
-					stroke="#EFE5D0"
-				/>
-				<text x="-3300">
-					<textPath id="marquee-bad" href="#curve-bad">{badText}</textPath>
-					<animate
-						attributeName="x"
-						dur="40s"
-						values="-3300; 0"
-						repeatCount="indefinite"
-					/>
-				</text>
-			</svg>
-		</div>
-
-		<!-- Center: DCI logo mark head - above the left (bad) curve, below the right (good) band -->
-		<div class="pointer-events-none relative z-10 mx-[-10%] shrink-0 self-end translate-y-[55%]">
-			<img
-				src="/photos/dci-logo-mark.png"
-				alt=""
-				class="h-[120px] w-auto object-contain sm:h-[160px] lg:h-[200px]"
-				loading="lazy"
+		<!-- Carousel second in the DOM: below the message on small screens. -->
+		<div class="relative mx-auto w-full max-w-md lg:max-w-none" use:reveal={{ delay: 160, y: 24 }}>
+			<HeadCarousel
+				images={heroCarouselImages}
+				class="w-full"
+				label="Moments from DCI clinics and community sessions"
 			/>
-		</div>
-
-		<!-- Right: good thoughts flowing L→R away from the head -->
-		<div class="hero-anim-right flex-1">
-			<svg
-				width="100%"
-				height="auto"
-				viewBox="0 0 1024 620"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-				style="overflow: visible;"
-			>
-				<path
-					id="curve-good"
-					d="M2.04309 563.872C111.592 558.268 316.491 554.016 517.963 490.064C703.017 431.323 875.319 444.531 1021.88 453.216L1500 453.216"
-					stroke="#1A3C40"
-					stroke-width="80"
-				/>
-				<text x="-4500">
-					<textPath id="marquee-good" href="#curve-good">{goodText}</textPath>
-					<animate
-						attributeName="x"
-						dur="50s"
-						values="-4500; 0"
-						repeatCount="indefinite"
-					/>
-				</text>
-			</svg>
 		</div>
 	</div>
 </section>
-
-<style>
-	/* Bad thoughts text - ghostly, thin */
-	:global(#marquee-bad) {
-		font-family: 'Outfit', sans-serif;
-		font-size: 64px;
-		font-weight: 400;
-		fill: #1a3c40;
-		baseline-shift: -45%;
-		opacity: 0.4;
-	}
-
-	/* Good thoughts text - bold, cream on dark band */
-	:global(#marquee-good) {
-		font-family: 'Outfit', sans-serif;
-		font-size: 64px;
-		font-weight: 600;
-		fill: #f6ecd9;
-		dominant-baseline: central;
-	}
-
-	/* SVG paths should be transparent fill */
-	:global(#curve-bad),
-	:global(#curve-good) {
-		fill: transparent;
-	}
-
-	/* Side-by-side layout - curves flanking the head */
-	.hero-anim-left,
-	.hero-anim-right {
-		position: relative;
-		overflow: visible;
-	}
-
-	/* Left (bad) curve sits behind the head; right (good) band in front of it */
-	.hero-anim-left {
-		z-index: 1;
-	}
-
-	.hero-anim-right {
-		z-index: 5;
-	}
-
-	/* Reduced motion - pause animations */
-	@media (prefers-reduced-motion: reduce) {
-		:global(#marquee-bad animate),
-		:global(#marquee-good animate) {
-			animation-play-state: paused;
-		}
-	}
-</style>
