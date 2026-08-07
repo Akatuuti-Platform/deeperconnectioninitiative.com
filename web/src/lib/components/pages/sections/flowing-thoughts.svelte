@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { reveal } from '@/lib/actions/reveal';
 
-	// Thoughts flow in from the left, pass through the head, and leave along the
+	// Thoughts tangle in from the left, pass behind the head, and leave along the
 	// band on the right.
+	//
+	// The strip is drawn BEHIND the head. Drawn in front it covers the eyes and
+	// mouth, which reads as redaction rather than as a thought passing through.
 	//
 	// Head and band live in ONE viewBox, so the band always crosses the head at
 	// the same point in artwork coordinates. Nothing about the viewport can move
@@ -12,8 +15,8 @@
 	// band is drawn flat along it, so the strip passes through the middle of the
 	// head by construction rather than by tuning.
 	const HEAD_CX = 1000;
-	const HEAD_CY = 260;
-	const HEAD_SIZE = 340;
+	const HEAD_CY = 215;
+	const HEAD_SIZE = 320;
 
 	// The head does not sit in the middle of its own PNG: the frame has
 	// transparent padding above the crown and the shoulders fill the bottom.
@@ -22,14 +25,16 @@
 	// to the frame centre puts the strip across the jaw instead of the head.
 	const HEAD_CENTRE_FRAC = 0.424;
 
-	const BAND_W = 80; // strip thickness, so it spans HEAD_CY plus or minus 40
+	const BAND_W = 72; // strip thickness, so it spans HEAD_CY plus or minus 36
 
 	// Flat along HEAD_CY from before the head onward, so the crossing is exact.
 	// The second control point shares HEAD_CY so the curve leaves horizontally
 	// and meets the straight run without a kink.
-	const GOOD_PATH = `M -300 400 C 150 400, 500 ${HEAD_CY}, 700 ${HEAD_CY} L 2300 ${HEAD_CY}`;
-	// Tangles in from the left and resolves into the head.
-	const BAD_PATH = `M -300 120 C 100 60, 260 300, 520 300 C 700 300, 760 180, 620 170 C 500 162, 520 300, 700 330 C 830 352, 900 300, ${HEAD_CX} ${HEAD_CY}`;
+	const GOOD_PATH = `M -300 330 C 150 330, 500 ${HEAD_CY}, 700 ${HEAD_CY} L 2300 ${HEAD_CY}`;
+	// Tangles in from the left and stops short of the head, so the worried words
+	// never end up trapped behind the face.
+	const BAD_PATH =
+		'M -300 80 C 80 30, 240 230, 450 230 C 610 230, 668 124, 552 116 C 448 110, 466 230, 626 258 C 726 274, 786 232, 850 196';
 
 	const badPhrase =
 		'stress · anxiety · isolation · burnout · why me · not sleeping · always busy · can’t cope · ';
@@ -52,7 +57,7 @@
 	-->
 	<svg
 		class="dci-thoughts__svg"
-		viewBox="0 0 2000 560"
+		viewBox="0 0 2000 420"
 		preserveAspectRatio="xMidYMid slice"
 		xmlns="http://www.w3.org/2000/svg"
 		aria-hidden="true"
@@ -63,7 +68,7 @@
 			<path id="dci-curve-good" d={GOOD_PATH} fill="none" />
 		</defs>
 
-		<!-- 1. Bad thoughts, behind the head -->
+		<!-- 1. Bad thoughts, furthest back -->
 		<g class="dci-thoughts__bad">
 			<text x="-6000">
 				<textPath href="#dci-curve-bad">{badText}</textPath>
@@ -71,7 +76,16 @@
 			</text>
 		</g>
 
-		<!-- 2. The head, centred on HEAD_CY -->
+		<!-- 2. The strip, flat along HEAD_CY, behind the head -->
+		<path d={GOOD_PATH} fill="none" stroke="#1A3C40" stroke-width={BAND_W} stroke-linecap="butt" />
+		<g class="dci-thoughts__good">
+			<text x="-7000">
+				<textPath href="#dci-curve-good">{goodText}</textPath>
+				<animate attributeName="x" dur="54s" values="-7000; 0" repeatCount="indefinite" />
+			</text>
+		</g>
+
+		<!-- 3. The head, in front, so the face is never covered -->
 		<image
 			href="/photos/dci-mark-2026.png"
 			x={HEAD_CX - HEAD_SIZE / 2}
@@ -80,22 +94,13 @@
 			height={HEAD_SIZE}
 			preserveAspectRatio="xMidYMid meet"
 		/>
-
-		<!-- 3. The strip, in front of the head, flat along HEAD_CY -->
-		<path d={GOOD_PATH} fill="none" stroke="#1A3C40" stroke-width={BAND_W} stroke-linecap="butt" />
-		<g class="dci-thoughts__good">
-			<text x="-7000">
-				<textPath href="#dci-curve-good">{goodText}</textPath>
-				<animate attributeName="x" dur="54s" values="-7000; 0" repeatCount="indefinite" />
-			</text>
-		</g>
 	</svg>
 </section>
 
 <style>
 	.dci-thoughts {
 		/* Height drives how much of the 2000 unit width is visible. */
-		height: clamp(190px, 24vw, 340px);
+		height: clamp(150px, 17vw, 250px);
 	}
 
 	.dci-thoughts__svg {
