@@ -2,6 +2,7 @@
 	import Ecosystem from "@/lib/components/pages/sections/ecosystem.svelte";
 	import GetInvolved from "@/lib/components/pages/sections/get-involved.svelte";
 	import HeroV2 from "@/lib/components/pages/sections/hero-v2.svelte";
+	import FlowingThoughts from "@/lib/components/pages/sections/flowing-thoughts.svelte";
 	import Founder from "@/lib/components/pages/sections/founder.svelte";
 	import ImpactStories from "@/lib/components/pages/sections/impact-stories.svelte";
 	import Mission from "@/lib/components/pages/sections/mission.svelte";
@@ -13,6 +14,7 @@
 </script>
 
 <HeroV2 />
+<FlowingThoughts />
 <PathFinder />
 <CrisisPrevention />
 <Mission />
