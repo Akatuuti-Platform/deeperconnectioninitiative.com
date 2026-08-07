@@ -61,7 +61,7 @@
 
 			<p class="max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
 				A mental health initiative equipping individuals and communities with a physical wellness
-				toolkit and an AI-powered early warning system for emotional wellbeing.
+				toolkit and an AI-powered early warning system for earlier support and intervention.
 			</p>
 
 			<div class="flex flex-col gap-3 pt-1 sm:flex-row">
