@@ -15,6 +15,13 @@
 	const HEAD_CY = 260;
 	const HEAD_SIZE = 340;
 
+	// The head does not sit in the middle of its own PNG: the frame has
+	// transparent padding above the crown and the shoulders fill the bottom.
+	// Measured from dci-mark-2026.png, crown at row 63 and neck at row 361, so
+	// the centre of the head itself is 0.424 down the frame, not 0.5. Aligning
+	// to the frame centre puts the strip across the jaw instead of the head.
+	const HEAD_CENTRE_FRAC = 0.424;
+
 	const BAND_W = 80; // strip thickness, so it spans HEAD_CY plus or minus 40
 
 	// Flat along HEAD_CY from before the head onward, so the crossing is exact.
@@ -68,7 +75,7 @@
 		<image
 			href="/photos/dci-mark-2026.png"
 			x={HEAD_CX - HEAD_SIZE / 2}
-			y={HEAD_CY - HEAD_SIZE / 2}
+			y={HEAD_CY - HEAD_SIZE * HEAD_CENTRE_FRAC}
 			width={HEAD_SIZE}
 			height={HEAD_SIZE}
 			preserveAspectRatio="xMidYMid meet"
