@@ -16,15 +16,14 @@
 		CLINIC_PRICE_UGX,
 		CLINIC_START,
 		CLINIC_VENUE,
-		formatClinicDate,
-		formatClinicDateShort
+		clinicKey,
+		formatClinicDate
 	} from '$lib/clinics';
 
 	let { data } = $props();
 
 	const dates = $derived(data.clinics.map((iso: string) => new Date(iso)));
 	const next = $derived(dates[0]);
-	const later = $derived(dates.slice(1));
 
 	const price = `${CLINIC_PRICE_UGX.toLocaleString('en-US')} UGX`;
 
@@ -208,48 +207,52 @@
 
 <Section tone="cream">
 	<SectionHeading
-		eyebrow="Put it in your calendar"
-		title="The last Wednesday, every month."
+		eyebrow="Attend a clinic"
+		title="Every clinic left this year."
 		class="mb-10"
 	/>
-	<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-		<article
-			use:reveal={{ delay: 0, y: 20 }}
-			class="flex flex-col justify-between rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream"
-		>
-			<div>
-				<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Next up</p>
-				<p class="mt-3 text-2xl font-semibold leading-tight text-white">
-					{formatClinicDateShort(next)}
-				</p>
-				<p class="mt-2 text-sm text-dci-cream/70">{CLINIC_START}</p>
-			</div>
-			<Button
-				href="/checkout/clinic"
-				class="mt-6 rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
-			>
-				Book your seat
-			</Button>
-		</article>
-
-		{#each later as date, index}
+	<div class="space-y-3">
+		{#each dates as date, index}
 			<article
-				use:reveal={{ delay: (index + 1) * 70, y: 20 }}
-				class="flex flex-col justify-between rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6"
+				use:reveal={{ delay: index * 60, y: 18 }}
+				class={`grid gap-4 rounded-[2rem] border p-5 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-6 ${
+					index === 0
+						? 'border-dci-teal/25 bg-dci-paper shadow-dci-lift'
+						: 'border-dci-teal/12 bg-dci-cream'
+				}`}
 			>
-				<div>
-					<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Then</p>
-					<p class="mt-3 text-2xl font-semibold leading-tight text-slate-950">
-						{formatClinicDateShort(date)}
-					</p>
-					<p class="mt-2 text-sm text-slate-600">{CLINIC_START}</p>
-				</div>
-				<Button
-					href="/checkout/clinic"
-					variant="outline"
-					class="mt-6 rounded-full border-dci-teal/20 bg-transparent text-dci-teal-deep hover:bg-dci-teal/7"
+				<div
+					class="flex size-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-dci-teal-deep text-dci-cream"
 				>
-					Book ahead
+					<span class="text-[0.65rem] font-bold uppercase tracking-wide">
+						{date.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' })}
+					</span>
+					<span class="text-2xl font-semibold leading-none">{date.getUTCDate()}</span>
+				</div>
+
+				<div class="min-w-0">
+					<p class="text-lg font-semibold leading-tight text-slate-950">
+						{formatClinicDate(date)}
+						{#if index === 0}
+							<span
+								class="ml-2 rounded-full bg-dci-teal/10 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-dci-teal"
+							>Next</span
+						>
+						{/if}
+					</p>
+					<p class="mt-1 text-sm text-slate-600">
+						{CLINIC_START} to {CLINIC_END} · {CLINIC_VENUE}
+					</p>
+					<p class="mt-1 text-sm text-slate-600">
+						{price} · earns 1 Connection Mile, issued when you check in on the day.
+					</p>
+				</div>
+
+				<Button
+					href={`/checkout/clinic?date=${clinicKey(date)}`}
+					class="w-full shrink-0 rounded-full sm:w-auto"
+				>
+					Book this date
 				</Button>
 			</article>
 		{/each}

@@ -28,6 +28,18 @@
 					{data.product.name}
 				</h1>
 				<p class="text-base leading-relaxed text-slate-600">{data.product.description}</p>
+
+				{#if data.clinicDateLabel}
+					<!-- Confirms exactly which session is being paid for, before payment. -->
+					<div class="rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 py-3">
+						<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">You are booking</p>
+						<p class="mt-1 text-lg font-semibold leading-tight text-slate-950">
+							{data.clinicDateLabel}
+						</p>
+						<p class="mt-1 text-sm text-slate-600">{data.clinicVenue}</p>
+					</div>
+				{/if}
+
 				{#if data.product.amount !== null}
 					<p class="text-2xl font-bold text-dci-teal-deep">{formatUgx(data.product.amount)}</p>
 				{/if}
@@ -61,6 +73,10 @@
 					aria-hidden="true"
 					class="hidden"
 				/>
+
+				{#if data.clinicDate}
+					<input type="hidden" name="date" value={data.clinicDate} />
+				{/if}
 
 				{#if data.product.amount === null}
 					<div class="space-y-3">

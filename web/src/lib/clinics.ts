@@ -39,6 +39,28 @@ export function upcomingClinics(count = 4, from: Date = new Date()): Date[] {
 	return dates;
 }
 
+/**
+ * Every remaining clinic in the current calendar year, starting with this
+ * month's if it has not already passed. Same venue and time throughout, so the
+ * date is the only thing that varies.
+ */
+export function clinicsRemainingThisYear(from: Date = new Date()): Date[] {
+	const year = from.getUTCFullYear();
+	const today = Date.UTC(from.getUTCFullYear(), from.getUTCMonth(), from.getUTCDate());
+	const dates: Date[] = [];
+	for (let month = from.getUTCMonth(); month <= 11; month++) {
+		const candidate = lastWednesday(year, month);
+		if (candidate.getTime() >= today) dates.push(candidate);
+	}
+	return dates;
+}
+
+/** True only for a date that is actually a scheduled clinic, used to validate
+ *  the ?date= parameter before it reaches the payment provider. */
+export function isClinicDate(iso: string, from: Date = new Date()): boolean {
+	return clinicsRemainingThisYear(from).some((d) => clinicKey(d) === iso);
+}
+
 export function formatClinicDate(date: Date): string {
 	return date.toLocaleDateString('en-GB', {
 		weekday: 'long',

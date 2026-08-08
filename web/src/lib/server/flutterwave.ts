@@ -93,11 +93,16 @@ type CreatePaymentInput = {
 	amount: number;
 	customer: { email: string; name?: string; phone?: string };
 	redirectUrl: string;
+	/** Extra detail carried on the payment, e.g. which clinic date was booked.
+	 *  Appears in the Flutterwave record and in the order email. */
+	meta?: Record<string, string>;
+	/** Overrides the description shown on the Flutterwave payment page. */
+	description?: string;
 };
 
 export async function createPayment(
 	fetchFn: typeof fetch,
-	{ product, amount, customer, redirectUrl }: CreatePaymentInput
+	{ product, amount, customer, redirectUrl, meta, description }: CreatePaymentInput
 ): Promise<{ link: string; txRef: string } | { error: string }> {
 	const secretKey = env.FLUTTERWAVE_SECRET_KEY;
 	if (!secretKey) {
@@ -126,9 +131,9 @@ export async function createPayment(
 				},
 				customizations: {
 					title: 'DCI Wellness',
-					description: product.name
+					description: description ?? product.name
 				},
-				meta: { product: product.slug }
+				meta: { product: product.slug, ...(meta ?? {}) }
 			})
 		});
 

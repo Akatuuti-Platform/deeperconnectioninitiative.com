@@ -22,8 +22,8 @@
 				'Three tools that give you somewhere to start. Everything works on paper, so a conversation can happen anywhere, with anyone, without waiting for an appointment.',
 			steps: ['Choose your tool', 'Start the conversation', 'See your patterns'],
 			helper: 'Want all three? The full toolkit is 200,000 UGX and earns 10 Connection Miles.',
-			href: '/toolkit#toolkit-products',
-			cta: 'Open the toolkit',
+			href: '/clinics',
+			cta: 'Attend a clinic',
 			accent: '#2A6268'
 		},
 		{
