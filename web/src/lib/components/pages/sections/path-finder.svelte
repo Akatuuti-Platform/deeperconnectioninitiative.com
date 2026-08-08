@@ -77,6 +77,7 @@
 			helper: 'Training days are announced at the next Conversation Clinic.',
 			href: '/performance',
 			cta: 'Take the Blueprint Assessment',
+			ctaRed: true,
 			accent: '#6F231E'
 		},
 		{
@@ -97,6 +98,7 @@
 				"The Early Warning System earns no Connection Miles of its own. It is what makes everyone else's countable.",
 			href: WHATSAPP_ORG,
 			cta: 'Talk to us on WhatsApp',
+			ctaRed: true,
 			accent: '#2A6268'
 		},
 		{
@@ -125,14 +127,14 @@
 					price: '200,000 UGX',
 					note: 'A full toolkit is 10 Connection Miles. A Champion scholarship is 500,000 UGX.',
 					slug: 'sponsor-toolkit',
-					cta: 'Sponsor a toolkit',
-					secondary: { slug: 'sponsor-scholarship', label: 'Fund a scholarship instead' }
+					cta: 'Sponsor a toolkit'
 				}
 			],
 			helper:
 				'Ten per cent of every toolkit sold already funds Champion training. Venue partners, DCI Angels and the provider network start at Volunteering.',
-			href: '/performance',
-			cta: 'Take the Blueprint Assessment',
+			href: '/checkout/sponsor-scholarship',
+			cta: 'Fund a scholarship',
+			ctaRed: true,
 			accent: '#6F231E'
 		}
 	] as const;
@@ -255,15 +257,6 @@
 										>
 											{option.cta}
 										</button>
-										{#if 'secondary' in option && option.secondary}
-											<button
-												type="button"
-												onclick={() => (buying = { slug: option.secondary.slug, name: 'Champion Scholarship', price: '500,000 UGX' })}
-												class="w-full text-center text-xs font-semibold text-dci-teal underline underline-offset-4 hover:text-dci-teal-deep"
-											>
-												{option.secondary.label}
-											</button>
-										{/if}
 									</div>
 								</article>
 							{/each}
