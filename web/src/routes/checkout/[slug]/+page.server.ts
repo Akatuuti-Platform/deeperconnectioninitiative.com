@@ -17,7 +17,15 @@ export const load: PageServerLoad = ({ params, url }) => {
 	const product = getProduct(params.slug);
 	if (!product) error(404, 'Product not found');
 
-	const clinicDate = clinicDateFrom(params.slug, url.searchParams.get('date'));
+	// A date that is present but no longer valid, typically a bookmarked link
+	// to a clinic that has since passed, must not quietly become an undated
+	// seat. Send them back to pick a current date instead.
+	const requestedDate = url.searchParams.get('date');
+	if (params.slug === 'clinic' && requestedDate && !isClinicDate(requestedDate)) {
+		redirect(303, '/clinics');
+	}
+
+	const clinicDate = clinicDateFrom(params.slug, requestedDate);
 	return {
 		product,
 		clinicDate,
@@ -43,8 +51,14 @@ export const actions: Actions = {
 		const rawAmount = String(data.get('amount') ?? '').trim();
 		const values = { email, amount: rawAmount };
 
-		// Re-validated server side, never trusted from the form.
-		const clinicDate = clinicDateFrom(params.slug, String(data.get('date') ?? '') || null);
+		// Re-validated server side, never trusted from the form. A submitted date
+		// that fails validation is refused outright rather than silently dropped,
+		// so nobody pays for a seat believing it is dated when it is not.
+		const submittedDate = String(data.get('date') ?? '') || null;
+		if (params.slug === 'clinic' && submittedDate && !isClinicDate(submittedDate)) {
+			redirect(303, '/clinics');
+		}
+		const clinicDate = clinicDateFrom(params.slug, submittedDate);
 
 		let amount = product.amount;
 		if (amount === null) {
