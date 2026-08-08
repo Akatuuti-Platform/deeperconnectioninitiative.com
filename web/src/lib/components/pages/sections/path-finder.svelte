@@ -131,8 +131,8 @@
 			],
 			helper:
 				'Ten per cent of every toolkit sold already funds Champion training. Venue partners, DCI Angels and the provider network start at Volunteering.',
-			href: '/checkout/donate',
-			cta: 'Give another amount',
+			href: '/performance',
+			cta: 'Take the Blueprint Assessment',
 			accent: '#6F231E'
 		}
 	] as const;
