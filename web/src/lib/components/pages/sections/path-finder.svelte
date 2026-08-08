@@ -11,12 +11,29 @@
 		BookOpenTextIcon,
 		BuildingsIcon,
 		GraduationCapIcon,
-		HandshakeIcon
+		HandshakeIcon,
+		PlayIcon
 	} from 'phosphor-svelte';
 
 	// Buying happens in place: the drawer posts straight to the product's
 	// checkout action, so the next page a buyer sees is Flutterwave itself.
 	let buying = $state<{ slug: string; name: string; price: string } | null>(null);
+
+	// Organisational enquiries go to WhatsApp rather than the contact form,
+	// because the form silently drops messages while Resend is unconfigured.
+	const WHATSAPP_ORG =
+		'https://wa.me/256773855144?text=' +
+		encodeURIComponent(
+			'Hello DCI. I am enquiring on behalf of an organisation and would like to book a call.'
+		);
+
+	// The explainer plays on demand, so no YouTube request is made on page load.
+	let playing = $state(false);
+	// Reset when moving between doors, so the video never follows you.
+	function selectPath(path: Pathway) {
+		activePath = path;
+		playing = false;
+	}
 
 	const pathways = [
 		{
@@ -57,8 +74,8 @@
 				cta: 'Pay deposit and join the waitlist'
 			},
 			helper: 'Training days are announced at the next Conversation Clinic.',
-			href: '/trainings',
-			cta: 'Reserve a place',
+			href: '/performance',
+			cta: 'Take the free Blueprint Assessment',
 			accent: '#6F231E'
 		},
 		{
@@ -70,11 +87,15 @@
 			title: 'I am an organisation or a funder.',
 			description:
 				'You can count who showed up. We help you see what changed. Participants complete a paper mood tracker themselves, trained champions collect them, and we turn them into cohort-level measures with a documented referral procedure attached. You see the pattern. Never the person.',
-			steps: ['Book a diagnostic', 'We map the gap', 'You get a costed plan'],
+			steps: [],
+			video: {
+				id: 'wMUYQ6uZn0Q',
+				title: 'How DCI works with organisations'
+			},
 			helper:
 				"The Early Warning System earns no Connection Miles of its own. It is what makes everyone else's countable.",
-			href: '/partners',
-			cta: 'How organisations use DCI',
+			href: WHATSAPP_ORG,
+			cta: 'Talk to us on WhatsApp',
 			accent: '#2A6268'
 		},
 		{
@@ -137,7 +158,7 @@
 									: 'border-dci-cream/10 bg-dci-cream/5 text-dci-cream/78 hover:bg-dci-cream/9'
 							)}
 							aria-pressed={activePath.id === path.id}
-							onclick={() => (activePath = path)}
+							onclick={() => selectPath(path)}
 						>
 							<span
 								class={cn(
@@ -186,7 +207,45 @@
 				</div>
 
 				<div class="mt-10">
-					{#if 'products' in activePath && activePath.products}
+					{#if 'video' in activePath && activePath.video}
+						<!-- Click to play, so no YouTube request is made until it is wanted. -->
+						<div class="max-w-md overflow-hidden rounded-2xl border border-dci-teal/12 bg-dci-ink">
+							{#if playing}
+								<div class="aspect-video w-full">
+									<iframe
+										src={`https://www.youtube-nocookie.com/embed/${activePath.video.id}?autoplay=1&rel=0`}
+										title={activePath.video.title}
+										frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowfullscreen
+										class="h-full w-full"
+									></iframe>
+								</div>
+							{:else}
+								<button
+									type="button"
+									onclick={() => (playing = true)}
+									aria-label={`Play video: ${activePath.video.title}`}
+									class="group relative flex aspect-video w-full items-center justify-center"
+								>
+									<img
+										src="/photos/ann-banya.jpg"
+										alt=""
+										loading="lazy"
+										class="absolute inset-0 h-full w-full object-cover opacity-70 transition group-hover:opacity-80"
+									/>
+									<span
+										class="relative flex size-14 items-center justify-center rounded-full bg-dci-cream/95 text-dci-teal-deep shadow-dci-lift transition group-hover:scale-105"
+									>
+										<PlayIcon class="ml-0.5 size-6" weight="fill" />
+									</span>
+									<span class="absolute bottom-3 left-4 right-4 text-left text-sm font-semibold text-dci-cream">
+										{activePath.video.title}
+									</span>
+								</button>
+							{/if}
+						</div>
+					{:else if 'products' in activePath && activePath.products}
 						<!-- Buyable inline. Horizontal rows on phones, three columns above that,
 						     so the panel does not balloon on small screens. -->
 						<div class="grid gap-3 sm:grid-cols-3">
@@ -262,6 +321,7 @@
 					<div class="mt-8 flex flex-col gap-3 border-t border-dci-teal/12 pt-6 sm:flex-row sm:items-center sm:justify-between">
 						<div class="max-w-sm space-y-2">
 							<p class="text-sm leading-relaxed text-slate-600">{activePath.helper}</p>
+							{#if activePath.href !== '/performance'}
 							<p class="text-sm leading-relaxed text-slate-600">
 								Not sure where to start?
 								<a href="/performance" class="font-semibold text-dci-teal underline underline-offset-4">
@@ -269,6 +329,7 @@
 								</a>
 								and see what the patterns say.
 							</p>
+						{/if}
 						</div>
 						<a
 							href={activePath.href}
