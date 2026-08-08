@@ -51,6 +51,7 @@
 			helper: 'Want all three? The full toolkit is 200,000 UGX and earns 10 Connection Miles.',
 			href: '/clinics',
 			cta: 'Attend a clinic',
+			ctaRed: true,
 			accent: '#2A6268'
 		},
 		{
@@ -143,6 +144,8 @@
 	// The free assessment gets a distinct treatment, since it asks for nothing
 	// and is the softest way into the funnel.
 	const ctaIsAssessment = $derived(activePath.href === '/performance');
+	// Doors can ask for the DCI red treatment on their button.
+	const ctaIsRed = $derived(ctaIsAssessment || ('ctaRed' in activePath && activePath.ctaRed));
 </script>
 
 <section
@@ -404,7 +407,7 @@
 							rel={activePath.href.startsWith('http') ? 'noopener noreferrer' : undefined}
 							class={cn(
 								'group inline-flex shrink-0 items-center justify-center gap-2 rounded-full text-sm font-semibold transition active:scale-[0.98]',
-								ctaIsAssessment
+								ctaIsRed
 									? 'h-12 bg-dci-burgundy px-6 text-dci-cream shadow-dci-lift hover:bg-dci-burgundy/90'
 									: 'h-11 bg-dci-teal-deep px-6 text-dci-cream hover:bg-dci-teal-mid'
 							)}

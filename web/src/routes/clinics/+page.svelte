@@ -204,6 +204,10 @@
 		{/each}
 	</div>
 	<p class="mt-6 max-w-2xl text-sm leading-relaxed text-slate-600">
+		Conversation Clinics are peer-led. They are not therapy and do not replace care from a
+		professional.
+	</p>
+	<p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
 		Bringing a group, or want a clinic hosted at your school, workplace, or venue?
 		<a
 			href="/contact?topic=Community%20clinic%20or%20event"

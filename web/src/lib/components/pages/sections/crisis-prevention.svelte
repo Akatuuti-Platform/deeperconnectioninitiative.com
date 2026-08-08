@@ -52,10 +52,10 @@
 	id="crisis-prevention"
 	class="w-full bg-dci-cream relative z-10 overflow-hidden"
 >
-	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
 		<!-- Asymmetric header -->
 		<div
-			class="grid md:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-12 mb-14"
+			class="grid md:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 mb-10"
 			use:reveal={{ delay: 0, y: 18 }}
 		>
 			<div>
@@ -79,23 +79,23 @@
 			</div>
 		</div>
 
-		<!-- 2x2 card grid -->
-		<div class="grid sm:grid-cols-2 gap-4 lg:gap-5">
+		<!-- One row on desktop: the four stages read as a sequence -->
+		<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 			{#each stages as stage, index}
 				{@const Icon = stage.icon}
 				<div
 					use:reveal={{ delay: index * 80, y: 18 }}
 					class={cn(
-						'relative rounded-[2rem] border p-7 sm:p-8 transition-all duration-300',
+						'relative rounded-[2rem] border p-5 sm:p-6 transition-all duration-300',
 						stage.crisis
 							? 'border-dci-burgundy/25 bg-dci-burgundy/8'
 							: 'border-dci-teal/12 bg-white/70'
 					)}
 				>
-					<div class="flex items-start justify-between mb-5">
+					<div class="mb-4 flex items-start justify-between">
 						<div
 							class={cn(
-								'flex size-12 items-center justify-center rounded-2xl',
+								'flex size-10 items-center justify-center rounded-2xl',
 								stage.crisis ? 'bg-dci-burgundy/12' : 'bg-dci-teal/8'
 							)}
 						>
