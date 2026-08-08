@@ -26,7 +26,17 @@
 		{ icon: Compass, title: 'How you lead', description: 'The version of you that shows up when people are depending on you.' }
 	];
 
-	const tiers = [
+	const tiers: {
+		name: string;
+		price: string;
+		lead: string;
+		blurb: string;
+		cta: string;
+		href?: string;
+		accent: string;
+		popular?: boolean;
+		featured?: boolean;
+	}[] = [
 		{
 			name: 'Blueprint Assessment',
 			price: 'Free',
@@ -43,7 +53,8 @@
 			blurb: 'Wellbeing frame. The accessible entry rung. 4 weekly sessions + full DCI toolkit.',
 			cta: 'Apply',
 			href: applyHref('Guided Toolkit Experience (UGX 700,000)'),
-			accent: '#2A6268'
+			accent: '#2A6268',
+			featured: true
 		},
 		{
 			name: 'Performance Blueprint Coaching',
@@ -65,6 +76,9 @@
 			accent: '#2A6268'
 		}
 	];
+	// The entry rung headlines the page; the rest sit below it.
+	const featured = tiers.find((t) => t.featured)!;
+	const otherTiers = tiers.filter((t) => !t.featured);
 </script>
 
 <PageHero
@@ -74,27 +88,41 @@
 	description="Discover the system behind how you think, lead, and perform. For founders and leaders who are winning on the outside and fighting themselves on the inside."
 >
 	{#snippet actions()}
-		<Button href="/performance/assessment" size="lg" class="rounded-full px-7">Take the free assessment</Button>
+		<Button href={featured.href ?? '/contact'} size="lg" class="rounded-full px-7">
+			Apply for the Guided Toolkit
+		</Button>
 		<Button
-			href="#tiers"
+			href="/performance/assessment"
 			size="lg"
 			variant="outline"
 			class="rounded-full border-dci-teal/25 bg-transparent px-7 text-dci-teal-deep hover:bg-dci-teal/7"
 		>
-			Explore coaching
+			Take the free assessment
 		</Button>
 	{/snippet}
 	{#snippet aside()}
 		<div
 			class="relative overflow-hidden rounded-[2rem] bg-dci-teal-deep p-8 text-dci-cream shadow-dci-panel lg:p-10"
 		>
-			<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Why it works</p>
-			<p class="mt-5 text-2xl font-semibold leading-tight text-white sm:text-3xl">
-				“You're not underperforming. You're exhausted from fighting yourself.”
+			<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
+				Start here
 			</p>
-			<p class="mt-5 text-sm leading-relaxed text-dci-cream/70">
-				The Blueprint works on the systems beneath your performance: how you think, recover,
-				communicate, lead, and decide under pressure.
+			<h2 class="mt-4 text-3xl font-semibold leading-tight text-white sm:text-4xl">
+				{featured.name}
+			</h2>
+			<p class="mt-4 text-4xl font-bold text-white">{featured.price}</p>
+			<p class="mt-1 text-sm text-dci-cream/70">Led by {featured.lead}</p>
+			<p class="mt-5 text-sm leading-relaxed text-dci-cream/75">{featured.blurb}</p>
+			<Button
+				href={featured.href ?? '/contact'}
+				size="lg"
+				class="mt-7 w-full rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
+			>
+				{featured.cta}
+				<ArrowUpRight class="size-4" weight="regular" />
+			</Button>
+			<p class="mt-4 text-xs leading-relaxed text-dci-cream/60">
+				Applications begin with a fit conversation, not instant checkout.
 			</p>
 		</div>
 	{/snippet}
@@ -150,11 +178,11 @@
 		title="Identity → Performance → Belonging."
 		class="mb-12"
 	/>
-	<div class="grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
-		{#each tiers as tier, index}
+	<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+		{#each otherTiers as tier, index}
 			<article
 				use:reveal={{ delay: index * 70, y: 22 }}
-				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-dci-paper p-6 shadow-dci-lift ${tier.popular ? 'border-dci-burgundy/35 xl:-mt-4 xl:mb-4' : 'border-dci-teal/12'}`}
+				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-dci-paper p-6 shadow-dci-lift ${tier.popular ? 'border-dci-burgundy/35 lg:-mt-4 lg:mb-4' : 'border-dci-teal/12'}`}
 			>
 				{#if tier.popular}
 					<div class="absolute right-5 top-5 rounded-full bg-dci-burgundy px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
