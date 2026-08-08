@@ -45,18 +45,6 @@
 		}
 	];
 
-	const isFor = [
-		'You have been meaning to talk to someone and have not got round to it',
-		'You are the person everyone else leans on',
-		'You want to see how the toolkit works before buying it',
-		'You are curious about facilitating one of these yourself'
-	];
-
-	const isNot = [
-		'It is not therapy, and it does not replace care from a professional',
-		'It is not a place where you have to speak',
-		'It is not a lecture. There is no expert at the front of the room'
-	];
 </script>
 
 <svelte:head>
@@ -163,48 +151,6 @@
 		{/each}
 	</div>
 </Section>
-
-<Section>
-	<div class="grid gap-6 lg:grid-cols-2">
-		<div
-			use:reveal={{ delay: 0, y: 22 }}
-			class="rounded-[2rem] border border-dci-teal/15 bg-dci-cream p-7 sm:p-9"
-		>
-			<h2 class="text-2xl font-semibold leading-tight text-slate-950">Come if</h2>
-			<ul class="mt-6 space-y-4">
-				{#each isFor as item}
-					<li class="flex gap-3 text-base leading-relaxed text-slate-700">
-						<span class="mt-2 size-1.5 shrink-0 rounded-full bg-dci-teal"></span>
-						{item}
-					</li>
-				{/each}
-			</ul>
-		</div>
-
-		<div
-			use:reveal={{ delay: 90, y: 22 }}
-			class="rounded-[2rem] border border-dci-burgundy/15 bg-dci-paper p-7 sm:p-9"
-		>
-			<h2 class="text-2xl font-semibold leading-tight text-slate-950">Worth being clear about</h2>
-			<ul class="mt-6 space-y-4">
-				{#each isNot as item}
-					<li class="flex gap-3 text-base leading-relaxed text-slate-700">
-						<span class="mt-2 size-1.5 shrink-0 rounded-full bg-dci-burgundy"></span>
-						{item}
-					</li>
-				{/each}
-			</ul>
-			<p class="mt-6 border-t border-dci-burgundy/12 pt-5 text-sm leading-relaxed text-slate-600">
-				If you are going through something that needs more than a monthly conversation, that is
-				worth saying out loud.
-				<a href="/contact" class="font-semibold text-dci-teal underline underline-offset-4">
-					Tell us and we will point you to the right support.
-				</a>
-			</p>
-		</div>
-	</div>
-</Section>
-
 <Section tone="cream">
 	<SectionHeading
 		eyebrow="Attend a clinic"
