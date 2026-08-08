@@ -1,5 +1,4 @@
 import { cardGamePhotos, journalPhotos, moodTrackerPhotos } from './product-photos';
-import { paymentLinks } from './payment-links';
 
 /**
  * The three toolkit products, for places that show them inline.
@@ -9,37 +8,39 @@ import { paymentLinks } from './payment-links';
  * change what a buyer pays, only what they are told.
  */
 export type ToolkitProduct = {
+	/** Matches the slug in the server catalog, so the drawer posts to the
+	 *  right checkout action. */
+	slug: string;
 	name: string;
 	price: string;
 	miles: string;
 	line: string;
-	photo: string;
-	href: string;
+	photos: string[];
 };
 
 export const toolkitProducts: ToolkitProduct[] = [
 	{
+		slug: 'card-game',
 		name: 'DCI Card Game',
 		price: '69,000 UGX',
 		miles: '8 Miles',
 		line: 'Sixty questions that open a conversation, with friends, family or a group.',
-		photo: cardGamePhotos[0],
-		href: paymentLinks.cardGame
+		photos: cardGamePhotos
 	},
 	{
+		slug: 'journal',
 		name: 'Reflection Journal',
 		price: '100,000 UGX',
 		miles: '1 Mile',
 		line: 'A year of guided pages that trace where your patterns came from.',
-		photo: journalPhotos[0],
-		href: paymentLinks.journal
+		photos: journalPhotos
 	},
 	{
+		slug: 'mood-tracker',
 		name: 'Mood Tracker',
 		price: '31,000 UGX',
 		miles: '1 Mile',
 		line: 'One colour a day, twelve months to a page you can read at a glance.',
-		photo: moodTrackerPhotos[0],
-		href: paymentLinks.moodTracker
+		photos: moodTrackerPhotos
 	}
 ];

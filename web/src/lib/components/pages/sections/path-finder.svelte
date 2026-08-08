@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { reveal } from '$lib/actions/reveal';
 	import SpotIllustration from '$lib/components/spot-illustration.svelte';
+	import ProductCarousel from '$lib/components/product-carousel.svelte';
+	import CheckoutDrawer from '$lib/components/checkout-drawer.svelte';
 	import { toolkitProducts } from '$lib/toolkit-products';
 	import { cn } from '$lib/utils';
+
 	import {
 		ArrowUpRightIcon,
 		BookOpenTextIcon,
@@ -10,6 +13,10 @@
 		GraduationCapIcon,
 		HandshakeIcon
 	} from 'phosphor-svelte';
+
+	// Buying happens in place: the drawer posts straight to the product's
+	// checkout action, so the next page a buyer sees is Flutterwave itself.
+	let buying = $state<{ slug: string; name: string; price: string } | null>(null);
 
 	const pathways = [
 		{
@@ -187,11 +194,18 @@
 								<article
 									class="flex items-center gap-3 rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-3 sm:flex-col sm:items-stretch sm:gap-2"
 								>
-									<img
-										src={product.photo}
+									<!-- object-contain, so no product is cropped despite the three
+									     photo sets having different aspect ratios. -->
+									<ProductCarousel
+										images={product.photos}
 										alt={product.name}
-										loading="lazy"
-										class="size-14 shrink-0 rounded-xl bg-dci-cream object-cover sm:h-24 sm:w-full"
+										showDots={false}
+										class="size-16 shrink-0 rounded-xl sm:hidden"
+									/>
+									<ProductCarousel
+										images={product.photos}
+										alt={product.name}
+										class="hidden aspect-[4/3] w-full rounded-xl sm:block"
 									/>
 									<div class="min-w-0 flex-1 sm:flex-none">
 										<p class="text-sm font-semibold leading-tight text-slate-950">{product.name}</p>
@@ -200,12 +214,13 @@
 										</p>
 										<p class="mt-1 text-xs leading-snug text-slate-600">{product.line}</p>
 									</div>
-									<a
-										href={product.href}
+									<button
+										type="button"
+										onclick={() => (buying = { slug: product.slug, name: product.name, price: product.price })}
 										class="inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-dci-teal-deep px-4 text-xs font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98] sm:w-full"
 									>
 										Buy
-									</a>
+									</button>
 								</article>
 							{/each}
 						</div>
@@ -268,3 +283,5 @@
 		</div>
 	</div>
 </section>
+
+<CheckoutDrawer bind:product={buying} />
