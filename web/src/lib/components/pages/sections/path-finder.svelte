@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { reveal } from '$lib/actions/reveal';
 	import SpotIllustration from '$lib/components/spot-illustration.svelte';
+	import { toolkitProducts } from '$lib/toolkit-products';
 	import { cn } from '$lib/utils';
 	import {
 		ArrowUpRightIcon,
@@ -20,7 +21,9 @@
 			title: 'I am ready to own my healing.',
 			description:
 				'Three tools that give you somewhere to start. Everything works on paper, so a conversation can happen anywhere, with anyone, without waiting for an appointment.',
-			steps: ['Choose your tool', 'Start the conversation', 'See your patterns'],
+			// Products render inline instead of the three step labels.
+			products: toolkitProducts,
+			steps: [],
 			helper: 'Want all three? The full toolkit is 200,000 UGX and earns 10 Connection Miles.',
 			href: '/clinics',
 			cta: 'Attend a clinic',
@@ -35,8 +38,18 @@
 			title: 'I am a mental health advocate.',
 			description:
 				'There will never be enough counsellors. There are already enough people who care. Training of Trainers certifies you to facilitate a session safely, use the toolkit with a group, recognise when someone needs more than you can give, and follow the referral procedure.',
-			steps: ['Reserve with a deposit', 'Join the cohort list', 'Train and certify'],
-			helper: 'Dates are confirmed by email and WhatsApp, and announced on @dci_wellness.',
+			// One offer, rendered inline instead of the three step labels.
+			steps: [],
+			offer: {
+				name: 'Community Champion certification',
+				body: 'Training of Trainers certifies you to facilitate a session safely, use the toolkit with a group, recognise when someone needs more than you can give, and follow the referral procedure.',
+				total: '500,000 UGX',
+				deposit: '150,000 UGX',
+				depositNote: 'A 30 per cent deposit reserves your place on the waitlist. The balance of 350,000 UGX is due before training begins.',
+				href: '/checkout/champion-deposit',
+				cta: 'Pay deposit and join the waitlist'
+			},
+			helper: 'Training days are announced at the next Conversation Clinic.',
 			href: '/trainings',
 			cta: 'Reserve a place',
 			accent: '#6F231E'
@@ -166,14 +179,70 @@
 				</div>
 
 				<div class="mt-10">
-					<div class="grid gap-3 sm:grid-cols-3">
-						{#each activePath.steps as step, index}
-							<div class="rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4">
-								<p class="text-xs font-semibold text-dci-burgundy/70">0{index + 1}</p>
-								<p class="mt-3 text-sm font-semibold leading-snug text-dci-teal-deep">{step}</p>
+					{#if 'products' in activePath && activePath.products}
+						<!-- Buyable inline. Horizontal rows on phones, three columns above that,
+						     so the panel does not balloon on small screens. -->
+						<div class="grid gap-3 sm:grid-cols-3">
+							{#each activePath.products as product}
+								<article
+									class="flex items-center gap-3 rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-3 sm:flex-col sm:items-stretch sm:gap-2"
+								>
+									<img
+										src={product.photo}
+										alt={product.name}
+										loading="lazy"
+										class="size-14 shrink-0 rounded-xl bg-dci-cream object-cover sm:h-24 sm:w-full"
+									/>
+									<div class="min-w-0 flex-1 sm:flex-none">
+										<p class="text-sm font-semibold leading-tight text-slate-950">{product.name}</p>
+										<p class="mt-0.5 text-xs font-semibold text-dci-teal-deep">
+											{product.price} · {product.miles}
+										</p>
+										<p class="mt-1 text-xs leading-snug text-slate-600">{product.line}</p>
+									</div>
+									<a
+										href={product.href}
+										class="inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-dci-teal-deep px-4 text-xs font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98] sm:w-full"
+									>
+										Buy
+									</a>
+								</article>
+							{/each}
+						</div>
+					{:else if 'offer' in activePath && activePath.offer}
+						<article
+							class="rounded-2xl border border-dci-teal/15 bg-dci-paper/65 p-5 sm:flex sm:items-center sm:justify-between sm:gap-6"
+						>
+							<div class="min-w-0">
+								<p class="text-sm font-semibold leading-tight text-slate-950">
+									{activePath.offer.name}
+								</p>
+								<p class="mt-2 text-xs leading-relaxed text-slate-600">{activePath.offer.body}</p>
+								<p class="mt-3 text-sm font-semibold text-dci-teal-deep">
+									{activePath.offer.deposit} deposit
+									<span class="font-normal text-slate-500">of {activePath.offer.total}</span>
+								</p>
+								<p class="mt-1 text-xs leading-snug text-slate-600">
+									{activePath.offer.depositNote}
+								</p>
 							</div>
-						{/each}
-					</div>
+							<a
+								href={activePath.offer.href}
+								class="mt-4 inline-flex h-11 shrink-0 items-center justify-center rounded-full bg-dci-teal-deep px-6 text-sm font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98] sm:mt-0"
+							>
+								{activePath.offer.cta}
+							</a>
+						</article>
+					{:else}
+						<div class="grid gap-3 sm:grid-cols-3">
+							{#each activePath.steps as step, index}
+								<div class="rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4">
+									<p class="text-xs font-semibold text-dci-burgundy/70">0{index + 1}</p>
+									<p class="mt-3 text-sm font-semibold leading-snug text-dci-teal-deep">{step}</p>
+								</div>
+							{/each}
+						</div>
+					{/if}
 
 					<div class="mt-8 flex flex-col gap-3 border-t border-dci-teal/12 pt-6 sm:flex-row sm:items-center sm:justify-between">
 						<div class="max-w-sm space-y-2">

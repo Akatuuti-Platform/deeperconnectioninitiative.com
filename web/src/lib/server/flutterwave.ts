@@ -44,6 +44,13 @@ export const products: Record<string, Product> = {
 		description: 'Wear the mission. Every shirt supports community champion training.',
 		amount: 50_000
 	},
+	'champion-deposit': {
+		slug: 'champion-deposit',
+		name: 'Community Champion Waitlist Deposit',
+		description:
+			'A 30 per cent deposit that reserves your place on the waitlist for Community Champion certification. The balance of 350,000 UGX is due before training begins. Training days are announced at the next Conversation Clinic.',
+		amount: 150_000
+	},
 	'cert-foundation': {
 		slug: 'cert-foundation',
 		name: 'Foundation Level: Community Champion Certification',
