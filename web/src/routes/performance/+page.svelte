@@ -48,11 +48,11 @@
 		},
 		{
 			name: 'Guided Toolkit Experience',
-			price: 'UGX 700,000',
+			price: 'UGX 800,000',
 			lead: 'Ann Banya, solo',
 			blurb: 'Wellbeing frame. The accessible entry rung. 4 weekly sessions + full DCI toolkit.',
 			cta: 'Apply',
-			href: applyHref('Guided Toolkit Experience (UGX 700,000)'),
+			href: applyHref('Guided Toolkit Experience (UGX 800,000)'),
 			accent: '#2A6268',
 			featured: true
 		},
