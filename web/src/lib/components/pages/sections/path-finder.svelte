@@ -5,7 +5,7 @@
 	import {
 		ArrowUpRightIcon,
 		BookOpenTextIcon,
-		FirstAidKitIcon,
+		BuildingsIcon,
 		GraduationCapIcon,
 		HandshakeIcon
 	} from 'phosphor-svelte';
@@ -45,7 +45,7 @@
 			id: 'organisation',
 			label: 'I run an organisation',
 			kicker: 'Early Warning System',
-			icon: FirstAidKitIcon,
+			icon: BuildingsIcon,
 			illustration: 'care',
 			title: 'I am an organisation or a funder.',
 			description:
