@@ -44,6 +44,27 @@ export const products: Record<string, Product> = {
 		description: 'Wear the mission. Every shirt supports community champion training.',
 		amount: 50_000
 	},
+	'angel-kit': {
+		slug: 'angel-kit',
+		name: 'DCI Angel Starter',
+		description:
+			'The DCI Card Game and a DCI shirt together, which is what a volunteer needs to run a conversation and be recognised while doing it. After purchase you are added to the DCI Angels WhatsApp group.',
+		amount: 119_000
+	},
+	'sponsor-toolkit': {
+		slug: 'sponsor-toolkit',
+		name: 'Sponsor a Full Toolkit',
+		description:
+			'Puts a complete toolkit into the hands of someone who cannot buy one. Ten Connection Miles, ten lives meaningfully impacted, none of them yours.',
+		amount: 200_000
+	},
+	'sponsor-scholarship': {
+		slug: 'sponsor-scholarship',
+		name: 'Sponsor a Champion Scholarship',
+		description:
+			'Funds a full Community Champion certification for someone who cannot pay for it, so a whole community gains a trained facilitator.',
+		amount: 500_000
+	},
 	'champion-deposit': {
 		slug: 'champion-deposit',
 		name: 'Community Champion Waitlist Deposit',

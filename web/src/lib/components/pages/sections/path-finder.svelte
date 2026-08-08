@@ -75,7 +75,7 @@
 			},
 			helper: 'Training days are announced at the next Conversation Clinic.',
 			href: '/performance',
-			cta: 'Take the free Blueprint Assessment',
+			cta: 'Take the Blueprint Assessment',
 			accent: '#6F231E'
 		},
 		{
@@ -99,19 +99,39 @@
 			accent: '#2A6268'
 		},
 		{
-			id: 'give',
-			label: 'I want to give',
+			id: 'support',
+			label: 'I want to support',
 			kicker: 'Sponsor access',
 			icon: HandshakeIcon,
 			illustration: 'community',
 			title: "I want to fund someone else's start.",
 			description:
-				'A toolkit for someone who cannot buy one, or a scholarship place on Champion training. One sponsored toolkit is 10 Connection Miles. Ten lives, none of them yours.',
-			steps: ['Choose what to fund', 'We match it to a site', 'You see where it went'],
+				'Two ways in. Show up as a volunteer, or fund the tools and training for someone who cannot pay for them.',
+			// Two routes, rendered inline instead of the three step labels.
+			steps: [],
+			options: [
+				{
+					name: 'Become a DCI Angel',
+					body: 'Volunteers carry the card game and wear the shirt, so a conversation can start anywhere and people know who to approach. Buying both adds you to the DCI Angels WhatsApp group, where missions are organised.',
+					price: '119,000 UGX',
+					note: 'DCI Card Game and shirt together. Earns 9 Connection Miles.',
+					slug: 'angel-kit',
+					cta: 'Join the Angels'
+				},
+				{
+					name: 'Sponsor someone else',
+					body: 'Fund a complete toolkit for a person who cannot buy one, or a full Champion scholarship so a community gains a trained facilitator.',
+					price: '200,000 UGX',
+					note: 'A full toolkit is 10 Connection Miles. A Champion scholarship is 500,000 UGX.',
+					slug: 'sponsor-toolkit',
+					cta: 'Sponsor a toolkit',
+					secondary: { slug: 'sponsor-scholarship', label: 'Fund a scholarship instead' }
+				}
+			],
 			helper:
 				'Ten per cent of every toolkit sold already funds Champion training. Venue partners, DCI Angels and the provider network start at Volunteering.',
 			href: '/checkout/donate',
-			cta: 'Sponsor a kit',
+			cta: 'Give another amount',
 			accent: '#6F231E'
 		}
 	] as const;
@@ -119,6 +139,10 @@
 	type Pathway = (typeof pathways)[number];
 
 	let activePath = $state<Pathway>(pathways[0]);
+
+	// The free assessment gets a distinct treatment, since it asks for nothing
+	// and is the softest way into the funnel.
+	const ctaIsAssessment = $derived(activePath.href === '/performance');
 </script>
 
 <section
@@ -207,7 +231,41 @@
 				</div>
 
 				<div class="mt-10">
-					{#if 'video' in activePath && activePath.video}
+					{#if 'options' in activePath && activePath.options}
+						<!-- Two routes in, each buyable in place. -->
+						<div class="grid gap-3 sm:grid-cols-2">
+							{#each activePath.options as option}
+								<article
+									class="flex flex-col justify-between rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4"
+								>
+									<div>
+										<p class="text-sm font-semibold leading-tight text-slate-950">{option.name}</p>
+										<p class="mt-2 text-xs leading-relaxed text-slate-600">{option.body}</p>
+										<p class="mt-3 text-base font-bold text-dci-teal-deep">{option.price}</p>
+										<p class="mt-1 text-xs text-slate-500">{option.note}</p>
+									</div>
+									<div class="mt-4 space-y-2">
+										<button
+											type="button"
+											onclick={() => (buying = { slug: option.slug, name: option.name, price: option.price })}
+											class="inline-flex h-10 w-full items-center justify-center rounded-full bg-dci-teal-deep px-4 text-xs font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98]"
+										>
+											{option.cta}
+										</button>
+										{#if 'secondary' in option && option.secondary}
+											<button
+												type="button"
+												onclick={() => (buying = { slug: option.secondary.slug, name: 'Champion Scholarship', price: '500,000 UGX' })}
+												class="w-full text-center text-xs font-semibold text-dci-teal underline underline-offset-4 hover:text-dci-teal-deep"
+											>
+												{option.secondary.label}
+											</button>
+										{/if}
+									</div>
+								</article>
+							{/each}
+						</div>
+					{:else if 'video' in activePath && activePath.video}
 						<!-- Click to play, so no YouTube request is made until it is wanted. -->
 						<div class="max-w-md overflow-hidden rounded-2xl border border-dci-teal/12 bg-dci-ink">
 							{#if playing}
@@ -245,6 +303,15 @@
 								</button>
 							{/if}
 						</div>
+					<p class="mt-2 text-xs text-slate-500">
+						Video not loading?
+						<a
+							href={`https://www.youtube.com/watch?v=${activePath.video.id}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="font-semibold text-dci-teal underline underline-offset-4"
+						>Watch it on YouTube</a>
+					</p>
 					{:else if 'products' in activePath && activePath.products}
 						<!-- Buyable inline. Horizontal rows on phones, three columns above that,
 						     so the panel does not balloon on small screens. -->
@@ -333,10 +400,26 @@
 						</div>
 						<a
 							href={activePath.href}
-							class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-dci-teal-deep px-6 text-sm font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98]"
+							target={activePath.href.startsWith('http') ? '_blank' : undefined}
+							rel={activePath.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+							class={cn(
+								'group inline-flex shrink-0 items-center justify-center gap-2 rounded-full text-sm font-semibold transition active:scale-[0.98]',
+								ctaIsAssessment
+									? 'h-12 bg-dci-burgundy px-6 text-dci-cream shadow-dci-lift hover:bg-dci-burgundy/90'
+									: 'h-11 bg-dci-teal-deep px-6 text-dci-cream hover:bg-dci-teal-mid'
+							)}
 						>
+							{#if ctaIsAssessment}
+								<span
+									class="rounded-full bg-dci-cream/20 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide"
+								>Free</span
+								>
+							{/if}
 							{activePath.cta}
-							<ArrowUpRightIcon class="size-4" weight="regular" />
+							<ArrowUpRightIcon
+								class="size-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+								weight="regular"
+							/>
 						</a>
 					</div>
 				</div>
