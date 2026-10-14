@@ -137,8 +137,8 @@
 
 /* --- wordmark ------------------------------------------------------------ */
 
-/* two-line lockup: short name over the full name. The full name folds away
-   when the header goes compact, so the shrunk header stays slim. */
+/* two-line lockup: short name over the full name. Both lines stay visible in the
+   compact header too; the pixel floors keep them readable when the mark shrinks. */
 .dci-mark__words {
   position: relative;
   z-index: 3;
@@ -149,7 +149,7 @@
 }
 
 .dci-mark__word {
-  font-size: calc(var(--dci-mark-h) * 0.4);
+  font-size: max(14px, calc(var(--dci-mark-h) * 0.4));
   font-weight: 700;
   letter-spacing: 0.005em;
   color: #00534c;
@@ -157,22 +157,12 @@
 }
 
 .dci-mark__sub {
-  font-size: calc(var(--dci-mark-h) * 0.2);
+  font-size: max(9.5px, calc(var(--dci-mark-h) * 0.2));
   font-weight: 600;
   letter-spacing: 0.17em;
   text-transform: uppercase;
   color: var(--dci-burgundy, #6f231e);
   white-space: nowrap;
-  max-height: 2em;
-  overflow: hidden;
-  transition:
-    max-height 300ms ease,
-    opacity 300ms ease;
-}
-
-.dci-mark.is-compact .dci-mark__sub {
-  max-height: 0;
-  opacity: 0;
 }
 
 /* --- scroll state -------------------------------------------------------- */
@@ -257,9 +247,6 @@
 /* --- quality floor ------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
-  .dci-mark__sub {
-    transition: none;
-  }
   .dci-mark__img,
   .dci-band,
   .dci-drift {

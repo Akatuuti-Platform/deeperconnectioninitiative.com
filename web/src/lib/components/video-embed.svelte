@@ -54,12 +54,12 @@
 </div>
 
 <style>
-	/* Draws the eye on arrival: the box rises in, then a glow ring pulses out of it a few
-	   times and settles. Only runs before the video is played. */
+	/* Draws the eye on arrival: the box rises in, then a glow ring keeps pulsing out of it
+	   for as long as the visitor stays. Only runs before the video is played. */
 	.video-attract {
 		animation:
 			video-rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 250ms both,
-			video-glow 2.4s ease-out 1.1s 4;
+			video-glow 2.4s ease-out 1.1s infinite;
 	}
 
 	@keyframes video-rise {
