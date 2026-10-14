@@ -198,7 +198,7 @@
 		<NoiseOverlay />
 		<div class="relative flex h-full items-center justify-between gap-4">
 			<div class="flex min-w-0 items-center">
-				<DciMark compact={header.compact} />
+				<DciMark compact={header.compact} ribbons={false} />
 			</div>
 
 			<div
