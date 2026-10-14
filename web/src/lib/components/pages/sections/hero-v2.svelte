@@ -2,7 +2,7 @@
 	import { cn } from '@/lib/utils';
 	import Button, { buttonVariants } from '../../ui/button/button.svelte';
 	import AnimateSvg from '@/lib/components/animate-svg.svelte';
-	import DciMark from '@/lib/components/dci-mark.svelte';
+	import VideoEmbed from '@/lib/components/video-embed.svelte';
 	import { reveal } from '@/lib/actions/reveal';
 </script>
 
@@ -83,11 +83,14 @@
 		</div>
 
 		<!--
-			The DCI mark. Second in the DOM, so it sits below the message when the
-			layout stacks. Capped tighter on phones than on desktop so it stays a
-			punctuation mark there and a full brand statement on large screens.
+			The hero video. Second in the DOM, so it sits below the message when the
+			layout stacks, and fills its grid column at every width.
 		-->
-		<DciMark class="mx-auto w-full max-w-[13rem] sm:max-w-[17rem] lg:max-w-[19.8rem]" />
+		<VideoEmbed
+			videoId="wMUYQ6uZn0Q"
+			title="The Airbnb of Mental Health: Uganda's New Early Warning System"
+			class="mx-auto w-full max-w-2xl"
+		/>
 	</div>
 </section>
 
