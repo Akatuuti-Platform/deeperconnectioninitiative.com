@@ -19,6 +19,8 @@ const navGroups = [
     links: [
       { label: "Partners", href: "/partners" },
       { label: "Coaching", href: "/performance" },
+      { label: "Mental Models", href: "/mental-models" },
+      { label: "Get support", href: "/support" },
       { label: "Contact", href: "/contact" },
     ],
   },

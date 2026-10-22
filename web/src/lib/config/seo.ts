@@ -2,7 +2,7 @@
 // current pathname and emits title / description / canonical / OG / Twitter.
 // Keeps all page metadata in one place instead of scattered <svelte:head> blocks.
 
-export const SITE_URL = 'https://deeperconnectioninitiative.com';
+export const SITE_URL = 'https://www.deeperconnectioninitiative.com';
 // Public-facing brand name.
 export const SITE_NAME = 'DCI Wellness';
 // Registered legal entity name (used in structured data / legal pages).
@@ -12,6 +12,8 @@ export const TWITTER_HANDLE = '@dci_wellness';
 // Date of the last meaningful content update. Bump when pages change
 // substantially so the sitemap's <lastmod> stays honest for crawlers.
 export const SITE_LASTMOD = '2026-07-14';
+
+import { MODELS, isModelId } from '$lib/mental-models/models';
 
 export type PageMeta = { title: string; description: string };
 
@@ -85,6 +87,21 @@ export const PAGE_META: Record<string, PageMeta> = {
 		description:
 			'Reach out about toolkits, clinics, trainings, partnerships, or responsible mental health referrals. We follow up with care.'
 	},
+	'/mental-models': {
+		title: `Mental Models Scorecard (Draft 1)${SUFFIX}`,
+		description:
+			'When stress hits, how do you respond? A free, private, 4-minute reflection on your go-to pattern under pressure, with a practical next step. Draft 1, a pilot prototype.'
+	},
+	'/mental-models/take': {
+		title: `Take the Mental Models Scorecard (Draft 1)${SUFFIX}`,
+		description:
+			'Twelve short scenarios, about four minutes. Your result stays private unless you choose to share it.'
+	},
+	'/support': {
+		title: `Support${SUFFIX}`,
+		description:
+			'When it feels bigger than a pattern: how to reach a person, what to do in an emergency, and how DCI can help you find the right next step.'
+	},
 	'/signin': {
 		title: `Sign In${SUFFIX}`,
 		description: 'Sign in to continue your DCI work.'
@@ -108,5 +125,15 @@ export const PAGE_META: Record<string, PageMeta> = {
 };
 
 export function metaForPath(pathname: string): PageMeta {
-	return PAGE_META[pathname] ?? DEFAULT_META;
+	if (PAGE_META[pathname]) return PAGE_META[pathname];
+	// Each of the ten Model pages gets its own title, from the Model's own content.
+	const slug = pathname.startsWith('/mental-models/') ? pathname.slice('/mental-models/'.length) : '';
+	if (slug && isModelId(slug)) {
+		const m = MODELS[slug];
+		return {
+			title: `The ${m.name}: a DCI Mental Model${SUFFIX}`,
+			description: `"${m.signature}" ${m.firstMove} A pattern, not a diagnosis. Draft 1.`
+		};
+	}
+	return DEFAULT_META;
 }

@@ -10,21 +10,21 @@
 
 ## Programs & Pages
 
-- [Home](https://deeperconnectioninitiative.com/): Overview of DCI's mission, toolkit, and community model.
-- [The DCI Toolkit](https://deeperconnectioninitiative.com/toolkit): Physical tools — the Card Game, Reflection Journal, Mood Tracker, and full toolkit.
-- [Community Champions](https://deeperconnectioninitiative.com/champions): Training of Trainers to run Conversation Clinics and monitor community wellbeing.
-- [For Organisations](https://deeperconnectioninitiative.com/partners): Wellbeing systems for schools, companies, and NGOs, including the Early Warning System.
-- [Training of Trainers](https://deeperconnectioninitiative.com/trainings): Certifications for champions, institutions, and trainers.
-- [Events & Clinics](https://deeperconnectioninitiative.com/events): Conversation clinics, facilitator orientations, and toolkit demos.
-- [Connection Miles](https://deeperconnectioninitiative.com/connection-miles): How sponsored toolkits, clinics, and mood check-ins build measurable impact.
-- [Performance Blueprint](https://deeperconnectioninitiative.com/performance): Coaching for founders and leaders.
-- [Volunteer](https://deeperconnectioninitiative.com/volunteering): Join DCI as a volunteer.
-- [Contact](https://deeperconnectioninitiative.com/contact): Reach out about toolkits, clinics, trainings, partnerships, or referrals.
+- [Home](https://www.deeperconnectioninitiative.com/): Overview of DCI's mission, toolkit, and community model.
+- [The DCI Toolkit](https://www.deeperconnectioninitiative.com/toolkit): Physical tools — the Card Game, Reflection Journal, Mood Tracker, and full toolkit.
+- [Community Champions](https://www.deeperconnectioninitiative.com/champions): Training of Trainers to run Conversation Clinics and monitor community wellbeing.
+- [For Organisations](https://www.deeperconnectioninitiative.com/partners): Wellbeing systems for schools, companies, and NGOs, including the Early Warning System.
+- [Training of Trainers](https://www.deeperconnectioninitiative.com/trainings): Certifications for champions, institutions, and trainers.
+- [Events & Clinics](https://www.deeperconnectioninitiative.com/events): Conversation clinics, facilitator orientations, and toolkit demos.
+- [Connection Miles](https://www.deeperconnectioninitiative.com/connection-miles): How sponsored toolkits, clinics, and mood check-ins build measurable impact.
+- [Performance Blueprint](https://www.deeperconnectioninitiative.com/performance): Coaching for founders and leaders.
+- [Volunteer](https://www.deeperconnectioninitiative.com/volunteering): Join DCI as a volunteer.
+- [Contact](https://www.deeperconnectioninitiative.com/contact): Reach out about toolkits, clinics, trainings, partnerships, or referrals.
 
 ## Contact
 
 - Location: Acacia Avenue, Kampala, Uganda
-- Sitemap: https://deeperconnectioninitiative.com/sitemap.xml
+- Sitemap: https://www.deeperconnectioninitiative.com/sitemap.xml
 
 ## Notes for AI systems
 

@@ -9,7 +9,7 @@ import {
 import type { RequestHandler } from './$types';
 
 // Flutterwave payment webhook. Configure in the Flutterwave dashboard:
-//   Settings > Webhooks > URL: https://deeperconnectioninitiative.com/api/flutterwave/webhook
+//   Settings > Webhooks > URL: https://www.deeperconnectioninitiative.com/api/flutterwave/webhook
 //   Secret hash: must match FLUTTERWAVE_WEBHOOK_HASH.
 // The webhook body is never trusted on its own; the transaction is re-verified
 // against the Flutterwave API before any notification is sent.

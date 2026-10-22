@@ -14,9 +14,9 @@
 	const features = [
 		{
 			icon: ChartLineUpIcon,
-			title: 'Real-time emotional data',
+			title: 'Community patterns, not individual labels',
 			description:
-				'Mood tracking, clinic attendance, and Champion certifications aggregated and analysed by AI across a whole community.'
+				'Mood check-ins, clinic attendance and Champion activity, brought together across a whole community so shared patterns show up sooner.'
 		},
 		{
 			icon: ShieldCheckIcon,
@@ -26,7 +26,7 @@
 		},
 		{
 			icon: UsersThreeIcon,
-			title: 'Early detection, not crisis reaction',
+			title: 'Earlier conversations, not crisis reaction',
 			description:
 				'The EWS activates when sufficient community participation occurs across mood tracking, Champion certification, and clinic attendance.'
 		},
@@ -46,8 +46,9 @@
 			The DCI Early Warning System
 		</h1>
 		<p class="max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
-			Real-time emotional data, aggregated and analysed by AI, across a whole community. Log in,
-			check your Connection Miles, and follow your community's Early Warning System.
+			Being built with partner communities: mood check-ins, clinic attendance and Champion activity,
+			brought together so people can step in earlier. When it opens, you will be able to log in, check
+			your Connection Miles, and follow your community's Early Warning System.
 		</p>
 		<Button
 			href="/"
@@ -84,8 +85,8 @@
 			class="mt-8 rounded-2xl bg-dci-teal-deep px-6 py-5 sm:px-8 sm:py-6 text-center"
 		>
 			<p class="text-sm sm:text-base font-medium text-dci-cream/90 leading-relaxed">
-				Connection Miles enable organisations to transition from crisis reaction to early
-				detection: pay-as-you-go data tracking that compounds with every toolkit sold, clinic
+				Connection Miles help organisations move from reacting to crises towards earlier
+				conversations: pay-as-you-go tracking that grows with every toolkit sold, clinic
 				hosted, and Champion trained.
 			</p>
 		</div>

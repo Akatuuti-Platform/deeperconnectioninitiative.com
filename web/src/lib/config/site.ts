@@ -6,7 +6,7 @@ export const siteConfig = {
   description:
     "A mental health initiative helping individuals and communities build emotional strength through tactile toolkits, guided reflection, storytelling, and community connection. DCI is to mental health what Airbnb is to hospitality: we don't provide the support, we build the infrastructure that lets communities own it.",
   slogan: "Own your healing.",
-  url: "https://deeperconnectioninitiative.com/",
+  url: "https://www.deeperconnectioninitiative.com/",
   links: {
     github: "deeperconnectioninitiative",
   },
@@ -31,14 +31,14 @@ export const siteConfig = {
   seo:{
   title:"Deeper Connection Initiative",
   description:"A mental health initiative helping individuals and communities build emotional strength through tactile toolkits, guided reflection, storytelling, and community connection.",
-  canonical:"https://deeperconnectioninitiative.com/",
+  canonical:"https://www.deeperconnectioninitiative.com/",
   openGraph:{
-    url: "https://deeperconnectioninitiative.com/",
+    url: "https://www.deeperconnectioninitiative.com/",
     title: "Deeper Connection Initiative: Own your healing",
     description: "A mental health initiative helping individuals and communities build emotional strength through tactile toolkits, guided reflection, storytelling, and community connection.",
     images: [
       {
-        url: "https://deeperconnectioninitiative.com/og-image.png",
+        url: "https://www.deeperconnectioninitiative.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Deeper Connection Initiative: Own your healing",

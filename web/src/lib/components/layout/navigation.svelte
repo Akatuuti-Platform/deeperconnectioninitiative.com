@@ -47,6 +47,12 @@
 					icon: BookOpen
 				},
 				{
+					label: 'Free scorecard',
+					href: '/mental-models',
+					description: 'Find your go-to pattern when stress hits. Free, private, about 4 minutes.',
+					icon: Sparkles
+				},
+				{
 					label: 'Connection Miles',
 					href: '/connection-miles',
 					description: 'How we count the impact every purchase puts into the world.',

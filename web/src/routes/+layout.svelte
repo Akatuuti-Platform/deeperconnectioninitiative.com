@@ -21,7 +21,14 @@
 
 	// The Blueprint Assessment is a distraction-free flow with its own minimal
 	// chrome, so the site nav + footer are hidden on that route.
-	let minimalChrome = $derived(page.url.pathname.startsWith('/performance/assessment'));
+	let minimalChrome = $derived(
+		page.url.pathname.startsWith('/performance/assessment') || page.url.pathname === '/mental-models/take'
+	);
+
+	// Draft 1 pilot pages are reachable but not indexed until they have been reviewed.
+	let draftPage = $derived(
+		page.url.pathname === '/support' || page.url.pathname.startsWith('/mental-models')
+	);
 </script>
 
 <svelte:head>
@@ -33,7 +40,7 @@
 	<link rel="manifest" href="/site.webmanifest" />
 
 	<meta name="theme-color" content="#F6ECD9" />
-	<meta name="robots" content="index, follow" />
+	<meta name="robots" content={draftPage ? 'noindex, follow' : 'index, follow'} />
 </svelte:head>
 
 <!-- Rendered once, above everything else. Every mark instance references its ids. -->

@@ -2,9 +2,14 @@ import { SITE_URL, SITE_LASTMOD, PAGE_META } from '$lib/config/seo';
 
 // Public, indexable routes. Auth pages are intentionally excluded.
 const EXCLUDE = new Set(['/signin', '/signup']);
+// Draft 1 pilot pages stay out of the sitemap (and carry noindex) until they have been reviewed.
+// Remove these two lines, and the matching rule in +layout.svelte, to publish them to search.
+const DRAFT_PREFIXES = ['/mental-models', '/support'];
 
 export async function GET() {
-	const paths = Object.keys(PAGE_META).filter((p) => !EXCLUDE.has(p));
+	const paths = Object.keys(PAGE_META).filter(
+		(p) => !EXCLUDE.has(p) && !DRAFT_PREFIXES.some((d) => p === d || p.startsWith(`${d}/`))
+	);
 	const urls = paths
 		.map((path) => {
 			const loc = `${SITE_URL}${path === '/' ? '' : path}`;

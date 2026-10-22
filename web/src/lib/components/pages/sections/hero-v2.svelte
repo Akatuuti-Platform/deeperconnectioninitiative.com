@@ -60,8 +60,9 @@
 			</h1>
 
 			<p class="max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
-				A mental health initiative equipping individuals and communities with a physical wellness
-				toolkit and an AI-powered early warning system for earlier support and intervention.
+				A mental health initiative helping people and communities notice stress sooner and reach
+				support earlier, through a physical wellness toolkit, honest conversation, and an early
+				warning system being built with communities.
 			</p>
 
 			<div class="flex flex-col gap-3 pt-1 sm:flex-row">
@@ -72,14 +73,16 @@
 					Buy a Toolkit
 				</Button>
 				<Button
-					href="/checkout/donate"
-					variant="outline"
+					href="/mental-models/take"
 					size="lg"
-					class="rounded-md border-dci-teal/25 bg-transparent px-8 text-dci-teal-deep hover:bg-dci-teal/7"
+					class="rounded-md border border-dci-burgundy bg-dci-burgundy px-8 text-dci-cream hover:bg-dci-burgundy/90 hover:text-dci-cream"
 				>
-					Sponsor a Toolkit
+					Discover How You Respond to Stress
 				</Button>
 			</div>
+			<p class="text-xs text-foreground/60">
+				The DCI Mental Models Scorecard: 12 short scenarios, about 5 minutes, private by default.
+			</p>
 		</div>
 
 		<!--
