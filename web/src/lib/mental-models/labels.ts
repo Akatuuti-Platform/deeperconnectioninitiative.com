@@ -10,6 +10,6 @@ export const UNDER_PRESSURE_LABEL = 'Under pressure';
 export const GO_TO_DEFINITION = 'What you tend to do first.';
 export const UNDER_PRESSURE_DEFINITION = 'Where you tend to land when that stops working.';
 
-// Section 05 describes a skill to borrow from a pattern, never a kind of person to look for.
-export const SKILL_HEADING = 'A skill to borrow';
+// Section 05: "Most compatible with [Model]", with a Why line written as a skill to learn.
+export const COMPATIBLE_HEADING = 'Most compatible with';
 export const SUPPORT_LINK = 'Need support?';

@@ -2,13 +2,17 @@
 // no diagnosis, no prediction, no outcome promises, always a way to stop.
 import { env } from "../_generated/server";
 import { MODELS } from "../../src/lib/mental-models/models";
+import { HEADLINE, PATTERN_NOTE, REACTION, RESPONSE, COMPATIBLE_HEADING } from "../../src/lib/mental-models/labels";
 import type { ModelId } from "../../src/lib/mental-models/types";
 
 export interface Consents {
-  followUp: boolean;
-  dailyCheck: boolean;
-  productInfo: boolean;
-  rememberResult: boolean;
+  fullReport?: boolean;
+  followUp?: boolean;
+  updates?: boolean;
+  research?: boolean;
+  dailyCheck?: boolean;
+  productInfo?: boolean;
+  rememberResult?: boolean;
 }
 
 export interface Email {
@@ -52,11 +56,11 @@ function footer(stopUrl: string, supportUrl: string): string {
 
 export function confirmationEmail(firstName: string | null, l: ReturnType<typeof links>): Email {
   return {
-    subject: "Please confirm your DCI reminders",
+    subject: "Please confirm, and we will send your full report",
     text: [
       hello(firstName),
       "",
-      "You asked DCI Wellness to send you reminders after the Mental Models Scorecard. Please confirm it was you:",
+      "You asked DCI Wellness to email you your full Mental Models report. Please confirm it was you, and we will send it straight away:",
       l.confirm ?? "",
       "",
       "If you did not ask for this, ignore this email. We will delete this address within 7 days and never write again.",
@@ -65,23 +69,51 @@ export function confirmationEmail(firstName: string | null, l: ReturnType<typeof
   };
 }
 
-export function welcomeEmail(firstName: string | null, c: Consents, l: ReturnType<typeof links>): Email {
-  const lines = [hello(firstName), "", "Thank you. Here is what you asked for:"];
-  if (c.dailyCheck) {
-    lines.push("", `Your free 14-day check. Print it, or keep it on your phone, and give each day one colour: ${l.check}`, "We will check in once, in 14 days.");
-  }
-  if (c.followUp) {
-    lines.push("", "In three months we will send one email inviting you to take the scorecard again and see how you tend to respond to stress now.");
-  }
-  if (c.productInfo && !c.dailyCheck) {
-    lines.push("", "We will tell you about the DCI Mood Tracker once, in 14 days.");
-  }
-  lines.push(
+/** The full report, built from the same Model content as the results page. */
+export function fullReportEmail(
+  firstName: string | null,
+  report: { primary: ModelId; underPressure: ModelId | null },
+  c: Consents,
+  l: ReturnType<typeof links>,
+): Email {
+  const m = MODELS[report.primary];
+  const u = report.underPressure ? MODELS[report.underPressure] : null;
+  const learn = MODELS[m.learnFrom.model];
+  const lines = [
+    hello(firstName),
     "",
-    "A reminder: your result describes a pattern, not who you are, and it is not a diagnosis. Patterns can change.",
-    footer(l.stop, l.support),
-  );
-  return { subject: "Your DCI reminders are set", text: lines.join("\n") };
+    "Here is your full DCI Mental Models report.",
+    "",
+    HEADLINE,
+    `Go-to: ${m.name}. "${m.signature}"`,
+    ...(u ? [`Under pressure: ${u.name}`] : []),
+    "",
+    `${REACTION.label} (${REACTION.definition.toLowerCase().replace(/\.$/, "")}): ${m.reaction}`,
+    `${RESPONSE.label} (${RESPONSE.definition.toLowerCase().replace(/\.$/, "")}): ${m.response}`,
+    `Your tiny step: ${m.tinyStep}`,
+    `Blind spot: ${m.blindSpot}`,
+    "",
+    `Your strength: ${m.strength}`,
+    `When it gets too much: ${m.tooMuch}`,
+    `What it may be protecting: ${m.protecting}`,
+    ...(u ? ["", `Under pressure: ${u.name}. When your go-to stops working, you may land here.`, `${REACTION.label}: ${u.reaction}`, `${RESPONSE.label}: ${u.response}`, `Blind spot: ${u.blindSpot}`] : []),
+    "",
+    `Explore your story (optional, one possible influence, not the cause): ${m.origin.stage} (${m.origin.ageNote}, DCI Reflection Journal, ${m.origin.journalLetter} letter). ${m.origin.body}`,
+    `Reflect: ${m.origin.reflect}`,
+    "",
+    `${COMPATIBLE_HEADING} ${learn.name}. Why: ${m.learnFrom.why} ${m.learnFrom.tryVerb}: ${m.learnFrom.tryText}`,
+    `What you bring: ${m.canTeach}`,
+    "",
+    PATTERN_NOTE,
+    "",
+  ];
+  const next: string[] = [];
+  if (c.followUp) next.push("In 90 days we will send one email inviting you to take the scorecard again.");
+  if (c.updates) next.push("You will get occasional DCI updates.");
+  if (c.research) next.push("We may contact you about taking part in DCI research on this scorecard.");
+  lines.push(next.length ? next.join(" ") : "That is all. We will not email you again, and we have deleted your email address.");
+  lines.push(footer(l.stop, l.support));
+  return { subject: `Your DCI Mental Models report: ${m.name}`, text: lines.join("\n") };
 }
 
 export function checkInEmail(firstName: string | null, c: Consents, l: ReturnType<typeof links>): Email {

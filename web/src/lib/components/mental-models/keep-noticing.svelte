@@ -6,18 +6,18 @@
 	import { UNLOCK, UNAVAILABLE } from '$lib/mental-models/consent-copy';
 	import type { ModelId } from '$lib/mental-models/types';
 
-	// "Keep noticing": the single email opt-in. It unlocks the full report on this page and sets
-	// the reminders the person ticks, including the 90-day retake used by the "Keep going" card.
+	// "Keep noticing": email me my full report. That works on its own. The 90-day reminder, DCI
+	// updates and research contact are three separate, unticked choices.
 	let {
 		primary,
+		underPressure,
 		available,
 		onunlocked
-	}: { primary: ModelId; available: boolean; onunlocked: () => void } = $props();
+	}: { primary: ModelId; underPressure: ModelId | null; available: boolean; onunlocked: () => void } = $props();
 
-	let followUp = $state(true);
-	let dailyCheck = $state(false);
-	let productInfo = $state(false);
-	let rememberResult = $state(false);
+	let followUp = $state(false);
+	let updates = $state(false);
+	let research = $state(false);
 	let adult = $state(false);
 	let sending = $state(false);
 	let done = $state(false);
@@ -69,18 +69,14 @@
 			}}
 		>
 			<input autocomplete="off" name="website" tabindex="-1" aria-hidden="true" class="hidden" />
-			<input type="hidden" name="rememberedModel" value={rememberResult ? primary : ''} />
+			<input type="hidden" name="primary" value={primary} />
+			<input type="hidden" name="underPressure" value={underPressure ?? ''} />
 			<fieldset class="space-y-2 text-sm text-slate-800">
-				<legend class="sr-only">Choose what you would like</legend>
+				<legend class="text-sm font-semibold text-slate-800">Also, only if you want (all optional)</legend>
 				<label class="flex items-start gap-2"><input type="checkbox" name="followUp" bind:checked={followUp} class="mt-1 accent-[var(--dci-burgundy)]" /> {UNLOCK.choices.followUp}</label>
-				<label class="flex items-start gap-2"><input type="checkbox" name="dailyCheck" bind:checked={dailyCheck} class="mt-1 accent-[var(--dci-burgundy)]" /> {UNLOCK.choices.dailyCheck}</label>
-				<label class="flex items-start gap-2"><input type="checkbox" name="productInfo" bind:checked={productInfo} class="mt-1 accent-[var(--dci-burgundy)]" /> {UNLOCK.choices.productInfo}</label>
-				<label class={`flex items-start gap-2 ${followUp ? '' : 'opacity-50'}`}>
-					<input type="checkbox" name="rememberResult" bind:checked={rememberResult} disabled={!followUp} class="mt-1 accent-[var(--dci-burgundy)]" />
-					{UNLOCK.choices.rememberResult(modelName)}
-				</label>
+				<label class="flex items-start gap-2"><input type="checkbox" name="updates" bind:checked={updates} class="mt-1 accent-[var(--dci-burgundy)]" /> {UNLOCK.choices.updates}</label>
+				<label class="flex items-start gap-2"><input type="checkbox" name="research" bind:checked={research} class="mt-1 accent-[var(--dci-burgundy)]" /> {UNLOCK.choices.research}</label>
 			</fieldset>
-			{#if errors.choices}<p class="text-sm text-dci-burgundy">{UNLOCK.chooseOne}</p>{/if}
 			<div class="grid gap-3 sm:grid-cols-2">
 				<div>
 					<label for="kn-email" class="text-sm font-semibold text-slate-800">{UNLOCK.emailLabel}</label>

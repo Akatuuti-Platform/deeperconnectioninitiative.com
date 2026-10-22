@@ -8,6 +8,7 @@ import {
   stateBucketValidator,
   funnelEventValidator,
   consentsValidator,
+  reportValidator,
 } from "./lib/validators";
 
 // Backend for the DCI Mental Models Scorecard. Design: web/docs/mental-models-launch-readiness.md, section 4.
@@ -50,8 +51,10 @@ export default defineSchema({
     firstName: v.union(v.string(), v.null()),
     status: v.union(v.literal("pending"), v.literal("active"), v.literal("completed")),
     consents: consentsValidator,
-    // Present only when the person asked to be reminded of their result.
+    // Draft 1.0 field, no longer set (always null).
     rememberedModel: v.union(modelValidator, v.null()),
+    // The Models for the full report email. Cleared as soon as that email is sent.
+    report: v.optional(v.union(reportValidator, v.null())),
     consentVersion: v.string(),
     requestedAt: v.number(),
     confirmedAt: v.optional(v.number()),
@@ -80,6 +83,7 @@ export default defineSchema({
       v.literal("withdrawn"),
       v.literal("expired"),
       v.literal("retention_deleted"),
+      v.literal("report_sent"),
     ),
     consents: v.union(consentsValidator, v.null()),
     consentVersion: v.union(v.string(), v.null()),

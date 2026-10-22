@@ -9,7 +9,8 @@ import { buildShareText, shareMessage, whatsappUrl, lineYouCanSend } from '../sh
 import { PILOT_MODEL_NAMES, PILOT_MODELS_ENABLED } from '../pilot';
 import { mergeModels } from '../merge';
 import * as consentCopy from '../consent-copy';
-import { HEADLINE, REACTION, RESPONSE } from '../labels';
+import { HEADLINE, REACTION, RESPONSE, COMPATIBLE_HEADING } from '../labels';
+import { DEFAULT_VARIANTS } from '../variants';
 
 const dir = join(__dirname, '..');
 const EM_DASH = /—/;
@@ -219,6 +220,21 @@ describe('wording rules (Draft 1.1)', () => {
 
 	it('has no em dashes in any page or component of the scorecard', () => {
 		for (const f of allSvelte) expect(EM_DASH.test(readFileSync(f, 'utf8')), f).toBe(false);
+	});
+
+	it('emails the report on its own, with exactly three separate optional boxes, all unticked', () => {
+		expect(Object.keys(consentCopy.UNLOCK.choices).sort()).toEqual(['followUp', 'research', 'updates']);
+		const form = readFileSync(join(dir, '..', 'components', 'mental-models', 'keep-noticing.svelte'), 'utf8');
+		for (const box of ['followUp', 'updates', 'research']) expect(form).toMatch(new RegExp(`let ${box} = \\$state\\(false\\)`));
+		expect(form).not.toMatch(/choices\.(dailyCheck|productInfo|rememberResult)/);
+	});
+
+	it('section 05 says "Most compatible with [Model]" with a Why line, and "A skill to borrow" is gone', () => {
+		expect(COMPATIBLE_HEADING).toBe('Most compatible with');
+		expect(DEFAULT_VARIANTS.sectionFive).toBe('compatible');
+		for (const f of allSvelte) expect(/A skill to borrow/.test(readFileSync(f, 'utf8')), f).toBe(false);
+		const view = readFileSync(join(dir, '..', 'components', 'mental-models', 'model-view.svelte'), 'utf8');
+		expect(view).toContain('Why:');
 	});
 
 	it('keeps all consent wording in one file', () => {

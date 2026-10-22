@@ -53,19 +53,19 @@ export const actions: Actions = {
 
 		const email = String(data.get('email') ?? '').trim();
 		const firstName = String(data.get('firstName') ?? '').trim().slice(0, 40);
+		// Emailing the full report is the base action; the three choices are separate and optional.
 		const consents = {
 			followUp: data.get('followUp') === 'on',
-			dailyCheck: data.get('dailyCheck') === 'on',
-			productInfo: data.get('productInfo') === 'on',
-			rememberResult: data.get('rememberResult') === 'on'
+			updates: data.get('updates') === 'on',
+			research: data.get('research') === 'on'
 		};
-		const rawModel = String(data.get('rememberedModel') ?? '');
-		const rememberedModel = consents.rememberResult && consents.followUp && isModelId(rawModel) ? rawModel : null;
+		const primary = String(data.get('primary') ?? '');
+		const underRaw = String(data.get('underPressure') ?? '');
 
 		const errors: Record<string, string> = {};
 		if (!EMAIL_RE.test(email) || email.length > 254) errors.email = 'Please add a valid email address.';
-		if (!consents.followUp && !consents.dailyCheck && !consents.productInfo) errors.choices = 'Choose at least one reminder.';
-		if (data.get('adult') !== 'on') errors.adult = 'Reminders are for people aged 18 or older for now.';
+		if (data.get('adult') !== 'on') errors.adult = 'Emailed reports are for people aged 18 or older for now.';
+		if (!isModelId(primary) || (underRaw && !isModelId(underRaw))) errors.form = 'Your result could not be read. Please retake it.';
 		if (Object.keys(errors).length) return fail(400, { keepErrors: errors });
 
 		if (!(await passesTurnstile(String(data.get('cf-turnstile-response') ?? '') || null, event))) {
@@ -77,7 +77,7 @@ export const actions: Actions = {
 			email,
 			firstName: firstName || null,
 			consents,
-			rememberedModel,
+			report: { primary, underPressure: underRaw || null },
 			adultConfirmed: true,
 			consentVersion: CONSENT_VERSION,
 			rateKey

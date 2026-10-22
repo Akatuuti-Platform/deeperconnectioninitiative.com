@@ -2,8 +2,8 @@
 	import { CaretDownIcon as CaretDown } from 'phosphor-svelte';
 	import { MODELS } from '$lib/mental-models/models';
 	import { MODEL_ICONS } from '$lib/mental-models/icons';
-	import { verbFor, type Variants } from '$lib/mental-models/variants';
-	import { REACTION, RESPONSE, SKILL_HEADING } from '$lib/mental-models/labels';
+	import { verbFor, sectionFiveHeading, type Variants } from '$lib/mental-models/variants';
+	import { REACTION, RESPONSE } from '$lib/mental-models/labels';
 	import type { ModelId } from '$lib/mental-models/types';
 
 	type Fit = 'yes' | 'partly' | 'no';
@@ -151,13 +151,14 @@
 	<!-- 05 Grow with others -->
 	<section aria-labelledby={`${modelId}-grow`}>
 		<p class="text-xs font-semibold uppercase tracking-[0.2em] text-dci-burgundy">05 &middot; Grow with others</p>
-		<h3 id={`${modelId}-grow`} class="mt-2 text-lg font-semibold text-dci-teal-deep">{SKILL_HEADING}</h3>
-		<p class="mt-2 text-base leading-relaxed text-slate-800">
+		<h3 id={`${modelId}-grow`} class="mt-2 text-lg font-semibold text-dci-teal-deep">
+			{sectionFiveHeading(variants)}
+			<a href={`/mental-models/${learn.id}`} class="underline underline-offset-4">{learn.name}</a>
+		</h3>
+		<p class="mt-2 text-base leading-relaxed text-slate-800"><span class="font-semibold text-dci-teal-deep">Why:</span> {model.learnFrom.why}</p>
+		<p class="mt-1 text-base leading-relaxed text-slate-800">
 			<strong class="text-dci-teal-deep">{model.learnFrom.tryVerb}:</strong>
 			{model.learnFrom.tryText}
-		</p>
-		<p class="mt-1 text-sm text-slate-600">
-			A strength of the <a href={`/mental-models/${learn.id}`} class="underline underline-offset-4">{learn.name}</a> pattern.
 		</p>
 		<p class="mt-4 text-sm font-semibold text-dci-teal-deep">What you bring</p>
 		<p class="mt-1 text-base text-slate-800">{model.canTeach}</p>

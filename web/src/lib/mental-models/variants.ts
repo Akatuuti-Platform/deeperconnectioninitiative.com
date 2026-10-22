@@ -11,7 +11,8 @@ export interface Variants {
 	sectionFive: SectionFive;
 }
 
-export const DEFAULT_VARIANTS: Variants = { drifterVerb: 'stuck', sectionFive: 'learn-from' };
+// Section 05 defaults to "Most compatible with" (Draft 1.2 decision).
+export const DEFAULT_VARIANTS: Variants = { drifterVerb: 'stuck', sectionFive: 'compatible' };
 
 const DRIFTER_VERBS: Record<DrifterVerb, string> = {
 	stuck: 'I GET STUCK',

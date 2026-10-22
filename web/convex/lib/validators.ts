@@ -32,9 +32,21 @@ export const FUNNEL_EVENTS = [
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 export const funnelEventValidator = v.union(...FUNNEL_EVENTS.map((e) => v.literal(e)));
 
+// What the person agreed to. Draft 1.2: emailing the full report is the base action, and the
+// 90-day reminder, DCI updates and research contact are separate optional choices. The Draft 1.0
+// choices stay optional so older consent records remain valid.
 export const consentsValidator = v.object({
-  followUp: v.boolean(),
-  dailyCheck: v.boolean(),
-  productInfo: v.boolean(),
-  rememberResult: v.boolean(),
+  fullReport: v.optional(v.boolean()),
+  followUp: v.optional(v.boolean()),
+  updates: v.optional(v.boolean()),
+  research: v.optional(v.boolean()),
+  dailyCheck: v.optional(v.boolean()),
+  productInfo: v.optional(v.boolean()),
+  rememberResult: v.optional(v.boolean()),
+});
+
+/** The Models for the full report email. Kept only until that email is sent. */
+export const reportValidator = v.object({
+  primary: modelValidator,
+  underPressure: v.union(modelValidator, v.null()),
 });

@@ -486,7 +486,7 @@
 				<div class="space-y-5">
 					<FullReport primary={result.primary} underPressure={result.underPressure} {unlocked} pressure={stressState} onfit={(v) => (fit = v)} />
 					{#if !unlocked}
-						<KeepNoticing primary={result.primary} available={data.remindersAvailable} onunlocked={() => (unlocked = true)} />
+						<KeepNoticing primary={result.primary} underPressure={result.underPressure} available={data.remindersAvailable} onunlocked={() => (unlocked = true)} />
 					{/if}
 				</div>
 

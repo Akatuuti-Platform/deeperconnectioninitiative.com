@@ -2,7 +2,7 @@
 	import { LockSimpleIcon as Lock } from 'phosphor-svelte';
 	import { MODELS } from '$lib/mental-models/models';
 	import { orderedPathways } from '$lib/mental-models/pathways';
-	import { SKILL_HEADING, REACTION, RESPONSE } from '$lib/mental-models/labels';
+	import { COMPATIBLE_HEADING, REACTION, RESPONSE } from '$lib/mental-models/labels';
 	import type { ModelId, StressState } from '$lib/mental-models/types';
 
 	type Fit = 'yes' | 'partly' | 'no';
@@ -45,7 +45,7 @@
 			heading: 'Explore your story (optional)',
 			text: `One possible influence, not the cause. ${m.origin.stage} (${m.origin.ageNote}, DCI Reflection Journal, ${m.origin.journalLetter} letter). ${m.origin.body} Reflect: ${m.origin.reflect}`
 		},
-		{ id: 'skill', heading: SKILL_HEADING, text: `${m.learnFrom.tryVerb}: ${m.learnFrom.tryText} A strength of the ${skillFrom.name} pattern. What you bring: ${m.canTeach}` },
+		{ id: 'skill', heading: `${COMPATIBLE_HEADING} ${skillFrom.name}`, text: `Why: ${m.learnFrom.why} ${m.learnFrom.tryVerb}: ${m.learnFrom.tryText} What you bring: ${m.canTeach}` },
 		{ id: 'next', heading: 'Next steps for this pattern', text: steps.map((s) => `${s.label}. ${s.why}`).join(' ') }
 	]);
 

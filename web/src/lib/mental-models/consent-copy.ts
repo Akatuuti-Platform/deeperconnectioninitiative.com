@@ -3,32 +3,31 @@
 // bump CONSENT_VERSION in version.ts: every consent record stores the version the person saw.
 //
 // STATUS: DRAFT FOR LEGAL REVIEW. Known review points:
-//  - Unlocking the full report is tied to opting in to a reminder. Check this is "freely given"
-//    consent; the same content stays readable without email on the public Model pages.
+//  - Emailing the full report stands on its own. The 90-day reminder, DCI updates and research
+//    contact are three separate, unticked choices. "Research" is read as consent to be contacted
+//    about taking part in research, not consent to use the person's data for research.
 //  - 18 or older only for contact details; under-18s get the free parts and the Model pages.
 //  - Processors and cross-border transfers (Convex in Ireland, Resend, Vercel, Cloudflare).
 
 export const UNAVAILABLE = 'Not available right now. Nothing has been stored.';
 
 export const UNLOCK = {
-	heading: 'Keep noticing: unlock your full report',
-	intro: 'Add your email to read the rest of your report now. We use it only for what you tick below.',
+	heading: 'Keep noticing: email me my full report',
+	intro: 'Add your email and we will send you your full report. It also unlocks on this page straight away. Everything below is optional and unticked.',
 	choices: {
 		followUp: 'Remind me in 90 days to retake it and see what has changed',
-		dailyCheck: 'Email me the free 14-day check, and check in once after 14 days',
-		productInfo: 'Tell me about the DCI Mood Tracker, once',
-		rememberResult: (modelName: string) => `Also remind me what my result was (${modelName}). This keeps your result next to your email until the reminder.`
+		updates: 'Send me occasional DCI updates',
+		research: 'You may contact me about taking part in DCI research on this scorecard'
 	},
 	emailLabel: 'Email',
 	firstNameLabel: 'First name (optional)',
 	adult: 'I am 18 or older',
 	under18: 'Under 18? You can read every Model in full on its own page, without giving any details.',
 	notice:
-		'We use your email only for what you tick, delete it within 12 months at most, and never share or sell it. Every email has a link to stop and delete your details.',
+		'We use your email to send your report, and for nothing else unless you tick it above. If you only want the report, we delete your email once it is sent. Otherwise we delete it within 12 months at most, and never share or sell it. Every email has a link to stop and delete your details.',
 	noticeLink: 'How we handle your data',
-	submit: 'Unlock my report',
-	sent: 'Your report is unlocked below. Check your email and press the link to confirm your reminders. Nothing is sent until you do.',
-	chooseOne: 'Choose at least one thing you would like from us.'
+	submit: 'Email me my full report',
+	sent: 'Your report is unlocked below. Check your email and press the link to confirm, and we will send your full report. Nothing else is sent unless you ticked it.'
 };
 
 export const COUNT = {
@@ -65,7 +64,8 @@ export const PRIVACY_NOTICE: { heading: string; paragraphs?: string[]; bullets?:
 		heading: 'What we keep, only if you choose',
 		bullets: [
 			'Anonymous counts. If you press "Count my result", we add one to a tally for your Models (and, only if you give them, an age band, a region, and how the pressure was that day). We store the week, never the time, and nothing that identifies you. Groups smaller than 10 are never reported.',
-			'Reminders and your full report (18 or older only). Your email, an optional first name, the reminders you ticked, and a record of your consent. Your result is kept only if you tick "remind me what my result was". Nothing is sent until you confirm by email.',
+			'Your full report by email (18 or older only). Your email, an optional first name, the names of your Models until the report is sent, and a record of your consent. Nothing is sent until you confirm your email.',
+			'Only if you tick them, each separately: a reminder in 90 days, occasional DCI updates, and being contacted about DCI research on this scorecard.',
 			'Anonymous feedback. What you write in the feedback box, sent to our team by email without your name or email address.',
 			'Usage counts. We count how many people open, finish or share the scorecard each day. No identifier is kept, and no cookies are used.'
 		]
@@ -73,14 +73,15 @@ export const PRIVACY_NOTICE: { heading: string; paragraphs?: string[]; bullets?:
 	{
 		heading: 'Why, and on what basis',
 		paragraphs: [
-			'We use these only for what you chose: to send your reminders, and to understand, in aggregate, how people respond to stress so support can go where it is needed. We rely on your consent, which you can withdraw at any time. We never sell or share your details for marketing.'
+			'We use these only for what you chose: to send your report and anything else you ticked, and to understand, in aggregate, how people respond to stress so support can go where it is needed. We rely on your consent, which you can withdraw at any time. We never sell or share your details.'
 		]
 	},
 	{
 		heading: 'How long we keep it',
 		bullets: [
 			'Unconfirmed requests: deleted after 7 days.',
-			'Contacts: deleted 30 days after your last reminder, or 12 months after you confirm, or when you stop, whichever comes first.',
+			'If you only asked for your report: your email is deleted as soon as the report is sent.',
+			'If you ticked a reminder, updates or research: deleted 30 days after your last reminder, or 12 months after you confirm, or when you stop, whichever comes first.',
 			'Consent records: kept for 24 months as proof of what you agreed to. They hold a scrambled marker of your email, not the email itself.',
 			'Anonymous counts: kept, because they cannot identify anyone.',
 			'Our providers keep backups for a limited time, so deleted data can remain in a backup until it expires.'

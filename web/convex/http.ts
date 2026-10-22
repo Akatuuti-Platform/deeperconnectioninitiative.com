@@ -9,7 +9,7 @@ import { httpAction, env, type ActionCtx } from "./_generated/server";
 import { internal } from "./_generated/api";
 import { rateLimiter } from "./limits";
 import { constantTimeEqual, hmacHex, normaliseEmail, signToken, verifyToken } from "./lib/crypto";
-import { links, sendEmail, confirmationEmail, welcomeEmail } from "./lib/emails";
+import { links, sendEmail, confirmationEmail, fullReportEmail } from "./lib/emails";
 import { MODEL_IDS, type ModelId } from "../src/lib/mental-models/types";
 import { AGE_BANDS, REGIONS, STATE_BUCKETS, FUNNEL_EVENTS, type FunnelEvent } from "./lib/validators";
 
@@ -109,19 +109,23 @@ http.route({
 
     const email = typeof b.email === "string" ? normaliseEmail(b.email) : "";
     const firstNameRaw = typeof b.firstName === "string" ? b.firstName.trim().slice(0, 40) : "";
+    // Emailing the full report is the base action. The 90-day reminder, DCI updates and research
+    // contact are each a separate, optional choice.
     const c = (b.consents ?? {}) as Record<string, unknown>;
     const consents = {
+      fullReport: true,
       followUp: c.followUp === true,
-      dailyCheck: c.dailyCheck === true,
-      productInfo: c.productInfo === true,
-      rememberResult: c.rememberResult === true,
+      updates: c.updates === true,
+      research: c.research === true,
     };
-    const rememberedModel = b.rememberedModel === null || b.rememberedModel === undefined ? null : oneOf<ModelId>(b.rememberedModel, MODEL_IDS);
+    const r = (b.report ?? {}) as Record<string, unknown>;
+    const reportPrimary = oneOf<ModelId>(r.primary, MODEL_IDS);
+    const reportUnder = r.underPressure === null || r.underPressure === undefined ? null : oneOf<ModelId>(r.underPressure, MODEL_IDS);
 
     // 18 or older only (decision agreed in the launch plan). Contact details are never stored otherwise.
     if (b.adultConfirmed !== true) return json(400, { error: "adult confirmation required" });
     if (!EMAIL_RE.test(email) || email.length > 254) return json(400, { error: "bad email" });
-    if (!consents.followUp && !consents.dailyCheck && !consents.productInfo) return json(400, { error: "nothing chosen" });
+    if (!reportPrimary || (r.underPressure && !reportUnder)) return json(400, { error: "bad report" });
     if (typeof b.consentVersion !== "string" || b.consentVersion.length > 40) return json(400, { error: "bad consent version" });
 
     const contactHash = await hmacHex(env.MM_HASH_KEY, email);
@@ -129,17 +133,17 @@ http.route({
       return json(429, { error: "slow down" });
     }
 
-    const r = await ctx.runMutation(internal.contacts.request, {
+    const saved = await ctx.runMutation(internal.contacts.request, {
       contactHash,
       email,
       firstName: firstNameRaw || null,
       consents,
-      rememberedModel,
+      report: { primary: reportPrimary, underPressure: reportUnder },
       consentVersion: b.consentVersion,
     });
-    if ((r.outcome === "created" || r.outcome === "updated") && r.contactId) {
-      const confirm = await signToken(env.MM_LINK_KEY, "confirm", r.contactId, r.requestedAt);
-      const manage = await signToken(env.MM_LINK_KEY, "manage", r.contactId, 0);
+    if ((saved.outcome === "created" || saved.outcome === "updated") && saved.contactId) {
+      const confirm = await signToken(env.MM_LINK_KEY, "confirm", saved.contactId, saved.requestedAt);
+      const manage = await signToken(env.MM_LINK_KEY, "manage", saved.contactId, 0);
       const l = links(confirm, manage);
       await sendEmail(email, confirmationEmail(firstNameRaw || null, l), l.oneClickStop);
     }
@@ -161,11 +165,15 @@ http.route({
     if (!t) return json(200, { status: "invalid" });
     const status = await ctx.runMutation(internal.contacts.confirm, { contactId: t.contactId, issuedAt: t.issuedAt });
     if (status === "confirmed") {
-      const id = await ctx.runQuery(internal.contacts.forEmail, { contactId: t.contactId });
-      if (id) {
+      const contact = await ctx.runQuery(internal.contacts.forEmail, { contactId: t.contactId });
+      if (contact?.report) {
         const manage = await signToken(env.MM_LINK_KEY, "manage", t.contactId, 0);
         const l = links(null, manage);
-        await sendEmail(id.email, welcomeEmail(id.firstName, id.consents, l), l.oneClickStop);
+        const sent = await sendEmail(contact.email, fullReportEmail(contact.firstName, contact.report, contact.consents, l), l.oneClickStop);
+        // In a development deployment without a sender, links are logged instead; treat that as sent.
+        if (sent === "sent" || (sent === "skipped" && env.MM_DEV_ECHO_LINKS === "true")) {
+          await ctx.runMutation(internal.contacts.reportSent, { contactId: t.contactId });
+        }
       }
     }
     return json(200, { status });

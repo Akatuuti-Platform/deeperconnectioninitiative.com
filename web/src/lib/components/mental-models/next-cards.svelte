@@ -1,31 +1,25 @@
 <script lang="ts">
-	import { ArrowUpRightIcon as ArrowUpRight, PrinterIcon as Printer, BellIcon as Bell, HeartIcon as Heart } from 'phosphor-svelte';
-	import { track } from '$lib/mental-models/track';
+	import { ArrowUpRightIcon as ArrowUpRight, BellIcon as Bell, HeartIcon as Heart } from 'phosphor-svelte';
 </script>
 
-<!-- (f) Two cards. "Keep going" reuses the "Keep noticing" reminders form above for the 90-day retake. -->
+<!-- (f) Two separate cards. "Keep going": the DCI EWS (coming soon) and the 90-day retake, whose reminder is a box in the "Keep noticing" form above. "Pass it on": sponsor a toolkit. -->
 <div class="grid gap-4 sm:grid-cols-2">
 	<section aria-labelledby="keep-going" class="rounded-2xl border border-dci-teal/15 bg-white/70 p-5">
-		<h2 id="keep-going" class="text-lg font-semibold text-dci-teal-deep">Keep going</h2>
-		<p class="mt-1 text-sm leading-relaxed text-slate-600">
-			Free mood tracking in the DCI Early Warning System is coming soon. Until then:
+		<div class="flex flex-wrap items-center gap-2">
+			<h2 id="keep-going" class="text-lg font-semibold text-dci-teal-deep">Keep going</h2>
+			<span class="rounded-full bg-slate-200 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-[0.12em] text-slate-700">Coming soon</span>
+		</div>
+		<p class="mt-2 text-sm leading-relaxed text-slate-700">
+			<strong class="text-dci-teal-deep">Start the DCI Early Warning System.</strong> Free daily mood tracking, so you can notice your patterns over time. It is not open yet. Tick "DCI updates" in the form above to hear when it opens.
 		</p>
-		<ul class="mt-3 space-y-3 text-sm">
-			<li>
-				<a href="/mental-models/14-day-check" target="_blank" rel="noopener" class="flex items-start gap-2 font-semibold text-dci-teal-deep">
-					<Printer class="mt-0.5 size-4 shrink-0" /> <span>Your free 14-day check <span class="font-normal text-slate-600">(print it or keep it on your phone, no sign-up)</span></span>
-				</a>
-			</li>
-			<li>
-				<a href="#unlock" class="flex items-start gap-2 font-semibold text-dci-teal-deep">
-					<Bell class="mt-0.5 size-4 shrink-0" /> <span>Retake in 90 days <span class="font-normal text-slate-600">(get one reminder, using the form above)</span></span>
-				</a>
-			</li>
-			<li class="text-slate-700">
-				Prefer paper? The DCI Mood Tracker, 31,000 UGX.
-				<a href="/toolkit#toolkit-products" target="_blank" rel="noopener" onclick={() => track('tracker_link_clicked')} class="font-semibold text-dci-teal-deep underline underline-offset-4">See it</a>
-			</li>
-		</ul>
+		<p class="mt-3 text-sm leading-relaxed text-slate-700">
+			<Bell class="mr-1 inline size-4 text-dci-teal-deep" /><strong class="text-dci-teal-deep">Retake in 90 days.</strong> Patterns can shift with time and practice. Taking the scorecard again shows you what has changed. Tick the 90-day reminder above, or just come back.
+		</p>
+		<p class="mt-3 text-xs leading-relaxed text-slate-600">
+			Meanwhile:
+			<a href="/mental-models/14-day-check" target="_blank" rel="noopener" class="font-semibold text-dci-teal-deep underline underline-offset-4">your free 14-day check</a>
+			(print it or keep it on your phone, no sign-up).
+		</p>
 	</section>
 
 	<section aria-labelledby="pass-it-on" class="rounded-2xl border border-dci-burgundy/20 bg-dci-burgundy/5 p-5">
